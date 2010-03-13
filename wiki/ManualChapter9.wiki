@@ -12,7 +12,7 @@ The next several pages show portions of the printed IMP output. The IMP language
 
 [Image:Manual_figure_ch9_1.png|center|_Figure 9-1_ A Differential Control Linkage.]
 
-                            &lt;&lt;&lt;  Notice  &gt;&gt;&gt;
+                            <<<  Notice  >>>
  
  This is the Integrated Mechanisms Program (IMP-2000).
  (C)Copyright, JML Research, Inc., 1984-2000. All rights reserved.
@@ -34,11 +34,11 @@ The next several pages show portions of the printed IMP output. The IMP language
  ************************************************************************
  
  What kind of terminal are you using?
-   alpha, graphic [graphic]:&gt; graphic                                        [#Notes|(1)]
- &gt; print input                                                               [#Notes|(2)]
- &gt; recall input                                                              [#Notes|(3)]
+   alpha, graphic [graphic]:> graphic                                        [#Notes|(1)]
+ > print input                                                               [#Notes|(2)]
+ > recall input                                                              [#Notes|(3)]
  Enter a name for a command input file.                                      [#Notes|(3)]
-   Filename: &gt; diflnk.dat                                                    [#Notes|(3)]
+   Filename: > diflnk.dat                                                    [#Notes|(3)]
  TITLE = DIFFERENTIAL CONTROL LINKAGE
  REMARK: DEFINITION AND DATA STATEMENTS.                                     [#Notes|(4)]
  GROUND = FRAME
@@ -134,7 +134,7 @@ The next several pages show portions of the printed IMP output. The IMP language
  DATA POSITION(JT8) = 0,-5,5 $$ INCREMENT JOINT JT8.                         [#Notes|(10)]
  DATA TIME = 5,1,1                                                           [#Notes|(11)]
  RETURN                                                                      [#Notes|(12)]
- &gt; execute                                                                   [#Notes|(12)]
+ > execute                                                                   [#Notes|(12)]
  ************************************************************************
  *                     DIFFERENTIAL CONTROL LINKAGE                     *
  *                            Kinematic Mode                            *
@@ -146,7 +146,7 @@ The next several pages show portions of the printed IMP output. The IMP language
  time = 3.000000
  time = 4.000000
  time = 5.000000
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  Listing of position of joint JT5
     Time    JVar 1
    5.0 0.000
@@ -155,7 +155,7 @@ The next several pages show portions of the printed IMP output. The IMP language
    5.0 -7.526
    5.0 -10.018
    5.0 -12.487
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_3.png|center|_Figure 9-3_ Position of joint JT5 vs. time]
 
@@ -167,9 +167,9 @@ The next several pages show portions of the printed IMP output. The IMP language
   3.000000     -8.738      2.008      0.000
   4.000000     -8.652      2.013      0.000
   5.000000     -8.567      2.019      0.000
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- &gt; recall input                                                              [#Notes|(13)]
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ > recall input                                                              [#Notes|(13)]
                                                                              [#Notes|(14)]
  REMARK: CHANGE THE POSITION OF JT1 AND REANALYZE.
  REMARK: USE THE SAME POSITION INCREMENTS FOR JT8.
@@ -177,18 +177,18 @@ The next several pages show portions of the printed IMP output. The IMP language
  *** Input motion for joint JT1 1 is redefined. ***                          [#Notes|(15)]
  ANIMATE                      $$ SET UP FOR ANIMATED PICTURES.               [#Notes|(16)]
  RETURN
- &gt; execute                                                                   [#Notes|(17)]
+ > execute                                                                   [#Notes|(17)]
 
 [Image:Manual_figure_ch9_4.png|center|_Figure 9-4_ Animation of the differential control linkage.][#Notes|(18)]
 
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
  Listing of position of joint JT5
    Time     JVar 1
   0.000000    -12.938
@@ -197,7 +197,7 @@ The next several pages show portions of the printed IMP output. The IMP language
   3.000000    -17.564
   4.000000    -19.389
   5.000000    -21.298
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  Listing of position of point END
    Time         X          Y      Z
   0.000000     -8.530      1.324  0.000
@@ -206,28 +206,28 @@ The next several pages show portions of the printed IMP output. The IMP language
   3.000000     -8.379      1.353  0.000
   4.000000     -8.321      1.365  0.000
   5.000000     -8.260      1.378  0.000
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_5.png|center|_Figure 9-5_ Position of joint JT5 vs. time.]
 
- Press 'ENTER' to continue: &gt;
- &gt; recall input
+ Press 'ENTER' to continue: >
+ > recall input
  REMARK: CHANGE THE POSITION OF JT1 AGAIN.
  DATA POSITION(JT1) = 0.5
  *** Input motion for joint JT1 1 is redefined. ***                 [#Notes|(15)]
  RETURN
- &gt; execute
+ > execute
 
 [Image:Manual_figure_ch9_6.png|center|_Figure 9-6_ Animation of the differential control linkage.]
 
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
  Listing of position of joint JT5
    Time     JVar 1
   0.000000      8.426
@@ -236,7 +236,7 @@ The next several pages show portions of the printed IMP output. The IMP language
   3.000000     -0.131
   4.000000     -2.909
   5.000000     -5.632
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  Listing of position of point END
    Time         X          Y      Z
   0.000000     -9.256      2.798  0.000
@@ -245,14 +245,14 @@ The next several pages show portions of the printed IMP output. The IMP language
   3.000000     -8.964      2.747  0.000
   4.000000     -8.868      2.736  0.000
   5.000000     -8.773      2.728  0.000
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_7.png|center|_Figure 9-7_ Position of joint JT5 vs. time.]
 
- Press 'ENTER' to continue: &gt;
- &gt; recall input                                                     [#Notes|(19)]
+ Press 'ENTER' to continue: >
+ > recall input                                                     [#Notes|(19)]
  *** RETURN statement simulated at end of file. ***                 [#Notes|(19)]
- &gt; end                                                              [#Notes|(20)]
+ > end                                                              [#Notes|(20)]
 
 ===Notes===
 # The response specifies that the user is currently operating with a graphic display terminal and expects to be drawing plots of results.
@@ -262,7 +262,7 @@ The next several pages show portions of the printed IMP output. The IMP language
 # Note that only one point is specified in each of these <tt>DATA ZPIN</tt> statements; the global origin is implied for the location of the missing second and third points.
 # Note that this data is described relative to the local joint coordinate systems. It places the point <tt>END</tt>, for example, at the left end of link <tt>D</tt>.
 # Although the figures in this manual do not show in color, these <tt>SHOW</tt> statements specify colors for display on color capable terminals. If the device is not color capable, the <tt>SHOW</tt> statements may still be used in the input data file without causing errors.
-# The <tt>PAUSE ON</tt> statement is used to cause pauses and messages in the output which read "Press <tt>ENTER</tt> to continue: &gt;", thus allowing the user to study results before they are lost from the screen.
+# The <tt>PAUSE ON</tt> statement is used to cause pauses and messages in the output which read "Press <tt>ENTER</tt> to continue: >", thus allowing the user to study results before they are lost from the screen.
 # Note that, if this statement were not included, IMP would arbitrarily choose some joint to hold stationary since the system has two degrees of freedom and the simulation is in kinematic mode.
 # The simulation is requested to proceed through six positions; the position of joint <tt>JT8</tt> is incremented five times.
 # Note the use of the <tt>DATA TIME</tt> statement in kinematic mode. This feature allows use of functions of time in kinematic mode. The <tt>DATA TIME</tt> statement was not necessary here and would have been implied by the five position increments of the previous line; it is used to illustrate the procedure.
@@ -282,7 +282,7 @@ The first portion of the simulation demonstrates the kinematic performance of th
 
 [Image:Manual_figure_ch9_8.png|center|_Figure 9-8_ Unnamed.]
 
-                          &lt;&lt;&lt; Notice &gt;&gt;&gt;
+                          <<< Notice >>>
  
  This is the Integrated Mechanisms Program (IMP-2000).
  (C)Copyright, JML Research, Inc., 1984-2000. All rights reserved.
@@ -304,10 +304,10 @@ The first portion of the simulation demonstrates the kinematic performance of th
  ********************************************
  
  What kind of terminal are you using?
- alpha, graphic [graphic]:&gt; graphic
+ alpha, graphic [graphic]:> graphic
  
- &gt; print input
- &gt; recall input loader.dat
+ > print input
+ > recall input loader.dat
  TITLE=FRONT END LOADER
  
  REMARK: LINKAGE ASSEMBLY DEFINITION.
@@ -462,7 +462,7 @@ The first portion of the simulation demonstrates the kinematic performance of th
 
 [Image:Manual_figure_ch9_9.png|center|_Figure 9-9_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  REMARK: DEFINE ANGLE OF THE BUCKET WITH RESPECT TO GROUND.
  VALUE(ANGLE)=57.295*ATAN2(POSIT(P803,2)-POSIT(P802,2),$ (3)
@@ -482,19 +482,19 @@ The first portion of the simulation demonstrates the kinematic performance of th
  PAUSE ON
  ANIMATE
  RETURN
- &gt; exec hold
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
+ > exec hold
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_10.png|center|_Figure 9-10_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  Listing of position of joint J1
  Time JVar 1
@@ -506,7 +506,7 @@ The first portion of the simulation demonstrates the kinematic performance of th
  
  5.000000 -23.879
  6.000000 -47.002
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  Listing of position of joint J14
  Time JVar 1
@@ -518,7 +518,7 @@ The first portion of the simulation demonstrates the kinematic performance of th
  
  5.000000 -49.899
  6.000000 -60.062
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  Listing of position of point P803
  Time X Y Z
  0.000000 172.560 0.000 40.000
@@ -529,15 +529,15 @@ The first portion of the simulation demonstrates the kinematic performance of th
  
  5.000000 192.615 111.554 40.000
  6.000000 170.339 148.479 40.000
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_11.png|center|_Figure 9-11_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  *** The current position is set as reference. *** (6)
- &gt; reset (7)
- &gt; recall input
+ > reset (7)
+ > recall input
  
  REMARK: TILT BUCKET TO DUMP POSITION.
  DATA POSITION(J4)=29.79 $$ HOLD CYLINDER J4 STATIONARY. (8)
@@ -546,21 +546,21 @@ The first portion of the simulation demonstrates the kinematic performance of th
  *** Input motion for joint J6 1 is redefined. ***
  DATA TIME 7,1,1
  RETURN
- &gt; exec
+ > exec
  
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_12.png|center|_Figure 9-12_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  Listing of position of joint J1
  Time JVar 1
@@ -573,7 +573,7 @@ The first portion of the simulation demonstrates the kinematic performance of th
  5.000000 -47.002
  6.000000 -47.002
  7.000000 -47.002
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  Listing of position of joint J14
  Time JVar 1
@@ -586,7 +586,7 @@ The first portion of the simulation demonstrates the kinematic performance of th
  5.000000 -103.247
  6.000000 -115.774
  7.000000 -132.441
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  Listing of position of point P803
  Time X Y Z
@@ -599,12 +599,12 @@ The first portion of the simulation demonstrates the kinematic performance of th
  5.000000 168.373 123.167 40.000
  6.000000 164.351 116.804 40.000
  7.000000 157.051 109.972 40.000
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_13.png|center|_Figure 9-13_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
- &gt; recall input
+ Press 'ENTER' to continue: >
+ > recall input
  
  REMARK: RETURN THE MODEL TO ITS ORIGINAL POSITION.
  DATA POSITION(J4)=29.79,-4.965,6 $$ INCREMENT CYLINDER J4 BACK DOWN.
@@ -614,27 +614,27 @@ The first portion of the simulation demonstrates the kinematic performance of th
  DATA TIME 6,1,1
  DELETE LIST ALL
  RETURN
- &gt; exec hold
+ > exec hold
  
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_14.png|center|_Figure 9-14_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_15.png|center|_Figure 9-15_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  *** The current position is set as reference. *** (6)
- &gt; reset (7)
+ > reset (7)
  Ø recall input
  Ø
  UNIT(MASS)=0.0025901
@@ -646,48 +646,48 @@ The first portion of the simulation demonstrates the kinematic performance of th
  *** Input motion for joint J6 1 is redefined. ***
  PLOT FORCE(J4,J6,J1,J3,J14) (12)
  RETURN
- &gt; exec
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
+ > exec
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_16.png|center|_Figure 9-16_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_17.png|center|_Figure 9-17_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_18.png|center|_Figure 9-18_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_19.png|center|_Figure 9-19_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_20.png|center|_Figure 9-20_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_21.png|center|_Figure 9-21_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_22.png|center|_Figure 9-22_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
- &gt; recall input
+ > recall input
  
  *** RETURN statement simulated at end of file. ***
- &gt; end
+ > end
  
 ===Notes:===
 # Note that this is actually a 2-D kinematic model of the loader. Only one set of links and joints are defined along the central plane of the model (Z = 0). 
@@ -710,7 +710,7 @@ The first of these two problems, being strictly geometric, is solved in kinemati
 
 [Image:Manual_figure_ch9_23.png|center|_Figure 9-23_ Unnamed.]
 
-                        &lt;&lt;&lt; Notice &gt;&gt;&gt;
+                        <<< Notice >>>
  
  This is the Integrated Mechanisms Program (IMP-2000).
  (C)Copyright, JML Research, Inc., 1984-2000. All rights reserved.
@@ -732,10 +732,10 @@ The first of these two problems, being strictly geometric, is solved in kinemati
  ********************************************
  
  What kind of display are you using?
- alpha, graphic [graphic]: &gt; (1)
+ alpha, graphic [graphic]: > (1)
  
- &gt; print input
- &gt; recall input sewing.dat
+ > print input
+ > recall input sewing.dat
  TITLE=SEWING MACHINE UPPER LOOPER DRIVE TRAIN
  
  REMARK: MODEL ASSEMBLY DATA.
@@ -775,7 +775,7 @@ The first of these two problems, being strictly geometric, is solved in kinemati
  PLOT ACCEL(TIP)
  LIST FORCE(MAIN) (7) PLOT FORCE(MAIN, BALL) (7) PAUSE ON $$ SO THAT PLOTS CAN BE STUDIED.
  RETURN
- &gt; execute
+ > execute
  
  *******************************************
  * SEWING MACHINE UPPER LOOPER DRIVE TRAIN *
@@ -814,7 +814,7 @@ The first of these two problems, being strictly geometric, is solved in kinemati
  time = 0.007000
  time = 0.007250
  time = 0.007500
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  Listing of position of point TIP
  Time X Y Z
  0.000000 -0.109 3.201 1.000
@@ -854,7 +854,7 @@ The first of these two problems, being strictly geometric, is solved in kinemati
  0.007250 -0.028 3.133 0.961
  
  0.007500 -0.109 3.201 1.000
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  Listing of force in joint MAIN
  Time FX FY FZ MX MY MZ
  0.000000 9.766 16.992 14.717 3.942 -51.981 57.397
@@ -894,28 +894,28 @@ The first of these two problems, being strictly geometric, is solved in kinemati
  0.007250 8.561 60.156 30.376 13.956 -104.596 203.208
  
  0.007500 9.766 17.005 14.719 3.945 -51.987 57.442
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_24.png|center|_Figure 9-24_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_25.png|center|_Figure 9-25_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_26.png|center|_Figure 9-26_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_27.png|center|_Figure 9-27_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_28.png|center|_Figure 9-28_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
- &gt; end
+ Press 'ENTER' to continue: >
+ > end
 
 ===Notes:===
 # A carriage return was given for this question, thus accepting the default response which is "graphic". Though most output is printed lists, the "graphic" response is still neccessary to see plots. 
@@ -935,7 +935,7 @@ In the first simulation presented, the equilibrium position is sought, while the
 
 [Image:Manual_figure_ch9_29.png|center|_Figure 9-29_ Unnamed.]
 
-                          &lt;&lt;&lt; Notice &gt;&gt;&gt;
+                          <<< Notice >>>
  
  This is the Integrated Mechanisms Program (IMP-2000).
  (C)Copyright, JML Research, Inc., 1984-2000. All rights reserved.
@@ -957,9 +957,9 @@ In the first simulation presented, the equilibrium position is sought, while the
  ********************************************
  
  What kind of display are you using?
- alpha, graphic [graphic]: &gt;
- &gt; print input
- &gt; recall input demo\saetst.dat
+ alpha, graphic [graphic]: >
+ > print input
+ > recall input demo\saetst.dat
  
  TITLE=SAE LEFT FRONT SUSPENSION MODEL
  REMARK: PREPARED FOR THE VEHICLE MODELING TASK FORCE OF THE $
@@ -1101,7 +1101,7 @@ In the first simulation presented, the equilibrium position is sought, while the
  PRINT FORCE(ALL)
  PAUSE ON
  RETURN
- &gt; execute hold (12)
+ > execute hold (12)
  
  ***********************************
  * SAE LEFT FRONT SUSPENSION MODEL *
@@ -1201,12 +1201,12 @@ In the first simulation presented, the equilibrium position is sought, while the
  Dmp. SHCK 0.000
  Dmp. JNCD 0.000
  Dmp. RBND 0.000
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  *** The current position is set as reference. *** (12)
- &gt; reset (13)
+ > reset (13)
  
- &gt; recall input
+ > recall input
  
  DELETE PRINT(ALL)
  DELETE EQUILIBRIUM
@@ -1226,7 +1226,7 @@ In the first simulation presented, the equilibrium position is sought, while the
  LIST FORCE(AXLE,PACH)
  PLOT FORCE(AXLE,PACH) (15)
  RETURN
- &gt; execute
+ > execute
  
  ******************************************
  * A 2.95 INCH HAVERSINE HOLE AT 12.2 HZ. *
@@ -1285,7 +1285,7 @@ In the first simulation presented, the equilibrium position is sought, while the
  time = 0.240000
  time = 0.245000
  time = 0.250000
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  Listing of position of point KPT
  Time X Y Z
@@ -1353,11 +1353,11 @@ In the first simulation presented, the equilibrium position is sought, while the
 
 [Image:Manual_figure_ch9_30.png|center|_Figure 9-30_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_31.png|center|_Figure 9-31_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  Listing of force in joint AXLE (15)
  Time FX FY FZ MX MY MZ
@@ -1423,7 +1423,7 @@ In the first simulation presented, the equilibrium position is sought, while the
  
  0.250000 0.703 -952.805 9.839 0.000 -9.503 -47.928
  
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
  Listing of force in joint PACH (15)
  Time FX FY FZ MX MY MZ
@@ -1488,17 +1488,17 @@ In the first simulation presented, the equilibrium position is sought, while the
  0.245000 0.000 0.000 -931.097 -26.032 28613.221 0.000
  
  0.250000 0.000 0.000 -931.095 -26.066 28613.165 0.000
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_32.png|center|_Figure 9-32_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_33.png|center|_Figure 9-33_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
  
- &gt; end
+ > end
 
 ===Notes:===
 # Since link BODY is treated as stationary, provision must be made to allow the ROAD to move. The relative motion between these is controlled to correspond to the road profile, the bump shape passed over by the tire. 
@@ -1521,7 +1521,7 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
 
 [Image:Manual_figure_ch9_34.png|center|_Figure 9-34_ Unnamed.]
 
-                      &lt;&lt;&lt; Notice &gt;&gt;&gt;
+                      <<< Notice >>>
  
  This is the Integrated Mechanisms Program (IMP-2000).
  (C)Copyright, JML Research, Inc., 1984-2000. All rights reserved.
@@ -1543,9 +1543,9 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
  ********************************************
  
  What kind of display are you using?
- alpha, graphic [graphic]; &gt; graphic
- &gt; print input
- &gt; recall input clamp.dat
+ alpha, graphic [graphic]; > graphic
+ > print input
+ > recall input clamp.dat
  TITLE=LAPEER DTV-1200 CLAMP
  SOLID READ AD = BARAD.geo (1)
  Solid 'AD' was read from file.
@@ -1616,21 +1616,21 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
  FORCE F0 F1 F2 = P (4)
  DATA FORCE P = 1200
  RETURN
- &gt; data view isometric (5)
- &gt;
+ > data view isometric (5)
+ >
  draw
 
 [Image:Manual_figure_ch9_35.png|center|_Figure 9-35_ Unnamed.]
 
- &gt; data view front
- &gt; slide x 5.0
- &gt; draw
+ > data view front
+ > slide x 5.0
+ > draw
 
 [Image:Manual_figure_ch9_36.png|center|_Figure 9-36_ Unnamed.]
 
- &gt; data position A = 0 30 2
- &gt; animate
- &gt; execute
+ > data position A = 0 30 2
+ > animate
+ > execute
  
  **********************************
  * JML Research, Inc.             *
@@ -1645,29 +1645,29 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
 
 [Image:Manual_figure_ch9_37.png|center|_Figure 9-37_ Unnamed.]
 
- &gt; data position A = 0 4 15
+ > data position A = 0 4 15
  *** Input motion for joint A 1 is redefined. ***
- &gt; list position F0
- &gt; plot position F0
- &gt; pause on
- &gt; execute
+ > list position F0
+ > plot position F0
+ > pause on
+ > execute
  *** 'DATA TIME = 15.00000, 0.00000, 1.00000' is assumed. ***
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
- Press 'ENTER' to continue: &gt;
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
+ Press 'ENTER' to continue: >
 
 [Image:Manual_figure_ch9_38.png|center|_Figure 9-38_ Unnamed.]
 
@@ -1695,8 +1695,8 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
 
 [Image:Manual_figure_ch9_39.png|center|_Figure 9-39_ Unnamed.]
 
- Press 'ENTER' to continue: &gt;
- &gt; end
+ Press 'ENTER' to continue: >
+ > end
 
 ===Notes:===
 # Here the LINK statement defines the existence of a link and the SOLID READ statement refers to a file which contains a solid geometric model of the shape of that link; the two are related by use of the SHAPE statement. In the first use here, the link named BASE becomes defined and its SOLID shape definition comes from a file named BARAD.geo in the users file area. See notes on the SHAPE statement in Chapter 3 and the file format definition in Appendix A for further details. 
