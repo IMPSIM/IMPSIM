@@ -1,6 +1,6 @@
-
 =Chapter 7: DELETE Statements=
 The various DELETE statements recognized by the IMP interpreter are presented in this chapter. DELETE statements are used to delete previously defined features or components and all other features, components, or data dependent on them from the system model. Each DELETE statement begins with the keyword DELETE followed by a separator; the second word of the statement is also a keyword and directs IMP to interpret the remainder of the statement according to one of the following formats: 
+
 ==The DELETE TITLE Statement==
 The DELETE TITLE statement requests the deletion of the title assigned to the model by a previous TITLE statement. 
 ===Format:===

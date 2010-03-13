@@ -1,6 +1,6 @@
-
 =Chapter 8: Graphics Statements=
 In order to use any of the graphics capabilities in the IMP program it is assumed that the user is running IMP interactively from a system which has graphics capabilities known to the IMP system. If these conditions are not met, that is, if IMP is executed in background mode, if the user has not specified graphics capability, or if IMP does not contain support for the present graphic device, then it is not possible to obtain graphic output from IMP. When an interactive IMP task is initiated (see Section 2-1), the terminal screen is erased and a banner is printed. Immediately after this the user is asked if the IMP task should be run with graphic or alphanumeric output. If the prompt is answered with the response "ALPHA" then no graphic output is attempted for the session; if the response "GRAPHIC" is given then the statements in this chapter cause graphic output on the terminal screen. This choice can be reversed by later use of a DEVICE statement. This chapter presents the various graphics statements recognized by the IMP interpreter. Graphics statements may be used both to draw a schematic diagram of the system model and/or to request graphs of simulation results. The first word of each graphics statement instructs the IMP system to interpret the remainder of the statement according to one of the following formats: 
+
 ==The DEVICE Statement==
 The DEVICE statement specifies whether a graphic or an alphanumeric output device is to be used. 
 ===Format:===

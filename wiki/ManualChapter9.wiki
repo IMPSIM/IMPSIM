@@ -1,4 +1,4 @@
-
+=Chapter 9: Application Examples=
 The purpose of this chapter is to present examples of simulations performed on the IMP system, thereby demonstrating the use of the IMP language and showing the form of the output.
 
 Many of the pages of this chapter are direct reproductions of IMP output. Some symbols have been added in the right-hand margins, however, which refer to notes of explanation on subsequent pages. Careful attention should also be paid to the figures accompanying each example since these show the alphanumeric names used for links, joints, etc. 

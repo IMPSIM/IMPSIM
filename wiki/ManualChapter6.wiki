@@ -1,6 +1,6 @@
-
 =Chapter 6: Control Statements=
 The various control statements recognized by the IMP interpreter are presented in this chapter. Control statements are used to set the mode of the simulation and to allow the user to guide the actions performed by the IMP system. The first word of each control statement instructs the IMP system to interpret the remainder of the statement according to one of the formats on the following pages: 
+
 ==The REMARK Statement==
 The REMARK statement is used to embed comments in an IMP simulation model for documentation. It is ignored by the IMP interpreter and has no effect on the simulation. 
 ===Format:===

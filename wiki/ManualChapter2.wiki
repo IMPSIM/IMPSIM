@@ -1,3 +1,4 @@
+=Chapter 2: The IMP Language=
 The IMP (Integrated Mechanisms Program) language is a problem oriented language. It enables the user
 to describe a mechanical system to IMP and to request certain types of analyses using terms which
 are familiar to them. They are not required to be familiar with other computer programming languages
@@ -25,15 +26,15 @@ described individually in the following chapters. In an interactive system these
 typed directly on the computer keyboard.
 
 The individual IMP statements are divided into six categories which are described in detail in the
-following chapters: Definition statements ([User_Manual_Chapter_3|Chapter 3]) are used to define the component parts of the
+following chapters: Definition statements ([ManualChapter3|Chapter 3]) are used to define the component parts of the
 system being modeled, the applied forces and torques, the fixed link, points of interest, etc., and
-to specify their relationships to each other. Data statements ([User_Manual_Chapter_4|Chapter 4]) are used to provide
-numeric values for the parameters of the model. Request statements ([User_Manual_Chapter_5|Chapter 5]) are those which
+to specify their relationships to each other. Data statements ([ManualChapter4|Chapter 4]) are used to provide
+numeric values for the parameters of the model. Request statements ([ManualChapter5|Chapter 5]) are those which
 describe the entities for which analysis should be performed and the form of the output for each.
-Control statements ([User_Manual_Chapter_6|Chapter 6]) are used to set the mode of the analysis and to provide flexibility
+Control statements ([ManualChapter6|Chapter 6]) are used to set the mode of the analysis and to provide flexibility
 and control over the simulation and the user's interaction with the terminal. Delete statements
-([User_Manual_Chapter_7|Chapter 7]) may be used to eliminate components from the system model. Graphics statements
-([User_Manual_Chapter_8|Chapter 8]) are used when a graphic device is at hand, and allow drawing different views of the
+([ManualChapter7|Chapter 7]) may be used to eliminate components from the system model. Graphics statements
+([ManualChapter8|Chapter 8]) are used when a graphic device is at hand, and allow drawing different views of the
 system model, showing animations, and plotting graphs of the simulation results.
 
 ===Continuation Lines===
@@ -656,7 +657,7 @@ IMP then computes and presents results in consistent units of force, length, and
 
 Because IMP presumes a consistent gravitational set of units has been chosen by the user, the
 derived unit of mass must be defined by the user by use of the <tt>UNIT (MASS)</tt> statement
-(see [User_Manual_Chapter_6|Chapter 6]) before any mass or moments of inertia are entered. If a <tt>UNIT (MASS)</tt> statement is
+(see [ManualChapter6|Chapter 6]) before any mass or moments of inertia are entered. If a <tt>UNIT (MASS)</tt> statement is
 not entered, IMP assumes that mass data are given in units of force time squared per unit length. As
 examples, if force, length and time data are entered in pounds, feet, and seconds, then `UNIT (MASS)
 = 1.0` should be specified and mass should be entered in pounds seconds squared per foot (slugs); if
