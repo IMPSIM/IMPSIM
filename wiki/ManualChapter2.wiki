@@ -25,15 +25,15 @@ described individually in the following chapters. In an interactive system these
 typed directly on the computer keyboard.
 
 The individual IMP statements are divided into six categories which are described in detail in the
-following chapters: Definition statements ([[User_Manual_Chapter_3|Chapter 3]]) are used to define the component parts of the
+following chapters: Definition statements ([User_Manual_Chapter_3|Chapter 3]) are used to define the component parts of the
 system being modeled, the applied forces and torques, the fixed link, points of interest, etc., and
-to specify their relationships to each other. Data statements ([[User_Manual_Chapter_4|Chapter 4]]) are used to provide
-numeric values for the parameters of the model. Request statements ([[User_Manual_Chapter_5|Chapter 5]]) are those which
+to specify their relationships to each other. Data statements ([User_Manual_Chapter_4|Chapter 4]) are used to provide
+numeric values for the parameters of the model. Request statements ([User_Manual_Chapter_5|Chapter 5]) are those which
 describe the entities for which analysis should be performed and the form of the output for each.
-Control statements ([[User_Manual_Chapter_6|Chapter 6]]) are used to set the mode of the analysis and to provide flexibility
+Control statements ([User_Manual_Chapter_6|Chapter 6]) are used to set the mode of the analysis and to provide flexibility
 and control over the simulation and the user's interaction with the terminal. Delete statements
-([[User_Manual_Chapter_7|Chapter 7]]) may be used to eliminate components from the system model. Graphics statements
-([[User_Manual_Chapter_8|Chapter 8]]) are used when a graphic device is at hand, and allow drawing different views of the
+([User_Manual_Chapter_7|Chapter 7]) may be used to eliminate components from the system model. Graphics statements
+([User_Manual_Chapter_8|Chapter 8]) are used when a graphic device is at hand, and allow drawing different views of the
 system model, showing animations, and plotting graphs of the simulation results.
 
 ===Continuation Lines===
@@ -43,24 +43,24 @@ line, not necessarily in the first column. Characters typed beyond column 72 are
 Each IMP statement must begin on a separate line.
 
 Those IMP statements which are too long to be typed within the 72-column limitation may be continued
-on the following line by ending the earlier line with the special character &lt;tt&gt;$&lt;/tt&gt;. Upon seeing this
+on the following line by ending the earlier line with the special character <tt>$</tt>. Upon seeing this
 character, IMP ignores the remainder of the line and continues by reading the next line as a direct
-extension of the preceding line. The &lt;tt&gt;$&lt;/tt&gt; character may be placed within the middle of a word or
+extension of the preceding line. The <tt>$</tt> character may be placed within the middle of a word or
 number without causing a problem.
 
 Statements may be continued in this manner on as many lines as desired, with the restriction that
 the total statement may not contain more than 35 total words and/or numbers.
 
 ===End of Statement===
-The end of an IMP statement may be indicated by the special characters &lt;tt&gt;$$&lt;/tt&gt;. This is not necessary,
+The end of an IMP statement may be indicated by the special characters <tt>$$</tt>. This is not necessary,
 however, since the end of a statement is also assumed when a 72-column line is ended without a
-continuation character (&lt;tt&gt;$&lt;/tt&gt;).
+continuation character (<tt>$</tt>).
 
-Upon recognizing the &lt;tt&gt;$$&lt;/tt&gt; characters, IMP ignores the remainder of the line, assumes that the
+Upon recognizing the <tt>$$</tt> characters, IMP ignores the remainder of the line, assumes that the
 statement is complete, and processes the statement.
 
 ===Embedded Remarks===
-Since the remainder of a line is ignored once IMP recognizes the &lt;tt&gt;$&lt;/tt&gt; or &lt;tt&gt;$$&lt;/tt&gt; characters mentioned
+Since the remainder of a line is ignored once IMP recognizes the <tt>$</tt> or <tt>$$</tt> characters mentioned
 above, the space remaining on a line after these characters may be used as desired. The user may,
 for example, wish to add comments to the right of these characters to better document or explain
 the model. These comments are printed with the output as the statement is read, but are completely
@@ -69,7 +69,7 @@ neglected in the simulation.
 Two restrictions on embedded remarks are:
 
 # that they may not be continued beyond the end of the current line, and
-# that they may not contain the &lt;tt&gt;$&lt;/tt&gt; or &lt;tt&gt;$$&lt;/tt&gt; special characters.
+# that they may not contain the <tt>$</tt> or <tt>$$</tt> special characters.
 
 ====Example====
 An example of an IMP statement which is continued to a second line and contains embedded remarks
@@ -80,8 +80,8 @@ follows:
 
 ==IMP Words==
 Each IMP statement is made up of a series of words and/or numbers. Each word consists of one or
-more alphanumeric characters (''A'' through ''Z'', ''a'' through ''z'', or ''0'' through ''9'')
-with the first character being alphabetic (''A'' through ''Z'' or ''a'' through ''z''). Examples of
+more alphanumeric characters (_A_ through _Z_, _a_ through _z_, or _0_ through _9_)
+with the first character being alphabetic (_A_ through _Z_ or _a_ through _z_). Examples of
 valid, though perhaps long, IMP words are:
 
 * PIN
@@ -90,16 +90,16 @@ valid, though perhaps long, IMP words are:
 
 Examples of invalid IMP words are:
 
-* 2ndJOINT ''(invalid first character)''
-* BALL-SOCKET ''(illegal character)''
-* PIN JOINT ''(two words)''
+* 2ndJOINT _(invalid first character)_
+* BALL-SOCKET _(illegal character)_
+* PIN JOINT _(two words)_
 
 Although IMP words may be as long as desired, the IMP system only recognizes the first four
 characters of each word. Thus each new word must be distinguishable from other words by uniqueness
-in spelling within the first four characters. Words such as &lt;tt&gt;POINT12&lt;/tt&gt; and &lt;tt&gt;POINT35&lt;/tt&gt; are both
-recognized as &lt;tt&gt;POIN&lt;/tt&gt;; they are not distinguishable (within the first four characters) and,
-therefore, both refer to the same point. IMP prints its results referring to the point as &lt;tt&gt;POIN&lt;/tt&gt;; if
-two different points are intended, distinct names such as &lt;tt&gt;PT12&lt;/tt&gt; and &lt;tt&gt;PT35&lt;/tt&gt; should be chosen.
+in spelling within the first four characters. Words such as <tt>POINT12</tt> and <tt>POINT35</tt> are both
+recognized as <tt>POIN</tt>; they are not distinguishable (within the first four characters) and,
+therefore, both refer to the same point. IMP prints its results referring to the point as <tt>POIN</tt>; if
+two different points are intended, distinct names such as <tt>PT12</tt> and <tt>PT35</tt> should be chosen.
 
 ==IMP Keywords==
 Throughout the various IMP statements there are a number of keywords, named below, which are
@@ -112,83 +112,83 @@ the vocabulary of the typical designer, without requiring an excessive amount of
 
 The keywords recognized within IMP are as follows:
 
-{| border=&quot;1&quot; cellpadding=&quot;5&quot;
-|+ align=&quot;bottom&quot; | ''Table 2-1:'' IMP Keywords
+{| border="1" cellpadding="5"
+|+ align="bottom" | _Table 2-1:_ IMP Keywords
 |-
-| &lt;tt&gt;ABS&lt;/tt&gt; || &lt;tt&gt;ABSO&lt;/tt&gt;lute || &lt;tt&gt;ACCE&lt;/tt&gt;leration || &lt;tt&gt;ACOS&lt;/tt&gt; || &lt;tt&gt;ALL&lt;/tt&gt; || &lt;tt&gt;ALPH&lt;/tt&gt;a || &lt;tt&gt;ANIM&lt;/tt&gt;ate || &lt;tt&gt;ASIN&lt;/tt&gt;
+| <tt>ABS</tt> || <tt>ABSO</tt>lute || <tt>ACCE</tt>leration || <tt>ACOS</tt> || <tt>ALL</tt> || <tt>ALPH</tt>a || <tt>ANIM</tt>ate || <tt>ASIN</tt>
 |-
-| &lt;tt&gt;ATAN2&lt;/tt&gt; || &lt;tt&gt;AXES&lt;/tt&gt; || &lt;tt&gt;BACK&lt;/tt&gt; || &lt;tt&gt;BASE&lt;/tt&gt; || &lt;tt&gt;BEVEl&lt;/tt&gt; || &lt;tt&gt;BLAC&lt;/tt&gt;k || &lt;tt&gt;BLUE&lt;/tt&gt; || &lt;tt&gt;BOTT&lt;/tt&gt;om
+| <tt>ATAN2</tt> || <tt>AXES</tt> || <tt>BACK</tt> || <tt>BASE</tt> || <tt>BEVEl</tt> || <tt>BLAC</tt>k || <tt>BLUE</tt> || <tt>BOTT</tt>om
 |-
-| &lt;tt&gt;CAM&lt;/tt&gt; || &lt;tt&gt;CLEA&lt;/tt&gt;r || &lt;tt&gt;CONS&lt;/tt&gt;tant || &lt;tt&gt;CONT&lt;/tt&gt;act || &lt;tt&gt;COS&lt;/tt&gt; || &lt;tt&gt;CYAN&lt;/tt&gt; || &lt;tt&gt;CYLI&lt;/tt&gt;nder || &lt;tt&gt;DAMP&lt;/tt&gt;er
+| <tt>CAM</tt> || <tt>CLEA</tt>r || <tt>CONS</tt>tant || <tt>CONT</tt>act || <tt>COS</tt> || <tt>CYAN</tt> || <tt>CYLI</tt>nder || <tt>DAMP</tt>er
 |-
-| &lt;tt&gt;DATA&lt;/tt&gt; || &lt;tt&gt;DELE&lt;/tt&gt;te || &lt;tt&gt;DENS&lt;/tt&gt;ity || &lt;tt&gt;DEVI&lt;/tt&gt;ce || &lt;tt&gt;DRAW&lt;/tt&gt; || &lt;tt&gt;DYNA&lt;/tt&gt;mic || &lt;tt&gt;END&lt;/tt&gt; || &lt;tt&gt;EQUI&lt;/tt&gt;librium
+| <tt>DATA</tt> || <tt>DELE</tt>te || <tt>DENS</tt>ity || <tt>DEVI</tt>ce || <tt>DRAW</tt> || <tt>DYNA</tt>mic || <tt>END</tt> || <tt>EQUI</tt>librium
 |-
-| &lt;tt&gt;ERAS&lt;/tt&gt;e || &lt;tt&gt;EXEC&lt;/tt&gt;ute || &lt;tt&gt;EXP&lt;/tt&gt; || &lt;tt&gt;FIND&lt;/tt&gt; || &lt;tt&gt;FINI&lt;/tt&gt;sh || &lt;tt&gt;FLAT&lt;/tt&gt; || &lt;tt&gt;FORC&lt;/tt&gt;e || &lt;tt&gt;FREQ&lt;/tt&gt;uency
+| <tt>ERAS</tt>e || <tt>EXEC</tt>ute || <tt>EXP</tt> || <tt>FIND</tt> || <tt>FINI</tt>sh || <tt>FLAT</tt> || <tt>FORC</tt>e || <tt>FREQ</tt>uency
 |-
-| &lt;tt&gt;FRON&lt;/tt&gt;t || &lt;tt&gt;GEAR&lt;/tt&gt; || &lt;tt&gt;GRAV&lt;/tt&gt;ity || &lt;tt&gt;GREE&lt;/tt&gt;n || &lt;tt&gt;GROU&lt;/tt&gt;nd || &lt;tt&gt;HEAD&lt;/tt&gt;ing || &lt;tt&gt;HOLD&lt;/tt&gt; || &lt;tt&gt;IC&lt;/tt&gt;
+| <tt>FRON</tt>t || <tt>GEAR</tt> || <tt>GRAV</tt>ity || <tt>GREE</tt>n || <tt>GROU</tt>nd || <tt>HEAD</tt>ing || <tt>HOLD</tt> || <tt>IC</tt>
 |-
-| &lt;tt&gt;IDEN&lt;/tt&gt;tify || &lt;tt&gt;IF&lt;/tt&gt; || &lt;tt&gt;IMPA&lt;/tt&gt;ct || &lt;tt&gt;INER&lt;/tt&gt;tia || &lt;tt&gt;INPU&lt;/tt&gt;t || &lt;tt&gt;ISOM&lt;/tt&gt;etric || &lt;tt&gt;JOIN&lt;/tt&gt;t || &lt;tt&gt;LEFT&lt;/tt&gt;
+| <tt>IDEN</tt>tify || <tt>IF</tt> || <tt>IMPA</tt>ct || <tt>INER</tt>tia || <tt>INPU</tt>t || <tt>ISOM</tt>etric || <tt>JOIN</tt>t || <tt>LEFT</tt>
 |-
-| &lt;tt&gt;LINK&lt;/tt&gt; || &lt;tt&gt;LIST&lt;/tt&gt; || &lt;tt&gt;LOG&lt;/tt&gt; || &lt;tt&gt;LOG10&lt;/tt&gt; || &lt;tt&gt;LOOP&lt;/tt&gt; || &lt;tt&gt;MAGE&lt;/tt&gt;nta || &lt;tt&gt;MASS&lt;/tt&gt; || &lt;tt&gt;MOTI&lt;/tt&gt;on
+| <tt>LINK</tt> || <tt>LIST</tt> || <tt>LOG</tt> || <tt>LOG10</tt> || <tt>LOOP</tt> || <tt>MAGE</tt>nta || <tt>MASS</tt> || <tt>MOTI</tt>on
 |-
-| &lt;tt&gt;NONE&lt;/tt&gt; || &lt;tt&gt;OFF&lt;/tt&gt; || &lt;tt&gt;ON&lt;/tt&gt; || &lt;tt&gt;OPEN&lt;/tt&gt; || &lt;tt&gt;ORAN&lt;/tt&gt;ge || &lt;tt&gt;PAIR&lt;/tt&gt; || &lt;tt&gt;PAUS&lt;/tt&gt;e || &lt;tt&gt;PI&lt;/tt&gt;
+| <tt>NONE</tt> || <tt>OFF</tt> || <tt>ON</tt> || <tt>OPEN</tt> || <tt>ORAN</tt>ge || <tt>PAIR</tt> || <tt>PAUS</tt>e || <tt>PI</tt>
 |-
-| &lt;tt&gt;PLAN&lt;/tt&gt;ar || &lt;tt&gt;PLOT&lt;/tt&gt; || &lt;tt&gt;POIN&lt;/tt&gt;t || &lt;tt&gt;POSI&lt;/tt&gt;tion || &lt;tt&gt;PRIN&lt;/tt&gt;t || &lt;tt&gt;PRIS&lt;/tt&gt;m || &lt;tt&gt;RACK&lt;/tt&gt; || &lt;tt&gt;RECA&lt;/tt&gt;ll
+| <tt>PLAN</tt>ar || <tt>PLOT</tt> || <tt>POIN</tt>t || <tt>POSI</tt>tion || <tt>PRIN</tt>t || <tt>PRIS</tt>m || <tt>RACK</tt> || <tt>RECA</tt>ll
 |-
-| &lt;tt&gt;RED&lt;/tt&gt; || &lt;tt&gt;REMA&lt;/tt&gt;rk || &lt;tt&gt;RESE&lt;/tt&gt;t || &lt;tt&gt;RETU&lt;/tt&gt;rn || &lt;tt&gt;REVO&lt;/tt&gt;lute || &lt;tt&gt;RIGH&lt;/tt&gt;t || &lt;tt&gt;RIGI&lt;/tt&gt;d || &lt;tt&gt;SCRE&lt;/tt&gt;w
+| <tt>RED</tt> || <tt>REMA</tt>rk || <tt>RESE</tt>t || <tt>RETU</tt>rn || <tt>REVO</tt>lute || <tt>RIGH</tt>t || <tt>RIGI</tt>d || <tt>SCRE</tt>w
 |-
-| &lt;tt&gt;SHAP&lt;/tt&gt;e || &lt;tt&gt;SHOW&lt;/tt&gt; || &lt;tt&gt;SIN&lt;/tt&gt; || &lt;tt&gt;SLID&lt;/tt&gt;e || &lt;tt&gt;SLOT&lt;/tt&gt; || &lt;tt&gt;SOLI&lt;/tt&gt;d || &lt;tt&gt;SPHE&lt;/tt&gt;re || &lt;tt&gt;SPRI&lt;/tt&gt;ng
+| <tt>SHAP</tt>e || <tt>SHOW</tt> || <tt>SIN</tt> || <tt>SLID</tt>e || <tt>SLOT</tt> || <tt>SOLI</tt>d || <tt>SPHE</tt>re || <tt>SPRI</tt>ng
 |-
-| &lt;tt&gt;SQRT&lt;/tt&gt; || &lt;tt&gt;STAT&lt;/tt&gt;ic || &lt;tt&gt;STOR&lt;/tt&gt;e || &lt;tt&gt;SYST&lt;/tt&gt;em || &lt;tt&gt;T&lt;/tt&gt; || &lt;tt&gt;TABL&lt;/tt&gt;e || &lt;tt&gt;TAN&lt;/tt&gt; || &lt;tt&gt;TIME&lt;/tt&gt;
+| <tt>SQRT</tt> || <tt>STAT</tt>ic || <tt>STOR</tt>e || <tt>SYST</tt>em || <tt>T</tt> || <tt>TABL</tt>e || <tt>TAN</tt> || <tt>TIME</tt>
 |-
-| &lt;tt&gt;TITL&lt;/tt&gt;e || &lt;tt&gt;TOP&lt;/tt&gt; || &lt;tt&gt;TORQ&lt;/tt&gt;ue || &lt;tt&gt;TURN&lt;/tt&gt; || &lt;tt&gt;UJOI&lt;/tt&gt;nt || &lt;tt&gt;UNIT&lt;/tt&gt; || &lt;tt&gt;USER&lt;/tt&gt; || &lt;tt&gt;VAL&lt;/tt&gt;
+| <tt>TITL</tt>e || <tt>TOP</tt> || <tt>TORQ</tt>ue || <tt>TURN</tt> || <tt>UJOI</tt>nt || <tt>UNIT</tt> || <tt>USER</tt> || <tt>VAL</tt>
 |-
-| &lt;tt&gt;VALU&lt;/tt&gt;e || &lt;tt&gt;VELO&lt;/tt&gt;city || &lt;tt&gt;VIEW&lt;/tt&gt; || &lt;tt&gt;WHIT&lt;/tt&gt;e || &lt;tt&gt;X&lt;/tt&gt; || &lt;tt&gt;XPIN&lt;/tt&gt; || &lt;tt&gt;XSLI&lt;/tt&gt;de || &lt;tt&gt;Y&lt;/tt&gt;
+| <tt>VALU</tt>e || <tt>VELO</tt>city || <tt>VIEW</tt> || <tt>WHIT</tt>e || <tt>X</tt> || <tt>XPIN</tt> || <tt>XSLI</tt>de || <tt>Y</tt>
 |-
-| &lt;tt&gt;YELL&lt;/tt&gt;ow || &lt;tt&gt;YPIN&lt;/tt&gt; || &lt;tt&gt;YSLI&lt;/tt&gt;de || &lt;tt&gt;Z&lt;/tt&gt; || &lt;tt&gt;ZERO&lt;/tt&gt; || &lt;tt&gt;ZOOM&lt;/tt&gt; || &lt;tt&gt;ZPIN&lt;/tt&gt; || &lt;tt&gt;ZSLI&lt;/tt&gt;de
+| <tt>YELL</tt>ow || <tt>YPIN</tt> || <tt>YSLI</tt>de || <tt>Z</tt> || <tt>ZERO</tt> || <tt>ZOOM</tt> || <tt>ZPIN</tt> || <tt>ZSLI</tt>de
 |-
-| &lt;tt&gt;?&lt;/tt&gt; || &lt;tt&gt;????&lt;/tt&gt; || &lt;tt&gt;!&lt;/tt&gt; || || || || ||
+| <tt>?</tt> || <tt>????</tt> || <tt>!</tt> || || || || ||
 |}
 
 These keywords, but not other words, are recognized by IMP whether they are spelled with upper case
 or lower-case letters.
 
-These ''keywords'', or other words which begin with the same first four letters (either upper- or
+These _keywords_, or other words which begin with the same first four letters (either upper- or
 lower-case), should not be used for other purposes, such as for names of components of the system
 being modeled.
 
 ==IMP Numbers==
 When a numeric value is required in an IMP statement, IMP recognizes numbers made up of the digits
-''0'' through ''9''. A number may be proceeded by a plus sign or a minus sign and may contain a
+_0_ through _9_. A number may be proceeded by a plus sign or a minus sign and may contain a
 decimal point. The decimal point is optional if the number is an integer. Examples of valid numbers
 are:
 
-* ''-3.141592654''
-* ''7''
-* ''+25.''
+* _-3.141592654_
+* _7_
+* _+25._
 
 A number may be written with or without an exponent; however, an exponent is usually used only when
 the value of the number is very large or very small. The exponent is an integer power of ten by
 which the number is to be multiplied. The exponent follows the number and is signaled by the leading
-character ''E'' or ''e''; the exponent may contain a plus or minus sign but may not contain a
-decimal point. For example, the value ''319,642.76'' may be expressed in any of the following ways:
+character _E_ or _e_; the exponent may contain a plus or minus sign but may not contain a
+decimal point. For example, the value _319,642.76_ may be expressed in any of the following ways:
 
-* ''319642.76''
-* ''3.1964276E5''
-* ''+31.964276e+4''
-* ''31964276E-2''
+* _319642.76_
+* _3.1964276E5_
+* _+31.964276e+4_
+* _31964276E-2_
 
 Numbers are distinguished from words by the fact that the first non-blank character of a number is a
 plus or sign followed by a digit, a minus sign followed by a digit, a decimal point, or a digit
-(''0'' through ''9''). Once a number has been started, unrecognized characters are ignored. The
+(_0_ through _9_). Once a number has been started, unrecognized characters are ignored. The
 number is ended when a separator (see the next section) is encountered.
 
 ==IMP Separators==
 Adjacent words or numbers within an IMP statement must be separated from each other by one or more
-blanks or by one of the following special characters called ''separators'':
+blanks or by one of the following special characters called _separators_:
 
-{| border=&quot;1&quot; cellpadding=&quot;5&quot;
-|+ align=&quot;bottom&quot; | ''Table 2.2:'' IMP Separators
+{| border="1" cellpadding="5"
+|+ align="bottom" | _Table 2.2:_ IMP Separators
 ! ,
 | comma
 ! +
@@ -215,10 +215,10 @@ blanks or by one of the following special characters called ''separators'':
 | at sign
 |}
 
-Except in &lt;tt&gt;VALUE&lt;/tt&gt; expressions (see Section 2-7), these separators are treated in identical manner to
+Except in <tt>VALUE</tt> expressions (see Section 2-7), these separators are treated in identical manner to
 each other and are, therefore, interchangeable. The format of each IMP statement, however, leads to
 the use of one over another because of their usual grammatical or algebraic connotations. Except in
-&lt;tt&gt;VALUE&lt;/tt&gt; expressions, if two separators other than blanks follow one another directly, the number
+<tt>VALUE</tt> expressions, if two separators other than blanks follow one another directly, the number
 zero is implied between them. For example, the string of numbers:
 
  3.14159, 2.25, , 1, 3.5
@@ -237,8 +237,8 @@ is interpreted as:
 
  3.14159, -2.25, 0, 1, 3.5
 
-It should be noticed that the right parenthesis character &lt;tt&gt;)&lt;/tt&gt; is not listed as a separator. Except
-in &lt;tt&gt;VALUE&lt;/tt&gt; expressions, it is ignored by the IMP interpreter and may be used to balance the left
+It should be noticed that the right parenthesis character <tt>)</tt> is not listed as a separator. Except
+in <tt>VALUE</tt> expressions, it is ignored by the IMP interpreter and may be used to balance the left
 parenthesis without being counted as a separator. When a string of numbers is expected in an IMP
 statement, and the final several numbers are zeros, the string of numbers may be truncated without
 explicitly typing the trailing zeros or the separators. For example, the five numbers:
@@ -252,42 +252,42 @@ may be written as:
 if they appear at the end of an IMP statement. Use of this practice will be signaled with a warning
 message, however.
 
-==IMP Expressions - The &lt;tt&gt;VALUE&lt;/tt&gt; Statement==
+==IMP Expressions - The <tt>VALUE</tt> Statement==
 In certain IMP statements it is desirable to allow data, which must otherwise be only numeric, to
 depend on variable expressions or algebraic formulae involving time or the geometry or forces of the
 system being simulated. When a simulation is made in the dynamic mode, for example, it is sometimes
 useful to be able to describe the applied forces or motions as time dependent functions. This is the
-purpose of the &lt;tt&gt;VALUE&lt;/tt&gt; statement of the IMP language.
+purpose of the <tt>VALUE</tt> statement of the IMP language.
 
-A &lt;tt&gt;VALUE&lt;/tt&gt; statement is of the form:
+A <tt>VALUE</tt> statement is of the form:
 
  VALUE (name) = expression
 
-where ''name'' is an alphanumeric name identifying the expression, and ''expression'' may be of any
-of the several formats defined below. The ''name'' chosen may then be used at certain appropriate
+where _name_ is an alphanumeric name identifying the expression, and _expression_ may be of any
+of the several formats defined below. The _name_ chosen may then be used at certain appropriate
 places in other statements of the IMP language in place of the corresponding numeric data.
 
-There are several possible formats which may be used for the ''expression'' in a &lt;tt&gt;VALUE&lt;/tt&gt; statement.
+There are several possible formats which may be used for the _expression_ in a <tt>VALUE</tt> statement.
 These are intended, in general, to follow the familiar rules of algebra regarding the priority of
 operations, the use of nested parentheses, etc. The recursive nature of nested parentheses permits
 extremely complex expressions. However, it must be remembered that no IMP statement can exceed a
 total of 35 words and/or numbers.
 
-The possible formats which can be used for a &lt;tt&gt;VALUE&lt;/tt&gt; ''expression'' are as follows:
+The possible formats which can be used for a <tt>VALUE</tt> _expression_ are as follows:
 
 ===A Number===
 An expression can consist of a single number or numeric value.
 
-===The Keyword &lt;tt&gt;PI&lt;/tt&gt;===
-The keyword &lt;tt&gt;PI&lt;/tt&gt; can be used as a valid expression in place of the numeric value, ''3.141592654''.
+===The Keyword <tt>PI</tt>===
+The keyword <tt>PI</tt> can be used as a valid expression in place of the numeric value, _3.141592654_.
 
-===A &lt;tt&gt;VALUE&lt;/tt&gt; Name===
-The alphanumeric name of a previously defined &lt;tt&gt;VALUE&lt;/tt&gt; expression may be used in forming a new
+===A <tt>VALUE</tt> Name===
+The alphanumeric name of a previously defined <tt>VALUE</tt> expression may be used in forming a new
 expression. The numeric value of the previous expression is used in evaluating the new expression.
 
 ===Another expression===
 Any valid form of expression can be used directly as a part of a more complex expression. It is not
-necessary to define the partial expression with a &lt;tt&gt;VALUE&lt;/tt&gt; name and to use its name in the more
+necessary to define the partial expression with a <tt>VALUE</tt> name and to use its name in the more
 complex expression, although this is also valid.
 
 ===Another Expression Enclosed in Parentheses===
@@ -297,8 +297,8 @@ operations in the evaluation of expressions since evaluation always proceeds wit
 level of parentheses first.
 
 Any left parenthesis in an expression must be balanced by a corresponding right parenthesis. If
-parentheses are not properly balanced, a message is printed and the &lt;tt&gt;VALUE&lt;/tt&gt; statement is ignored.
-The improper &lt;tt&gt;VALUE&lt;/tt&gt; statement is not defined and its name has no defined value for use in the
+parentheses are not properly balanced, a message is printed and the <tt>VALUE</tt> statement is ignored.
+The improper <tt>VALUE</tt> statement is not defined and its name has no defined value for use in the
 evaluation of later expressions.
 
 ===The Sum of Two or More Expressions===
@@ -329,7 +329,7 @@ negative unity when negation is desired.
 
 ===The Product of Two or More Expressions===
 Two or more expressions can be multiplied to form a new expression by combining them with an
-asterisk (&lt;tt&gt;*&lt;/tt&gt;). The format is:
+asterisk (<tt>*</tt>). The format is:
 
  expression * expression * expression
 
@@ -338,7 +338,7 @@ from left to right. Multiplication is treated as a higher priority operation tha
 subtraction; multiplications are done first unless otherwise indicated by parentheses.
 
 ===The Quotient of Two Expressions===
-Two expressions can be divided to form a new expression by combining them with a slash (&lt;tt&gt;/&lt;/tt&gt;). The
+Two expressions can be divided to form a new expression by combining them with a slash (<tt>/</tt>). The
 format is:
 
  dividend expression / divisor expression
@@ -347,12 +347,12 @@ If multiple division operations are indicated among expressions without parenthe
 of the divisions proceeds from left to right. Division is treated as a higher priority operation
 than multiplication, and is done first unless otherwise indicated by parentheses.
 
-If the ''divisor expression'' has a zero value upon evaluation, then the resulting expression has an
+If the _divisor expression_ has a zero value upon evaluation, then the resulting expression has an
 undefined value.
 
 ===An Expression to the Power of Another===
 One expression can be raised to the power of another to form a new expression by combining them with
-the operator (&lt;tt&gt;@&lt;/tt&gt;) in the form:
+the operator (<tt>@</tt>) in the form:
 
  base expression @ power expression
 
@@ -360,7 +360,7 @@ If multiple power operations are indicated without parentheses, then the order o
 proceeds from left to right. The taking of powers is treated as a higher priority operation than
 division and is done first unless otherwise indicated by parentheses.
 
-Since the ultimate evaluation is done by logarithms, if the ''base expression'' has a negative or
+Since the ultimate evaluation is done by logarithms, if the _base expression_ has a negative or
 zero value upon evaluation, then the resulting expression has an undefined value.
 
 ===A Function Reference===
@@ -368,118 +368,118 @@ An expression can consist of a reference to any of several possible IMP function
 defined below. Functions are of higher priority than algebraic operations and are evaluated first
 unless otherwise indicated by parentheses.
 
-===The &lt;tt&gt;TIME&lt;/tt&gt; Function===
+===The <tt>TIME</tt> Function===
 The value of time during a simulation can be used to form an expression by reference to the function
-&lt;tt&gt;TIME&lt;/tt&gt; or its abbreviation &lt;tt&gt;T&lt;/tt&gt;.
+<tt>TIME</tt> or its abbreviation <tt>T</tt>.
 
-===The &lt;tt&gt;ABS&lt;/tt&gt; Function===
-The absolute value of an expression can be used to form another expression by reference to the &lt;tt&gt;ABS&lt;/tt&gt;
+===The <tt>ABS</tt> Function===
+The absolute value of an expression can be used to form another expression by reference to the <tt>ABS</tt>
 function in the following format:
 
  ABS (expression)
 
-===The &lt;tt&gt;SIN&lt;/tt&gt; Function===
+===The <tt>SIN</tt> Function===
 The trigonometric sine of an expression (in radians) can be used to form another expression by
-reference to the &lt;tt&gt;SIN&lt;/tt&gt; function in the following format:
+reference to the <tt>SIN</tt> function in the following format:
 
  SIN (expression)
 
-===The &lt;tt&gt;ASIN&lt;/tt&gt; Function===
+===The <tt>ASIN</tt> Function===
 The inverse trigonometric sine of an expression whose absolute magnitude is less than or equal to
-one can be used to form another expression by reference to the &lt;tt&gt;ASIN&lt;/tt&gt; function in the following
+one can be used to form another expression by reference to the <tt>ASIN</tt> function in the following
 format:
 
  ASIN (expression)
 
-The value returned by the &lt;tt&gt;ASIN&lt;/tt&gt; function is in radians and is in the range -&lt;tt&gt;PI&lt;/tt&gt;/2 &amp;lt;= &lt;tt&gt;ASIN&lt;/tt&gt;
-&amp;lt;= &lt;tt&gt;PI&lt;/tt&gt;/2.
+The value returned by the <tt>ASIN</tt> function is in radians and is in the range -<tt>PI</tt>/2 &amp;lt;= <tt>ASIN</tt>
+&amp;lt;= <tt>PI</tt>/2.
 
-===The &lt;tt&gt;COS&lt;/tt&gt; Function===
+===The <tt>COS</tt> Function===
 The trigonometric cosine of an expression (in radians) can be used to form another expression by
-reference to the &lt;tt&gt;COS&lt;/tt&gt; function in the following format:
+reference to the <tt>COS</tt> function in the following format:
 
  COS (expression)
 
-===The &lt;tt&gt;ACOS&lt;/tt&gt; Function===
+===The <tt>ACOS</tt> Function===
 The inverse trigonometric cosine of an expression whose absolute magnitude is less than or equal to
-unity can be used to form another expression by reference to the &lt;tt&gt;ACOS&lt;/tt&gt; function in the following
+unity can be used to form another expression by reference to the <tt>ACOS</tt> function in the following
 format:
 
  ACOS (expression)
 
-The value returned by the &lt;tt&gt;ACOS&lt;/tt&gt; function is in radians and is in the range 0 &amp;lt;= &lt;tt&gt;ACOS&lt;/tt&gt; &amp;lt;=
-&lt;tt&gt;PI&lt;/tt&gt;.
+The value returned by the <tt>ACOS</tt> function is in radians and is in the range 0 &amp;lt;= <tt>ACOS</tt> &amp;lt;=
+<tt>PI</tt>.
 
-===The &lt;tt&gt;EXP&lt;/tt&gt; Function===
-The exponential, &lt;tt&gt;E&lt;/tt&gt; (''2.7182818...'') raised to the power of an expression, can be used to form
-another expression by reference to the &lt;tt&gt;EXP&lt;/tt&gt; function in the following format:
+===The <tt>EXP</tt> Function===
+The exponential, <tt>E</tt> (_2.7182818..._) raised to the power of an expression, can be used to form
+another expression by reference to the <tt>EXP</tt> function in the following format:
 
  EXP (expression)
 
-===The &lt;tt&gt;LOG&lt;/tt&gt; Function===
-The natural (base &lt;tt&gt;E&lt;/tt&gt;) logarithm of an expression can be used to form another expression by
-reference to the &lt;tt&gt;LOG&lt;/tt&gt; function in the following format:
+===The <tt>LOG</tt> Function===
+The natural (base <tt>E</tt>) logarithm of an expression can be used to form another expression by
+reference to the <tt>LOG</tt> function in the following format:
 
  LOG (expression)
 
-If the argument expression has a negative or zero value upon evaluation, then the &lt;tt&gt;LOG&lt;/tt&gt; function
+If the argument expression has a negative or zero value upon evaluation, then the <tt>LOG</tt> function
 yields an undefined value.
 
-===The &lt;tt&gt;LOG10&lt;/tt&gt; Function===
+===The <tt>LOG10</tt> Function===
 The decimal (base 10) logarithm of an expression can be used to form another expression by reference
-to the &lt;tt&gt;LOG10&lt;/tt&gt; function in the following format:
+to the <tt>LOG10</tt> function in the following format:
 
  LOG10 (expression)
 
-If the argument expression has a negative or zero value upon evaluation, then the &lt;tt&gt;LOG10&lt;/tt&gt; function
+If the argument expression has a negative or zero value upon evaluation, then the <tt>LOG10</tt> function
 yields an undefined value.
 
-===The &lt;tt&gt;SQRT&lt;/tt&gt; Function===
+===The <tt>SQRT</tt> Function===
 The positive square root of an expression can be used to form another expression by reference to the
-&lt;tt&gt;SQRT&lt;/tt&gt; function in the following format:
+<tt>SQRT</tt> function in the following format:
 
  SQRT (expression)
 
-If the argument expression has a negative value upon evaluation, then the &lt;tt&gt;SQRT&lt;/tt&gt; function yields an
+If the argument expression has a negative value upon evaluation, then the <tt>SQRT</tt> function yields an
 undefined value.
 
-===The &lt;tt&gt;TAN&lt;/tt&gt; Function===
+===The <tt>TAN</tt> Function===
 The trigonometric tangent of an expression (in radians) can be used to form another expression by
-reference to the &lt;tt&gt;TAN&lt;/tt&gt; function in the following form:
+reference to the <tt>TAN</tt> function in the following form:
 
  TAN (expression)
 
-If the absolute magnitude of the expression is an odd multiple of &lt;tt&gt;PI&lt;/tt&gt;/2, then the result of the
-&lt;tt&gt;TAN&lt;/tt&gt; function is undefined.
+If the absolute magnitude of the expression is an odd multiple of <tt>PI</tt>/2, then the result of the
+<tt>TAN</tt> function is undefined.
 
-===The &lt;tt&gt;ATAN2&lt;/tt&gt; Function===
+===The <tt>ATAN2</tt> Function===
 The inverse trigonometric tangent of the ratio of two expressions can be used to form another
-expression by reference to the &lt;tt&gt;ATAN2&lt;/tt&gt; function in the following format:
+expression by reference to the <tt>ATAN2</tt> function in the following format:
 
  ATAN2 (numerator expression, denominator expression)
 
-The value returned by the &lt;tt&gt;ATAN2&lt;/tt&gt; function is in radians. It is in the range -&lt;tt&gt;PI&lt;/tt&gt; &amp;lt; &lt;tt&gt;ATAN2&lt;/tt&gt;
-&amp;lt;= &lt;tt&gt;PI&lt;/tt&gt; as determined by assuming the signs of the two expressions to agree with the sine and
+The value returned by the <tt>ATAN2</tt> function is in radians. It is in the range -<tt>PI</tt> &amp;lt; <tt>ATAN2</tt>
+&amp;lt;= <tt>PI</tt> as determined by assuming the signs of the two expressions to agree with the sine and
 cosine of the angle, respectively. If both expressions have zero magnitude, the result of the
-&lt;tt&gt;ATAN2&lt;/tt&gt; is undefined.
+<tt>ATAN2</tt> is undefined.
 
-Note that IMP has no &lt;tt&gt;ATAN&lt;/tt&gt; function, and that IMP keywords are only distinct to the first four
-characters. Therefore, the &lt;tt&gt;ATAN2&lt;/tt&gt; function, with two arguments, should be used instead.
+Note that IMP has no <tt>ATAN</tt> function, and that IMP keywords are only distinct to the first four
+characters. Therefore, the <tt>ATAN2</tt> function, with two arguments, should be used instead.
 
-===The &lt;tt&gt;POSITION&lt;/tt&gt; Function===
+===The <tt>POSITION</tt> Function===
 The current position of a point, joint, spring, or damper in the system model can be used to form an
-expression by reference to the &lt;tt&gt;POSITION&lt;/tt&gt; function in the following format:
+expression by reference to the <tt>POSITION</tt> function in the following format:
 
  POSITION (name, component)
 
-where ''name'' is the alphanumeric name of the point, joint, spring, or damper, and ''component'' is
+where _name_ is the alphanumeric name of the point, joint, spring, or damper, and _component_ is
 an integer defining the desired component of the named item's position. An expression can be used
-for ''component'' if desired, and its value is rounded to the nearest integer before interpreting it
+for _component_ if desired, and its value is rounded to the nearest integer before interpreting it
 as a component. Valid components depend on the type of the named item and are shown in the following
 table:
 
-{| border=&quot;1&quot; cellpadding=&quot;5&quot;
-|+ align=&quot;bottom&quot; | ''Table 2-3:'' Position Component Numbers
+{| border="1" cellpadding="5"
+|+ align="bottom" | _Table 2-3:_ Position Component Numbers
 ! No. !! Point !! Joint !! Spring !! Damper
 |-
 | 1 || X coordinate || joint variable || &amp;Delta;X component || &amp;Delta;X component
@@ -489,9 +489,9 @@ table:
 | 3 || Z coordinate || joint variable || &amp;Delta;Z component || &amp;Delta;Z component
 |}
 
-The value returned by the &lt;tt&gt;POSITION&lt;/tt&gt; function has units of either radians or length as appropriate.
+The value returned by the <tt>POSITION</tt> function has units of either radians or length as appropriate.
 
-It must be understood that the &lt;tt&gt;POSITION&lt;/tt&gt; function returns the instantaneous numeric value currently
+It must be understood that the <tt>POSITION</tt> function returns the instantaneous numeric value currently
 stored in the IMP data structure rather than causing its reevaluation. For example, with the
 following set of IMP commands:
 
@@ -499,54 +499,54 @@ following set of IMP commands:
  DATA MOTION(JT4) = X
  EXECUTE
 
-the position of joint ''JT4'' will not necessarily be the true position of joint ''JT2'', but may
-lag by one time step. The value of ''X'' is first set to the most recent value of ''X'' (i.e., the
-previous position of joint ''JT2''; the position of SGC joint ''JT4'' is then set to this position.
-Finally, the mechanism is analyzed, probably causing joint ''JT2'' to change position!)
+the position of joint _JT4_ will not necessarily be the true position of joint _JT2_, but may
+lag by one time step. The value of _X_ is first set to the most recent value of _X_ (i.e., the
+previous position of joint _JT2_; the position of SGC joint _JT4_ is then set to this position.
+Finally, the mechanism is analyzed, probably causing joint _JT2_ to change position!)
 
-===The &lt;tt&gt;VELOCITY&lt;/tt&gt; Function===
+===The <tt>VELOCITY</tt> Function===
 The current velocity of a point, joint, spring, or damper in the system model can be used to form an
-expression by reference to the &lt;tt&gt;VELOCITY&lt;/tt&gt; function in the following format:
+expression by reference to the <tt>VELOCITY</tt> function in the following format:
 
  VELOCITY (name, component)
 
-where ''name'' is the alphanumeric name of the point, joint, spring, or damper, and ''component'' is
+where _name_ is the alphanumeric name of the point, joint, spring, or damper, and _component_ is
 an integer defining the desired component of the named item's velocity. A real number or an
-expression can be used for ''component'' if desired, and its value is rounded to the nearest integer
+expression can be used for _component_ if desired, and its value is rounded to the nearest integer
 before interpreting it as a component. The valid components are similar to those in the above table
-of &lt;tt&gt;POSITION&lt;/tt&gt; components, except that the first time derivatives of the &lt;tt&gt;POSITION&lt;/tt&gt; components are
-evaluated. The value returned by the &lt;tt&gt;VELOCITY&lt;/tt&gt; function has units of either radians per second or
+of <tt>POSITION</tt> components, except that the first time derivatives of the <tt>POSITION</tt> components are
+evaluated. The value returned by the <tt>VELOCITY</tt> function has units of either radians per second or
 length per second as appropriate.
 
-It must be understood that the &lt;tt&gt;VELOCITY&lt;/tt&gt; function returns the instantaneous numeric value currently
+It must be understood that the <tt>VELOCITY</tt> function returns the instantaneous numeric value currently
 stored in the IMP data structure rather than causing its reevaluation. (See Section 2-7.24 for
 further explanation).
 
 Also note that, since IMP does not analyze for the derivative of acceleration, the second derivative
-of the &lt;tt&gt;VELOCITY&lt;/tt&gt; function returns an undefined value. Thus, it is not wise to use the &lt;tt&gt;VELOCITY&lt;/tt&gt;
-function in a &lt;tt&gt;VALUE&lt;/tt&gt; expression to be used for a &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement, for example.
+of the <tt>VELOCITY</tt> function returns an undefined value. Thus, it is not wise to use the <tt>VELOCITY</tt>
+function in a <tt>VALUE</tt> expression to be used for a <tt>DATA MOTION</tt> statement, for example.
 
-===The &lt;tt&gt;ACCEL&lt;/tt&gt; Function===
+===The <tt>ACCEL</tt> Function===
 The current acceleration of a point, joint, spring, or damper in the system model can be used to
-form an expression by reference to the &lt;tt&gt;ACCEL&lt;/tt&gt; function in the following format:
+form an expression by reference to the <tt>ACCEL</tt> function in the following format:
 
  ACCEL (name, component)
 
-where ''name'' is the alphanumeric name of the point, joint, spring, or damper, and ''component'' is
+where _name_ is the alphanumeric name of the point, joint, spring, or damper, and _component_ is
 the integer number defining the desired component of the named item's acceleration. An expression
-can be used for ''component'' if desired; its value is rounded to the nearest integer before
+can be used for _component_ if desired; its value is rounded to the nearest integer before
 interpreting it as a component number. The valid component numbers are similar to those in the above
-table of &lt;tt&gt;POSITION&lt;/tt&gt; component numbers, except that the second time derivatives of the &lt;tt&gt;POSITION&lt;/tt&gt;
-components are evaluated. The value returned by the &lt;tt&gt;ACCEL&lt;/tt&gt; function has units of either radians per
+table of <tt>POSITION</tt> component numbers, except that the second time derivatives of the <tt>POSITION</tt>
+components are evaluated. The value returned by the <tt>ACCEL</tt> function has units of either radians per
 second squared or length per second squared as appropriate.
 
-It must be understood that the &lt;tt&gt;ACCEL&lt;/tt&gt; function returns the instantaneous numeric value currently
+It must be understood that the <tt>ACCEL</tt> function returns the instantaneous numeric value currently
 stored in the IMP data structure rather than causing its reevaluation. (See Section 2-7.24 for
 further explanation).
 
 Also note that, since IMP does not analyze for derivatives of acceleration, the first and second
-derivatives of the &lt;tt&gt;ACCEL&lt;/tt&gt; function return undefined values. Thus, it is not wise to use the &lt;tt&gt;ACCEL&lt;/tt&gt;
-function in a &lt;tt&gt;VALUE&lt;/tt&gt; expression to be used for a &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement, for example.
+derivatives of the <tt>ACCEL</tt> function return undefined values. Thus, it is not wise to use the <tt>ACCEL</tt>
+function in a <tt>VALUE</tt> expression to be used for a <tt>DATA MOTION</tt> statement, for example.
 
 ===The FORCE function===
 The current value of the force or torque within a joint, spring, or damper in the system model can
@@ -554,74 +554,74 @@ be used to form an expression by reference to the FORCE function in the followin
 
  FORCE (name, component)
 
-where ''name'' is the alphanumeric name of the joint, spring, or damper, and ''component'' is the
-integer number of the force component to be evaluated. An expression can be used for ''component''
+where _name_ is the alphanumeric name of the joint, spring, or damper, and _component_ is the
+integer number of the force component to be evaluated. An expression can be used for _component_
 if desired, and its value is rounded to the nearest integer before interpreting it as a component
 number. For a spring or damper the component number must be one. For a joint, the component number
 may be between one and six, and indicates the force along the local u, v, or w axis, or the torque
-about the local u, v, or w axis of the joint, respectively. The value returned by the &lt;tt&gt;FORCE&lt;/tt&gt;
+about the local u, v, or w axis of the joint, respectively. The value returned by the <tt>FORCE</tt>
 function has units of either force or torque as appropriate.
 
 It must be understood that the FORCE function causes evaluation of the desired force component(s)
-under the current instantaneous conditions at the time of evaluation. If this &lt;tt&gt;FORCE&lt;/tt&gt; value is then
+under the current instantaneous conditions at the time of evaluation. If this <tt>FORCE</tt> value is then
 used to set another input force, for example, the first force component found may change, and will
 not necessarily be reevaluated until the next time step.
 
 Also note that since IMP does not analyze for derivatives of forces, the first and second
-derivatives of the &lt;tt&gt;FORCE&lt;/tt&gt; function return undefined values. Thus, it is not wise to use the &lt;tt&gt;FORCE&lt;/tt&gt;
-function in a &lt;tt&gt;VALUE&lt;/tt&gt; expression to be used for a &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement, for example.
+derivatives of the <tt>FORCE</tt> function return undefined values. Thus, it is not wise to use the <tt>FORCE</tt>
+function in a <tt>VALUE</tt> expression to be used for a <tt>DATA MOTION</tt> statement, for example.
 
-===The &lt;tt&gt;IF&lt;/tt&gt; Function===
-Conditional expressions can be formed by reference to the &lt;tt&gt;IF&lt;/tt&gt; function in the following format:
+===The <tt>IF</tt> Function===
+Conditional expressions can be formed by reference to the <tt>IF</tt> function in the following format:
 
  IF (value0: value1, value2, value3)
 
-where each ''value'' is a valid expression. The &lt;tt&gt;VALUE&lt;/tt&gt; resulting from the evaluation of the &lt;tt&gt;IF&lt;/tt&gt;
-function is either ''value1'', ''value2'', or ''value3'', depending on whether ''value0'' is found
+where each _value_ is a valid expression. The <tt>VALUE</tt> resulting from the evaluation of the <tt>IF</tt>
+function is either _value1_, _value2_, or _value3_, depending on whether _value0_ is found
 to be negative, zero, or positive, respectively.
 
-===Tabular Data - The &lt;tt&gt;TABLE&lt;/tt&gt; Function===
+===Tabular Data - The <tt>TABLE</tt> Function===
 Sometimes it is desirable to treat a tabular set of numerical (perhaps experimentally measured) data
-as an expression in a &lt;tt&gt;VALUE&lt;/tt&gt; statement. This may be done by reference to the &lt;tt&gt;TABLE&lt;/tt&gt; function in
+as an expression in a <tt>VALUE</tt> statement. This may be done by reference to the <tt>TABLE</tt> function in
 the following format:
 
  TABLE (name): filename
 
-where ''name'' is the alphanumeric name of another &lt;tt&gt;VALUE&lt;/tt&gt; which acts as the independent variable
+where _name_ is the alphanumeric name of another <tt>VALUE</tt> which acts as the independent variable
 for the tabular data. For example, if the tabular data represent the functional relation
-''Y = F(X)'', then the &lt;tt&gt;VALUE&lt;/tt&gt; expression would be:
+_Y = F(X)_, then the <tt>VALUE</tt> expression would be:
 
  VALUE (Y) = TABLE (X): filename
 
-The ''filename'' is the name of a previously prepared file which contains the numeric data. This
+The _filename_ is the name of a previously prepared file which contains the numeric data. This
 file contains one numeric value per line. The first two lines contain the minimum and maximum values
-of the independent variable ''X'', respectively, and thus signify the range of the tabular data. The
+of the independent variable _X_, respectively, and thus signify the range of the tabular data. The
 remaining lines of the file contain the numeric values of the tabular data, assumed given at equally
-spaced increments and in increasing order of the independent variable ''X''. During the IMP
-simulation, the independent variable or expression ''X'' is evaluated first; the value of the
-&lt;tt&gt;TABLE&lt;/tt&gt; function is then found by interpolating between the tabular data values using a Fourier
-series for interpolation. If values of ''X'' outside of the given range are encountered, the
+spaced increments and in increasing order of the independent variable _X_. During the IMP
+simulation, the independent variable or expression _X_ is evaluated first; the value of the
+<tt>TABLE</tt> function is then found by interpolating between the tabular data values using a Fourier
+series for interpolation. If values of _X_ outside of the given range are encountered, the
 interpolation is accomplished by assuming that the tabular data represents one cycle of a periodic
 function.
 
-===The &lt;tt&gt;USER&lt;/tt&gt; Function===
+===The <tt>USER</tt> Function===
 Specially developed functions, describing phenomena not otherwise available through IMP expressions,
-can be incorporated into an expression by reference to the special &lt;tt&gt;USER&lt;/tt&gt; function in the following
+can be incorporated into an expression by reference to the special <tt>USER</tt> function in the following
 format:
 
  USER (name)
 
-where ''name'' is an alphanumeric name specified by the user to distinguish one reference to the
-&lt;tt&gt;USER&lt;/tt&gt; function from other possible references.
+where _name_ is an alphanumeric name specified by the user to distinguish one reference to the
+<tt>USER</tt> function from other possible references.
 
-In order to evaluate a &lt;tt&gt;USER&lt;/tt&gt; function, the user must also supply their own C function to describe
+In order to evaluate a <tt>USER</tt> function, the user must also supply their own C function to describe
 its meaning, and must obtain the cooperation of those supporting IMP at their installation in
 compiling and loading this special C function with the rest of the IMP system. If such a C function
-is not properly loaded, the default &lt;tt&gt;USER&lt;/tt&gt; function has an undefined value whenever it is evaluated.
+is not properly loaded, the default <tt>USER</tt> function has an undefined value whenever it is evaluated.
 
 The user's special C function must have the following name and arguments:
 
- #include &quot;libimp.h&quot;
+ #include "libimp.h"
  real user(Word name, real t, int nderiv)
  {
   real value;
@@ -630,39 +630,39 @@ The user's special C function must have the following name and arguments:
   return(value);
  }
 
-where the ''name'' argument is of type Word (four-character, null terminated string) containing the
-value of the ''name'' parameter used in the &lt;tt&gt;USER&lt;/tt&gt; function reference in the &lt;tt&gt;VALUE&lt;/tt&gt; statement, the
-''t'' argument is of type real (float or double as defined in libimp.h) and contains the current
-value of time, and the ''nderiv'' argument contains the integer value of 0, 1, or 2, requesting
-return of a type real (float or double) value of the special &lt;tt&gt;USER&lt;/tt&gt; function or its first or second
+where the _name_ argument is of type Word (four-character, null terminated string) containing the
+value of the _name_ parameter used in the <tt>USER</tt> function reference in the <tt>VALUE</tt> statement, the
+_t_ argument is of type real (float or double as defined in libimp.h) and contains the current
+value of time, and the _nderiv_ argument contains the integer value of 0, 1, or 2, requesting
+return of a type real (float or double) value of the special <tt>USER</tt> function or its first or second
 time derivative, respectively (when evaluated for use in an IMP statement).
 
-===The &lt;tt&gt;RETURN&lt;/tt&gt; and &lt;tt&gt;END&lt;/tt&gt; Functions===
-The keywords &lt;tt&gt;RETURN&lt;/tt&gt; and &lt;tt&gt;END&lt;/tt&gt; can be used as IMP expressions in an IMP &lt;tt&gt;VALUE&lt;/tt&gt; statement to cause
+===The <tt>RETURN</tt> and <tt>END</tt> Functions===
+The keywords <tt>RETURN</tt> and <tt>END</tt> can be used as IMP expressions in an IMP <tt>VALUE</tt> statement to cause
 an immediate halt in the simulation at the time of its evaluation. This can be useful, for example,
-along with the &lt;tt&gt;IF&lt;/tt&gt; function, to cause a simulation to halt when some predefined condition of the
-system is met. The &lt;tt&gt;RETURN&lt;/tt&gt; function causes the simulation to halt, but returns to the IMP
-interpreter to treat further IMP language statements. The &lt;tt&gt;END&lt;/tt&gt; function, on the other hand, causes
-an &lt;tt&gt;END&lt;/tt&gt; to the entire simulation and a return to the computer's operating system.
+along with the <tt>IF</tt> function, to cause a simulation to halt when some predefined condition of the
+system is met. The <tt>RETURN</tt> function causes the simulation to halt, but returns to the IMP
+interpreter to treat further IMP language statements. The <tt>END</tt> function, on the other hand, causes
+an <tt>END</tt> to the entire simulation and a return to the computer's operating system.
 
 ==Units of Measurement==
 Among the four fundamental units of measurement (force, mass, length, and time), IMP treats the
 units of force, length, and time as basic and the unit of mass to be derived consistent with
-Newton's laws. Thus IMP presumes a ''gravitational'' system of units.
+Newton's laws. Thus IMP presumes a _gravitational_ system of units.
 
 IMP does not, however, make any presumption about which set of units is used. Any consistent set of
 gravitational units is acceptable. What units are used for IMP input data is chosen by the user;
 IMP then computes and presents results in consistent units of force, length, and time.
 
 Because IMP presumes a consistent gravitational set of units has been chosen by the user, the
-derived unit of mass must be defined by the user by use of the &lt;tt&gt;UNIT (MASS)&lt;/tt&gt; statement
-(see [[User_Manual_Chapter_6|Chapter 6]]) before any mass or moments of inertia are entered. If a &lt;tt&gt;UNIT (MASS)&lt;/tt&gt; statement is
+derived unit of mass must be defined by the user by use of the <tt>UNIT (MASS)</tt> statement
+(see [User_Manual_Chapter_6|Chapter 6]) before any mass or moments of inertia are entered. If a <tt>UNIT (MASS)</tt> statement is
 not entered, IMP assumes that mass data are given in units of force time squared per unit length. As
 examples, if force, length and time data are entered in pounds, feet, and seconds, then `UNIT (MASS)
 = 1.0` should be specified and mass should be entered in pounds seconds squared per foot (slugs); if
-data is entered in Newtons, meters, and seconds, then &lt;tt&gt;UNIT (MASS) = 1.0&lt;/tt&gt; should be specified and
+data is entered in Newtons, meters, and seconds, then <tt>UNIT (MASS) = 1.0</tt> should be specified and
 mass data should be entered in Newton seconds squared per meter (kilograms). If data is entered in
-pounds, inches, and seconds, then &lt;tt&gt;UNIT (MASS) = 0.00259&lt;/tt&gt; (the default) can be specified and mass
+pounds, inches, and seconds, then <tt>UNIT (MASS) = 0.00259</tt> (the default) can be specified and mass
 data may be entered in pounds.
 
 ==IMP Filenames==

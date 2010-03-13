@@ -10,7 +10,7 @@ The first example presented is the two degree of freedom differential control li
 
 The next several pages show portions of the printed IMP output. The IMP language statements typed by the user are printed exactly as submitted to the IMP interpreter.
 
-[[Image:Manual_figure_ch9_1.png|center|''Figure 9-1'' A Differential Control Linkage.]]
+[Image:Manual_figure_ch9_1.png|center|_Figure 9-1_ A Differential Control Linkage.]
 
                             &lt;&lt;&lt;  Notice  &gt;&gt;&gt;
  
@@ -34,33 +34,33 @@ The next several pages show portions of the printed IMP output. The IMP language
  ************************************************************************
  
  What kind of terminal are you using?
-   alpha, graphic [graphic]:&gt; graphic                                        [[#Notes|(1)]]
- &gt; print input                                                               [[#Notes|(2)]]
- &gt; recall input                                                              [[#Notes|(3)]]
- Enter a name for a command input file.                                      [[#Notes|(3)]]
-   Filename: &gt; diflnk.dat                                                    [[#Notes|(3)]]
+   alpha, graphic [graphic]:&gt; graphic                                        [#Notes|(1)]
+ &gt; print input                                                               [#Notes|(2)]
+ &gt; recall input                                                              [#Notes|(3)]
+ Enter a name for a command input file.                                      [#Notes|(3)]
+   Filename: &gt; diflnk.dat                                                    [#Notes|(3)]
  TITLE = DIFFERENTIAL CONTROL LINKAGE
- REMARK: DEFINITION AND DATA STATEMENTS.                                     [[#Notes|(4)]]
+ REMARK: DEFINITION AND DATA STATEMENTS.                                     [#Notes|(4)]
  GROUND = FRAME
- *** The fixed link is redefined. ***                                        [[#Notes|(4)]]
+ *** The fixed link is redefined. ***                                        [#Notes|(4)]
  YSLIDE(FRAME,A) = JT1
    DATA YSLIDE(JT1)=-6,-1, 0
  ZPIN(A,C) = JT2
-   DATA ZPIN(JT2) =-6, 2, 0                                                  [[#Notes|(5)]]
- *** Warning: 6 zeroes are added to complete statement. ***                  [[#Notes|(5)]]
+   DATA ZPIN(JT2) =-6, 2, 0                                                  [#Notes|(5)]
+ *** Warning: 6 zeroes are added to complete statement. ***                  [#Notes|(5)]
  XSLIDE(C,D) = JT3
    DATA XSLIDE(JT3)=-6, 2, 0
  ZPIN(S,D) = JT4
-   DATA ZPIN(JT4) = 0, 2, 0                                                  [[#Notes|(5)]]
- *** Warning: 6 zeroes are added to complete statement. ***                  [[#Notes|(5)]]
+   DATA ZPIN(JT4) = 0, 2, 0                                                  [#Notes|(5)]
+ *** Warning: 6 zeroes are added to complete statement. ***                  [#Notes|(5)]
  ZPIN(FRAME,S) = JT5
  ZPIN(E,D) = JT6
    DATA ZPIN(JT6) = 5, 2, 0; 6, 1, 0; 6, 2,  0
  ZPIN(B,E) = JT7
    DATA ZPIN(JT7) = 6, 1, 0; , , ; 5, 2,     0
  ZPIN(FRAME,B) = JT8
-   DATA ZPIN(JT8) = 6, 0, 0                                                  [[#Notes|(5)]]
- *** Warning: 6 zeroes are added to complete statement. ***                  [[#Notes|(5)]]
+   DATA ZPIN(JT8) = 6, 0, 0                                                  [#Notes|(5)]
+ *** Warning: 6 zeroes are added to complete statement. ***                  [#Notes|(5)]
  REMARK: POINT DATA FOR GRAPHICS.
  POINT(A) = PA1,PA2,PA3,PA4,PA1
    DATA POINT(PA1,ABS) =-6.2,-1.5,0
@@ -78,7 +78,7 @@ The next several pages show portions of the printed IMP output. The IMP language
  DATA POINT(PC3,ABS) =-5.7, 2.5,0
  DATA POINT(PC4,ABS) =-6.3, 2.5,0
  POINT(D) = END,PD1,PD2,PD3,PD4,END
-   DATA POINT(END,JT3) =-3 , 0 ,0                                            [[#Notes|(6)]]
+   DATA POINT(END,JT3) =-3 , 0 ,0                                            [#Notes|(6)]
    DATA POINT(PD1,JT3) =-3 ,-0.3,0
    DATA POINT(PD2,JT6) = 0.3,-0.3,0
    DATA POINT(PD3,JT6) = 0.3, 0.3,0
@@ -111,30 +111,30 @@ The next several pages show portions of the printed IMP output. The IMP language
    DATA POINT(PG6,ABS) =-5.3,-0.3,0
  REMARK: GRAPHIC VISIBILITY AND COLOR SETTINGS.
  DATA VIEW    = FRONT         $$ SCALE FIGURE TO FIT SCREEN.
- SHOW WHITE   = FRAME                                                        [[#Notes|(7)]]
- SHOW RED     = A                                                            [[#Notes|(7)]]
- SHOW BLUE    = B                                                            [[#Notes|(7)]]
- SHOW MAGENTA = C                                                            [[#Notes|(7)]]
- SHOW YELLOW = D                                                             [[#Notes|(7)]]
- SHOW CYAN    = E                                                            [[#Notes|(7)]]
- SHOW BLUE    = S                                                            [[#Notes|(7)]]
+ SHOW WHITE   = FRAME                                                        [#Notes|(7)]
+ SHOW RED     = A                                                            [#Notes|(7)]
+ SHOW BLUE    = B                                                            [#Notes|(7)]
+ SHOW MAGENTA = C                                                            [#Notes|(7)]
+ SHOW YELLOW = D                                                             [#Notes|(7)]
+ SHOW CYAN    = E                                                            [#Notes|(7)]
+ SHOW BLUE    = S                                                            [#Notes|(7)]
  REMARK: GRAPHIC COMMANDS.
  AXES 1 ALL                   $$ MAKE JOINT AXES VISIBLE.
  DRAW                         $$ DRAW NOW.
 
-[[Image:Manual_figure_ch9_2.png|center|''Figure 9-2'' Example of a modeled system.]]
+[Image:Manual_figure_ch9_2.png|center|_Figure 9-2_ Example of a modeled system.]
 
  AXES 0 ALL                   $$ MAKE JOINT AXES INVISIBLE.
  REMARK: REQUEST STATEMENTS.
  LIST POSITION(JT5,END)
  PLOT POSITION(JT5)
- PAUSE ON                     $$ PAUSE TO STUDY EACH RESULT.                  [[#Notes|(8)]]
+ PAUSE ON                     $$ PAUSE TO STUDY EACH RESULT.                  [#Notes|(8)]
  REMARK: DATA FOR INPUT POSITIONS.
- DATA POSITION(JT1) = 0       $$ HOLD JOINT JT1 STATIONARY.                   [[#Notes|(9)]]
- DATA POSITION(JT8) = 0,-5,5 $$ INCREMENT JOINT JT8.                         [[#Notes|(10)]]
- DATA TIME = 5,1,1                                                           [[#Notes|(11)]]
- RETURN                                                                      [[#Notes|(12)]]
- &gt; execute                                                                   [[#Notes|(12)]]
+ DATA POSITION(JT1) = 0       $$ HOLD JOINT JT1 STATIONARY.                   [#Notes|(9)]
+ DATA POSITION(JT8) = 0,-5,5 $$ INCREMENT JOINT JT8.                         [#Notes|(10)]
+ DATA TIME = 5,1,1                                                           [#Notes|(11)]
+ RETURN                                                                      [#Notes|(12)]
+ &gt; execute                                                                   [#Notes|(12)]
  ************************************************************************
  *                     DIFFERENTIAL CONTROL LINKAGE                     *
  *                            Kinematic Mode                            *
@@ -157,7 +157,7 @@ The next several pages show portions of the printed IMP output. The IMP language
    5.0 -12.487
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_3.png|center|''Figure 9-3'' Position of joint JT5 vs. time]]
+[Image:Manual_figure_ch9_3.png|center|_Figure 9-3_ Position of joint JT5 vs. time]
 
  Listing of position of point END
    Time         X          Y          Z
@@ -169,17 +169,17 @@ The next several pages show portions of the printed IMP output. The IMP language
   5.000000     -8.567      2.019      0.000
  Press 'ENTER' to continue: &gt;
  Press 'ENTER' to continue: &gt;
- &gt; recall input                                                              [[#Notes|(13)]]
-                                                                             [[#Notes|(14)]]
+ &gt; recall input                                                              [#Notes|(13)]
+                                                                             [#Notes|(14)]
  REMARK: CHANGE THE POSITION OF JT1 AND REANALYZE.
  REMARK: USE THE SAME POSITION INCREMENTS FOR JT8.
  DATA POSITION(JT1) =-0.5
- *** Input motion for joint JT1 1 is redefined. ***                          [[#Notes|(15)]]
- ANIMATE                      $$ SET UP FOR ANIMATED PICTURES.               [[#Notes|(16)]]
+ *** Input motion for joint JT1 1 is redefined. ***                          [#Notes|(15)]
+ ANIMATE                      $$ SET UP FOR ANIMATED PICTURES.               [#Notes|(16)]
  RETURN
- &gt; execute                                                                   [[#Notes|(17)]]
+ &gt; execute                                                                   [#Notes|(17)]
 
-[[Image:Manual_figure_ch9_4.png|center|''Figure 9-4'' Animation of the differential control linkage.]][[#Notes|(18)]]
+[Image:Manual_figure_ch9_4.png|center|_Figure 9-4_ Animation of the differential control linkage.][#Notes|(18)]
 
  Press 'ENTER' to continue: &gt;
  Press 'ENTER' to continue: &gt;
@@ -208,17 +208,17 @@ The next several pages show portions of the printed IMP output. The IMP language
   5.000000     -8.260      1.378  0.000
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_5.png|center|''Figure 9-5'' Position of joint JT5 vs. time.]]
+[Image:Manual_figure_ch9_5.png|center|_Figure 9-5_ Position of joint JT5 vs. time.]
 
  Press 'ENTER' to continue: &gt;
  &gt; recall input
  REMARK: CHANGE THE POSITION OF JT1 AGAIN.
  DATA POSITION(JT1) = 0.5
- *** Input motion for joint JT1 1 is redefined. ***                 [[#Notes|(15)]]
+ *** Input motion for joint JT1 1 is redefined. ***                 [#Notes|(15)]
  RETURN
  &gt; execute
 
-[[Image:Manual_figure_ch9_6.png|center|''Figure 9-6'' Animation of the differential control linkage.]]
+[Image:Manual_figure_ch9_6.png|center|_Figure 9-6_ Animation of the differential control linkage.]
 
  Press 'ENTER' to continue: &gt;
  Press 'ENTER' to continue: &gt;
@@ -247,40 +247,40 @@ The next several pages show portions of the printed IMP output. The IMP language
   5.000000     -8.773      2.728  0.000
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_7.png|center|''Figure 9-7'' Position of joint JT5 vs. time.]]
+[Image:Manual_figure_ch9_7.png|center|_Figure 9-7_ Position of joint JT5 vs. time.]
 
  Press 'ENTER' to continue: &gt;
- &gt; recall input                                                     [[#Notes|(19)]]
- *** RETURN statement simulated at end of file. ***                 [[#Notes|(19)]]
- &gt; end                                                              [[#Notes|(20)]]
+ &gt; recall input                                                     [#Notes|(19)]
+ *** RETURN statement simulated at end of file. ***                 [#Notes|(19)]
+ &gt; end                                                              [#Notes|(20)]
 
 ===Notes===
 # The response specifies that the user is currently operating with a graphic display terminal and expects to be drawing plots of results.
 # Data is to be read from a data file and printed at the terminal as it is read.
-# The &lt;tt&gt;RECALL INPUT&lt;/tt&gt; statement initiates the request to read command input from a file. Since no filename is given in the statement, the IMP system prompts the user for the filename.
-# The &lt;tt&gt;GROUND&lt;/tt&gt; statement would not have been required if the name &lt;tt&gt;BASE&lt;/tt&gt; had been chosen for the fixed link.
-# Note that only one point is specified in each of these &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statements; the global origin is implied for the location of the missing second and third points.
-# Note that this data is described relative to the local joint coordinate systems. It places the point &lt;tt&gt;END&lt;/tt&gt;, for example, at the left end of link &lt;tt&gt;D&lt;/tt&gt;.
-# Although the figures in this manual do not show in color, these &lt;tt&gt;SHOW&lt;/tt&gt; statements specify colors for display on color capable terminals. If the device is not color capable, the &lt;tt&gt;SHOW&lt;/tt&gt; statements may still be used in the input data file without causing errors.
-# The &lt;tt&gt;PAUSE ON&lt;/tt&gt; statement is used to cause pauses and messages in the output which read &quot;Press &lt;tt&gt;ENTER&lt;/tt&gt; to continue: &gt;&quot;, thus allowing the user to study results before they are lost from the screen.
+# The <tt>RECALL INPUT</tt> statement initiates the request to read command input from a file. Since no filename is given in the statement, the IMP system prompts the user for the filename.
+# The <tt>GROUND</tt> statement would not have been required if the name <tt>BASE</tt> had been chosen for the fixed link.
+# Note that only one point is specified in each of these <tt>DATA ZPIN</tt> statements; the global origin is implied for the location of the missing second and third points.
+# Note that this data is described relative to the local joint coordinate systems. It places the point <tt>END</tt>, for example, at the left end of link <tt>D</tt>.
+# Although the figures in this manual do not show in color, these <tt>SHOW</tt> statements specify colors for display on color capable terminals. If the device is not color capable, the <tt>SHOW</tt> statements may still be used in the input data file without causing errors.
+# The <tt>PAUSE ON</tt> statement is used to cause pauses and messages in the output which read "Press <tt>ENTER</tt> to continue: &gt;", thus allowing the user to study results before they are lost from the screen.
 # Note that, if this statement were not included, IMP would arbitrarily choose some joint to hold stationary since the system has two degrees of freedom and the simulation is in kinematic mode.
-# The simulation is requested to proceed through six positions; the position of joint &lt;tt&gt;JT8&lt;/tt&gt; is incremented five times.
-# Note the use of the &lt;tt&gt;DATA TIME&lt;/tt&gt; statement in kinematic mode. This feature allows use of functions of time in kinematic mode. The &lt;tt&gt;DATA TIME&lt;/tt&gt; statement was not necessary here and would have been implied by the five position increments of the previous line; it is used to illustrate the procedure.
-# The &lt;tt&gt;RETURN&lt;/tt&gt; statement is read from the command input file and causes control to return to the terminal. The user then manually enters the &lt;tt&gt;EXECUTE&lt;/tt&gt; command.
+# The simulation is requested to proceed through six positions; the position of joint <tt>JT8</tt> is incremented five times.
+# Note the use of the <tt>DATA TIME</tt> statement in kinematic mode. This feature allows use of functions of time in kinematic mode. The <tt>DATA TIME</tt> statement was not necessary here and would have been implied by the five position increments of the previous line; it is used to illustrate the procedure.
+# The <tt>RETURN</tt> statement is read from the command input file and causes control to return to the terminal. The user then manually enters the <tt>EXECUTE</tt> command.
 # After the simulation is completed, the user may continue the problem, modifying the model and analysing again.
-# Here, since no filename is given, IMP continues reading statements from the same &lt;tt&gt;DIFLNK.DAT&lt;/tt&gt; command input file used earlier until the next &lt;tt&gt;RETURN&lt;/tt&gt; statement is encountered.
-# These warning messages are not part of the user's input statements; they are given by the IMP system as reminders to the user when previous data are redefined. The &lt;tt&gt;ANIMATE&lt;/tt&gt; statement causes an animated drawing sequence,
-# not immediately, but after the next &lt;tt&gt;EXECUTE&lt;/tt&gt; statement. Since the input position data are not respecified for &lt;tt&gt;JT8&lt;/tt&gt;, the time increments and final time values from the last execution are used again.
-# Since there is no intervening &lt;tt&gt;DRAW&lt;/tt&gt; command, the &lt;tt&gt;ANIMATE&lt;/tt&gt; command is still active for this execution.
-# When &lt;tt&gt;RECALL INPUT&lt;/tt&gt; is attempted with no further data in the file, an error message is printed and control is returned to the user's terminal.
-# The analysis of this system is terminated here and the IMP program is exited. Another analysis could have been initiated without exiting the IMP program by use of the &lt;tt&gt;CLEAR&lt;/tt&gt; statement.
+# Here, since no filename is given, IMP continues reading statements from the same <tt>DIFLNK.DAT</tt> command input file used earlier until the next <tt>RETURN</tt> statement is encountered.
+# These warning messages are not part of the user's input statements; they are given by the IMP system as reminders to the user when previous data are redefined. The <tt>ANIMATE</tt> statement causes an animated drawing sequence,
+# not immediately, but after the next <tt>EXECUTE</tt> statement. Since the input position data are not respecified for <tt>JT8</tt>, the time increments and final time values from the last execution are used again.
+# Since there is no intervening <tt>DRAW</tt> command, the <tt>ANIMATE</tt> command is still active for this execution.
+# When <tt>RECALL INPUT</tt> is attempted with no further data in the file, an error message is printed and control is returned to the user's terminal.
+# The analysis of this system is terminated here and the IMP program is exited. Another analysis could have been initiated without exiting the IMP program by use of the <tt>CLEAR</tt> statement.
 
 ==A Front End Loader==
 The second example is the lift mechanism of a front end loader, with hydraulic coupling of the actuators simulated in the model. A drawing of the linkage is shown in the figure on the next page. The objective here is to design the loader to achieve maximum height while maintaining the horizontal position of the bucket. 
 
 The first portion of the simulation demonstrates the kinematic performance of the loader and also illustrates some of the graphic capabilities of IMP. The second portion examines the forces at particular joints during the lift operation with a load applied in the bucket. IMP's plotting capabilities are demonstrated here.
 
-[[Image:Manual_figure_ch9_8.png|center|''Figure 9-8'' Unnamed.]]
+[Image:Manual_figure_ch9_8.png|center|_Figure 9-8_ Unnamed.]
 
                           &lt;&lt;&lt; Notice &gt;&gt;&gt;
  
@@ -460,7 +460,7 @@ The first portion of the simulation demonstrates the kinematic performance of th
  SLIDE (Y)=-20
  ZOOM(0.7)
 
-[[Image:Manual_figure_ch9_9.png|center|''Figure 9-9'' Unnamed.]]
+[Image:Manual_figure_ch9_9.png|center|_Figure 9-9_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
  
@@ -492,7 +492,7 @@ The first portion of the simulation demonstrates the kinematic performance of th
  Press 'ENTER' to continue: &gt;
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_10.png|center|''Figure 9-10'' Unnamed.]]
+[Image:Manual_figure_ch9_10.png|center|_Figure 9-10_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
  
@@ -531,7 +531,7 @@ The first portion of the simulation demonstrates the kinematic performance of th
  6.000000 170.339 148.479 40.000
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_11.png|center|''Figure 9-11'' Unnamed.]]
+[Image:Manual_figure_ch9_11.png|center|_Figure 9-11_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
  
@@ -558,7 +558,7 @@ The first portion of the simulation demonstrates the kinematic performance of th
  Press 'ENTER' to continue: &gt;
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_12.png|center|''Figure 9-12'' Unnamed.]]
+[Image:Manual_figure_ch9_12.png|center|_Figure 9-12_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
  
@@ -601,7 +601,7 @@ The first portion of the simulation demonstrates the kinematic performance of th
  7.000000 157.051 109.972 40.000
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_13.png|center|''Figure 9-13'' Unnamed.]]
+[Image:Manual_figure_ch9_13.png|center|_Figure 9-13_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
  &gt; recall input
@@ -625,11 +625,11 @@ The first portion of the simulation demonstrates the kinematic performance of th
  Press 'ENTER' to continue: &gt;
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_14.png|center|''Figure 9-14'' Unnamed.]]
+[Image:Manual_figure_ch9_14.png|center|_Figure 9-14_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_15.png|center|''Figure 9-15'' Unnamed.]]
+[Image:Manual_figure_ch9_15.png|center|_Figure 9-15_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
  
@@ -656,31 +656,31 @@ The first portion of the simulation demonstrates the kinematic performance of th
  Press 'ENTER' to continue: &gt;
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_16.png|center|''Figure 9-16'' Unnamed.]]
+[Image:Manual_figure_ch9_16.png|center|_Figure 9-16_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_17.png|center|''Figure 9-17'' Unnamed.]]
+[Image:Manual_figure_ch9_17.png|center|_Figure 9-17_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_18.png|center|''Figure 9-18'' Unnamed.]]
+[Image:Manual_figure_ch9_18.png|center|_Figure 9-18_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_19.png|center|''Figure 9-19'' Unnamed.]]
+[Image:Manual_figure_ch9_19.png|center|_Figure 9-19_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_20.png|center|''Figure 9-20'' Unnamed.]]
+[Image:Manual_figure_ch9_20.png|center|_Figure 9-20_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_21.png|center|''Figure 9-21'' Unnamed.]]
+[Image:Manual_figure_ch9_21.png|center|_Figure 9-21_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_22.png|center|''Figure 9-22'' Unnamed.]]
+[Image:Manual_figure_ch9_22.png|center|_Figure 9-22_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
  
@@ -708,7 +708,7 @@ The third example presented is a drive train for the thread looper in an industr
 
 The first of these two problems, being strictly geometric, is solved in kinematic mode. The second problem can also be solved in kinematic mode if it is assumed that the motor speed is constant under the variable dynamic load. This very reasonable assumption results in considerable saving over use of the dynamic mode. 1. Courtesy of Union Special Machine Company, Chicago, Illinois.
 
-[[Image:Manual_figure_ch9_23.png|center|''Figure 9-23'' Unnamed.]]
+[Image:Manual_figure_ch9_23.png|center|_Figure 9-23_ Unnamed.]
 
                         &lt;&lt;&lt; Notice &gt;&gt;&gt;
  
@@ -896,29 +896,29 @@ The first of these two problems, being strictly geometric, is solved in kinemati
  0.007500 9.766 17.005 14.719 3.945 -51.987 57.442
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_24.png|center|''Figure 9-24'' Unnamed.]]
+[Image:Manual_figure_ch9_24.png|center|_Figure 9-24_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_25.png|center|''Figure 9-25'' Unnamed.]]
+[Image:Manual_figure_ch9_25.png|center|_Figure 9-25_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_26.png|center|''Figure 9-26'' Unnamed.]]
+[Image:Manual_figure_ch9_26.png|center|_Figure 9-26_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_27.png|center|''Figure 9-27'' Unnamed.]]
+[Image:Manual_figure_ch9_27.png|center|_Figure 9-27_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_28.png|center|''Figure 9-28'' Unnamed.]]
+[Image:Manual_figure_ch9_28.png|center|_Figure 9-28_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
  &gt; end
 
 ===Notes:===
-# A carriage return was given for this question, thus accepting the default response which is &quot;graphic&quot;. Though most output is printed lists, the &quot;graphic&quot; response is still neccessary to see plots. 
+# A carriage return was given for this question, thus accepting the default response which is "graphic". Though most output is printed lists, the "graphic" response is still neccessary to see plots. 
 # The GROUND statement is not necessary since the name BASE is chosen for the fixed link. 
 # Notice that the fork engaging the stud on the ball at the upper end of the connecting rod prevents rotation about the axis of the connecting rod. Thus, although this joint resembles a spheric joint, it is, in effect, equivalent to a universal joint. 
 # The joint at the forked end of the link LEVR is not of a type available in the IMP language. Therefore, it is remodelled as coincident ZSLIDE and SPHERE joints. The ZSLIDE joint allows sliding within the fork while the SPHERE joint allows complete freedom for rotation. Although the true fork is not able to rotate about one axis (along the link LEVR), this is prevented in the present model by the joints CAM and PIN. 
@@ -931,9 +931,9 @@ The fourth example presented is the left-front suspension system of a standard, 
 
 The suspension system modeled is shown in the figure on the next page. It can be noted that the vehicle frame is assumed stationary and that the steering arm is fixed to the frame. Thus, there is only one predominant motion possible, the jounce of the wheel.
 
-In the first simulation presented, the equilibrium position is sought, while the geometry, and the forces in all joints are printed. This is followed by a second simulation in which the bottom of the tire is subjected to a deep hole at a speed corresponding to the first resonant frequency, the &quot;wheel hop&quot; frequency. VALUE statements are used to simulate the separation of the tire from the road, to allow impact with the jounce and rebound bumpers, and to change the shock absorber damping rates for extension and compression. Partial listings are presented of the dynamic mode simulation results. These were compared and correlated well with experimental results gathered by tests made for the committee under the same conditions by a major US auto company. 
+In the first simulation presented, the equilibrium position is sought, while the geometry, and the forces in all joints are printed. This is followed by a second simulation in which the bottom of the tire is subjected to a deep hole at a speed corresponding to the first resonant frequency, the "wheel hop" frequency. VALUE statements are used to simulate the separation of the tire from the road, to allow impact with the jounce and rebound bumpers, and to change the shock absorber damping rates for extension and compression. Partial listings are presented of the dynamic mode simulation results. These were compared and correlated well with experimental results gathered by tests made for the committee under the same conditions by a major US auto company. 
 
-[[Image:Manual_figure_ch9_29.png|center|''Figure 9-29'' Unnamed.]]
+[Image:Manual_figure_ch9_29.png|center|_Figure 9-29_ Unnamed.]
 
                           &lt;&lt;&lt; Notice &gt;&gt;&gt;
  
@@ -1351,11 +1351,11 @@ In the first simulation presented, the equilibrium position is sought, while the
  
  0.250000 25.295 -25.005 3.197
 
-[[Image:Manual_figure_ch9_30.png|center|''Figure 9-30'' Unnamed.]]
+[Image:Manual_figure_ch9_30.png|center|_Figure 9-30_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_31.png|center|''Figure 9-31'' Unnamed.]]
+[Image:Manual_figure_ch9_31.png|center|_Figure 9-31_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
  
@@ -1490,11 +1490,11 @@ In the first simulation presented, the equilibrium position is sought, while the
  0.250000 0.000 0.000 -931.095 -26.066 28613.165 0.000
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_32.png|center|''Figure 9-32'' Unnamed.]]
+[Image:Manual_figure_ch9_32.png|center|_Figure 9-32_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_33.png|center|''Figure 9-33'' Unnamed.]]
+[Image:Manual_figure_ch9_33.png|center|_Figure 9-33_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
  
@@ -1519,7 +1519,7 @@ In the first simulation presented, the equilibrium position is sought, while the
 ==A Double Toggle Bench Clamp==
 The next example is the simulation of a double toggle bench clamp. This clamp could be used in many places in a manufacturing environment. The purpose of the clamp is to keep the clamping pad forced against a vertical surface holding an object in place while work is performed.
 
-[[Image:Manual_figure_ch9_34.png|center|''Figure 9-34'' Unnamed.]]
+[Image:Manual_figure_ch9_34.png|center|_Figure 9-34_ Unnamed.]
 
                       &lt;&lt;&lt; Notice &gt;&gt;&gt;
  
@@ -1620,13 +1620,13 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
  &gt;
  draw
 
-[[Image:Manual_figure_ch9_35.png|center|''Figure 9-35'' Unnamed.]]
+[Image:Manual_figure_ch9_35.png|center|_Figure 9-35_ Unnamed.]
 
  &gt; data view front
  &gt; slide x 5.0
  &gt; draw
 
-[[Image:Manual_figure_ch9_36.png|center|''Figure 9-36'' Unnamed.]]
+[Image:Manual_figure_ch9_36.png|center|_Figure 9-36_ Unnamed.]
 
  &gt; data position A = 0 30 2
  &gt; animate
@@ -1643,7 +1643,7 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
  time = 1.000000
  time = 2.000000
 
-[[Image:Manual_figure_ch9_37.png|center|''Figure 9-37'' Unnamed.]]
+[Image:Manual_figure_ch9_37.png|center|_Figure 9-37_ Unnamed.]
 
  &gt; data position A = 0 4 15
  *** Input motion for joint A 1 is redefined. ***
@@ -1669,7 +1669,7 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
  Press 'ENTER' to continue: &gt;
  Press 'ENTER' to continue: &gt;
 
-[[Image:Manual_figure_ch9_38.png|center|''Figure 9-38'' Unnamed.]]
+[Image:Manual_figure_ch9_38.png|center|_Figure 9-38_ Unnamed.]
 
  Listing of position of point F0
  Time X Y Z
@@ -1693,7 +1693,7 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
  
  15.000000 -0.037 11.306 0.000
 
-[[Image:Manual_figure_ch9_39.png|center|''Figure 9-39'' Unnamed.]]
+[Image:Manual_figure_ch9_39.png|center|_Figure 9-39_ Unnamed.]
 
  Press 'ENTER' to continue: &gt;
  &gt; end

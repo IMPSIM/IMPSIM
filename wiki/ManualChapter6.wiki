@@ -23,13 +23,13 @@ CLEAR
 ==The TITLE Statement==
 The TITLE statement assigns an alphanumeric title to the system being simulated. This title is used in the heading of printed results. 
 ===Format:===
-TITLE = string where &quot;string&quot; is an arbitrarily selected alphanumeric title of 63 or fewer characters. 
+TITLE = string where "string" is an arbitrarily selected alphanumeric title of 63 or fewer characters. 
 ===Example:===
 TITLE: PROTOTYPE SUSPENSION SIMULATION 
 ===Notes:===
 
 # Use of the TITLE statement is optional. If it is not included before the EXECUTE or EXECUTE HOLD statement, however, the default title appears in the banner above the printed results. 
-# The TITLE statement may be used more than once. If so, only the most recent &quot;string&quot; assigned is in effect at any time. This feature is useful, for example, in distinguishing between similar simulation results with modified data; a new &quot;title&quot; may be assigned after each EXECUTE or EXECUTE HOLD statement. 
+# The TITLE statement may be used more than once. If so, only the most recent "string" assigned is in effect at any time. This feature is useful, for example, in distinguishing between similar simulation results with modified data; a new "title" may be assigned after each EXECUTE or EXECUTE HOLD statement. 
 # Continuation lines (the $ character), end of statement (the $$ character), and imbedded remarks may not be used within a TITLE statement. 
 ==The EXECUTE Statement==
 The EXECUTE statement initiates the actual performance of the simulation and requests that the model be returned to its original configuration upon completion. 
@@ -48,7 +48,7 @@ EXECUTE HOLD
 
 # This statement or the EXECUTE statement must be used to cause any type of simulation to be performed. All other IMP statements do not cause simulation, but only specify the model and the types of results desired when simulation is initiated. 
 # This statement may be repeated as often as desired, making model changes by new statements between simulations. 
-# After a simulation is completed, the system model data remains at the last valid configuration achieved in the simulation. A message is printed indicating that the &quot;reference position&quot; for any subsequent data has been changed to the new configuration. 
+# After a simulation is completed, the system model data remains at the last valid configuration achieved in the simulation. A message is printed indicating that the "reference position" for any subsequent data has been changed to the new configuration. 
 # After an EXECUTE HOLD simulation has been completed, the value of TIME is not reset to zero. Therefore, a subsequent EXECUTE or EXECUTE HOLD statement causes the simulation to continue from the end of the previous simulation. The value of TIME is reset to zero, however, at the end of an EXECUTE (without HOLD) simulation or when a RESET statement is issued. 
 ==The RESET Statement==
 The RESET statement can be used after an EXECUTE HOLD statement as another method to reset time to zero. 
@@ -105,29 +105,29 @@ FIND DYNAMICS
 ==The DATA TIME Statement==
 The DATA TIME statement designates the final value of time through which a simulation is to be performed. It also specifies the minimum time increment for the step size and the time increment with which results are to be printed, listed or stored. 
 ===Format:===
-DATA TIME = final time, min increment, print increment where &quot;final time&quot; is a positive numeric value specifying the time limit up to which the simulation should proceed. The &quot;min increment&quot; is a positive numeric value specifying the minimum time increment for a single time step, and &quot;print increment&quot; is a positive numeric value specifying the time increment between outputs of the requested simulation results. 
+DATA TIME = final time, min increment, print increment where "final time" is a positive numeric value specifying the time limit up to which the simulation should proceed. The "min increment" is a positive numeric value specifying the minimum time increment for a single time step, and "print increment" is a positive numeric value specifying the time increment between outputs of the requested simulation results. 
 ===Example:===
 DATA TIME = 3.5, 0.005, 0.10 specifies that a simulation is to be carried out until time reaches 3.5 seconds, with a minimum time increment of 0.005 seconds, and with results being output after each 0.10 seconds. 
 ===Notes:===
 
 # A DATA TIME statement must be specified before an EXECUTE or EXECUTE HOLD statement whenever the simulation is in dynamic mode. If not, the simulation is interrupted and a message is printed. If in kinematic or static mode, an appropriate DATA TIME statement will be set and message printed. 
 # If more than one DATA TIME statement is encountered, the later statement takes precedence and earlier data are replaced. 
-# The values of &quot;final time&quot;, &quot;min increment&quot;, and &quot;print increment&quot; have units of seconds. 
-# The values of &quot;final time&quot;, &quot;min increment&quot;, and &quot;print increment&quot; may not be negative; if one or more is, the statement is ignored and a message is printed. 
-# The values of &quot;min increment&quot; and &quot;print increment&quot; may not be zero; if either is, the statement is ignored and a message is printed. 
+# The values of "final time", "min increment", and "print increment" have units of seconds. 
+# The values of "final time", "min increment", and "print increment" may not be negative; if one or more is, the statement is ignored and a message is printed. 
+# The values of "min increment" and "print increment" may not be zero; if either is, the statement is ignored and a message is printed. 
 ==The ZERO (FORCE) Statement==
 The ZERO (FORCE) statement defines the force tolerances to be used in adjusting the time steps used in time integration for dynamic mode simulations. 
 ===Format:===
-ZERO (FORCE) = force error, percent error where &quot;force error&quot; is the numeric value of the force tolerance to be treated as acceptable in any single time step and &quot;percent error&quot; is the same force tolerance expressed in percent of current force. The time integration step size is adjusted dynamically so that both of these criteria are achieved at each time step during dynamic mode integration. 
+ZERO (FORCE) = force error, percent error where "force error" is the numeric value of the force tolerance to be treated as acceptable in any single time step and "percent error" is the same force tolerance expressed in percent of current force. The time integration step size is adjusted dynamically so that both of these criteria are achieved at each time step during dynamic mode integration. 
 ===Example:===
 ZERO (FORCE) = 0.1, 1 specifies that, at each time step in a dynamic mode simulation, as the dynamic forces and torques at the SGCs are calculated, the time step will be set so that the inaccuracies in the dynamic forces and torques are not greater than 0.1 pounds or 1 percent of their current values. 
 ===Notes:===
 
-# In most IMP simulations, the ZERO (FORCE) statement need not be used at all. If a ZERO (FORCE) statement is not entered before an EXECUTE or EXECUTE HOLD statement is encountered, and if the simulation is in dynamic mode, then default values of 0.1 &quot;force error&quot; and 1 &quot;percent error&quot;, respectively, are used. 
-# The time steps used in dynamic mode time integration are continually adjusted to keep integration errors to less than the specified &quot;force error&quot; and &quot;percent error&quot; levels for each individual time step. However, it must be remembered that most time steps will have much less than this amount of error and that error does not propagate to the next time step except in unusual cases. The &quot;force error&quot; specified should not be specified smaller than necessary for the total force accuracy required by the application. 
+# In most IMP simulations, the ZERO (FORCE) statement need not be used at all. If a ZERO (FORCE) statement is not entered before an EXECUTE or EXECUTE HOLD statement is encountered, and if the simulation is in dynamic mode, then default values of 0.1 "force error" and 1 "percent error", respectively, are used. 
+# The time steps used in dynamic mode time integration are continually adjusted to keep integration errors to less than the specified "force error" and "percent error" levels for each individual time step. However, it must be remembered that most time steps will have much less than this amount of error and that error does not propagate to the next time step except in unusual cases. The "force error" specified should not be specified smaller than necessary for the total force accuracy required by the application. 
 # If more than one ZERO (FORCE) statement is encountered, the later statement takes precedence; earlier data are replaced and a message is printed. 
-# The values of &quot;force error&quot; and &quot;percent error&quot; may not be zero or negative; if they are, the statement is ignored and a message is printed. 
-# The &quot;force error&quot; value is used to check both forces and torques, and has dimensions of force or force length. 
+# The values of "force error" and "percent error" may not be zero or negative; if they are, the statement is ignored and a message is printed. 
+# The "force error" value is used to check both forces and torques, and has dimensions of force or force length. 
 ==The DELETE DYNAMICS Statement==
 The DELETE DYNAMICS statement is used to cancel the dynamic mode and to delete the DATA TIME statement, all SGC definitions, and associated data. 
 ===Format:===
@@ -166,15 +166,15 @@ DELETE PRINT (INPUT)
 ==The STORE INPUT Statement==
 The STORE INPUT statement requests that subsequent IMP statements be stored in a file as they are read. 
 ===Format:===
-STORE INPUT = filename where &quot;filename&quot; specifies the name of the file in which the input statements are to be stored. 
+STORE INPUT = filename where "filename" specifies the name of the file in which the input statements are to be stored. 
 ===Notes:===
 
 # The purpose of the STORE INPUT statement is to store the input statements of an IMP model in a specified file such that they may be reread by a future IMP program by use of the RECALL INPUT statement. 
 # The STORE INPUT statement halts the printing of IMP input statements with the output since IMP cannot print with the output and in the STORE file simultaneously. In this sense, it has the same effect as the DELETE PRINT (INPUT) statement. 
 # Subsequent IMP input statements are stored until a DELETE STORE INPUT, an EXECUTE, an EXECUTE HOLD, a RETURN, an END, or a CLEAR statement is encountered. In this sense, each of these statements has the same effect as a DELETE STORE (INPUT) statement. 
 # The STORE INPUT statement itself is not stored; however, subsequent statements are stored. 
-# It is the user's responsibility to insure that the &quot;filename&quot; specified refers to a new or reusable file, and that older useful information in that file is not lost. If a &quot;filename&quot; is not supplied on the initial STORE INPUT statement, and if execution is interactive, then the user is prompted to enter a &quot;filename&quot;. 
-# If a previous STORE INPUT statement has been discontinued by a DELETE STORE (INPUT), an EXECUTE, an EXECUTE HOLD, a RETURN, or a CLEAR statement, and it is desirable to store further IMP input statements as a continuation of the previous file, then another STORE INPUT statement may be issued without specifying a &quot;filename&quot;. The same &quot;filename&quot; will then be continued. However, in such a case, if the same &quot;filename&quot; is specified again in the later STORE INPUT statement, the file will be rewound and written over from the beginning. 
+# It is the user's responsibility to insure that the "filename" specified refers to a new or reusable file, and that older useful information in that file is not lost. If a "filename" is not supplied on the initial STORE INPUT statement, and if execution is interactive, then the user is prompted to enter a "filename". 
+# If a previous STORE INPUT statement has been discontinued by a DELETE STORE (INPUT), an EXECUTE, an EXECUTE HOLD, a RETURN, or a CLEAR statement, and it is desirable to store further IMP input statements as a continuation of the previous file, then another STORE INPUT statement may be issued without specifying a "filename". The same "filename" will then be continued. However, in such a case, if the same "filename" is specified again in the later STORE INPUT statement, the file will be rewound and written over from the beginning. 
 ==The DELETE STORE (INPUT) Statement==
 The DELETE STORE (INPUT) statement requests that subsequent IMP statements no longer be stored on file as they are encountered. 
 ===Format:===
@@ -194,39 +194,39 @@ RETURN
 ==The RECALL INPUT Statement==
 The RECALL INPUT statement requests that IMP input statements be read from a previously prepared file. 
 ===Format:===
-RECALL INPUT = filename where &quot;filename&quot; specifies the name of the prepared file. 
+RECALL INPUT = filename where "filename" specifies the name of the prepared file. 
 ===Notes:===
 
 # When a RECALL INPUT statement is encountered, the reading of subsequent IMP input statements is attempted from the file rather than the standard input device. Reading continues from this file until a RETURN statement is encountered. The RETURN statement causes reading to revert to the standard input device. The file should end with a RETURN statement whether prepared by a previous IMP program (see STORE INPUT statement) or prepared separately by the user. 
 # The IMP input statements stored in the file should not include the CLEAR, the STORE INPUT, the RECALL INPUT, the EXECUTE, or the EXECUTE HOLD statements. 
-# If, for the first RECALL INPUT statement encountered while executing interactively and no filename is specified, IMP prompts the user for a filename. On subsequent RECALL INPUT statements with no filename specified, IMP continues reading after the last RETURN statement encountered in the file used in the previous RECALL INPUT statement. If RECALL INPUT = &quot;filename&quot; is entered again using the same or a new &quot;filename&quot;, then IMP starts at the top of the named file. 
-# If the specified &quot;filename&quot; does not exist or cannot be used the RECALL INPUT statement is ignored; a message is printed. 
+# If, for the first RECALL INPUT statement encountered while executing interactively and no filename is specified, IMP prompts the user for a filename. On subsequent RECALL INPUT statements with no filename specified, IMP continues reading after the last RETURN statement encountered in the file used in the previous RECALL INPUT statement. If RECALL INPUT = "filename" is entered again using the same or a new "filename", then IMP starts at the top of the named file. 
+# If the specified "filename" does not exist or cannot be used the RECALL INPUT statement is ignored; a message is printed. 
 ==The UNIT (MASS) Statement==
 The UNIT (MASS) statement defines the factor which is used to convert the chosen mass units to those consistent with the force, length, and time units being used. 
 ===Format:===
-UNIT (MASS) = value where &quot;value&quot; is the numeric value for a unit mass expressed in the user's force, length, and time units. 
+UNIT (MASS) = value where "value" is the numeric value for a unit mass expressed in the user's force, length, and time units. 
 ===Examples:===
 UNIT (MASS) = 0.0025901 specifies that the user wishes to enter mass data in units of pounds mass and that one pound mass is equivalent to 0.0025901 pounds force seconds squared per inch. UNIT (MASS) = 1.0 specifies that the mass data will be entered in kilograms and that one kilogram is equal to one Newton seconds squared per meter. UNIT (MASS) = 0.031081 specifies that mass data will be expressed in slugs and that one slug is equal to 0.03181 pound seconds squared per foot. This assumes that all length data are given in feet. 
 ===Notes:===
 
 # All calculations in IMP assume that data are entered in a single consistent set of units. The units of angles are always in degrees, though their time derivatives are in radians per second. Time is always expressed in seconds. The user is free to choose any length and force units desired as long as they are used consistently throughout. The only internal unit dependence in IMP is in using mass units which are convenient for the user and also are consistent with those used for force, length, and time. Providing this is the purpose of the UNIT (MASS) statement. 
-# The &quot;value&quot; is only used in reading data from the DATA DENSITY, DATA MASS, and DATA INERTIA statements and in converting mass units to consistent internal units of force seconds squared per length. Since this conversion takes place as DATA DENSITY, DATA MASS, and DATA INERTIA statements are entered, any UNIT (MASS) statement must be entered before any DATA DENSITY, DATA MASS and DATA INERTIA statements are entered. 
+# The "value" is only used in reading data from the DATA DENSITY, DATA MASS, and DATA INERTIA statements and in converting mass units to consistent internal units of force seconds squared per length. Since this conversion takes place as DATA DENSITY, DATA MASS, and DATA INERTIA statements are entered, any UNIT (MASS) statement must be entered before any DATA DENSITY, DATA MASS and DATA INERTIA statements are entered. 
 # If no UNIT (MASS) statement is used, then the default value of 0.0025901 is assumed. Thus, under default conditions, the user is assumed to be using US Customary units (pounds force, pounds mass, inches, and seconds). 
 # If more than one UNIT (MASS) statement is encountered, the later statement takes precedence and the earlier conversion factor is replaced. Previous DATA DENSITY, DATA MASS, and DATA INERTIA data are not recalculated, however. 
-# The &quot;value&quot; must be greater than zero. If not a message is printed and the UNIT (MASS) statement is ignored. 
+# The "value" must be greater than zero. If not a message is printed and the UNIT (MASS) statement is ignored. 
 ==The PRINT ON Statement==
 The PRINT ON statement requests that subsequent information printed on the terminal also be recorded in a file for later hardcopy printing. 
 ===Format:===
-PRINT ON = filename where &quot;filename&quot; specifies the name of the file to be used for later printing. 
+PRINT ON = filename where "filename" specifies the name of the file to be used for later printing. 
 ===Example:===
 PRINT ON = ANALYS.LST 
 ===Notes:===
 
-# When a PRINT ON statement is encountered, the &quot;filename&quot; is stored and opened to receive information. From this point forward, all information printed on the terminal is also duplicated in that file for later off-line printing. Duplication of printed information in this file continues until the end of the IMP job or until explicitly stopped by a PRINT OFF statement. 
-# If no &quot;filename&quot; is encountered on the first PRINT ON statement while executing interactively, IMP prompts the user for a &quot;filename&quot;. If executing in background mode, the default &quot;filename&quot; of &quot;prt.dat&quot; is used. 
-# After a previous PRINT ON statement has been interrupted by a PRINT OFF statement, printing can be continued again by another PRINT ON statement without a &quot;filename&quot;. If a PRINT ON statement is encountered without a &quot;filename&quot;, the &quot;filename&quot; from the previous PRINT ON statement is continued from where it was left. 
-# If a &quot;filename&quot; is given and is distinct from the &quot;filename&quot; of a previous PRINT ON statement, the former file is ended and subsequent information begins on the later named file. If the same &quot;filename&quot; is explicitly named in more than one PRINT ON statement, the later PRINT ON statement causes the same file to be rewound and started again, thus causing previous information to be overwritten and lost. 
-# If the specified &quot;filename&quot; is invalid or cannot be used, the PRINT ON statement is ignored and a message is printed. 
+# When a PRINT ON statement is encountered, the "filename" is stored and opened to receive information. From this point forward, all information printed on the terminal is also duplicated in that file for later off-line printing. Duplication of printed information in this file continues until the end of the IMP job or until explicitly stopped by a PRINT OFF statement. 
+# If no "filename" is encountered on the first PRINT ON statement while executing interactively, IMP prompts the user for a "filename". If executing in background mode, the default "filename" of "prt.dat" is used. 
+# After a previous PRINT ON statement has been interrupted by a PRINT OFF statement, printing can be continued again by another PRINT ON statement without a "filename". If a PRINT ON statement is encountered without a "filename", the "filename" from the previous PRINT ON statement is continued from where it was left. 
+# If a "filename" is given and is distinct from the "filename" of a previous PRINT ON statement, the former file is ended and subsequent information begins on the later named file. If the same "filename" is explicitly named in more than one PRINT ON statement, the later PRINT ON statement causes the same file to be rewound and started again, thus causing previous information to be overwritten and lost. 
+# If the specified "filename" is invalid or cannot be used, the PRINT ON statement is ignored and a message is printed. 
 ==The PRINT OFF Statement==
 The PRINT OFF Statement requests discontinuation of a previous PRINT ON statement. 
 ===Format:===
@@ -234,7 +234,7 @@ PRINT OFF
 ===Notes:===
 
 # If a previous PRINT ON statement has been issued and is still active, all printed information is being written in a file. The PRINT OFF statement discontinues writing in this file. 
-# The PRINT OFF statement discontinues printing in the file, but does not cause the &quot;filename&quot; to be forgotten or closed. Therefore, if a subsequent PRINT ON statement is issued without a &quot;filename&quot;, printing continues at the current end of the file and no information is overwritten. If a subsequent PRINT ON statement is issued containing the same &quot;filename&quot;, the file is rewound and previous information is overwritten and lost. If a subsequent PRINT ON statement contains a new &quot;filename&quot;, the previous file is closed and the new information is printed on the later named file. 
+# The PRINT OFF statement discontinues printing in the file, but does not cause the "filename" to be forgotten or closed. Therefore, if a subsequent PRINT ON statement is issued without a "filename", printing continues at the current end of the file and no information is overwritten. If a subsequent PRINT ON statement is issued containing the same "filename", the file is rewound and previous information is overwritten and lost. If a subsequent PRINT ON statement contains a new "filename", the previous file is closed and the new information is printed on the later named file. 
 ==The PAUSE ON Statement==
 The PAUSE ON statement requests that, during subsequent simulations, IMP pause at the completion of each time increment, each tabular listing, each graph (plot), and each schematic figure drawn to allow the user time to study the results before continuing. 
 ===Format:===
@@ -282,71 +282,71 @@ ERASE OFF
 ==The IDENTIFY Statement==
 The IDENTIFY statement requests that IMP print (immediately) the names of all entities of a given type which currently exist in the system model. 
 ===Format:===
-IDENTIFY type, type, ... where each &quot;type&quot; is one of the following keywords: VALUES LINKS CONTACTS JOINTS AXES POINTS SPRINGS DAMPERS FORCES TORQUES INPUTS IC ALL LOOPS ZEROES 
+IDENTIFY type, type, ... where each "type" is one of the following keywords: VALUES LINKS CONTACTS JOINTS AXES POINTS SPRINGS DAMPERS FORCES TORQUES INPUTS IC ALL LOOPS ZEROES 
 ===Example:===
 IDENTIFY: JOINTS, INPUTS, LOOPS, ZEROES requests an immediate listing of the names of all joints, all SGS's, the links and joints which form the kinematic loops, and the current settings for all IMP tolerances. 
 ===Notes:===
 
 # The primary use of the IDENTIFY statement is to refresh the user's memory of the current state of the system model. It is intended for interactive use, and is of little help in background execution. 
-# Each &quot;type&quot; must be one of the keywords listed above. If not, the unknown &quot;type&quot; is ignored. 
-# Each &quot;type&quot; must be separated from others by a valid separator, usually a space or a comma. 
-# No more than 35 &quot;types&quot; may be specified in a single IDENTIFY statement. 
+# Each "type" must be one of the keywords listed above. If not, the unknown "type" is ignored. 
+# Each "type" must be separated from others by a valid separator, usually a space or a comma. 
+# No more than 35 "types" may be specified in a single IDENTIFY statement. 
 # Since IMP only recognizes keyword distinctions up to four characters, it is noted that either the singular or the plural forms may be used for all of the above keywords except AXES, IC, or ALL. 
-# If &quot;type&quot; is one of the keywords: VALUES, LINKS, CONTACTS, JOINTS, AXES, POINTS, SPRINGS, DAMPERS, FORCES, TORQUES, INPUTS, or IC, then the names of all currently defined entities of that type are listed. 
-# If &quot;type&quot; is the keyword LINKS then the names of all links are listed. The names of all SOLIDS attached to each of those links are listed as well. 
-# If &quot;type&quot; is the keyword INPUT then the names of all joints with currently active DATA POSITION or DATA MOTION specifications, i.e., all SGCs, are listed. 
-# If &quot;type&quot; is the keyword ZEROES, then the current settings of all IMP tolerances (ZERO statements) are listed. 1
-# If &quot;type&quot; ALL is requested, then the names of all VALUES, LINKS, CONTACTS, JOINTS, AXES, POINTS, SPRINGS, DAMPERS, FORCES, TORQUES, INPUTS, and IC's are listed. LOOPS and ZEROES are not listed, however, unless requested specifically. 
+# If "type" is one of the keywords: VALUES, LINKS, CONTACTS, JOINTS, AXES, POINTS, SPRINGS, DAMPERS, FORCES, TORQUES, INPUTS, or IC, then the names of all currently defined entities of that type are listed. 
+# If "type" is the keyword LINKS then the names of all links are listed. The names of all SOLIDS attached to each of those links are listed as well. 
+# If "type" is the keyword INPUT then the names of all joints with currently active DATA POSITION or DATA MOTION specifications, i.e., all SGCs, are listed. 
+# If "type" is the keyword ZEROES, then the current settings of all IMP tolerances (ZERO statements) are listed. 1
+# If "type" ALL is requested, then the names of all VALUES, LINKS, CONTACTS, JOINTS, AXES, POINTS, SPRINGS, DAMPERS, FORCES, TORQUES, INPUTS, and IC's are listed. LOOPS and ZEROES are not listed, however, unless requested specifically. 
 ==The ZERO (DATA) Statement==
 The ZERO (DATA) statement defines the tolerance used in checking for discrepancies in numerical input data. 
 ===Format:===
-ZERO (DATA) = value where &quot;value&quot; is the numeric value of the tolerance used in data checking. 
+ZERO (DATA) = value where "value" is the numeric value of the tolerance used in data checking. 
 ===Example:===
 ZERO (DATA) = 0.001 specifies that subsequent input data should be checked for discrepancies of greater than 0.001 degrees or length units. 
 ===Notes:===
 
 # If no ZERO (DATA) statement is given, input data is checked using default tolerances of 0.0001 degrees and 0.0001 length units. 
-# The &quot;value&quot; given replaces both the angular and the distance tolerances. Therefore, &quot;value&quot; has dimensions of both degrees and length units. 
+# The "value" given replaces both the angular and the distance tolerances. Therefore, "value" has dimensions of both degrees and length units. 
 # If more than one ZERO (DATA) statement is given, the later statement takes precedence and earlier data are replaced. 
 # The effect of setting this tolerance too loosely is that diagnostic messages may be missed for data errors which may have been discovered by a stricter tolerance. 
 # The effect of setting this tolerance too tight is that the precision required in input data to avoid diagnostics might be more than that required for adequate simulation. 
 ==The ZERO (POSITION) Statement==
 The ZERO (POSITION) statement defines the tolerance used in checking for geometric position errors, and specifies the maximum number of steps allowed in seeking geometric closure of the system at each position simulated. 
 ===Format:===
-ZERO (POSITION) = value, nsteps where &quot;value&quot; is the numeric value of the tolerance used in checking for geometric position errors, and &quot;nsteps&quot; is a positive integer specifying the maximum number of numerical iterations allowed. 
+ZERO (POSITION) = value, nsteps where "value" is the numeric value of the tolerance used in checking for geometric position errors, and "nsteps" is a positive integer specifying the maximum number of numerical iterations allowed. 
 ===Example:===
 ZERO (POSITION) = 0.0005 specifies that geometric closure be checked at each position simulated using a tolerance of 0.0005 degrees or length units. 
 ===Notes:===
 
 # If no ZERO (POSITION) statement is given, geometric closure is checked against default tolerances of 0.0001 degrees and 0.0001 length units; a maximum of 20 numerical iterations is allowed. 
-# The &quot;value&quot; given replaces both the angular and distance tolerances. Therefore, &quot;value&quot; has dimensions of both degrees and length units; &quot;nsteps&quot;, of course, is dimensionless. 
+# The "value" given replaces both the angular and distance tolerances. Therefore, "value" has dimensions of both degrees and length units; "nsteps", of course, is dimensionless. 
 # If more than one ZERO (POSITION) statement is given, the later statement takes precedence and earlier data are replaced. 
-# As the system is incremented to each new position, IMP performs an iterative assembly procedure to find proper values for each of the joint variables. The iteration procedure converges and is considered finished when all of the joint variable corrections are smaller than &quot;value&quot;. 
-# The effect of setting this tolerance too loosely is that round-off errors may accumulate to large values in calculations such as the evaluation of dynamic forces. As a general rule, &quot;value&quot; should not be larger than 0.001 and a smaller &quot;value&quot; is preferable. 
-# The effect of setting this tolerance too tight is that the computer may not be able to achieve the precision necessary for solution. This results in a message that says &quot;the mechanism can not be assembled in 20 iterations&quot;. If this message occurs (without a message saying that the iteration process diverged) then &quot;value&quot; is too strict for solution to be possible within the precision of the computer for the input data given. 
-# A typical problem converges to very tight tolerances in four or less iterations. No problem has ever been found which requires ten or more iterations to reach a solution. Thus, no reason is seen to ever set &quot;nsteps&quot; to a value above 1
+# As the system is incremented to each new position, IMP performs an iterative assembly procedure to find proper values for each of the joint variables. The iteration procedure converges and is considered finished when all of the joint variable corrections are smaller than "value". 
+# The effect of setting this tolerance too loosely is that round-off errors may accumulate to large values in calculations such as the evaluation of dynamic forces. As a general rule, "value" should not be larger than 0.001 and a smaller "value" is preferable. 
+# The effect of setting this tolerance too tight is that the computer may not be able to achieve the precision necessary for solution. This results in a message that says "the mechanism can not be assembled in 20 iterations". If this message occurs (without a message saying that the iteration process diverged) then "value" is too strict for solution to be possible within the precision of the computer for the input data given. 
+# A typical problem converges to very tight tolerances in four or less iterations. No problem has ever been found which requires ten or more iterations to reach a solution. Thus, no reason is seen to ever set "nsteps" to a value above 1
 # 
-# If &quot;nsteps&quot; is not given, or is zero or negative, then it is ignored and the previous value remains. 
+# If "nsteps" is not given, or is zero or negative, then it is ignored and the previous value remains. 
 ==The ZERO (EQUILIB) Statement==
 The ZERO (EQUILIB) statement defines the tolerance used in determining whether a position of static equilibrium has been achieved within desired accuracy limits, and specifies the maximum number of search steps allowed in seeking equilibrium. 
 ===Format:===
-ZERO (EQUILIB) = value, nsteps where &quot;value&quot; is the numeric value of the tolerance used in checking whether the free generalized coordinate (FGC) positions have achieved a position of static equilibrium for the system, and &quot;nsteps&quot; is a positive integer specifying the maximum number of search steps allowed. 
+ZERO (EQUILIB) = value, nsteps where "value" is the numeric value of the tolerance used in checking whether the free generalized coordinate (FGC) positions have achieved a position of static equilibrium for the system, and "nsteps" is a positive integer specifying the maximum number of search steps allowed. 
 ===Example:===
 ZERO (EQUILIB) = 0.0001, 40 specifies that the equilibrium search has converged when the free generalized coordinate (FGC) position values have been determined within 0.0001 degrees or length units, and that up to 40 search steps are allowed. 
 ===Notes:===
 
 # If no ZERO (EQUILIB) statement is given, the FGC search steps are checked against default tolerances of 0.001 degrees or length units, and 25 search steps are allowed. 
-# The &quot;value&quot; given replaces both the angular and distance tolerances. Therefore, &quot;value&quot; has dimensions of both degrees and length units; &quot;nsteps&quot;, of course, is dimensionless. 
+# The "value" given replaces both the angular and distance tolerances. Therefore, "value" has dimensions of both degrees and length units; "nsteps", of course, is dimensionless. 
 # If more than one ZERO (EQUILIB) statement is given, the later statement takes precedence and earlier data are replaced. 
-# As the FGC position variables are incremented toward equilibrium, the change in each FGC position variable is checked; equilibrium is considered achieved when all FGC position changes are less than &quot;value&quot;. 
-# The effect of setting &quot;value&quot; too loosely is that small unbalanced forces may remain at the FGC variables. As a general rule, this tolerance should be tight enough that &quot;value&quot; multiplied by the largest spring rate in the model yields an acceptably small error in force units. 
-# The effect of setting &quot;value&quot; too strictly is that the equilibrium search may fail to converge in the &quot;nsteps&quot; allowed. As a general rule, &quot;value&quot; should not be set tighter than the tolerance set by the ZERO (POSITION) statement. 
+# As the FGC position variables are incremented toward equilibrium, the change in each FGC position variable is checked; equilibrium is considered achieved when all FGC position changes are less than "value". 
+# The effect of setting "value" too loosely is that small unbalanced forces may remain at the FGC variables. As a general rule, this tolerance should be tight enough that "value" multiplied by the largest spring rate in the model yields an acceptably small error in force units. 
+# The effect of setting "value" too strictly is that the equilibrium search may fail to converge in the "nsteps" allowed. As a general rule, "value" should not be set tighter than the tolerance set by the ZERO (POSITION) statement. 
 # This tolerance has no effect unless a FIND EQUILIB statement is given before the EXECUTE or EXECUTE HOLD statement. 
-# If &quot;nsteps&quot; is not given, or is zero or negative, then it is ignored and the previous value remains. 
+# If "nsteps" is not given, or is zero or negative, then it is ignored and the previous value remains. 
 ==The ZERO (SYSTEM) Statement==
 The ZERO (SYSTEM) statement defines a tolerance used in determining the number of degrees of freedom of the system. 
 ===Format:===
-ZERO (SYSTEM) = value where &quot;value&quot; is a numeric value to be used for the tolerance. 
+ZERO (SYSTEM) = value where "value" is a numeric value to be used for the tolerance. 
 ===Example:===
 ZERO (SYSTEM) = 0.000001 
 ===Notes:===
@@ -358,7 +358,7 @@ ZERO (SYSTEM) = 0.000001
 ==The ZERO (INERTIA) Statement==
 The ZERO (INERTIA) statement defines the tolerance used in determining singularity of the mass (inertia) matrix of the dynamic equations of motion. 
 ===Format:===
-ZERO (INERTIA) = value where &quot;value&quot; is the numeric value of the tolerance used while inverting the mass matrix. 
+ZERO (INERTIA) = value where "value" is the numeric value of the tolerance used while inverting the mass matrix. 
 ===Example:===
 ZERO (INERTIA) = 0.001 
 ===Notes:===
@@ -368,7 +368,7 @@ ZERO (INERTIA) = 0.001
 ==The ZERO (SPRING) Statement==
 The ZERO (SPRING) statement defines the tolerance used in determining singularity of the stiffness matrix of the dynamic equations of motion. 
 ===Format:===
-ZERO (SPRING) = value where &quot;value&quot; is the numeric value of the tolerance used in testing for singularity of the stiffness matrix. 
+ZERO (SPRING) = value where "value" is the numeric value of the tolerance used in testing for singularity of the stiffness matrix. 
 ===Example:===
 ZERO (SPRING) = 0.001 
 ===Notes:===
@@ -379,7 +379,7 @@ ZERO (SPRING) = 0.001
 ==The ZERO (INDETERM) Statement==
 The ZERO (INDETERM) statement defines the tolerance used in determining the static indeterminacy of a constraint force component. 
 ===Format:===
-ZERO (INDETERM) = value where &quot;value&quot; is the numeric value of the tolerance used in testing for static indeterminacy of a component of a constraint force. 
+ZERO (INDETERM) = value where "value" is the numeric value of the tolerance used in testing for static indeterminacy of a component of a constraint force. 
 ===Example:===
 ZERO (SPRING) = 0.001 
 ===Notes:===
@@ -390,7 +390,7 @@ ZERO (SPRING) = 0.001
 ==The ZERO (ZERO) Statement==
 The ZERO (ZERO) statement defines a tolerance which is used for testing whether various quantities are essentially zero in situations where no other specific tolerance has been defined. 
 ===Format:===
-ZERO (ZERO) = value where &quot;value&quot; is the numeric value of the tolerance. 
+ZERO (ZERO) = value where "value" is the numeric value of the tolerance. 
 ===Example:===
 ZERO (ZERO) = 0.00001 
 ===Notes:===
