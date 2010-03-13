@@ -1,0 +1,1345 @@
+
+The definition statements of the previous chapter are used to define the components of the system
+and the relationships between the various components. Before the system can be analyzed, however, it
+is necessary to supply the numeric data appropriate to each of the entities defined. This is the
+purpose of the &lt;tt&gt;DATA&lt;/tt&gt; statements presented in this chapter.
+
+Each of the &lt;tt&gt;DATA&lt;/tt&gt; statements begins with the keyword &lt;tt&gt;DATA&lt;/tt&gt; followed by a separator. The second
+word of each &lt;tt&gt;DATA&lt;/tt&gt; statement is also treated as a keyword, instructing the IMP system to interpret
+the remainder of the statement according to one of the following formats:
+
+
+==The &lt;tt&gt;DATA LINK&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_1.png|thumb|400px|''Figure 4-1:'']]
+The &lt;tt&gt;DATA LINK&lt;/tt&gt; statement specifies the numeric data which locate one of the coordinate systems
+attached to one of the links relative to the absolute (global) frame of reference for the system.
+
+The &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for the various joint types
+(&lt;tt&gt;DATA SPHERE&lt;/tt&gt; statements, etc.), describe the relative locations of the various links and joints
+of the system at the initial (design) position.
+
+The initial location of one local coordinate system, attached to one of the links is defined by each
+&lt;tt&gt;DATA LINK&lt;/tt&gt; statement by specifying the global coordinates of three points (see figure). The first
+point must lie at the origin of the local coordinate system; the second point must be chosen on the
+local positive ''w'' or ''z'' axis; the third point should lie on the positive ''u'' or ''x'' axis
+of the local ''u'',''v'',''w'' coordinate system attached to the joint element or the local
+''x'',''y'',''z'' coordinate system attached to the link.
+
+===Format===
+There are two forms of the &lt;tt&gt;DATA LINK&lt;/tt&gt; statement.
+
+The first form is used to specify the location of one local coordinate system attached to an element
+of a joint. The format is
+
+ DATA LINK(link name,joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;; x&lt;sub&gt;2&lt;/sub&gt;,y&lt;sub&gt;2&lt;/sub&gt;,z&lt;sub&gt;2&lt;/sub&gt;; x&lt;sub&gt;3&lt;/sub&gt;,y&lt;sub&gt;3&lt;/sub&gt;,z&lt;sub&gt;3&lt;/sub&gt;
+
+where ''link name'' and ''joint name'' are the alphanumeric names of the link and joint to which
+this local coordinate system is attached. The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups are numeric
+values for the global coordinates of the three points defining the initial location of a local
+(''u'',''v'',''w'') joint element coordinate system.
+
+The second form is identical to the first except the ''joint name'' is replaced by the keyword
+&lt;tt&gt;LINK&lt;/tt&gt;. This format is:
+
+ DATA LINK (link name, LINK) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;; x&lt;sub&gt;2&lt;/sub&gt;,y&lt;sub&gt;2&lt;/sub&gt;,z&lt;sub&gt;2&lt;/sub&gt;; x&lt;sub&gt;3&lt;/sub&gt;,y&lt;sub&gt;3&lt;/sub&gt;,z&lt;sub&gt;3&lt;/sub&gt;
+
+which indicates that the primary local coordinate system for the ''link name'' is being located.
+
+===Examples===
+ DATA LINK (BAR,PIN) = -1.0,2.5,0.0; -1.0,3.5,0.0; -2.0,2.5,1.0
+
+specifies the location of a joint named ''PIN'' at one end of a link named ''BAR''. The numeric data
+corresponds approximately to the figure.
+
+The above example might also take any of the following forms:
+
+ DATA LINK (BAR, PIN) = -1,2.5,0; -1,3.5,0; -2,2.5,1
+ DATA LINK (BAR, PIN) = -1,2.5, ; -1,3.5, ; -2,2.5,1
+ DATA LINK (BAR, PIN) = PT1; PT2; -2,2.5,1
+
+===Notes===
+# When a ''link name'' is first defined in the system model (whether by a &lt;tt&gt;LINK&lt;/tt&gt; statement or by a joint definition statement) a local coordinate system for the link is formed in the system memory. This link coordinate system is initially located coincident with the global coordinate system, but may be moved to another location by the &lt;tt&gt;LINK&lt;/tt&gt; form of the &lt;tt&gt;DATA LINK&lt;/tt&gt; statement.
+# When a ''joint name'' is first defined by a joint definition statement, two local joint coordinate systems are formed in the system memory, one attached to each of the two ''link names'' joined by the joint. These are initially placed coincident with the local coordinate systems of the two ''link names'', but each may be moved to some other location on the link by the ''joint name'' form of the &lt;tt&gt;DATA LINK&lt;/tt&gt; statement.
+# If the ''joint name'' form is used, both ''link name'' and ''joint name'' must have been used in the same previous statement defining that joint. If not, the &lt;tt&gt;DATA LINK&lt;/tt&gt; statement is ignored and a message is printed.
+# When the ''joint name'' form is used, global coordinate data are given by the user for the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups. However, this is converted in memory to a (''u'',''v'',''w'') or (&lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt;) location for that ''joint name'' element with respect to the specified ''link name''. This data is then considered fixed; if the link is moved, the joint elements move in unison with it.
+# When the &lt;tt&gt;LINK&lt;/tt&gt; form is used, the local coordinate system of the link is moved to another location as specified by the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' data. Any data referenced to the link coordinate system (such as the locations of local joint coordinate systems, any points attached to the link, any geometric shape data from a &lt;tt&gt;SHAPE&lt;/tt&gt; statement, etc.) all move if the local link coordinate system is moved by the &lt;tt&gt;LINK&lt;/tt&gt; form of a &lt;tt&gt;DATA LINK&lt;/tt&gt; statement.
+# If more than one &lt;tt&gt;DATA LINK&lt;/tt&gt; statement is given for the same ''link name'', the later statement takes precedence and earlier data are replaced. No message is printed.
+# Notice that notes 1) through 6) above make the order in which related &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are given very important; related &lt;tt&gt;DATA LINK&lt;/tt&gt; statements might not produce the same result if given in different orders.
+# The dimensions for all ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA LINK&lt;/tt&gt; statement are length units measured in the global coordinate system.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups of numeric data must correspond to the rules for the placement of the local joint coordinate systems (refer to the statement defining each particular type of joint). If errors are detected, the corresponding &lt;tt&gt;DATA LINK&lt;/tt&gt; statement is ignored and a message is printed. Certain types of errors may not be detected until an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given; these cause the simulation to be halted and a message to be printed at that time.
+# The three points for which ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are given need not be unit distances apart; the local coordinate axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
+# The angle formed by points ''2'',''1'',''3'' need not be a right angle. IMP uses the first point to locate the local origin and uses the second point to define the direction of the local w or z axis; the local ''u'' or ''x'' axis is then taken in the half-plane defined by the local ''w'' or ''z'' axis and the third point. Any necessary adjustments are made to the third point to produce a local coordinate system with exact right angles.
+# If the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are not given for the third point, the coordinates of the global origin are used. This may be a convenient shortcut if the user is not concerned about the particular placement of the local u or x axis. In view of notes 11) and 12) above, this does not produce an error unless the local w or z axis passes through the global origin.
+# Any of the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see above example).
+
+
+==The &lt;tt&gt;DATA RIGID&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_2.png|thumb|400px|''Figure 4-2:'']]
+The &lt;tt&gt;DATA RIGID&lt;/tt&gt; statement simultaneously specifies the numeric data which locate the two local
+coordinate systems attached to the two links on either side of a &lt;tt&gt;RIGID&lt;/tt&gt; joint relative to the
+absolute (global) frame of reference for the system.
+
+The &lt;tt&gt;DATA RIGID&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints and
+the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, describe the relative locations of the various links and joints of the
+system at the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a
+&lt;tt&gt;RIGID&lt;/tt&gt; statement are coincident and are both defined by a single &lt;tt&gt;DATA RIGID&lt;/tt&gt; statement by
+specifying the global coordinates of three points (see figure). The first point defines the common
+origins of the two local coordinate systems. The second point lies on the common local ''w'' and
+&lt;i&gt;w&lt;/i&gt; axes and the third point lies on the common local ''u'' and &lt;i&gt;u&lt;/i&gt; axes of the coordinate
+systems attached to the two links joined.
+
+===Format===
+ DATA RIGID (joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;; x&lt;sub&gt;2&lt;/sub&gt;,y&lt;sub&gt;2&lt;/sub&gt;,z&lt;sub&gt;2&lt;/sub&gt;; x&lt;sub&gt;3&lt;/sub&gt;,y&lt;sub&gt;3&lt;/sub&gt;,z&lt;sub&gt;3&lt;/sub&gt;
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;RIGID&lt;/tt&gt; joint connecting the two links to which
+the local coordinate systems are attached. The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups are numeric
+values for the global coordinates of the three points defining the initial locations of the two
+local coordinate systems.
+
+===Example===
+ DATA RIGID (WELD) = -1.0,2.5,0.0; -1.0,3.5,0.0; -2.0,2.5,1.0
+
+specifies the initial locations of the two coincident local coordinate systems attached to the two
+links connected by a &lt;tt&gt;RIGID&lt;/tt&gt; joint named ''WELD''. The above example might also take any of the
+following forms:
+
+ DATA RIGID (WELD) = -1,2.5,0; -1,3.5,0; -2,2.5,1
+ DATA RIGID (WELD) = -1,2.5, ; -1,3.5, ; -2,2.5,1
+ DATA RIGID (WELD) = PT1; PT2; -2,2.5,1
+ DATA RIGID (WELD) = PT1; PT2
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;RIGID&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA RIGID&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA RIGID&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by a &lt;tt&gt;RIGID&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA RIGID&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence and earlier data are replaced.
+# The dimensions for all ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA RIGID&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data must define two coincident local coordinate systems (see &lt;tt&gt;RIGID&lt;/tt&gt; statement).
+# The three points for which ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are given need not be unit distances apart; the local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
+# The angle formed by points ''2'',''1'',''3'' need not be a right angle. IMP uses the first and second point to locate the common local origins and the common local ''w'' and &lt;i&gt;w&lt;/i&gt; axes; the common local ''u'' and &lt;i&gt;u&lt;/i&gt; axes are then formed in the half-plane defined by the common local ''w'' and &lt;i&gt;w&lt;/i&gt; axes and the third point. A right angle is formed for the common local ''u'' and &lt;i&gt;u&lt;/i&gt; axes in this half-plane even though this direction may not pass through the third point given.
+# If the ''x&lt;sub&gt;3&lt;/sub&gt;'',''y&lt;sub&gt;3&lt;/sub&gt;'',''z&lt;sub&gt;3&lt;/sub&gt;'' data are not given for the third point, the coordinates of the global origin are used. This may be a convenient shortcut if the user is not concerned with the ''u'',&lt;i&gt;u&lt;/i&gt; axis placement (see final example above). In view of note 8) above, this does not produce an error unless the common local ''w'',&lt;i&gt;w&lt;/i&gt; axes pass through the global origin.
+# Any of the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see above examples).
+
+
+==The &lt;tt&gt;DATA XPIN&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_3.png|thumb|400px|''Figure 4-3:'']]
+The &lt;tt&gt;DATA XPIN&lt;/tt&gt; statement specifies the numeric data which simultaneously locate the two local
+coordinate systems attached to the two links on either side of an &lt;tt&gt;XPIN&lt;/tt&gt; joint relative to the
+absolute (global) frame of reference for the system. The pin axis is initially aligned parallel to
+the global X axis.
+
+The &lt;tt&gt;DATA XPIN&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints and
+the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, describe the relative locations of the various links of the system at
+the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by an
+&lt;tt&gt;XPIN&lt;/tt&gt; statement are both defined by a single &lt;tt&gt;DATA XPIN&lt;/tt&gt; statement by specifying the global
+coordinates of three points (see figure). The first point must lie at the common origins of the two
+local coordinate systems. The second and third points are optional but, if given, should lie on the
+local positive ''v'' and &lt;i&gt;v&lt;/i&gt; axes of the coordinate systems attached to the first and second
+links named in the &lt;tt&gt;XPIN&lt;/tt&gt; statement, respectively.
+
+===Format===
+ DATA XPIN (joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;; x&lt;sub&gt;2&lt;/sub&gt;,y&lt;sub&gt;2&lt;/sub&gt;,z&lt;sub&gt;2&lt;/sub&gt;; x&lt;sub&gt;3&lt;/sub&gt;,y&lt;sub&gt;3&lt;/sub&gt;,z&lt;sub&gt;3&lt;/sub&gt;
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;XPIN&lt;/tt&gt; joint connecting the two links to which
+the local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; coordinate systems are attached. The
+''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups are numeric values for the global coordinates of the three
+points defining the initial locations of the two local coordinate systems.
+
+===Examples===
+ DATA XPIN (PIN) = -2.0,2.5,0.0; -2.0,3.5,0.0; -2.0,2.5,1.0
+
+specifies the initial locations of the local coordinate systems attached to the two links on either
+side of an &lt;tt&gt;XPIN&lt;/tt&gt; joint named ''PIN''. The numeric data corresponds approximately to the figure. The
+above example might also take any of the following forms:
+
+ DATA XPIN (PIN) = -2,2.5,0; -2,3.5,0; -2,2.5,1
+ DATA XPIN (PIN) = -2,2.5, ; -2,3.5, ; -2,2.5,1
+ DATA XPIN (PIN) = PT1; -2,3.5,0; -2,2.5,1
+ DATA XPIN (PIN) = PT1
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;XPIN&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA XPIN&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA XPIN&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by an &lt;tt&gt;XPIN&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA XPIN&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence and earlier data are replaced.
+# The dimensions for all ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA XPIN&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data must conform to the rules for the placement of the local coordinate systems for an &lt;tt&gt;XPIN&lt;/tt&gt; joint (see &lt;tt&gt;XPIN&lt;/tt&gt; statement). If errors are detected, the &lt;tt&gt;DATA XPIN&lt;/tt&gt; statement is ignored and a message is printed. Certain types of errors may not be detected until an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given; these cause the simulation to be halted and a message to be printed at that time.
+# The three points for which ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are given need not be unit distances apart; the local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however (except, perhaps, for the second and third points); larger distances achieve more accurate placement of axes.
+# The angles formed by points ''2'',''1'',''3'' need not lie in a plane perpendicular to the global X axis. IMP uses the first point to locate the common local origins and the common local ''u'',&lt;i&gt;u&lt;/i&gt; axes; the local ''v'' and &lt;i&gt;v&lt;/i&gt; axes are then taken in the half-planes defined by the common local ''u'',&lt;i&gt;u&lt;/i&gt; axes and the second and third points, respectively. Right angles are formed for the local ''v'' and &lt;i&gt;v&lt;/i&gt; axes in these half-planes even though they may not pass precisely through the second and third points, respectively.
+# If the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are not given for the second and/or third points, the local coordinate systems are placed parallel to those of the global system. This may be a convenient shortcut (see final example above), if the user is not concerned about the particular placement of the two local ''v'' and/or &lt;i&gt;v&lt;/i&gt; axes.
+# Any of the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see above examples).
+
+
+==The &lt;tt&gt;DATA YPIN&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_4.png|thumb|400px|''Figure 4-4:'']]
+The &lt;tt&gt;DATA YPIN&lt;/tt&gt; statement specifies the numeric data which simultaneously locate the two local
+''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; coordinate systems attached to the two links on either
+side of a &lt;tt&gt;YPIN&lt;/tt&gt; joint relative to the absolute (global) frame of reference for the system. The pin
+axis is initially aligned parallel to the global Y axis.
+
+The &lt;tt&gt;DATA YPIN&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints and
+the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, describe the relative locations of the various links of the system at
+the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a
+&lt;tt&gt;YPIN&lt;/tt&gt; statement are both defined by a single &lt;tt&gt;DATA YPIN&lt;/tt&gt; statement by specifying the global
+coordinates of three points (see figure). The first point must lie at the common origins of the two
+local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; coordinate systems. The second and third points are
+optional but, if given, must lie on the local positive ''w'' and &lt;i&gt;w&lt;/i&gt; axes of the coordinate
+systems attached to the first and second links named in the &lt;tt&gt;YPIN&lt;/tt&gt; statement, respectively.
+
+===Format===
+ DATA YPIN (joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;; x&lt;sub&gt;2&lt;/sub&gt;,y&lt;sub&gt;2&lt;/sub&gt;,z&lt;sub&gt;2&lt;/sub&gt;; x&lt;sub&gt;3&lt;/sub&gt;,y&lt;sub&gt;3&lt;/sub&gt;,z&lt;sub&gt;3&lt;/sub&gt;
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;YPIN&lt;/tt&gt; joint connecting the two links to which
+the local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; coordinate systems are attached. The
+''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups are numeric values for the global coordinates of the three
+points defining the initial locations of the two local coordinate systems.
+
+===Examples===
+ DATA YPIN (PIN) = -2.0,2.5,0.0; 0.0,2.5,0.5; -3.0,2.5,1.0
+
+specifies the initial locations of the local coordinate systems attached to the two links on either
+side of a &lt;tt&gt;YPIN&lt;/tt&gt; joint named PIN. The numeric data corresponds approximately to the figure. The
+above example might also take any of the following forms:
+
+ DATA YPIN (PIN) = -2,2.5,0; 0,2.5,.5; -3,2.5,1
+ DATA YPIN (PIN) = -2,2.5, ; ,2.5,.5; -3,2.5,1
+ DATA YPIN (PIN) = PT1; ,2.5,.5; -3,2.5,1
+ DATA YPIN (PIN) = PT1
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;YPIN&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA YPIN&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA YPIN&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by a &lt;tt&gt;YPIN&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA YPIN&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence and earlier data are replaced.
+# The dimensions for all ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA YPIN&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data must conform to the rules for the placement of the local coordinate systems for a &lt;tt&gt;YPIN&lt;/tt&gt; joint (see &lt;tt&gt;YPIN&lt;/tt&gt; statement). If errors are detected, the &lt;tt&gt;DATA YPIN&lt;/tt&gt; statement is ignored and a message is printed. Certain types of errors may not be detected until an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given; these cause the simulation to be halted and a message to be printed at that time.
+# The three points for which ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are given need not be unit distances apart; the local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however (except, perhaps, for the second and third points); larger distances achieve more accurate placement of axes.
+# The angles formed by points ''2'',''1'',''3'' need not lie in a plane perpendicular to the global Y axis. IMP uses the first point to locate the common local origins and the common local ''v'',&lt;i&gt;v&lt;/i&gt; axes; the local ''w'' and &lt;i&gt;w&lt;/i&gt; axes are then taken in the half-planes defined by the common local ''v'',&lt;i&gt;v&lt;/i&gt; axes and the second and third points, respectively. Right angles are formed for the local ''w'' and &lt;i&gt;w&lt;/i&gt; axes in these half-planes even though they may not pass precisely through the second and third points, respectively.
+# If the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are not given for the second and/or third points, the local coordinate systems are placed parallel to those of the global system. This may be a convenient shortcut (see final example above), if the user is not concerned about the particular placement of the local ''w'' and &lt;i&gt;w&lt;/i&gt; axes.
+# Any of the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see above examples).
+
+==The &lt;tt&gt;DATA ZPIN&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_5.png|thumb|400px|''Figure 4-5:'']]
+The &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement specifies the numeric data which simultaneously locate the two local
+coordinate systems attached to the two links on either side of a &lt;tt&gt;ZPIN&lt;/tt&gt; joint relative to the
+absolute (global) frame of reference for the system. The pin axis is initially aligned parallel to
+the global Z axis.
+
+The &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints and
+the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, describe the relative locations of the various links of the system at
+the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a
+&lt;tt&gt;ZPIN&lt;/tt&gt; statement are both defined by a single &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement by specifying the global
+coordinates of three points (see figure). The first point must lie at the common origins of the two
+local coordinate systems. The second and third points must lie on the local positive ''u'' and
+&lt;i&gt;u&lt;/i&gt; axes of the coordinate systems attached to the first and second links named in the &lt;tt&gt;ZPIN&lt;/tt&gt;
+statement.
+
+===Format===
+ DATA ZPIN (joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;; x&lt;sub&gt;2&lt;/sub&gt;,y&lt;sub&gt;2&lt;/sub&gt;,z&lt;sub&gt;2&lt;/sub&gt;; x&lt;sub&gt;3&lt;/sub&gt;,y&lt;sub&gt;3&lt;/sub&gt;,z&lt;sub&gt;3&lt;/sub&gt;
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;ZPIN&lt;/tt&gt; joint connecting the two links to which
+the local coordinate systems are attached. The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups are numeric
+values for the global coordinates of the three points defining the initial locations of the two
+local coordinate systems.
+
+===Examples===
+ DATA ZPIN (PIN) = -2.0,2.5,0.0; -2.0,3.5,0.0; 0.0,2.5,0.5
+
+specifies the initial locations of the local coordinate systems attached to the two links on either
+side of a &lt;tt&gt;ZPIN&lt;/tt&gt; joint named PIN. The numeric data corresponds approximately to the figure. The
+above example might also take any of the following forms:
+
+ DATA ZPIN (PIN) = -2,2.5,0; -2,3.5,0; 0,2.5,.5
+ DATA ZPIN (PIN) = -2,2.5, ; -2,3.5, ; ,2.5,.5
+ DATA ZPIN (PIN) = PT1; PT2; 0,2.5,.5
+ DATA ZPIN (PIN) = PT1
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;ZPIN&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by a &lt;tt&gt;ZPIN&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence and earlier data are replaced.
+# The dimensions for all ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data must conform to the rules for the placement of the local coordinate systems for a &lt;tt&gt;ZPIN&lt;/tt&gt; joint (see &lt;tt&gt;ZPIN&lt;/tt&gt; statement). If errors are detected, the &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement is ignored and a message is printed. Certain types of errors may not be detected until an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given; these cause the simulation to be halted and a message to be printed at that time.
+# The three points for which ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are given need not be unit distances apart; the local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however (except, perhaps, for the second and third points); larger distances achieve more accurate placement of axes.
+# The angles formed by points ''2'',''1'',''3'' need not lie in a plane perpendicular to the global ''Z'' axis. IMP uses the first point to locate the common local origins and the common local ''w'',&lt;i&gt;w&lt;/i&gt; axes; the local ''u'' and &lt;i&gt;u&lt;/i&gt; axes are then taken in the half-planes defined by the common local ''w'',&lt;i&gt;w&lt;/i&gt; axes and the second and third points, respectively. Right angles are formed for the local ''u'' and &lt;i&gt;u&lt;/i&gt; axes in these half-planes even though they may not pass precisely through the second and third points, respectively.
+# If the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are not given for the second and/or third points, the local coordinate systems are placed parallel to those of the global system. This may be a convenient shortcut (see final example above), if the user is not concerned about the particular placement of the two local ''u'' and &lt;i&gt;u&lt;/i&gt; axes.
+# Any of the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see above examples).
+
+==The &lt;tt&gt;DATA REVOLUTE&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_6.png|thumb|400px|''Figure 4-6:'']]
+The &lt;tt&gt;DATA REVOLUTE&lt;/tt&gt; statement specifies the numeric data which simultaneously locate the two local
+coordinate systems attached to the two links on either side of a &lt;tt&gt;REVOLUTE&lt;/tt&gt; joint relative to the
+absolute (global) frame of reference for the system.
+
+The &lt;tt&gt;DATA REVOLUTE&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints
+and the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, describe the relative locations of the various links of the system
+at the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a
+&lt;tt&gt;REVOLUTE&lt;/tt&gt; statement are both defined by a single &lt;tt&gt;DATA REVOLUTE&lt;/tt&gt; statement by specifying the global
+coordinates of four points (see figure). The first point must lie at the common origins of the two
+local coordinate systems and the second point must lie on the common local positive ''w'',&lt;i&gt;w&lt;/i&gt;
+axes. The third and fourth points must lie on the local positive ''u'' and &lt;i&gt;u&lt;/i&gt; axes of the
+coordinate systems attached to the first and second links named in the &lt;tt&gt;REVOLUTE&lt;/tt&gt; statement,
+respectively.
+
+===Format===
+ DATA REVOLUTE (joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;; x&lt;sub&gt;2&lt;/sub&gt;,y&lt;sub&gt;2&lt;/sub&gt;,z&lt;sub&gt;2&lt;/sub&gt;; x&lt;sub&gt;3&lt;/sub&gt;,y&lt;sub&gt;3&lt;/sub&gt;,z&lt;sub&gt;3&lt;/sub&gt;; x&lt;sub&gt;4&lt;/sub&gt;,y&lt;sub&gt;4&lt;/sub&gt;,z&lt;sub&gt;4&lt;/sub&gt;
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;REVOLUTE&lt;/tt&gt; joint connecting the two links to
+which the local coordinate systems are attached. The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups are
+numeric values for the global coordinates of the four points defining the initial locations of the
+two local coordinate systems.
+
+===Examples===
+ DATA REVOLUTE (PIN) = -2.0,2.5,0.0; -2.0,3.5,0.0; $
+   0.0,2.5,0.5; -3.0,2.5,1.0
+
+specifies the initial locations of the local coordinate systems attached to the two links on either
+side of a &lt;tt&gt;REVOLUTE&lt;/tt&gt; joint named PIN. The numeric data corresponds approximately to the figure. The
+above example might also take any of the following forms:
+
+ DATA REVOLUTE (PIN) = -2,2.5,0; -2,3.5,0; 0,2.5,.5; -3,2.5,1
+ DATA REVOLUTE (PIN) = -2,2.5, ; -2,3.5, ; ,2.5,.5; -3,2.5,1
+ DATA REVOLUTE (PIN) = PT1; PT2; 0,2.5,.5; -3,2.5,1
+ DATA REVOLUTE (PIN) = PT1; PT2
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;REVOLUTE&lt;/tt&gt; statement. If not the &lt;tt&gt;DATA REVOLUTE&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA REVOLUTE&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by a &lt;tt&gt;REVOLUTE&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA REVOLUTE&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence and earlier data are replaced.
+# The dimensions for all ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA REVOLUTE&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data must conform to the rules for the placement of the local coordinate systems for a revolute joint (see &lt;tt&gt;REVOLUTE&lt;/tt&gt; statement). If errors are detected, the &lt;tt&gt;DATA REVOLUTE&lt;/tt&gt; statement is ignored and a message is printed. Certain types of errors may not be detected until an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given; these cause the simulation to be halted and a message to be printed at that time.
+# The four points for which ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are given need not be unit distances apart; the local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however (except, perhaps, for the third and fourth points); larger distances achieve more accurate placement of axes.
+# The angles formed by points ''2'',''1'',''3'' and by points ''2'',''1'',''4'' need not be right angles. IMP uses the first and second points to locate the common local origins and the common local ''w'',&lt;i&gt;w&lt;/i&gt; axes; the local ''u'' and &lt;i&gt;u&lt;/i&gt; axes are then taken in the half-planes defined by the common local ''w'',&lt;i&gt;w&lt;/i&gt; axes and the third and fourth points, respectively. Right angles are formed for the local ''u'' and &lt;i&gt;u&lt;/i&gt; axes in these half-planes even though they may not pass through the third and fourth points, respectively.
+# If the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are not given for the third and/or fourth points, the coordinates of the global origin are used. In view of note 8) above, this does not produce an error unless the pin axis passes through the global origin. This may be a convenient shortcut (see final example above), if the user is not concerned about the particular placement of the local ''u'' and &lt;i&gt;u&lt;/i&gt; axes.
+# Any of the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see above examples).
+
+==The &lt;tt&gt;DATA XSLIDE&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_7.png|thumb|400px|''Figure 4-7:'']]
+The &lt;tt&gt;DATA XSLIDE&lt;/tt&gt; statement specifies the numeric data which simultaneously locates the two local
+coordinate systems attached to the two links on either side of an &lt;tt&gt;XSLIDE&lt;/tt&gt; joint relative to the
+absolute (global) frame of reference for the system. The sliding axis is initially aligned parallel
+to the global X axis.
+
+The &lt;tt&gt;DATA XSLIDE&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints
+and the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, describe the relative locations of the various links of the system
+at the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by an
+&lt;tt&gt;XSLIDE&lt;/tt&gt; statement are coincident and are both defined by a single &lt;tt&gt;DATA XSLIDE&lt;/tt&gt; statement by
+specifying the global coordinates of one point (see figure). The point defines the common origins of
+the two local coordinate systems. The local coordinate axes attached to the two links are set
+parallel to the global axes.
+
+===Format===
+ DATA XSLIDE (joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;XSLIDE&lt;/tt&gt; joint connecting the two links to
+which the local coordinate systems are attached. The ''x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;'' are numeric values for
+the global coordinates of the point defining the initial location of the origin of the two local
+coordinate systems.
+
+===Examples===
+ DATA XSLIDE (SLIP) = -1.0,1.0,1.0
+
+specifies the initial locations of the coordinate systems attached to the two links on either side
+of a &lt;tt&gt;XSLIDE&lt;/tt&gt; joint named &lt;tt&gt;SLIP&lt;/tt&gt;. The numeric data corresponds approximately to the figure.
+
+The above example might also take any of the following forms:
+
+ DATA XSLIDE (SLIP) = -1,1,0
+ DATA XSLIDE (SLIP) = -1,1
+ DATA XSLIDE (SLIP) = PT1
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;XSLIDE&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA XSLIDE&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA XSLIDE&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by an &lt;tt&gt;XSLIDE&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA XSLIDE&lt;/tt&gt; statement is given for the same ''joint name'' the later statement takes precedence and earlier data are replaced.
+# The dimensions for the ''x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA XSLIDE&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;'' group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see last example above).
+
+==The &lt;tt&gt;DATA YSLIDE&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_8.png|thumb|400px|''Figure 4-8:'']]
+The &lt;tt&gt;DATA YSLIDE&lt;/tt&gt; statement specifies the numeric data which simultaneously locates the two local
+coordinate systems attached to the two links on either side of a &lt;tt&gt;YSLIDE&lt;/tt&gt; joint relative to the
+absolute (global) frame of reference for the system. The sliding axis is initially aligned parallel
+to the global Y axis.
+
+The &lt;tt&gt;DATA YSLIDE&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints
+and the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, describe the relative locations of the various links of the system
+at the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a
+&lt;tt&gt;YSLIDE&lt;/tt&gt; statement are coincident and are both defined by a single &lt;tt&gt;DATA YSLIDE&lt;/tt&gt; statement by
+specifying the global coordinates of one point (see figure). The point defines the common origins of
+the two local coordinate systems. The local coordinate axes attached to the two links are set
+parallel to the global axes.
+
+===Format===
+ DATA YSLIDE (joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;YSLIDE&lt;/tt&gt; joint connecting the two links to
+which the local coordinate systems are attached. The ''x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;'' are numeric values for
+the global coordinates of the point defining the initial location of the origin of the two local
+coordinate systems.
+
+===Examples===
+ DATA YSLIDE (SLIP) = -1.0,1.0,1.0
+
+specifies the initial locations of the coordinate systems attached to the two links on either side
+of a &lt;tt&gt;YSLIDE&lt;/tt&gt; joint named &lt;tt&gt;SLIP&lt;/tt&gt;. The numeric data corresponds approximately to the figure.
+
+The above example might also take any of the following forms:
+
+ DATA YSLIDE (SLIP) = -1,1,0
+ DATA YSLIDE (SLIP) = -1,1
+ DATA YSLIDE (SLIP) = PT1
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;YSLIDE&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA YSLIDE&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA YSLIDE&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by a &lt;tt&gt;YSLIDE&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA YSLIDE&lt;/tt&gt; statement is given for the same ''joint name'' the later statement takes precedence and earlier data are replaced.
+# The dimensions for the ''x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA YSLIDE&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;'' group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see last example above).
+
+==The &lt;tt&gt;DATA ZSLIDE&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_9.png|thumb|400px|''Figure 4-9:'']]
+The &lt;tt&gt;DATA ZSLIDE&lt;/tt&gt; statement specifies the numeric data which simultaneously locates the two local
+coordinate systems attached to the two links on either side of a &lt;tt&gt;ZSLIDE&lt;/tt&gt; joint relative to the
+absolute (global) frame of reference for the system. The sliding axis is aligned parallel to the
+global Z axis.
+
+The &lt;tt&gt;DATA ZSLIDE&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints
+and the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, describe the relative locations of the various links of the system
+at the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a
+&lt;tt&gt;ZSLIDE&lt;/tt&gt; statement are coincident and are both defined by a single &lt;tt&gt;DATA ZSLIDE&lt;/tt&gt; statement by
+specifying the global coordinates of one point (see figure). The point defines the common origins of
+the two local coordinate systems. The local coordinate axes attached to the two links are set
+parallel to the global axes.
+
+===Format===
+ DATA ZSLIDE (joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;ZSLIDE&lt;/tt&gt; joint connecting the two links to
+which the local coordinate systems are attached. The ''x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;'' are numeric values for
+the global coordinates of the point defining the initial location of the origin of the two local
+coordinate systems.
+
+===Examples===
+ DATA ZSLIDE (SLIP) = -1.0,1.0,1.0
+
+specifies the initial locations of the coordinate systems attached to the two links on either side
+of a &lt;tt&gt;ZSLIDE&lt;/tt&gt; joint named &lt;tt&gt;SLIP&lt;/tt&gt;. The numeric data corresponds approximately to the figure.
+
+The above example might also take any of the following forms:
+ DATA ZSLIDE (SLIP) = -1,1,0
+ DATA ZSLIDE (SLIP) = -1,1
+ DATA ZSLIDE (SLIP) = PT1
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;ZSLIDE&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA ZSLIDE&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA ZSLIDE&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by a &lt;tt&gt;ZSLIDE&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA ZSLIDE&lt;/tt&gt; statement is given for the same ''joint name'' the later statement takes precedence and earlier data are replaced.
+# The dimensions for the ''x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA ZSLIDE&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;'' group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has been previously given (see last example above).
+
+==The &lt;tt&gt;DATA PRISM&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_10.png|thumb|400px|''Figure 4-10:'']]
+The &lt;tt&gt;DATA PRISM&lt;/tt&gt; statement specifies the numeric data which simultaneously locates the two local
+coordinate systems attached to the two links on either side of a prismatic joint relative to the
+absolute (global) frame of reference for the system.
+
+The &lt;tt&gt;DATA PRISM&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints and
+the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, describe the relative locations of the various links of the system at
+the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a
+&lt;tt&gt;PRISM&lt;/tt&gt; statement are coincident and are both defined by a single &lt;tt&gt;DATA PRISM&lt;/tt&gt; statement by
+specifying the global coordinates of three points (see figure). The first point defines the common
+origins of the two local coordinate systems. The second point must be located on the common local
+positive ''w'',&lt;i&gt;w&lt;/i&gt; axes. The third point must lie in the half-plane defined by the common local
+''w'',&lt;i&gt;w&lt;/i&gt; axes and the common local positive ''u'',&lt;i&gt;u&lt;/i&gt; axes.
+
+===Format===
+ DATA PRISM (joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;; x&lt;sub&gt;2&lt;/sub&gt;,y&lt;sub&gt;2&lt;/sub&gt;,z&lt;sub&gt;2&lt;/sub&gt;; x&lt;sub&gt;3&lt;/sub&gt;,y&lt;sub&gt;3&lt;/sub&gt;,z&lt;sub&gt;3&lt;/sub&gt;
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;PRISM&lt;/tt&gt; joint connecting the two links to which
+the local coordinate systems are attached. The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups are numeric
+values for the global coordinates of the three points defining the initial locations of the two
+local coordinate systems.
+
+===Examples===
+ DATA PRISM (SLIP)= -1.0,1.0,0.0; -1.0,4.0,0.0; 0.0,1.0,-0.5
+
+specifies the initial locations of the coordinate systems attached to the two links on either side
+of a &lt;tt&gt;PRISM&lt;/tt&gt; joint named &lt;tt&gt;SLIP&lt;/tt&gt;. The numeric data correspond approximately to the figure.
+
+The above example might also take any of the following forms:
+ DATA PRISM (SLIP) = -1,1,0; -1,4,0; 0,1,-.5
+ DATA PRISM (SLIP) = -1,1, ; -1,4, ; ,1,-.5
+ DATA PRISM (SLIP) = PT1; PT2; 0,1,-.5
+ DATA PRISM (SLIP) = PT1; PT2
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;PRISM&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA PRISM&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA PRISM&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by a &lt;tt&gt;PRISM&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA PRISM&lt;/tt&gt; statement is given for the same ''joint name'' the later statement takes precedence and earlier data are replaced.
+# The dimensions for all ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA PRISM&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data must conform to the rules for the placement of the local coordinate systems for a &lt;tt&gt;PRISM&lt;/tt&gt; joint (see &lt;tt&gt;PRISM&lt;/tt&gt; statement). If errors are detected, the &lt;tt&gt;DATA PRISM&lt;/tt&gt; statement is ignored and a message is printed. Certain types of errors may not be detected until an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given; these cause the simulation to be halted and a message to be printed at that time.
+# The three points for which ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are given need not be unit distances apart; the local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
+# The angle formed by points ''2'',''1'',''3'' need not be a right angle. IMP uses the first point to locate the common local origins extending vectors from there toward the second point; it forms the common local ''w'',&lt;i&gt;w&lt;/i&gt; axes. The common local positive ''u'',&lt;i&gt;u&lt;/i&gt; axes are taken in the half-plane defined by the common local ''w'',&lt;i&gt;w&lt;/i&gt; axes and the third point; a right angle is then formed for the common local ''u'',&lt;i&gt;u&lt;/i&gt; axes in the half-plane even though they may not pass through the third point.
+# If the ''x&lt;sub&gt;3&lt;/sub&gt;'',''y&lt;sub&gt;3&lt;/sub&gt;'',''z&lt;sub&gt;3&lt;/sub&gt;'' numeric data are not given for the third point, the coordinates of the global origin are used. In view of note 8) above, this does not produce an error unless the common local ''w'',&lt;i&gt;w&lt;/i&gt; axes pass through the global origin. This may be a convenient shortcut (see final example above) if the user is not concerned about the particular placement of the local ''u'' and &lt;i&gt;u&lt;/i&gt; axes.
+# Any of the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see last example above).
+
+==The &lt;tt&gt;DATA GEAR&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA GEAR&lt;/tt&gt; statement specifies the gear ratio and the center to
+center distance for a &lt;tt&gt;GEAR&lt;/tt&gt; joint.
+
+===Format===
+ DATA GEAR (joint name) = ratio, distance
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;GEAR&lt;/tt&gt; joint, ''ratio'' is the numeric value of
+the gear ratio for the joint, and ''distance'' is the numeric value of the center to center distance
+(the sum of the pitch radii) for the two mating &lt;tt&gt;GEAR&lt;/tt&gt; sectors.
+
+===Example===
+ DATA GEAR (SPUR) = 2.625, 6.25
+
+specifies that the gear ratio of a spur gear joint named &lt;tt&gt;SPUR&lt;/tt&gt; is 84:32 = 2.625, and that the sum
+of the pitch radii of the mating gear sectors is 4.526 + 1.724 = 6.25 length units.
+
+===Notes===
+# There must be a &lt;tt&gt;DATA GEAR&lt;/tt&gt; statement for each joint defined by a &lt;tt&gt;GEAR&lt;/tt&gt; statement. If these are not specified before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the simulation is halted and a message is printed.
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;GEAR&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA GEAR&lt;/tt&gt; statement is ignored and a message is printed.
+# Unlike &lt;tt&gt;DATA&lt;/tt&gt; statements describing certain other types of joints (for example, the &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement), the &lt;tt&gt;DATA GEAR&lt;/tt&gt; statement does not specify the locations of the two local coordinate systems for the &lt;tt&gt;GEAR&lt;/tt&gt; joint; two &lt;tt&gt;DATA LINK&lt;/tt&gt; statements must be defined for each ''joint name'' defined by a &lt;tt&gt;GEAR&lt;/tt&gt; statement. If these do not appear before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA GEAR&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# The value of ''ratio'' is dimensionless; the value of ''distance'' has units of length.
+# The value of ''ratio'' is the ratio of the number of teeth (or the pitch diameter) of the first gear named in the &lt;tt&gt;GEAR&lt;/tt&gt; statement to the number of teeth (or pitch diameter) of the second gear named. A positive value of ''ratio'' indicates that both are external gears, while a negative ''ratio'' indicates an internal-external gear combination.
+# A value of zero may not be used for ''ratio'' to represent a gear-rack combination. A zero value for ''ratio'' causes the &lt;tt&gt;DATA GEAR&lt;/tt&gt; statement to be ignored and a message to be printed.
+# The center to center ''distance'' is optional; it need not be specified by the user. If it is not specified before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, it will be calculated from data for the local coordinate systems on either side of the joint at that time.
+# If the center to center ''distance'' is given, it should be consistent with the placement of the two local coordinate systems on either side of the gear joint. If not consistent at the time an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the kinematic shapes of all links will be found first from the locations of the local coordinate systems; the two gear centers will then be set to the specified distance; any discrepancies will be compensated for by movements within the joints of the system when assembly is attempted at the design (initial) position.
+
+==The &lt;tt&gt;DATA BEVEL&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA BEVEL&lt;/tt&gt; statement specifies the gear ratio and the size of the two bevel gears defined by a
+previous &lt;tt&gt;BEVEL&lt;/tt&gt; statement.
+
+===Format===
+ DATA BEVEL (joint name) = ratio, radius
+
+where each ''joint name'' is the alphanumeric name of the &lt;tt&gt;BEVEL&lt;/tt&gt; joint, ''ratio'' is the numeric
+value of the gear ratio for the joint, and ''radius'' is the pitch circle radius of the second link
+named in the &lt;tt&gt;BEVEL&lt;/tt&gt; statement.
+
+===Example===
+ DATA BEVEL (BVL) = 2.625, 2.0
+
+specifies that the gear ratio of a &lt;tt&gt;BEVEL&lt;/tt&gt; joint named &lt;tt&gt;BVL&lt;/tt&gt; is 84/32 = 2.625 and that the back-face
+pitch circle radii of the two bevel gears are 5.25 and 2.0 length units, respectively.
+
+===Notes===
+# There must be a &lt;tt&gt;DATA BEVEL&lt;/tt&gt; statement for each joint defined by a &lt;tt&gt;BEVEL&lt;/tt&gt; statement. If these are not specified before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the simulation is halted and a message is printed.
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;BEVEL&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA BEVEL&lt;/tt&gt; statement is ignored and a message is printed.
+# Unlike &lt;tt&gt;DATA&lt;/tt&gt; statements describing certain other types of joints (for example, the &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement), the &lt;tt&gt;DATA BEVEL&lt;/tt&gt; statement does not specify the locations of the two local coordinate systems for the &lt;tt&gt;BEVEL&lt;/tt&gt; joint; two &lt;tt&gt;DATA LINK&lt;/tt&gt; statements must be defined for each &lt;tt&gt;BEVEL&lt;/tt&gt; joint. If these do not appear before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA BEVEL&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# The value of ''ratio'' is dimensionless; the value of ''radius'' has units of length.
+# The value of ''ratio'' is the ratio of the number of teeth of the first bevel gear named in the &lt;tt&gt;BEVEL&lt;/tt&gt; statement to the number of teeth of the second.
+# The value of ''ratio'' must be a positive number. A zero or negative value for ''ratio'' causes the &lt;tt&gt;DATA BEVEL&lt;/tt&gt; statement to be ignored and a message to be printed.
+# The angle between the two intersecting shafts of a &lt;tt&gt;BEVEL&lt;/tt&gt; joint is always 90 ° . The two local coordinate systems defined by the two &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are assumed to be at consistent distances from the intersection of the two shafts, that is, the u,v and u’,v’ planes are both chosen to go through the point of contact of the respective pitch circles (see figure with &lt;tt&gt;BEVEL&lt;/tt&gt; statement). The ''radius'' specified is the pitch circle radius of the second gear named, measured in the u,v plane. It should equal the distance from the shaft intersection to the u,v plane.
+
+
+==The &lt;tt&gt;DATA RACK&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA RACK&lt;/tt&gt; statement specifies the pinion radius for a &lt;tt&gt;RACK&lt;/tt&gt; joint.
+
+===Format===
+ DATA RACK (joint name) = radius
+
+where each ''joint name'' is the alphanumeric name of the &lt;tt&gt;RACK&lt;/tt&gt; joint and ''radius'' is the pitch
+circle radius of the second link named in the &lt;tt&gt;RACK&lt;/tt&gt; statement.
+
+===Example===
+ DATA RACK (MESH) = 2.5
+specifies that the pitch circle radius of the pinion in a &lt;tt&gt;RACK&lt;/tt&gt; joint named &lt;tt&gt;MESH&lt;/tt&gt; is 2.5 length
+units.
+
+===Notes===
+# There must be a &lt;tt&gt;DATA RACK&lt;/tt&gt; statement for each joint defined by a &lt;tt&gt;RACK&lt;/tt&gt; statement. If these are not specified before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the simulation is halted and a message is printed.
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;RACK&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA RACK&lt;/tt&gt; statement is ignored and a message is printed.
+# Unlike &lt;tt&gt;DATA&lt;/tt&gt; statements describing certain other types of joints (for example, the &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement), the &lt;tt&gt;DATA RACK&lt;/tt&gt; statement does not specify the locations of the two local coordinate systems for the &lt;tt&gt;RACK&lt;/tt&gt; joint; two &lt;tt&gt;DATA LINK&lt;/tt&gt; state- ments must also be defined for each &lt;tt&gt;RACK&lt;/tt&gt; joint. If these do not appear before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local ''u'',''v'',''w'' or &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; coordinate system(s) with missing data is (are) initially placed coincident with the x,y,z link frame of reference.
+# If more than one &lt;tt&gt;DATA RACK&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# The value of ''radius'' has units of length. It should be equal to the perpendicular distance from the local &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; origin to the local u axis (see figure with the &lt;tt&gt;RACK&lt;/tt&gt; statement).
+# The value of ''radius'' may not be zero. If zero is specified for ''radius'', the &lt;tt&gt;DATA RACK&lt;/tt&gt; statement is ignored and a message is printed.
+
+
+==The &lt;tt&gt;DATA SCREW&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA SCREW&lt;/tt&gt; statement specifies the lead of a screw joint.
+
+===Format===
+ DATA SCREW (joint name) = value
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;SCREW&lt;/tt&gt; joint and ''value'' is the numeric
+value of the lead of the &lt;tt&gt;SCREW&lt;/tt&gt; joint thread.
+
+===Example===
+ DATA SCREW (THRD) = -0.750
+
+specifies the lead of a &lt;tt&gt;SCREW&lt;/tt&gt; joint named &lt;tt&gt;THRD&lt;/tt&gt; as 0.750 length units per revolution with a
+left-hand thread.
+
+===Notes===
+# There must be a &lt;tt&gt;DATA SCREW&lt;/tt&gt; statement for each joint defined by a &lt;tt&gt;SCREW&lt;/tt&gt; statement. If these are not specified before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the simulation is halted and a message is printed.
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;SCREW&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA SCREW&lt;/tt&gt; statement is ignored and a message is printed.
+# Unlike &lt;tt&gt;DATA&lt;/tt&gt; statements describing certain other types of joints (for example, the &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement), the &lt;tt&gt;DATA SCREW&lt;/tt&gt; statement does not specify the locations of the two local coordinate systems for the &lt;tt&gt;SCREW&lt;/tt&gt; joint; two &lt;tt&gt;DATA LINK&lt;/tt&gt; statements must also be specified for each ''joint name'' defined by a &lt;tt&gt;SCREW&lt;/tt&gt; statement. If these do not appear before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA SCREW&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# The dimensions of ''value'' are length units of advance of the screw per revolution. A right-hand thread has a positive ''value'' and a left-hand thread has a negative ''value''.
+# The ''value'' of the lead may not be zero. A &lt;tt&gt;REVOLUTE&lt;/tt&gt; statement should be used instead of a &lt;tt&gt;SCREW&lt;/tt&gt; for this case. If zero is specified for ''value'', the &lt;tt&gt;DATA SCREW&lt;/tt&gt; statement is ignored and a message is printed.
+
+
+==The &lt;tt&gt;DATA CAM&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA CAM&lt;/tt&gt; statement specifies the shape of the pitch curve for a &lt;tt&gt;CAM&lt;/tt&gt; joint.
+
+===Format===
+ DATA CAM (joint name) = value name
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;CAM&lt;/tt&gt; joint and ''value name'' is the
+alphanumeric name of a previously defined &lt;tt&gt;VALUE&lt;/tt&gt; expression set equal to a &lt;tt&gt;TABLE&lt;/tt&gt; function giving
+data for the pitch curve for the &lt;tt&gt;CAM&lt;/tt&gt; joint.
+
+===Example===
+ VALUE (R) = TABLE (PHI): datafile.dat
+ DATA CAM (CURV) = R
+
+specifies that the pitch curve radius of a &lt;tt&gt;CAM&lt;/tt&gt; joint named &lt;tt&gt;CURV&lt;/tt&gt; is specified by a &lt;tt&gt;VALUE&lt;/tt&gt;
+expression named R which refers to a &lt;tt&gt;TABLE&lt;/tt&gt; function referencing a file named “datafile.dat''.
+
+===Notes===
+# There must be a &lt;tt&gt;DATA CAM&lt;/tt&gt; statement for each joint defined by a &lt;tt&gt;CAM&lt;/tt&gt; statement. If these are not specified before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the simulation is halted and a message is printed.
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;CAM&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA CAM&lt;/tt&gt; statement is ignored and a message is printed.
+# Unlike &lt;tt&gt;DATA&lt;/tt&gt; statements describing certain other types of joints (for example, the &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement), the &lt;tt&gt;DATA CAM&lt;/tt&gt; statement does not specify the locations of the two local coordinate systems for the &lt;tt&gt;CAM&lt;/tt&gt; joint; two &lt;tt&gt;DATA LINK&lt;/tt&gt; state- ments must also be defined for each &lt;tt&gt;CAM&lt;/tt&gt; joint. If these do not appear before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA CAM&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# The ''value name'' must refer to a previously defined &lt;tt&gt;VALUE&lt;/tt&gt; expression consisting solely of a &lt;tt&gt;TABLE&lt;/tt&gt; function; other kinds of &lt;tt&gt;VALUE&lt;/tt&gt; expression cannot be used. If this is not satisfied the &lt;tt&gt;DATA CAM&lt;/tt&gt; statement is ignored and a message is printed.
+# The argument of the &lt;tt&gt;TABLE&lt;/tt&gt; function is arbitrary and is not used. During the simulation, the &lt;tt&gt;TABLE&lt;/tt&gt; function is evaluated as if the independent variable is the first joint variable of the &lt;tt&gt;CAM&lt;/tt&gt; joint, an angle (in radians). Thus the data file referred to by the &lt;tt&gt;TABLE&lt;/tt&gt; function should specify tabular data (see section 2-7.29) for the radius of the pitch curve as a function of angle (in radians) measured relative to the u,v coordinate system (see figure with the &lt;tt&gt;CAM&lt;/tt&gt; statement) of the first link named in the &lt;tt&gt;CAM&lt;/tt&gt; statement. The tabular data should specify radii for equally spaced angular increments for a full rotation (2 PI = 6.28318 radians).
+# The dimensions of the tabular data for the pitch curve radius are in length units.
+
+
+==The &lt;tt&gt;DATA SLOT&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA SLOT&lt;/tt&gt; statement specifies the shape of the slot for a &lt;tt&gt;SLOT&lt;/tt&gt; joint.
+
+===Format===
+ DATA SLOT (joint name) = value name
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;SLOT&lt;/tt&gt; joint and ''value name'' is the
+alphanumeric name of a previously defined &lt;tt&gt;VALUE&lt;/tt&gt; expression set equal to a &lt;tt&gt;TABLE&lt;/tt&gt; function giving
+data for the centerline curve of the slot.
+
+===Example===
+ VALUE (Y) = TABLE&lt;tt&gt; (&lt;/tt&gt;PHI`): datafile.dat
+ DATA SLOT (CURV) = V
+
+specifies that the profiled shape of the centerline curve of a &lt;tt&gt;SLOT&lt;/tt&gt; joint named &lt;tt&gt;CURV&lt;/tt&gt; is
+specified by a file named “datafile.dat'' and a &lt;tt&gt;VALUE&lt;/tt&gt; expression named V accessing that file via a
+&lt;tt&gt;TABLE&lt;/tt&gt; function.
+
+===Notes===
+# There must be a &lt;tt&gt;DATA SLOT&lt;/tt&gt; statement for each joint defined by  a &lt;tt&gt;SLOT&lt;/tt&gt; statement. If these are not specified before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the simulation is halted and a message is printed.
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;SLOT&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA SLOT&lt;/tt&gt; statement is ignored and a message is printed.
+# Unlike &lt;tt&gt;DATA&lt;/tt&gt; statements describing certain other types of joints (for example, the &lt;tt&gt;DATA ZPIN&lt;/tt&gt; statement), the &lt;tt&gt;DATA SLOT&lt;/tt&gt; statement does not specify the locations of the two local coordinate systems for the &lt;tt&gt;SLOT&lt;/tt&gt; joint; two &lt;tt&gt;DATA LINK&lt;/tt&gt; statements must also be defined for each &lt;tt&gt;SLOT&lt;/tt&gt; joint. If these do not appear before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA SLOT&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# The ''value name'' must refer to a previously defined &lt;tt&gt;VALUE&lt;/tt&gt; expression consisting solely of a &lt;tt&gt;TABLE&lt;/tt&gt; function; other kinds of &lt;tt&gt;VALUE&lt;/tt&gt; expression cannot be used. If this is not satisfied the &lt;tt&gt;DATA SLOT&lt;/tt&gt; statement is ignored and a message is printed.
+# The argument of the &lt;tt&gt;TABLE&lt;/tt&gt; function is arbitrary and is not used. During the simulation, the &lt;tt&gt;TABLE&lt;/tt&gt; function is evaluated as if the independent variable is the first joint variable of the &lt;tt&gt;SLOT&lt;/tt&gt; joint, a distance along the u axis (see figure for the &lt;tt&gt;SLOT&lt;/tt&gt; joint). Thus the datafile referred to by the &lt;tt&gt;TABLE&lt;/tt&gt; function should specify tabular data (see section 2-7.29) for the v distances for the profiled slot centerline as a function of u relative to the u,v coordinate system of the first link named in the &lt;tt&gt;SLOT&lt;/tt&gt; statement. The tabular data should specify v(u) values for equally spaced increment of u over the full length of the slot.
+# The dimensions for v in the tabular data for the slot profile are length units.
+
+
+==The &lt;tt&gt;DATA CYLINDER&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_11.png|thumb|400px|''Figure 4-11:'']]
+The &lt;tt&gt;DATA CYLINDER&lt;/tt&gt; statement specifies the numeric data which simultaneously locates the two local coordinate systems attachedto the two links on either side of a &lt;tt&gt;CYLINDER&lt;/tt&gt; joint relative tothe absolute (global) frame of reference for the system.
+
+The &lt;tt&gt;DATA CYLINDER&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints and the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements,describe the relative locations of the various links of the systemat the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a &lt;tt&gt;CYLINDER&lt;/tt&gt; statement are coincident and are both defined by a single &lt;tt&gt;DATA CYLINDER&lt;/tt&gt; statement by specifying the global coordinates of three points (see figure). The first point must lie at the common origin of the two localcoordinate systems. The second point must be located on the common local positive ''w'',&lt;i&gt;w&lt;/i&gt; axes. The third point must lie in the half-plane defined by the common local ''w'',&lt;i&gt;w&lt;/i&gt; axes and the common local positive ''u'',&lt;i&gt;u&lt;/i&gt; axes.
+
+===Format===
+ DATA CYLINDER (joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;; x&lt;sub&gt;2&lt;/sub&gt;,y&lt;sub&gt;2&lt;/sub&gt;,z&lt;sub&gt;2&lt;/sub&gt;; x&lt;sub&gt;3&lt;/sub&gt;,y&lt;sub&gt;3&lt;/sub&gt;,z&lt;sub&gt;3&lt;/sub&gt;
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;CYLINDER&lt;/tt&gt; joint connecting the two links to
+which the local coordinate systems are attached. The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups are
+numeric values for the global coordinates of the three points defining the initial locations of
+the two local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; coordinate systems.
+
+===Examples===
+ DATA CYLINDER(CYL)=-1.0,1.0,0.0;-1.0,4.0,0.0;0.0,1.0,-0.5
+
+specifies the initial locations of the two coincident ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt;
+coordinate systems attached to the two links on either side of a &lt;tt&gt;CYLINDER&lt;/tt&gt; joint named CYL. The
+numeric data corresponds approximately to the figure.
+
+The above example might also take any of the following forms:
+ DATA CYLINDER (CYL) = -1,1,0; -1,4,0; 0,1,-.5
+ DATA CYLINDER (CYL) = -1,1, ; -1,4, ; ,1,-.5
+ DATA CYLINDER (CYL) = PT1; PT2; 0,1,-.5
+ DATA CYLINDER (CYL) = PT1; PT2
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;CYLINDER&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA CYLINDER&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA CYLINDER&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by a &lt;tt&gt;CYLINDER&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA CYLINDER&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence and earlier data are replaced.
+# The dimensions for all ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA CYLINDER&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data must conform to the rules for the placement of the local coordinate systems for a &lt;tt&gt;CYLINDER&lt;/tt&gt; joint (see &lt;tt&gt;CYLINDER&lt;/tt&gt; statement). If errors are detected, the &lt;tt&gt;DATA CYLINDER&lt;/tt&gt; statement is ignored and a message is printed. Certain types of errors may not be detected until an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given; these cause the simulation to be halted and a message to be printed at that time.
+# The three points for which ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are given need not be unit distances apart; the local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
+# The angle formed by points ''2'',''1'',''3'' need not be a right angle. IMP uses the first point to locate the two coincident local origins; extending a vector toward the second point, it then forms the common local ''w'' and &lt;i&gt;w&lt;/i&gt; axes. The common local positive ''u'' and &lt;i&gt;u&lt;/i&gt; axes are then taken in the half-plane defined by the common local ''w'' and &lt;i&gt;w&lt;/i&gt; axes and the third point; a right angle is formed for the common local ''u'' and &lt;i&gt;u&lt;/i&gt; axes in this half-plane even though they may not exactly pass through the third point.
+# If the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are not given for the third point, the coordinates of the global origin are used. In view of note 8) above, this does not produce an error unless the common local ''w'',&lt;i&gt;w&lt;/i&gt; axes pass through the global origin. This may be a convenient shortcut (see final example above) if the user is not concerned about the particular placement of the local ''u'' and &lt;i&gt;u&lt;/i&gt; axes.
+# Any of the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see above examples).
+
+==The &lt;tt&gt;DATA UJOINT&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_12.png|thumb|400px|''Figure 4-12:'']]
+The &lt;tt&gt;DATA UJOINT&lt;/tt&gt; statement specifies the numeric data which simultaneously locate the two local
+coordinate systems attached to the two links on either side of a &lt;tt&gt;UJOINT&lt;/tt&gt; joint relative to the
+absolute (global) frame of reference for the system.
+
+The &lt;tt&gt;DATA UJOINT&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints
+and the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, describe the of relative locations the various links of the system
+at the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a
+&lt;tt&gt;UJOINT&lt;/tt&gt; statement are both defined by a single &lt;tt&gt;DATA UJOINT&lt;/tt&gt; statement by specifying the global
+coordinates of three points (see figure). The first point must lie at the common origins of the two
+local coordinate systems. The second and third points must lie on the local positive w and w’ axes
+of the coordinate systems attached to the first and second links named in the &lt;tt&gt;UJOINT&lt;/tt&gt; statement,
+respectively.
+
+===Format===
+ DATA UJOINT (joint name) = x&lt;sub&gt;1&lt;/sub&gt;,y&lt;sub&gt;1&lt;/sub&gt;,z&lt;sub&gt;1&lt;/sub&gt;; x&lt;sub&gt;2&lt;/sub&gt;,y&lt;sub&gt;2&lt;/sub&gt;,z&lt;sub&gt;2&lt;/sub&gt;; x&lt;sub&gt;3&lt;/sub&gt;,y&lt;sub&gt;3&lt;/sub&gt;,z&lt;sub&gt;3&lt;/sub&gt;
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;UJOINT&lt;/tt&gt; connecting the two links to which the
+local coordinate systems are attached. The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups are numeric
+values for the global coordinates of the three points defining the initial locations of the two
+local coordinate systems.
+
+===Examples===
+ DATA UJOINT (UJNT) = -1.0,2.0,0.0; 0.0,2.0,1.0; -1.0,3.0,0.0
+
+specifies the initial locations of the local coordinate systems attached to the two links on either
+side of a &lt;tt&gt;UJOINT&lt;/tt&gt; named &lt;tt&gt;UJNT&lt;/tt&gt;. The numeric data corresponds approximately to the figure.
+
+The above example might also take any of the following forms:
+ DATA UJOINT (UJNT) = -1,2,0; 0,2,1; -1,3,0
+ DATA UJOINT (UJNT) = -1,2, ; ,2,1; -1,3
+ DATA UJOINT (UJNT) = PT1; 0,2,1; -1,3,0
+ DATA UJOINT (UJNT) = PT1; PT2; PT3
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;UJOINT&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA UJOINT&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA UJOINT&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by a &lt;tt&gt;UJOINT&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA UJOINT&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence and earlier data are replaced.
+# The dimensions for all ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data in a &lt;tt&gt;DATA UJOINT&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data must conform to the rules for the placement of the local coordinate systems for a universal joint (see &lt;tt&gt;UJOINT&lt;/tt&gt; statement). If errors are detected, the &lt;tt&gt;DATA UJOINT&lt;/tt&gt; statement is ignored and a message is printed. Certain types of errors may not be detected until an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given; these cause the simulation to be halted and a message to be printed at that time.
+# The three points for which ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' numeric data are given need not be unit distances apart; the local ''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
+# Any of the ''x&lt;sub&gt;i&lt;/sub&gt;'',''y&lt;sub&gt;i&lt;/sub&gt;'',''z&lt;sub&gt;i&lt;/sub&gt;'' groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see above examples).
+
+==The &lt;tt&gt;DATA SPHERE&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_13.png|thumb|400px|''Figure 4-13:'']]
+The &lt;tt&gt;DATA SPHERE&lt;/tt&gt; statement specifies the numeric data which simultaneously locate the two local
+coordinate systems attached to the two links on either side of a &lt;tt&gt;SPHERE&lt;/tt&gt; joint relative to the
+absolute (global) frame of reference for the system.
+
+The &lt;tt&gt;DATA SPHERE&lt;/tt&gt; statements, taken together with the &lt;tt&gt;DATA&lt;/tt&gt; statements for other types of joints
+and the &lt;tt&gt;DATA LINK&lt;/tt&gt; statements, describe the relative locations of the various links of the system
+at the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a
+&lt;tt&gt;SPHERE&lt;/tt&gt; statement are both defined by a single &lt;tt&gt;DATA SPHERE&lt;/tt&gt; statement by specifying the location
+of one point, the center of the &lt;tt&gt;SPHERE&lt;/tt&gt; joint. However, IMP chooses the orientations of the local
+''u'',''v'',''w'' and &lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; axes; thus the user has no control of their orientation.
+If the user wishes to control the orientations of the local ''u'',''v'',''w'' and
+&lt;i&gt;u&lt;/i&gt;,&lt;i&gt;v&lt;/i&gt;,&lt;i&gt;w&lt;/i&gt; coordinate systems, a pair of &lt;tt&gt;DATA LINK&lt;/tt&gt; statements should be used rather than
+a &lt;tt&gt;DATA SPHERE&lt;/tt&gt; statement.
+
+===Format===
+ DATA SPHERE (joint name) = x,y,z
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;SPHERE&lt;/tt&gt; joint connecting the two links to
+which the local coordinate systems are attached. The ''x,y,z'' group is comprised of numeric values
+for the global coordinates of the common local origins, the location of the center of the &lt;tt&gt;SPHERE&lt;/tt&gt;
+joint.
+
+===Examples===
+ DATA SPHERE (BALL) = -1.0, 1.0, 1.0
+
+specifies the initial locations of the local coordinate systems attached to the two links on either
+side of a &lt;tt&gt;SPHERE&lt;/tt&gt; joint named &lt;tt&gt;BALL&lt;/tt&gt;. The numeric data corresponds approximately to the figure.
+
+The above example might also take either of the following forms:
+ DATA SPHERE (BALL) = -1,1,1
+ DATA SPHERE (BALL) = PT1
+
+===Notes===
+# The ''joint name'' specified must have been defined by a previous &lt;tt&gt;SPHERE&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA SPHERE&lt;/tt&gt; statement is ignored and a message is printed.
+# If a &lt;tt&gt;DATA SPHERE&lt;/tt&gt; statement or the two equivalent &lt;tt&gt;DATA LINK&lt;/tt&gt; statements are not specified for each ''joint name'' defined by a &lt;tt&gt;SPHERE&lt;/tt&gt; statement before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one &lt;tt&gt;DATA SPHERE&lt;/tt&gt; statement is given for the same ''joint name'', the later statement takes precedence and earlier data are replaced.
+# The dimensions for the ''x,y,z'' data in a &lt;tt&gt;DATA SPHERE&lt;/tt&gt; statement are length units.
+# Care should be taken in supplying accurate ''x,y,z'' data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+# The ''x,y,z'' group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has previously been given (see above example).
+
+==The &lt;tt&gt;DATA POINT&lt;/tt&gt; Statement==
+[[Image:Manual_figure_ch4_14.png|thumb|400px|''Figure 4-14:'']]
+The &lt;tt&gt;DATA POINT&lt;/tt&gt; statement specifies the location of a point defined in a previous &lt;tt&gt;POINT&lt;/tt&gt; statement.
+
+===Format===
+There are three forms of the &lt;tt&gt;DATA POINT&lt;/tt&gt; statement.
+
+The first form is used to specify the location of a point relative to one of the local joint
+coordinate systems attached to the link of which the point is a part:
+
+ DATA POINT (point name, joint name) = ''u'',''v'',''w''
+
+where ''point name'' is the alphanumeric name of the point, ''joint name'' is the alphanumeric name
+of the joint whose local coordinate system is used for reference, and ''u'',''v'',''w'' are the
+numeric values of the point's coordinates relative to this local coordinate system.
+
+The second form is identical with the first except that ''joint name'' is replaced by the keyword
+&lt;tt&gt;LINK&lt;/tt&gt;:
+
+ DATA POINT (point name, LINK) = x,y,z
+
+which indicates that the local coordinate system of the link to which the point is attached is used
+for specifying of the ''x,y,z'' data.
+
+The third form is also identical with the first except that ''joint name'' is replaced by the
+keyword &lt;tt&gt;ABS&lt;/tt&gt;:
+
+ DATA POINT (point name, &lt;tt&gt;ABS&lt;/tt&gt;) = X,Y,Z
+
+which indicates that the global coordinate system is used for measurement of the numeric ''X,Y,Z''
+data.
+
+===Examples===
+ DATA POINT (PT1, JT1) = 2.0,2.0,0.0
+
+specifies the location of a point named PT1 relative to a local coordinate system at a joint named
+JT1 as shown in the figure.
+
+Three other valid specifications, which also correspond to the figure, are:
+ DATA POINT (PT1, JT2) = -3,2,0
+ DATA POINT (PT1, &lt;tt&gt;LINK&lt;/tt&gt;) = 0,2,0
+ DATA POINT (PT1, &lt;tt&gt;ABS&lt;/tt&gt;) = 2,5,0
+
+
+===Notes===
+# There must be a &lt;tt&gt;DATA POINT&lt;/tt&gt; statement for each point defined by a &lt;tt&gt;POINT&lt;/tt&gt; statement. If one does not appear before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the point with missing data is placed at the origin of the local link coordinate system.
+# The ''point name'' specified must have been defined by a previous &lt;tt&gt;POINT&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA POINT&lt;/tt&gt; statement is ignored and a message is printed.
+# The ''joint name'', if specified, must have been defined in a previous statement, and it must be connected to the same link to which the point is attached. If not, the &lt;tt&gt;DATA POINT&lt;/tt&gt; statement is ignored and a message is printed.
+# If more than one &lt;tt&gt;DATA POINT&lt;/tt&gt; statement is given referring to the same ''point name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# The ''u'',''v'',''w'' or ''x,y,z'' or ''X,Y,Z'' coordinate data have units of length.
+# When the &lt;tt&gt;ABS&lt;/tt&gt; form of the &lt;tt&gt;DATA POINT&lt;/tt&gt; statement is used, the ''X,Y,Z'' data may be replaced by the alphanumeric name of a previously defined point for which a valid &lt;tt&gt;DATA POINT&lt;/tt&gt; statement has already been given.
+
+==The &lt;tt&gt;DATA GRAVITY&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA GRAVITY&lt;/tt&gt; statement specifies the components of the gravitational acceleration vector
+relative to the global coordinatesystem. It also specifies that the weights and potential energy
+changes of all links which have mass should henceforth be considered in performing the simulation.
+
+===Format===
+ DATA GRAVITY = g&lt;sub&gt;x&lt;/sub&gt;,g&lt;sub&gt;y&lt;/sub&gt;,g&lt;sub&gt;z&lt;/sub&gt;
+where ''g&lt;sub&gt;x&lt;/sub&gt;,g&lt;sub&gt;y&lt;/sub&gt;,g&lt;sub&gt;z&lt;/sub&gt;'' are the numeric values of the global components of the gravitational
+acceleration vector.
+
+===Example===
+ DATA GRAVITY = 0,-386.1,0
+
+specifies that the acceleration of gravity is 386.1 length units per second per second in the global
+negative Y direction.
+
+===Notes===
+# The &lt;tt&gt;DATA GRAVITY&lt;/tt&gt; statement is optional. However, if it is not included before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given, the effects of gravity, that is, the gravitational forces due to the weights of the links, are neglected in the simulation. No message is printed.
+# Even with the &lt;tt&gt;DATA GRAVITY&lt;/tt&gt; statement included, the effects of gravity are neglected for any link whose mass is not specified by &lt;tt&gt;SHAPE&lt;/tt&gt; and &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements or by a &lt;tt&gt;DATA MASS&lt;/tt&gt; statement. No message is printed.
+# If more than one &lt;tt&gt;DATA GRAVITY&lt;/tt&gt; statement is specified, the later statement takes precedence; earlier data are replaced and a message is printed.
+# If a &lt;tt&gt;FIND EQUILIBRIUM&lt;/tt&gt; statement (static mode) or a &lt;tt&gt;FIND DYNAMICS&lt;/tt&gt; statement (dynamic mode) is encountered before the &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement, a &lt;tt&gt;DATA GRAVITY&lt;/tt&gt; statement causes potential energy changes due to gravity to be considered in determining the position or motion of the system. If neither of these statements is encountered (kinematic mode), potential energy changes are not considered in determining the system's position. However, gravitational forces are considered for all modes when performing constraint force analyses.
+# The dimensions of the gravity vector are length units per second per second.
+# Standard gravity in US Customary units is 386.088 inches per second per second.
+# There is no assumption made that the gravitational acceleration vector has a 1.0 g magnitude. The conversion of mass units to weight units is not related to the &lt;tt&gt;DATA GRAVITY&lt;/tt&gt; statement, but can be controlled by use of the &lt;tt&gt;UNIT&lt;/tt&gt; (&lt;tt&gt;MASS&lt;/tt&gt;) statement.
+
+
+==The &lt;tt&gt;DATA DENSITY&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statement specifies the mass density for a shape defined by a &lt;tt&gt;SHAPE&lt;/tt&gt; statement.
+The &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statement causes the automatic calculation of the mass, the center of mass, and
+the mass moments and products of inertia for that shape and updates the mass properties of the
+associated link using the specified material density.
+
+===Format===
+ DATA DENSITY (shape name) = density
+
+where ''shape name'' is the alphanumeric name of a solid which has been named in a previous &lt;tt&gt;SHAPE&lt;/tt&gt; statement and ''density'' is the numeric value of the mass density of that shape's material.
+===Example===
+ SOLID READ (ROD) = rod.geo
+ SHAPE (SHAFT) = ROD DATA DENSITY (ROD) = 0.286
+
+specifies that the material for the shape named &lt;tt&gt;ROD&lt;/tt&gt; of the link named &lt;tt&gt;SHAFT&lt;/tt&gt; has mass density of
+0.286 mass units per cubic length unit, and that the shape of &lt;tt&gt;ROD&lt;/tt&gt; (from file ''rod.geo'') is to be
+used with this density to find the mass, the center of mass location, and the mass moments and
+products of inertia for that part of link &lt;tt&gt;SHAFT&lt;/tt&gt;.
+
+===Notes===
+# The &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statement is optional; it may, but need not, be used for any shape specified in a &lt;tt&gt;SHAPE&lt;/tt&gt; statement.
+# A &lt;tt&gt;DATA MASS&lt;/tt&gt; and/or set of &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements is necessary for all solid shapes of each link whose mass is to be considered in the simulation. Each link whose mass is not specified before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given is considered to have no kinetic energy and no gravitational potential energy. No message is printed.
+# The ''shape name'' specified must have appeared in a previous &lt;tt&gt;SHAPE&lt;/tt&gt; statement specifying that the ''shape name'' is a part of a particular link. If the link has not been named in a &lt;tt&gt;SHAPE&lt;/tt&gt; statement, or if the ''shape name'' and its geometry have not been defined, before the &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statement is given, the &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statement is ignored and a message is printed.
+# If a solid shape has been defined for a part of a link with a &lt;tt&gt;SHAPE&lt;/tt&gt; statement, the &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statement should be used rather than the &lt;tt&gt;DATA MASS&lt;/tt&gt; or &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statements in order to ensure consistency with the defined part shape. If no shape has been defined by a &lt;tt&gt;SHAPE&lt;/tt&gt; statement a &lt;tt&gt;DATA MASS&lt;/tt&gt; and &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement should be used instead.
+# If both &lt;tt&gt;DATA DENSITY&lt;/tt&gt; and &lt;tt&gt;DATA MASS&lt;/tt&gt; and &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statements are used for the same link or its subordinate solid parts, the &lt;tt&gt;DATA MASS&lt;/tt&gt; and &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statements should be given first for the portion of the link which has no defined shape. &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements given after this for solid part shapes of the same link then cause the total mass of the link and its distribution to be properly incremented.
+# If more than one &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statement is given for the same ''shape name'', the total mass and mass distribution of the link are incremented multiple times, thus causing an error; no message is printed. Notice, however, that different &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements may be used for the different ''shape names'' attached to the same ''link name''. The total mass properties of the link will then include the combination of all sub-shapes of the total geometry of the link.
+# If more than one &lt;tt&gt;DATA MASS&lt;/tt&gt; or &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement is given for the same ''link name'', the later data takes precedence and earlier data are replaced. Notice, however, that the increments caused by earlier &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements for ''shape names'' on this link are lost.
+# The ''density'' value has units of mass per cubic length. When using inches, seconds, and pounds force, for example, and density has units of pounds mass per cubic inch, then a &lt;tt&gt;UNIT MASS&lt;/tt&gt; = 0.002950l statement must be in effect at the time that the &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statement is issued. When using meters, seconds, and newtons, the density is given in kilograms per See the &lt;tt&gt;UNIT MASS&lt;/tt&gt; cubic meter and &lt;tt&gt;UNIT&lt;/tt&gt; (&lt;tt&gt;MASS&lt;/tt&gt;) = 1.0. statement in Chapter 6 for more details.
+# If a &lt;tt&gt;FIND EQUILIBRIUM&lt;/tt&gt; statement (static mode) or a &lt;tt&gt;FIND DYNAMICS&lt;/tt&gt; statement (dynamic mode) and a &lt;tt&gt;DATA GRAVITY&lt;/tt&gt; statement are encountered before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement, potential energy changes due to gravity are considered in determining the position or motion of the system. If a &lt;tt&gt;FIND EQUILIBRIUM&lt;/tt&gt; or &lt;tt&gt;FIND DYNAMICS&lt;/tt&gt; statement does not appear (kinematic mode), gravitational potential energy is not considered in determining the system's position. In all modes, however, gravity is considered in constraint force analysis if a &lt;tt&gt;DATA GRAVITY&lt;/tt&gt; statement is given.
+# If a &lt;tt&gt;FIND DYNAMICS&lt;/tt&gt; statement (dynamic mode) is encountered before the &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement, the kinetic energies of all links for which valid &lt;tt&gt;DATA DENSITY&lt;/tt&gt; or &lt;tt&gt;DATA MASS&lt;/tt&gt; and &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statements are specified are considered in determining the motion of the system. In either kinematic or dynamic mode, the kinetic energies of all moving masses are considered in constraint force analysis.
+
+
+==The &lt;tt&gt;DATA MASS&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA MASS&lt;/tt&gt; statement specifies the mass and the location of the center of mass of one link of
+the system.
+
+===Format===
+ DATA MASS (link name, joint name) = m; ''u'',''v'',''w''
+
+where ''link name'' is the alphanumeric name of the link, ''m'' is the numeric value of the mass of
+the link and ''u'',''v'',''w'' are the numeric values of the coordinates of the center of mass of
+the link measured relative to the local coordinate system attached to ''link name'' at the joint
+with the alphanumeric name ''joint name''.
+
+===Example===
+ DATA MASS (ROD, UJNT) = 0.5; 3.25,0.0,0.0
+
+specifies that the mass of the link named &lt;tt&gt;ROD&lt;/tt&gt; is 0.5 mass units, and that its center of gravity is
+located at u=3.25, v=0, and w=0, relative to the local coordinate system attached to &lt;tt&gt;ROD&lt;/tt&gt; at the
+joint named &lt;tt&gt;UJNT&lt;/tt&gt;.
+
+===Notes===
+# The &lt;tt&gt;DATA MASS&lt;/tt&gt; and &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements are optional; they may be used repeatedly to specify masses for as many or as few links as desired.
+# A separate &lt;tt&gt;DATA MASS&lt;/tt&gt; or set of &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements is necessary for each link whose mass is to be considered in the simulation. Each link whose mass is not specified before an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is given is considered to have no kinetic energy and no gravitational potential energy. No message is printed.
+# The ''link name'' specified must have appeared in at least one previous statement defining a link or a joint. If not, the &lt;tt&gt;DATA MASS&lt;/tt&gt; statement is ignored and a message is printed.
+# The keyword &lt;tt&gt;LINK&lt;/tt&gt; can be used in place of a ''joint name''; if this is done if signifies that ''x,y,z'' data are specified with respect to the coordinate system of ''link name'' instead of ''u'',''v'',''w'' data.
+# Unless the keyword &lt;tt&gt;LINK&lt;/tt&gt; is used, the ''joint name'' specified must have been defined in a previous statement defining a joint, and it must be a connection for the same ''link name'' for which the mass is specified. If not, the &lt;tt&gt;DATA MASS&lt;/tt&gt; statement is ignored and a message is printed.
+# If both &lt;tt&gt;DATA DENSITY&lt;/tt&gt; and &lt;tt&gt;DATA MASS&lt;/tt&gt; and &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statements are used for the same link or its subordinate solid part shapes, the &lt;tt&gt;DATA MASS&lt;/tt&gt; and &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statements should be given first for the portion of the link which has no defined shape. &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements given after this for solid part shapes of the same link then cause the total mass of the link and its distribution to be properly incremented.
+# If more than one &lt;tt&gt;DATA MASS&lt;/tt&gt; or &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement is given for the same ''link name'', the later data takes precedence and earlier data are replaced. Notice, however, that the increments caused by any earlier &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements for ''shape names'' on this link are lost; no message is printed.
+# The ''m'' value has units of mass; the ''u'',''v'',''w'' or ''x,y,z'' coordinates have units of length. When using inches, seconds, and pounds force, ''m'' has units of pounds mass; then a &lt;tt&gt;UNIT MASS&lt;/tt&gt; = 0.0025901 statement must be in effect at the time the &lt;tt&gt;DATA MASS&lt;/tt&gt; statement is issued. When using meters, seconds, and newtons, then ''m'' is given in kilograms and &lt;tt&gt;UNIT MASS&lt;/tt&gt; = 1.0. See the &lt;tt&gt;UNIT MASS&lt;/tt&gt; statement in Chapter 6.
+# When a &lt;tt&gt;DATA MASS&lt;/tt&gt; statement is given, mass data for a point mass located at the center of gravity of the specified ''link name'' are stored; appropriate mass moments and products of inertia relative to the designated ''joint name'' local coordinate system are also stored. A subsequent &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement may then be used, if desired, to specify distributed mass moments and products of inertia.
+# A &lt;tt&gt;DATA MASS&lt;/tt&gt; or &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statement may be specified for the fixed link if desired, but has no effect on the simulation.
+# If a &lt;tt&gt;FIND EQUILIBRIUM&lt;/tt&gt; statement (static mode) or a &lt;tt&gt;FIND DYNAMICS&lt;/tt&gt; statement (dynamic mode) and a &lt;tt&gt;DATA GRAVITY&lt;/tt&gt; statement are encountered before the &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement, potential energy changes due to gravity are considered in determining the position or motion of the system. If a &lt;tt&gt;FIND EQUILIBRIUM&lt;/tt&gt; or &lt;tt&gt;FIND DYNAMICS&lt;/tt&gt; statement does not appear (kinematic mode), gravitational potential energy is not considered in determining the system's position. In all modes, however, gravity is considered in constraint force analysis if a &lt;tt&gt;DATA GRAVITY&lt;/tt&gt; statement is given.
+# If a &lt;tt&gt;FIND DYNAMICS&lt;/tt&gt; statement (dynamic mode) is encountered before the &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement, the kinetic energies of all links for which &lt;tt&gt;DATA MASS&lt;/tt&gt; or &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements are specified are considered in determining the motion of the system. In either kinematic or dynamic mode, the kinetic energies of all moving masses are considered in constraint force analysis.
+
+
+==The &lt;tt&gt;DATA INERTIA&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement may be used to specify the distributed mass moments and products of
+inertia of a link for which a &lt;tt&gt;DATA MASS&lt;/tt&gt; statement has been given.
+
+===Format===
+ DATA INERTIA (link name, joint name) = I&lt;sub&gt;xx&lt;/sub&gt;,I&lt;sub&gt;yy&lt;/sub&gt;,I&lt;sub&gt;zz&lt;/sub&gt;,I&lt;sub&gt;xy&lt;/sub&gt;,I&lt;sub&gt;xz&lt;/sub&gt;,I&lt;sub&gt;yz&lt;/sub&gt;
+
+where ''link name'' is the alphanumeric name of the link and ''Ixx,Iyy,...,Iyz'' are the numeric values of the mass moments and products of inertia measured relative to the local ''u'',''v'',''w'' coordinate system attached to ''link name'' at the joint with the alphanumeric name ''joint name''.
+
+===Example===
+ DATA INERTIA (ROD, UJNT) = 0.002,16.7,16.7,0.0,0.0,0.0
+
+specifies the mass moments and products of inertia of a link named &lt;tt&gt;ROD&lt;/tt&gt; relative to the local ''u'',''v'',''w'' coordinate system at the joint named &lt;tt&gt;UJNT&lt;/tt&gt;.
+
+===Notes===
+# Use of the &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement is optional; it may be used repeatedly to specify distributed inertia properties for as many or as few links as desired.
+# If a &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement is used, a &lt;tt&gt;DATA MASS&lt;/tt&gt; statement must have been previously specified for the same ''link name''. If not, the &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement is ignored and a message is printed.
+# The keyword &lt;tt&gt;LINK&lt;/tt&gt; can be used for ''joint name''; if this is done it signifies that the ''I&lt;sub&gt;xx&lt;/sub&gt;,I&lt;sub&gt;yy&lt;/sub&gt;,...,I&lt;sub&gt;yz&lt;/sub&gt;'' data are spec- ified with respect to the ''x,y,z'' coordinate system of ''link name''.
+# The ''joint name'' specified must have been previously defined, and must be a connection for the same ''link name'' for which the mass moments and products of inertia are specified. If not, the &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement is ignored and a message is printed.
+# The ''joint name'' specified need not be the same as the ''joint name'' used in the corresponding &lt;tt&gt;DATA MASS&lt;/tt&gt; statement, although this is permitted and is often convenient.
+# If both &lt;tt&gt;DATA DENSITY&lt;/tt&gt; and &lt;tt&gt;DATA MASS&lt;/tt&gt; and &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statements are used for the same link or its subordinate solid part shapes, the &lt;tt&gt;DATA MASS&lt;/tt&gt; and &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statements should be given first for the portion of the link which has no defined shape. &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements given after this for solid part shapes of the same link then cause the total mass of the link and its distribution to be properly incremented.
+# If more than one &lt;tt&gt;DATA MASS&lt;/tt&gt; or &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement is given for the same ''link name'', the later data takes precedence and earlier data are replaced. Notice, however, that the increments caused by any earlier &lt;tt&gt;DATA DENSITY&lt;/tt&gt; statements for ''shape names'' on this link are lost; no message is printed.
+# The units for the mass moments and products of inertia are mass length squared (for example, pounds mass inches squared or kilogram meters squared). See the &lt;tt&gt;UNIT MASS&lt;/tt&gt; statement in Chapter 6 for further discussion.
+# When a &lt;tt&gt;DATA MASS&lt;/tt&gt; statement is given, data for a point mass located at the specified center of mass of that link are stored. Appropriate mass moments and products of inertia for a point mass are also stored relative to the designated ''joint name'' local coordinate system. A subsequent &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement may then be used to specify distributed mass moments and products of inertia if desired.
+# A &lt;tt&gt;DATA INERTIA&lt;/tt&gt; statement may be specified for the fixed link if desired, but has no effect on the simulation.
+
+
+==The &lt;tt&gt;DATA SPRING&lt;/tt&gt; Statement==
+There are two uses of the &lt;tt&gt;DATA SPRING&lt;/tt&gt; statement. One use is to specify the rate and free length of
+a spring defined by a previous &lt;tt&gt;SPRING&lt;/tt&gt; statement. The other use is to specify the rates (stiffness)
+and free (unloaded) positions of springs acting with the joint variable(s) of a previously defined
+joint.
+
+===Format===
+ DATA SPRING (name) = rate,position; rate,position; ...
+
+where ''name'' is the alphanumeric name of a previously defined spring or joint. If ''name'' was
+defined by a previous &lt;tt&gt;SPRING&lt;/tt&gt; statement, then only one ''rate'' and ''position'' are specified; if
+''name'' refers to a joint, then a ''rate'' and ''position'' are specified for each joint variable
+in succession. Each ''rate'' is the numeric value of a spring rate or joint stiffness and each
+''position'' is the numeric length of a spring or value of a joint variable for which the spring or
+joint stiffness produces no load.
+
+===Examples===
+ DATA SPRING (PULL) = 100.0, 5.25
+
+specifies that a spring named &lt;tt&gt;PULL&lt;/tt&gt; has a rate of 100.0 force units per unit deflection, and a free
+length of 5.25 length units.
+
+ DATA SPRING (PIN) = K, -45
+
+specifies that there is torsional stiffness in the joint named &lt;tt&gt;PIN&lt;/tt&gt;. The stiffness is defined by a
+previous &lt;tt&gt;VALUE&lt;/tt&gt; expression with the name &lt;tt&gt;K&lt;/tt&gt; (see note 6), and the joint is in an unloaded position
+when the joint variable has a value of -45°.
+
+ DATA SPRING (CYL) = NONE, NONE; 1200,2.5
+
+specifies that a cylindric joint named CYL has no rotational stiffness along with the first joint
+variable (see note 7), but does have a translational stiffness acting with the second joint variable.
+The translational stiffness is 1200 force units per unit deflection, and there is no force
+transmitted when the second joint variable (the translation) has a value of 2.5 length units.
+===Notes===
+# There must be a &lt;tt&gt;DATA SPRING&lt;/tt&gt; statement for each spring defined by a &lt;tt&gt;SPRING&lt;/tt&gt; statement. If these do not appear before the &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement, any spring with undefined data is deleted and a message is printed at that time.
+# &lt;tt&gt;DATA SPRING&lt;/tt&gt; statements need not be given for all joints, but may be used for as many or few as desired.
+# The ''name'' specified must have been defined by a previous &lt;tt&gt;SPRING&lt;/tt&gt; statement or joint definition statement. If not, the &lt;tt&gt;DATA SPRING&lt;/tt&gt; statement is ignored and a message is printed.
+# If more than one &lt;tt&gt;DATA SPRING&lt;/tt&gt; statement is encountered using the same ''name'', the later data takes precedence; earlier data are replaced and a message is printed.
+# The units for the ''rate'' of a tension or compression spring are force per unit length of deflection from the free position. The ''rate'' of a torsion spring has units of torque per degree of deflection from the free position. The free ''position'' has units of length or degrees.
+# The numeric value of any ''rate'' or ''position'' may be substituted for by the alphanumeric name of a previously defined &lt;tt&gt;VALUE&lt;/tt&gt; expression. In such a case, however, the units of a &lt;tt&gt;VALUE&lt;/tt&gt; expression for a torsion ''rate'' must be torque per radian and the units of a &lt;tt&gt;VALUE&lt;/tt&gt; expression for a rotational ''position'' must be radians.
+# The keyword &lt;tt&gt;NONE&lt;/tt&gt; may be used in place of any ''rate'' and ''position'' for any joint variable for which no stiffness is intended. If the keyword &lt;tt&gt;NONE&lt;/tt&gt; is used for a ''rate'' or ''position'' value, &lt;tt&gt;NONE&lt;/tt&gt; is also used for the other value.
+
+
+==The &lt;tt&gt;DATA DAMPER&lt;/tt&gt; Statement==
+There are two uses for the &lt;tt&gt;DATA DAMPER&lt;/tt&gt; statement. One use is to specify the damping coefficient of
+a viscous damper defined by a &lt;tt&gt;DAMPER&lt;/tt&gt; statement. The other use is to specify the coefficients of
+viscous damping acting within the joint variable(s) of a previously defined joint.
+
+===Format===
+ DATA DAMPER (name) = coefficient, coefficient, ...
+
+where ''name'' is the alphanumeric name of a previously defined damper or joint. If ''name'' was
+defined by a previous &lt;tt&gt;DAMPER&lt;/tt&gt; statement, then only one ''coefficient'' is given; if ''name'' refers
+to a joint, then a ''coefficient'' is given for each joint variable in succession. Each
+''coefficient'' is the numeric value of a damping coefficient.
+
+===Examples===
+ DATA DAMPER (SLOW) = 4.75
+
+specifies that a viscous damper named &lt;tt&gt;SLOW&lt;/tt&gt; has a damping coefficient of 4.75 force seconds per
+unit length.
+
+ DATA DAMPER (LOSS) = C
+
+specifies that there is viscous damping in a revolute joint named &lt;tt&gt;LOSS&lt;/tt&gt;. The damping coefficient is
+defined by a previous &lt;tt&gt;VALUE&lt;/tt&gt; expression named &lt;tt&gt;C&lt;/tt&gt; (see note 6).
+
+ DATA DAMPER (CYL) = 0.15, NONE
+
+specifies that there is viscous damping of 0.15 force length seconds per radian resisting the motion
+of the first joint variable (rotation) of a cylindric joint named CYL, but no damping with the
+motion of the second joint variable, the translation (see note 7).
+
+===Notes===
+# There must be a &lt;tt&gt;DATA DAMPER&lt;/tt&gt; statement for each damper defined by a &lt;tt&gt;DAMPER&lt;/tt&gt; statement. If these do not appear before the &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement, any damper with undefined data is deleted and a message is printed at that time.
+# &lt;tt&gt;DATA DAMPER&lt;/tt&gt; statements need not be given for all joints, but may be used for as many or as few as desired.
+# The ''name'' specified must have been defined by a previous &lt;tt&gt;DAMPER&lt;/tt&gt; statement or a joint definition statement. If not, the &lt;tt&gt;DATA DAMPER&lt;/tt&gt; statement is ignored and a message is printed.
+# If more than one &lt;tt&gt;DATA DAMPER&lt;/tt&gt; statement is encountered using the same ''name'', the later data takes precedence; earlier data are replaced and a message is printed.
+# The units for the ''coefficient'' of a translational damper are force seconds per unit length; for a torsional damper, the units are force length seconds per radian.
+# The numeric value of any ''coefficient'' may be substituted for by the alphanumeric name of a previously defined &lt;tt&gt;VALUE&lt;/tt&gt; expression.
+# The keyword &lt;tt&gt;NONE&lt;/tt&gt; may be used in place of any ''coefficient'' for a joint variable for which no damping is intended.
+
+
+==The &lt;tt&gt;DATA FORCE&lt;/tt&gt; Statement==
+There are two uses for the &lt;tt&gt;DATA FORCE&lt;/tt&gt; statement. One use is to specify the magnitude of an
+externally applied force defined by a &lt;tt&gt;FORCE&lt;/tt&gt; statement. The other use is to specify the magnitudes
+of pairs of equal and opposite forces or torques applied along each of the joint variables of a
+previously defined joint.
+
+===Format===
+ DATA FORCE (name) = force, force, ...
+
+where ''name'' is the alphanumeric name of a previously defined force or joint. If ''name'' was
+defined by a previous &lt;tt&gt;FORCE&lt;/tt&gt; statement, then only one ''force'' is given; if ''name'' refers to a
+joint, then a ''force'' is given for each joint variable in succession. Each ''force'' is the
+numeric value of an applied force or torque.
+
+===Examples===
+ DATA FORCE (PUSH) = -100
+
+specifies that an externally applied force named &lt;tt&gt;PUSH&lt;/tt&gt; has a magnitude of -100 force units.
+
+ DATA FORCE (PULL) = F
+
+specifies that a force named &lt;tt&gt;PULL&lt;/tt&gt; has a magnitude defined by a previous &lt;tt&gt;VALUE&lt;/tt&gt; expression named
+&lt;tt&gt;F&lt;/tt&gt; (see note 7).
+
+ DATA FORCE (CYL) = NONE, 15.2
+
+specifies that there is no externally applied torque acting on the rotational joint variable of the
+cylindric joint named CYL (see note 8), but that equal and opposite forces of magnitude 15.2 force
+units are applied along the translational joint variable.
+
+===Notes===
+# There must be a &lt;tt&gt;DATA FORCE&lt;/tt&gt; statement for each force defined by a &lt;tt&gt;FORCE&lt;/tt&gt; statement. If these do not appear before the &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement, any force with undefined data is deleted and a message is printed at that time.
+# &lt;tt&gt;DATA FORCE&lt;/tt&gt; statements need not be given for all joints, but may be used for as many or as few as desired.
+# The ''name'' specified must have been defined by a previous &lt;tt&gt;FORCE&lt;/tt&gt; statement or a joint definition statement. If not, the &lt;tt&gt;DATA FORCE&lt;/tt&gt; statement is ignored and a message is printed.
+# If more than one &lt;tt&gt;DATA FORCE&lt;/tt&gt; statement is encountered using the same ''name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# The units for a ''force'' are force units if the ''name'' refers to a &lt;tt&gt;FORCE&lt;/tt&gt; statement. If the ''name'' refers to a joint, then units of force are used for a translational joint variable ''force'' and units of length force are used for a rotational joint variable ''force''.
+# The sign of the ''force'' value must be consistent with the order of the point names specified in the &lt;tt&gt;FORCE&lt;/tt&gt; statement. A ''force'' value applied within a joint is considered positive if it tends to change the value of the joint variable in the positive sense.
+# The numeric value of any ''force'' may be substituted for by the alphanumeric name of a previously defined &lt;tt&gt;VALUE&lt;/tt&gt; expression.
+# The keyword &lt;tt&gt;NONE&lt;/tt&gt; may be used in place of any ''force'' for a joint variable for which no externally applied force is intended.
+
+
+==The &lt;tt&gt;DATA TORQUE&lt;/tt&gt; Statement==
+There are two uses for the &lt;tt&gt;DATA TORQUE&lt;/tt&gt; statement. One use is to specify the magnitude of an
+externally applied torque defined by a &lt;tt&gt;TORQUE&lt;/tt&gt; statement. The other use is to specify the
+magnitudes of pairs of equal and opposite forces or torques applied along each of the joint
+variables of a previously defined joint.
+
+===Format===
+ DATA TORQUE (name) = torque, torque, ...
+
+where ''name'' is the alphanumeric name of a previously defined torque or joint. If ''name'' was
+defined by a previous &lt;tt&gt;TORQUE&lt;/tt&gt; statement, then only one ''torque'' is given; if ''name'' refers to a
+joint, then a ''torque'' is given for each joint variable in succession. Each ''torque'' is the
+numeric value of an applied torque or force.
+
+===Examples===
+ DATA TORQUE (TWIST) = -100
+
+specifies that an externally applied torque named &lt;tt&gt;TWIST&lt;/tt&gt; has a magnitude of -100 torque units.
+
+ DATA TORQUE (TURN) = F
+
+specifies that a torque named &lt;tt&gt;TURN&lt;/tt&gt; has a magnitude defined by a previous &lt;tt&gt;VALUE&lt;/tt&gt; expression named
+&lt;tt&gt;F&lt;/tt&gt; (see note 7).
+
+ DATA TORQUE (CYL) = 15.2, NONE
+
+specifies that there are equal and opposite externally applied torques acting on the rotational
+joint variable of the cylindric joint named &lt;tt&gt;CYL&lt;/tt&gt;, but that no force is applied along the
+translational joint variable (see note 8).
+
+===Notes===
+# There must be a &lt;tt&gt;DATA TORQUE&lt;/tt&gt; statement for each torque defined by a &lt;tt&gt;TORQUE&lt;/tt&gt; statement. If these do not appear before the &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement, any torque with undefined data is deleted and a message is printed at that time.
+# &lt;tt&gt;DATA TORQUE&lt;/tt&gt; statements need not be given for all joints but may be used for as many or as few as desired.
+# The ''name'' specified must have been defined by a previous &lt;tt&gt;TORQUE&lt;/tt&gt; statement or a joint definition statement. If not, the &lt;tt&gt;DATA TORQUE&lt;/tt&gt; statement is ignored and a message is printed.
+# If more than one &lt;tt&gt;DATA TORQUE&lt;/tt&gt; statement is encountered using the same ''name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# The units for a ''torque'' are length force if the ''name'' refers to a &lt;tt&gt;TORQUE&lt;/tt&gt; statement. If the ''name'' refers to a joint, then units of force are used for a translational joint variable ''torque'' and units of length force are used for a rotational joint variable ''torque''.
+# The sign of the ''torque'' value must be consistent with the order of the point names specified in the &lt;tt&gt;TORQUE&lt;/tt&gt; statement. A ''torque'' value applied within a joint is considered positive if it tends to change the value of the joint variable in the positive sense.
+# The numeric value of a ''torque'' may be substituted for by the alphanumeric name of a previously defined &lt;tt&gt;VALUE&lt;/tt&gt; expression.
+# The keyword &lt;tt&gt;NONE&lt;/tt&gt; may be used in place of a ''torque'' for a joint variable for which no externally applied torque is intended.
+
+
+==The &lt;tt&gt;DATA CONTACT&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA CONTACT&lt;/tt&gt; statement is used to specify the properties of a pair of contacting solids
+defined by a &lt;tt&gt;CONTACT&lt;/tt&gt; statement.
+
+===Format===
+ DATA CONTACT (contact name) = e&lt;sub&gt;n&lt;/sub&gt;, e&lt;sub&gt;t&lt;/sub&gt;, e&lt;sub&gt;b&lt;/sub&gt;, e&lt;sub&gt;r&lt;/sub&gt;, mu
+
+where ''contact name'' is the alphanumeric name of a previously defined contact, ''e&lt;sub&gt;n&lt;/sub&gt;, e&lt;sub&gt;t&lt;/sub&gt;,
+and e&lt;sub&gt;b&lt;/sub&gt;'' are the coefficients of restitution in the normal, tangential, and binormal directions,
+respectively, ''e&lt;sub&gt;r&lt;/sub&gt;'' is the torsional coefficient of restitution, and ''mu'' is the
+coefficient of Coulomb friction, all taken with respect to the impacting surfaces of the contact.
+
+===Examples===
+ DATA CONTACT (HIT) = 0.9, -1.0, 0.0, -1.0, 0.25
+
+specifies that a &lt;tt&gt;CONTACT&lt;/tt&gt; named &lt;tt&gt;HIT&lt;/tt&gt; has coefficients of restitution of 0.9, -1.0, 0.0, and -1.0 in the normal, tangential, binormal, and torsional directions, respectively, and a coefficient of Coulomb friction of 0.25 units.
+
+===Notes===
+# There may be a &lt;tt&gt;DATA CONTACT&lt;/tt&gt; statement for each contact defined by a &lt;tt&gt;CONTACT&lt;/tt&gt; statement. If these do not appear before the &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement, any contacts without such data are given default data of e&lt;sub&gt;n&lt;/sub&gt;=0.0, e&lt;sub&gt;t&lt;/sub&gt;=0.0, e&lt;sub&gt;bi&lt;/sub&gt;=-1.0, e&lt;sub&gt;mn&lt;/sub&gt;=0.0, and mu=0.0; no message is printed.
+# &lt;tt&gt;DATA CONTACT&lt;/tt&gt; statements need not be given for all contacts but may be used for as many or as few as desired.
+# The ''contact name'' specified must have been defined by a previous &lt;tt&gt;CONTACT&lt;/tt&gt; statement. If not, the &lt;tt&gt;DATA CONTACT&lt;/tt&gt; statement is ignored and a message is printed.
+# If more than one &lt;tt&gt;DATA CONTACT&lt;/tt&gt; statement is encountered using the same ''contact name'', the later statement takes precedence; earlier data are replaced; no message is printed.
+# The numeric values of the coefficients of restitution are unity for purely elastic (no loss of relative velocity on rebound) and zero for plastic (total loss of relative velocity with no rebound); the values are positive for a direction reversal and negative for no direction reversal of the relative velocity during impact.
+# The coefficient of Coulomb friction ''mu'' is always non-negative, but may be zero.
+# Which of the five coefficients are used for a given ''contact name'' depend on the settings of the ''impact models'' specified by the most recent &lt;tt&gt;IMPACT&lt;/tt&gt; statement at the time that an &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement is encountered.
+
+
+==The &lt;tt&gt;DATA POSITION&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement designates a single degree of freedom joint as a position input
+(&lt;tt&gt;SGC&lt;/tt&gt;) for the system in the kinematic or static mode and specifies the initial position, increment
+size, and number of increments for its joint variable during the simulation.
+
+===Format===
+ DATA POSITION (joint name) = position, increment, n steps
+
+where ''joint name'' is the alphanumeric name of the &lt;tt&gt;REVOLUTE&lt;/tt&gt; or &lt;tt&gt;PRISM&lt;/tt&gt; or &lt;tt&gt;XPIN&lt;/tt&gt; or &lt;tt&gt;YPIN&lt;/tt&gt; or
+&lt;tt&gt;ZPIN&lt;/tt&gt; or &lt;tt&gt;XSLIDE&lt;/tt&gt; or &lt;tt&gt;YSLIDE&lt;/tt&gt; or &lt;tt&gt;ZSLIDE&lt;/tt&gt; or &lt;tt&gt;GEAR&lt;/tt&gt; or &lt;tt&gt;BEVEL&lt;/tt&gt; or &lt;tt&gt;RACK&lt;/tt&gt; or &lt;tt&gt;SCREW&lt;/tt&gt; joint being
+designated as an &lt;tt&gt;SGC&lt;/tt&gt;, ''position'' is the numeric value of the joint variable at the first
+position to be simulated, ''increment'' is the numeric value of the increment to be made in that
+joint variable value for each print, and ''n steps'' is the integer number of increments to be made
+in that joint variable during the simulation.
+
+===Examples===
+ DATA POSITION (PIN) = -90.0, 15.0, 24
+
+specifies that the previously defined &lt;tt&gt;REVOLUTE&lt;/tt&gt; joint named PIN is an &lt;tt&gt;SGC&lt;/tt&gt; for the system and is
+to be incremented from -90° to 270° in equal steps of 15° each.
+
+ DATA POSITION (SLIP) = 1.75
+
+specifies that the &lt;tt&gt;PRISM&lt;/tt&gt; joint named &lt;tt&gt;SLIP&lt;/tt&gt; is an &lt;tt&gt;SGC&lt;/tt&gt; for the system and its joint variable is
+held stationary at a value of 1.75 length units throughout the simulation.
+
+===Notes===
+# The &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement may not be used after a &lt;tt&gt;FIND DYNAMICS&lt;/tt&gt; statement (dynamic mode). If this is attempted, the &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement is ignored and a message is printed.
+# The &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement is optional; it may be used along with the &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement for as few or as many joints as desired up to the number of degrees of freedom of the system.
+# If more &lt;tt&gt;DATA POSITION&lt;/tt&gt; and/or &lt;tt&gt;DATA MOTION&lt;/tt&gt; statements are specified than there are degrees of freedom in the system, no error is detected immediately. During the simulation, however, a diagnostic message will occur unless the ''position'' data are all specified (with extreme precision) consistent with a configuration for which the system can be assembled. Difficulty will certainly result upon incrementing to a new position.
+# If less &lt;tt&gt;DATA POSITION&lt;/tt&gt; and/or &lt;tt&gt;DATA MOTION&lt;/tt&gt; statements are specified than the number of degrees of freedom of the system, additional joint variables are selected as free generalized coordinates (&lt;tt&gt;FGC&lt;/tt&gt;s) by the IMP system.
+# If a &lt;tt&gt;FIND EQUILIBRIUM&lt;/tt&gt; statement is encountered before the &lt;tt&gt;EXECUTE&lt;/tt&gt; or &lt;tt&gt;EXECUTE HOLD&lt;/tt&gt; statement (static mode), then any &lt;tt&gt;FGC&lt;/tt&gt; positions are varied to move the system to a position of static equilibrium. If not (kinematic mode), then no control is exerted over the values of the &lt;tt&gt;FGC&lt;/tt&gt;s; they usually retain their original positions.
+# The ''joint name'' specified must be defined by a previous statement defining a single degree of freedom joint. If not, the &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement is ignored and a message is printed.
+# If more than one &lt;tt&gt;DATA POSITION&lt;/tt&gt; or &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement is encountered referring to the same ''joint name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# If only a single ''position'' of a particular joint variable is intended, the values of ''increment'' and ''n steps'' need not be specified; when not specified ''increment'' and ''n steps'' are treated as zero.
+# If the value of ''increment'' is given as zero, then ''n steps'' is also treated as zero.
+# The units of ''position'' and ''increment'' are degrees for a rotational joint or length units for a sliding joint.
+# The sign of the ''position'' and ''increment'' values must be consistent with the sign convention of the joint variable (see statement defining the joint).
+# If an &lt;tt&gt;SGC&lt;/tt&gt; joint variable value is set to or incremented to a position which cannot be achieved by the system model, this position is ignored and the simulation is continued at the next position; a message is printed.
+# When a ''position'' is specified for a joint variable by a &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement, it is assumed to have zero velocity and zero acceleration until otherwise specified by a &lt;tt&gt;DATA VELOCITY&lt;/tt&gt; or &lt;tt&gt;DATA ACCEL&lt;/tt&gt; statement.
+# The starting position specification need not be the design position, but should not be too far away from it.
+# When a &lt;tt&gt;DATA POSITION&lt;/tt&gt; or &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement is used to set a particular joint variable to a specified position, this implies that sufficient force or torque is applied at that joint variable to achieve that position even though no &lt;tt&gt;DATA FORCE&lt;/tt&gt; or &lt;tt&gt;DATA TORQUE&lt;/tt&gt; statement has been given.
+
+
+==The &lt;tt&gt;DATA VELOCITY&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA VELOCITY&lt;/tt&gt; statement specifies the velocity of a joint variable which was specified as an
+&lt;tt&gt;SGC&lt;/tt&gt; by a previous &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement.
+
+===Format===
+ DATA VELOCITY (joint name) = velocity
+
+where ''joint name'' is the alphanumeric name of a joint which was previously designated in a
+&lt;tt&gt;DATA POSITION&lt;/tt&gt; statement, and ''velocity'' is the numeric value of the joint variable velocity for
+that joint.
+
+===Example===
+ DATA VELOCITY (PIN) = -188.5
+
+specifies that velocity of the pinned joint named PIN is -188.5 radians per second (1800 rpm) clockwise.
+
+===Notes===
+# A &lt;tt&gt;DATA VELOCITY&lt;/tt&gt; statement may not be used after a &lt;tt&gt;FIND EQUILIBRIUM&lt;/tt&gt; statement (static mode) or a &lt;tt&gt;FIND DYNAMICS&lt;/tt&gt; statement (dynamic mode). If this is attempted, the &lt;tt&gt;DATA VELOCITY&lt;/tt&gt; statement is ignored and a message is printed.
+# The ''joint name'' specified must have been defined as an &lt;tt&gt;SGC&lt;/tt&gt; by a previous &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement referring to the same ''joint name''. If not, the &lt;tt&gt;DATA VELOCITY&lt;/tt&gt; statement is ignored and a message is printed.
+# If more than one &lt;tt&gt;DATA VELOCITY&lt;/tt&gt; statement is encountered referring to the same ''joint name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# Not every &lt;tt&gt;SGC&lt;/tt&gt; designated by a &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement need be given a velocity. Those not given velocities by &lt;tt&gt;DATA VELOCITY&lt;/tt&gt; statements are treated as having zero ''velocities''.
+# If more than one position of the system is simulated, the ''velocity'' specified is the same for all positions even though a &lt;tt&gt;DATA ACCEL&lt;/tt&gt; statement may be given.
+# The units of ''velocity'' are radians per second for a rotational joint or length units per second for a sliding joint.
+# The sign of the ''velocity'' must be consistent with the sign convention for the joint variable (see statement defining the joint).
+
+
+==The &lt;tt&gt;DATA ACCEL&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA ACCEL&lt;/tt&gt; statement specifies the acceleration of a joint variable which was specified as an
+&lt;tt&gt;SGC&lt;/tt&gt; by a previous &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement.
+
+===Format===
+ DATA ACCEL (joint name) = acceleration
+
+where ''joint name'' is the alphanumeric name of a joint which was previously designated in a
+&lt;tt&gt;DATA POSITION&lt;/tt&gt; statement, and ''acceleration'' is the numeric value of the joint variable
+acceleration for that joint.
+
+===Example===
+ DATA ACCEL (PIN) = 50.0
+
+specifies that acceleration of the &lt;tt&gt;SGC&lt;/tt&gt; revolute joint named &lt;tt&gt;PIN&lt;/tt&gt; is 50.0 radians per second per
+second.
+
+===Notes===
+# A &lt;tt&gt;DATA ACCEL&lt;/tt&gt; statement may not be used after a &lt;tt&gt;FIND EQUILIBRIUM&lt;/tt&gt; statement (static mode) or a &lt;tt&gt;FIND DYNAMICS&lt;/tt&gt; statement (dynamic mode). If this is attempted, the &lt;tt&gt;DATA ACCEL&lt;/tt&gt; statement is ignored and a message is printed.
+# The ''joint name'' specified must be defined as an &lt;tt&gt;SGC&lt;/tt&gt; by a previous &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement referring to the same ''joint name''. If not, the &lt;tt&gt;DATA ACCEL&lt;/tt&gt; statement is ignored and a message is printed.
+# If more than one &lt;tt&gt;DATA ACCEL&lt;/tt&gt; statement is encountered referring to the same ''joint name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# Not every &lt;tt&gt;SGC&lt;/tt&gt; designated by a &lt;tt&gt;DATA POSITION&lt;/tt&gt; statement need be given acceleration. Those not given acceleration by &lt;tt&gt;DATA ACCEL&lt;/tt&gt; statements are treated as having zero acceleration.
+# If more than one position of the system is simulated, the ''acceleration'' specified is the same for all positions.
+# The units of ''acceleration'' are radians per second per second for a rotating joint or length units per second per second for a sliding joint.
+# The sign of the ''acceleration'' must be consistent with the sign convention for the joint variable joint (see statement defining the joint).
+
+
+==The &lt;tt&gt;DATA MOTION&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement designates one or more joint variables as motion input(s),(&lt;tt&gt;SGC&lt;/tt&gt;s), for
+the system and specifies their motion(s).
+
+===Format===
+ DATA MOTION (joint name) = position, position, ...
+
+where ''joint name'' is the alphanumeric name of the joint whose joint variables are to be motion
+inputs (&lt;tt&gt;SGC&lt;/tt&gt;s). There is one ''position'' value specified for each joint variable in order; each
+''position'' is a numeric value or the alphanumeric name of a &lt;tt&gt;VALUE&lt;/tt&gt; expression specifying the
+position of that joint variable.
+
+===Examples===
+ DATA MOTION (PIN) = -90.0
+
+specifies that the previously defined &lt;tt&gt;REVOLUTE&lt;/tt&gt; joint named &lt;tt&gt;PIN&lt;/tt&gt; is held stationary, with its
+joint variable value set to -90° throughout the simulation.
+
+ DATA MOTION (SLIP) = RAMP
+
+specifies that the &lt;tt&gt;PRISM&lt;/tt&gt; joint named &lt;tt&gt;SLIP&lt;/tt&gt; is an &lt;tt&gt;SGC&lt;/tt&gt;; its motion is defined by a previous
+&lt;tt&gt;VALUE&lt;/tt&gt; expression named &lt;tt&gt;RAMP&lt;/tt&gt; (see note 8).
+
+ &lt;tt&gt;DATA MOTION&lt;/tt&gt; (CYL) = 30.0, &lt;tt&gt;NONE&lt;/tt&gt;
+
+specifies that, in the cylindric joint named CYL, the rotational joint variable is held stationary
+at a value of 30.0E; the translational joint variable is not an &lt;tt&gt;SGC&lt;/tt&gt; (see note 9).
+
+===Notes===
+# The &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement is optional; it may be used along with &lt;tt&gt;DATA POSITION&lt;/tt&gt; or &lt;tt&gt;DATA&lt;/tt&gt; IC statements for as few or as many joint variables as desired up to the number of degrees of freedom of the system.
+# If more &lt;tt&gt;DATA MOTION&lt;/tt&gt;, &lt;tt&gt;DATA POSITION&lt;/tt&gt;, and/or &lt;tt&gt;DATA&lt;/tt&gt; IC statements are specified than allowed by the degree of freedom of the system, no error is detected immediately. During the simulation, however, a diagnostic message will occur unless the ''position'' data are all specified (with extreme precision) consistent with a configuration for which the system can be assembled. Difficulty will certainly result upon attempting to increment to a new position.
+# If &lt;tt&gt;DATA MOTION&lt;/tt&gt;, &lt;tt&gt;DATA POSITION&lt;/tt&gt;, and/or &lt;tt&gt;DATA&lt;/tt&gt; IC statements are specified for less joint variables than the degrees of freedom of the system, additional joint variables are selected as free generalized coordinates (&lt;tt&gt;FGC&lt;/tt&gt;s) by the IMP system.
+# The ''joint name'' specified must be defined by a previous statement defining a joint. If not, the &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement is ignored and a message is printed.
+# If more than one &lt;tt&gt;DATA MOTION&lt;/tt&gt;, &lt;tt&gt;DATA POSITION&lt;/tt&gt;, or &lt;tt&gt;DATA IC&lt;/tt&gt; statement is encountered referring to the same ''joint name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# The units of each ''position'' value depend on the nature of the joint variable; degrees are used for each rotational joint variable (also see note 8) and length units for each translational joint variable.
+# The sign of each ''position'' value must be consistent with the sign convention for the corresponding joint variable (see joint definition statement).
+# The numeric value of any ''position'' may be substituted for by the alphanumeric name of a previously defined &lt;tt&gt;VALUE&lt;/tt&gt; expression. In such a case, however, the units of a rotational joint variable &lt;tt&gt;VALUE&lt;/tt&gt; expression must be radians.
+# The keyword &lt;tt&gt;NONE&lt;/tt&gt; may be used in place of any ''position'' value for a joint variable which is not intended as an &lt;tt&gt;SGC&lt;/tt&gt;.
+# If a numeric value is used for ''position'', the velocity and acceleration of the corresponding joint variable are assumed to be zero. When a &lt;tt&gt;VALUE&lt;/tt&gt; expression name is used for ''position'', proper derivative values are used to provide the corresponding velocity and acceleration. Note, however, that &lt;tt&gt;VALUE&lt;/tt&gt; expressions using the &lt;tt&gt;VELOCITY&lt;/tt&gt;, &lt;tt&gt;ACCELERATION&lt;/tt&gt;, or &lt;tt&gt;FORCE&lt;/tt&gt; functions may return undefined values for the derivatives. Undefined values are treated as zeroes in their use in the &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement.
+# When a &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement is used, this implies that sufficient force or torque is applied at each joint variable to achieve the specified motion even though no &lt;tt&gt;DATA FORCE&lt;/tt&gt; or &lt;tt&gt;DATA TORQUE&lt;/tt&gt; statement has been given.
+
+
+==The &lt;tt&gt;DATA IC&lt;/tt&gt; Statement==
+The &lt;tt&gt;DATA IC&lt;/tt&gt; statement specifies the initial positions and velocities of the joint variables of a
+designated joint for the start of a dynamic mode simulation.
+
+===Format===
+ &lt;tt&gt;DATA IC&lt;/tt&gt; (joint name)=position,velocity;position,velocity;...
+
+where ''joint name'' is the alphanumeric name of the joint whose initial conditions are specified.
+Each ''position'' and ''velocity'' pair are the numeric values for the initial position and velocity
+of one joint variable; there is one ''position,velocity'' pair of values specified for each joint
+variable in order.
+
+===Examples===
+ DATA IC (PIN) = -90, 12.566
+
+specifies that the initial conditions for the pinned joint named &lt;tt&gt;PIN&lt;/tt&gt; for a dynamic mode simulation
+are to have its joint variable set to -90° with an initial velocity of 12.566 radians per second
+(2 Hz).
+
+ DATA IC (SLIP) = POS VEL
+
+specifies that the dynamic mode simulation will begin with initial conditions for the sliding joint
+named &lt;tt&gt;SLIP&lt;/tt&gt; defined by previous value expressions named &lt;tt&gt;POS&lt;/tt&gt; and &lt;tt&gt;VEL&lt;/tt&gt; (see note 9).
+
+ DATA IC (CYL) = 30,12.566; NONE, NONE
+
+specifies that, for the cylindric joint named &lt;tt&gt;CYL&lt;/tt&gt;, the rotational joint variable has initial
+conditions of 30° and 12.566 radians per second, while the translational joint variable has no
+initial conditions specified (see note 10).
+
+===Notes===
+# The &lt;tt&gt;DATA IC&lt;/tt&gt; statement must be preceded by a &lt;tt&gt;FIND DYNAMICS&lt;/tt&gt; statement (dynamic mode); if not, the statement is ignored and a message is printed.
+# The &lt;tt&gt;DATA IC&lt;/tt&gt; statement is optional; it may be used along with the &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement for as few or many joint variables as desired up to the number of degrees of freedom of the system.
+# If more &lt;tt&gt;DATA MOTION&lt;/tt&gt; and &lt;tt&gt;DATA IC&lt;/tt&gt; statements are specified than allowed by the degree of freedom of the system, no error is detected immediately. During the simulation, however, a diagnostic message will occur unless the ''position'' data are all specified (with extreme precision) consistent with a configuration for which the system can be assembled. Difficulty will certainly result upon attempting to increment to a new position.
+# If &lt;tt&gt;DATA MOTION&lt;/tt&gt; and &lt;tt&gt;DATA IC&lt;/tt&gt; statements are specified for less joint variables than the degree of freedom of the system, additional joint variables are selected as free generalized coordinates (&lt;tt&gt;FGC&lt;/tt&gt;s) by the IMP system. The initial conditions for these additional &lt;tt&gt;FGC&lt;/tt&gt;s are determined by IMP; the initial velocities of these additional &lt;tt&gt;FGC&lt;/tt&gt;s are assumed zero.
+# The ''name'' specified must be defined by a previous statement defining a joint. If not, the &lt;tt&gt;DATA&lt;/tt&gt; IC statement is ignored and a message is printed.
+# If more than one &lt;tt&gt;DATA IC&lt;/tt&gt; or &lt;tt&gt;DATA MOTION&lt;/tt&gt; statement is encountered referring to the same ''joint name'', the later statement takes precedence; earlier data are replaced and a message is printed.
+# The units of each ''position'' and each ''velocity'' value depend upon the nature of each joint variable. For rotational joint variables, the units of ''position'' are degrees (also see note 9), and the units of ''velocity'' are radians per second; for each translational joint variable, each ''position'' has units of length, while each ''velocity'' has units of length per second.
+# The sign of each ''position'' and each ''velocity'' value must be consistent with the sign convention for the corresponding joint variable (see joint definition statement).
+# The numeric value of any ''position'' or any ''velocity'' may be substituted for by the alphanumeric name of a previously defined &lt;tt&gt;VALUE&lt;/tt&gt; expression. In such a case, however, the units of a rotational joint variable ''position'' value must be radians.
+# The keyword &lt;tt&gt;NONE&lt;/tt&gt; may be used in place of any ''position'' and ''velocity'' value for a joint variable for which initial conditions are not intended to be specified. When &lt;tt&gt;NONE&lt;/tt&gt; is used for either the ''position'' or the ''velocity'' of a joint variable, the other value for the same joint variable is also treated as &lt;tt&gt;NONE&lt;/tt&gt;.
