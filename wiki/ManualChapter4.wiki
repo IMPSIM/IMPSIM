@@ -10,7 +10,8 @@ the remainder of the statement according to one of the following formats:
 
 
 ==The <tt>DATA LINK</tt> Statement==
-[Image:Manual_figure_ch4_1.png|thumb|400px|_Figure 4-1:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_1.png" height="400px" />
+_Figure 4-1:_
 The <tt>DATA LINK</tt> statement specifies the numeric data which locate one of the coordinate systems
 attached to one of the links relative to the absolute (global) frame of reference for the system.
 
@@ -75,7 +76,8 @@ The above example might also take any of the following forms:
 
 
 ==The <tt>DATA RIGID</tt> Statement==
-[Image:Manual_figure_ch4_2.png|thumb|400px|_Figure 4-2:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_2.png" height="400px" />
+_Figure 4-2:_
 The <tt>DATA RIGID</tt> statement simultaneously specifies the numeric data which locate the two local
 coordinate systems attached to the two links on either side of a <tt>RIGID</tt> joint relative to the
 absolute (global) frame of reference for the system.
@@ -125,7 +127,8 @@ following forms:
 
 
 ==The <tt>DATA XPIN</tt> Statement==
-[Image:Manual_figure_ch4_3.png|thumb|400px|_Figure 4-3:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_3.png" height="400px" />
+_Figure 4-3:_
 The <tt>DATA XPIN</tt> statement specifies the numeric data which simultaneously locate the two local
 coordinate systems attached to the two links on either side of an <tt>XPIN</tt> joint relative to the
 absolute (global) frame of reference for the system. The pin axis is initially aligned parallel to
@@ -176,7 +179,8 @@ above example might also take any of the following forms:
 
 
 ==The <tt>DATA YPIN</tt> Statement==
-[Image:Manual_figure_ch4_4.png|thumb|400px|_Figure 4-4:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_4.png" height="400px" />
+_Figure 4-4:_
 The <tt>DATA YPIN</tt> statement specifies the numeric data which simultaneously locate the two local
 _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> coordinate systems attached to the two links on either
 side of a <tt>YPIN</tt> joint relative to the absolute (global) frame of reference for the system. The pin
@@ -226,7 +230,8 @@ above example might also take any of the following forms:
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
 
 ==The <tt>DATA ZPIN</tt> Statement==
-[Image:Manual_figure_ch4_5.png|thumb|400px|_Figure 4-5:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_5.png" height="400px" />
+_Figure 4-5:_
 The <tt>DATA ZPIN</tt> statement specifies the numeric data which simultaneously locate the two local
 coordinate systems attached to the two links on either side of a <tt>ZPIN</tt> joint relative to the
 absolute (global) frame of reference for the system. The pin axis is initially aligned parallel to
@@ -276,7 +281,8 @@ above example might also take any of the following forms:
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
 
 ==The <tt>DATA REVOLUTE</tt> Statement==
-[Image:Manual_figure_ch4_6.png|thumb|400px|_Figure 4-6:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_6.png" height="400px" />
+_Figure 4-6:_
 The <tt>DATA REVOLUTE</tt> statement specifies the numeric data which simultaneously locate the two local
 coordinate systems attached to the two links on either side of a <tt>REVOLUTE</tt> joint relative to the
 absolute (global) frame of reference for the system.
@@ -327,7 +333,8 @@ above example might also take any of the following forms:
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
 
 ==The <tt>DATA XSLIDE</tt> Statement==
-[Image:Manual_figure_ch4_7.png|thumb|400px|_Figure 4-7:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_7.png" height="400px" />
+_Figure 4-7:_
 The <tt>DATA XSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
 coordinate systems attached to the two links on either side of an <tt>XSLIDE</tt> joint relative to the
 absolute (global) frame of reference for the system. The sliding axis is initially aligned parallel
@@ -372,7 +379,8 @@ The above example might also take any of the following forms:
 # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
 
 ==The <tt>DATA YSLIDE</tt> Statement==
-[Image:Manual_figure_ch4_8.png|thumb|400px|_Figure 4-8:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_8.png" height="400px" />
+_Figure 4-8:_
 The <tt>DATA YSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
 coordinate systems attached to the two links on either side of a <tt>YSLIDE</tt> joint relative to the
 absolute (global) frame of reference for the system. The sliding axis is initially aligned parallel
@@ -417,7 +425,8 @@ The above example might also take any of the following forms:
 # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
 
 ==The <tt>DATA ZSLIDE</tt> Statement==
-[Image:Manual_figure_ch4_9.png|thumb|400px|_Figure 4-9:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_9.png" height="400px" />
+_Figure 4-9:_
 The <tt>DATA ZSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
 coordinate systems attached to the two links on either side of a <tt>ZSLIDE</tt> joint relative to the
 absolute (global) frame of reference for the system. The sliding axis is aligned parallel to the
@@ -461,7 +470,8 @@ The above example might also take any of the following forms:
 # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has been previously given (see last example above).
 
 ==The <tt>DATA PRISM</tt> Statement==
-[Image:Manual_figure_ch4_10.png|thumb|400px|_Figure 4-10:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_10.png" height="400px" />
+_Figure 4-10:_
 The <tt>DATA PRISM</tt> statement specifies the numeric data which simultaneously locates the two local
 coordinate systems attached to the two links on either side of a prismatic joint relative to the
 absolute (global) frame of reference for the system.
@@ -668,7 +678,8 @@ specified by a file named “datafile.dat_ and a <tt>VALUE</tt> expression named
 
 
 ==The <tt>DATA CYLINDER</tt> Statement==
-[Image:Manual_figure_ch4_11.png|thumb|400px|_Figure 4-11:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_11.png" height="400px" />
+_Figure 4-11:_
 The <tt>DATA CYLINDER</tt> statement specifies the numeric data which simultaneously locates the two local coordinate systems attachedto the two links on either side of a <tt>CYLINDER</tt> joint relative tothe absolute (global) frame of reference for the system.
 
 The <tt>DATA CYLINDER</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints and the <tt>DATA LINK</tt> statements,describe the relative locations of the various links of the systemat the initial (design) position.
@@ -709,7 +720,8 @@ The above example might also take any of the following forms:
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
 
 ==The <tt>DATA UJOINT</tt> Statement==
-[Image:Manual_figure_ch4_12.png|thumb|400px|_Figure 4-12:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_12.png" height="400px" />
+_Figure 4-12:_
 The <tt>DATA UJOINT</tt> statement specifies the numeric data which simultaneously locate the two local
 coordinate systems attached to the two links on either side of a <tt>UJOINT</tt> joint relative to the
 absolute (global) frame of reference for the system.
@@ -756,7 +768,8 @@ The above example might also take any of the following forms:
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
 
 ==The <tt>DATA SPHERE</tt> Statement==
-[Image:Manual_figure_ch4_13.png|thumb|400px|_Figure 4-13:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_13.png" height="400px" />
+_Figure 4-13:_
 The <tt>DATA SPHERE</tt> statement specifies the numeric data which simultaneously locate the two local
 coordinate systems attached to the two links on either side of a <tt>SPHERE</tt> joint relative to the
 absolute (global) frame of reference for the system.
@@ -800,7 +813,8 @@ The above example might also take either of the following forms:
 # The _x,y,z_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above example).
 
 ==The <tt>DATA POINT</tt> Statement==
-[Image:Manual_figure_ch4_14.png|thumb|400px|_Figure 4-14:_]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_14.png" height="400px" />
+_Figure 4-14:_
 The <tt>DATA POINT</tt> statement specifies the location of a point defined in a previous <tt>POINT</tt> statement.
 
 ===Format===

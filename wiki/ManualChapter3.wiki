@@ -116,7 +116,8 @@ specifies that the mathematical model used for simulating impacts at each <tt>CO
 
 
 ==The <tt>RIGID</tt> Statement==
-[Image:Manual_figure_ch3_1.png|thumb|400px|_Figure 3-1:_ Example of a rigid joint.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_1.png" height="400px" />
+_Figure 3-1:_ Example of a rigid joint.
 The <tt>RIGID</tt> statement defines a non-movable joint connecting two links of the system (see figure 3-1).
 
 ===Format===
@@ -139,7 +140,8 @@ defines a rigid joint named _WELD_ connecting two links named _LK1_ and _LK2_.
 
 
 ==The <tt>XPIN</tt> Statement==
-[Image:Manual_figure_ch3_2.png|thumb|400px|_Figure 3-2:_ Example of a pinned joint parallel to the X axis.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_2.png" height="400px" />
+_Figure 3-2:_ Example of a pinned joint parallel to the X axis.
 The <tt>XPIN</tt> statement defines a pinned joint connecting two links of the system (see figure 3-2), with its pin axis initally parallel to the global X axis.
 
 ===Format===
@@ -163,7 +165,8 @@ defines a pinned joint named _PIN_ connecting two links named _LK1_ and _LK2_.
 
 
 ==The <tt>YPIN</tt> Statement==
-[Image:Manual_figure_ch3_3.png|thumb|400px|_Figure 3-3:_ Example of a pinned joint parallel to the Y axis.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_3.png" height="400px" />
+_Figure 3-3:_ Example of a pinned joint parallel to the Y axis.
 The <tt>YPIN</tt> statement defines a pinned joint connecting two links of the system (see figure 3-3), with
 its pin axis initially parallel to the global Y axis.
 
@@ -188,7 +191,8 @@ defines a pinned joint named _PIN_ connecting two links named _LK1_ and _LK2_.
 
 
 ==The <tt>ZPIN</tt> Statement==
-[Image:Manual_figure_ch3_4.png|thumb|400px|_Figure 3-4:_ Example of a pinned joint parallel to the Z axis.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_4.png" height="400px" />
+_Figure 3-4:_ Example of a pinned joint parallel to the Z axis.
 The <tt>ZPIN</tt> statement defines a pinned joint connecting two links of the system (see figure 3-4), with
 its pin axis initially parallel to the global Z axis.
 
@@ -213,7 +217,8 @@ defines a pinned joint named _PIN_ connecting two links named _LK1_ and _LK2_.
 
 
 ==The <tt>REVOLUTE</tt> Statement==
-[Image:Manual_figure_ch3_5.png|thumb|400px|_Figure 3-5:_ Example of a pin joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_5.png" height="400px" />
+_Figure 3-5:_ Example of a pin joint connecting two links.
 The <tt>REVOLUTE</tt> statement defines a pin joint connecting two links of the system (see figure 3-5).
 
 ===Format===
@@ -237,7 +242,8 @@ defines a pinned joint named _PIN_ connecting two links named _LK1_ and _LK2_.
 
 
 ==The <tt>XSLIDE</tt> Statement==
-[Image:Manual_figure_ch3_6.png|thumb|400px|_Figure 3-6:_ Example of a sliding joint with its axis parallel to the X axis.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_6.png" height="400px" />
+_Figure 3-6:_ Example of a sliding joint with its axis parallel to the X axis.
 The <tt>XSLIDE</tt> statement defines a sliding joint connecting two links of the system (see figure 3-6), with its axis initially parallel to the global X axis.
 
 ===Format===
@@ -260,7 +266,8 @@ defines a sliding joint named _SLIP_ connecting two links named _LK1_ and _LK2_.
 # It is assumed that there is no limit on the magnitude of the joint variable (sliding motion of the joint).
 
 ==The <tt>YSLIDE</tt> Statement==
-[Image:Manual_figure_ch3_7.png|thumb|400px|_Figure 3-7:_ Example of a sliding joint with its axis parallel to the Y axis.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_7.png" height="400px" />
+_Figure 3-7:_ Example of a sliding joint with its axis parallel to the Y axis.
 The <tt>YSLIDE</tt> statement defines a sliding joint connecting two links of the system (see figure 3-7), with its axis initially parallel to the global Y axis.
 
 ===Format===
@@ -284,7 +291,8 @@ defines a sliding joint named _SLIP_ connecting two links named _LK1_ and _LK2_.
 
 
 ==The <tt>ZSLIDE</tt> Statement==
-[Image:Manual_figure_ch3_8.png|thumb|400px|_Figure 3-8:_ Example of a sliding joint with its axis parallel to the Z axis.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_8.png" height="400px" />
+_Figure 3-8:_ Example of a sliding joint with its axis parallel to the Z axis.
 The <tt>ZSLIDE</tt> statement defines a sliding joint connecting two links of the system (see figure 3-8), with its pin axis initially parallel to be global Z axis.
 
 ===Format===
@@ -308,7 +316,8 @@ defines a sliding joint named _SLIP_ connecting two links named _LK1_ and _LK2_.
 
 
 ==The <tt>PRISM</tt> Statement==
-[Image:Manual_figure_ch3_9.png|thumb|400px|_Figure 3-9:_ Example of a sliding joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_9.png" height="400px" />
+_Figure 3-9:_ Example of a sliding joint connecting two links.
 The <tt>PRISM</tt> statement defines a sliding joint connecting two links of the system (see figure 3-9).
 
 ===Format===
@@ -332,7 +341,8 @@ defines a sliding joint named _SLIP_ connecting two links named _LK1_ and _LK2_.
 
 
 ==The <tt>GEAR</tt> Statement==
-[Image:Manual_figure_ch3_10.png|thumb|400px|_Figure 3-10:_ Example of a gear joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_10.png" height="400px" />
+_Figure 3-10:_ Example of a gear joint connecting two links.
 The <tt>GEAR</tt> statement defines a gear joint between two links of the system (see figure 3-10).
 
 ===Format===
@@ -358,7 +368,8 @@ defines a gear joint named _SPUR_ connecting two links named _SUN_ and _PLAN_.
 
 
 ==The <tt>BEVEL</tt> Statement==
-[Image:Manual_figure_ch3_11.png|thumb|400px|_Figure 3-11:_ Example of a bevel gear joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_11.png" height="400px" />
+_Figure 3-11:_ Example of a bevel gear joint connecting two links.
 The <tt>BEVEL</tt> statement defines a bevel gear joint between two links of the system (see figure 3-11).
 
 ===Format===
@@ -384,7 +395,8 @@ defines a bevel gear joint named _BVL_ connecting two links named _SUN_ and _PLA
 
 
 ==The <tt>RACK</tt> Statement==
-[Image:Manual_figure_ch3_12.png|thumb|400px|_Figure 3-12:_ Example of a rack and pinion joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_12.png" height="400px" />
+_Figure 3-12:_ Example of a rack and pinion joint connecting two links.
 The <tt>RACK</tt> statement defines a rack and pinion joint between two links of the system (see figure 3-12).
 
 ===Format===
@@ -410,7 +422,8 @@ defines a rack and pinion joint named _MESH_ connecting a link named _RAIL_ (the
 
 
 ==The <tt>SCREW</tt> Statement==
-[Image:Manual_figure_ch3_13.png|thumb|400px|_Figure 3-13:_ Example of a screw joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_13.png" height="400px" />
+_Figure 3-13:_ Example of a screw joint connecting two links.
 The <tt>SCREW</tt> statement defines a screw joint connecting two links of the system (see figure 3-13).
 
 ===Format===
@@ -435,7 +448,8 @@ defines a screw joint named _THRD_ connecting two links named _BOLT_ and _NUT_.
 
 
 ==The <tt>CAM</tt> Statement==
-[Image:Manual_figure_ch3_14.png|thumb|400px|_Figure 3-14:_ Example of a cam and follower joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_14.png" height="400px" />
+_Figure 3-14:_ Example of a cam and follower joint connecting two links.
 The <tt>CAM</tt> statement defines a cam and follower joint between two links of the system (see figure 3-14).
 
 ===Format===
@@ -460,7 +474,8 @@ defines a <tt>CAM</tt> joint named _CURV_ connecting a cam shaped link named _DI
 
 
 ==The <tt>SLOT</tt> Statement==
-[Image:Manual_figure_ch3_15.png|thumb|400px|_Figure 3-15:_ Example of a pin-in-slot joint between two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_15.png" height="400px" />
+_Figure 3-15:_ Example of a pin-in-slot joint between two links.
 The <tt>SLOT</tt> statement defines a pin-in-slot joint between two links of the system (see figure 3-15).
 
 ===Format===
@@ -484,7 +499,8 @@ defines a <tt>SLOT</tt> joint named _CURV_ connecting a profile slotted link nam
 
 
 ==The <tt>CYLINDER</tt> Statement==
-[Image:Manual_figure_ch3_16.png|thumb|400px|_Figure 3-16:_ Example of a cylindric joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_16.png" height="400px" />
+_Figure 3-16:_ Example of a cylindric joint connecting two links.
 The <tt>CYLINDER</tt> statement defines a cylindric joint (allowing turning and sliding motions about and along a common axis) connecting two links of the system (see figure 3-16).
 
 ===Format===
@@ -508,7 +524,8 @@ defines a cylindric joint named _CYL_ connecting two links named _LK1_ and _LK2_
 
 
 ==The <tt>UJOINT</tt> Statement==
-[Image:Manual_figure_ch3_17.png|thumb|400px|_Figure 3-17:_ Example of a universal joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_17.png" height="400px" />
+_Figure 3-17:_ Example of a universal joint connecting two links.
 The <tt>UJOINT</tt> statement defines a Hooke universal joint connecting two links of the system (see figure 3-17).
 
 ===Format===
@@ -532,7 +549,8 @@ defines a Hooke universal joint named _UJNT_ connecting two links named _SHFT_ a
 
 
 ==The <tt>FLAT</tt> Statement==
-[Image:Manual_figure_ch3_18.png|thumb|400px|_Figure 3-18:_ Example of a flat joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_18.png" height="400px" />
+_Figure 3-18:_ Example of a flat joint connecting two links.
 The <tt>FLAT</tt> statement defines a flat joint (two flat surfaces constrained to remain in contact but free to turn and slide in the plane) connecting two links of the system (see figure 3-18).
 
 ===Format===
@@ -557,7 +575,8 @@ defines a <tt>FLAT</tt> joint named _PLATE_ connecting two links named _BASE_ an
 
 
 ==The <tt>PLANE</tt> Statement==
-[Image:Manual_figure_ch3_19.png|thumb|400px|_Figure 3-19:_ Example of a planar joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_19.png" height="400px" />
+_Figure 3-19:_ Example of a planar joint connecting two links.
 The <tt>PLANE</tt> statement defines a planar joint (two flat surfaces constrained to remain in contact but free to turn and slide in the plane) connecting two links of the system (see figure 3-19).
 
 ===Format===
@@ -581,8 +600,10 @@ defines a planar joint named _PLATE_ connecting two links named _BASE_ and _PAD_
 
 
 ==The <tt>SPHERE</tt> Statement==
-[Image:Manual_figure_ch3_20.png|thumb|400px|_Figure 3-20:_ Example of a ball and socket joint connecting two links.]
-[Image:Manual_figure_ch3_21.png|thumb|400px|_Figure 3-21:_ Kinematically equivalent model of a ball and socket joint connecting two links.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_20.png" height="400px" />
+_Figure 3-20:_ Example of a ball and socket joint connecting two links.
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_21.png" height="400px" />
+_Figure 3-21:_ Kinematically equivalent model of a ball and socket joint connecting two links.
 The <tt>SPHERE</tt> statement defines a ball and socket joint connecting two links of the system (see figure 3-20, 3-21).
 
 ===Format===
@@ -606,7 +627,8 @@ defines a spheric joint named _SPHR_ connecting two links named _BALL_ and _SCKT
 
 
 ==The <tt>OPEN</tt> Statement==
-[Image:Manual_figure_ch3_22.png|thumb|400px|_Figure 3-22:_ Example of a logical association between two links without physical constraints.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_22.png" height="400px" />
+_Figure 3-22:_ Example of a logical association between two links without physical constraints.
 The <tt>OPEN</tt> statement defines a logical association between two links of the system without producing any physical constraints (see figure 3-22).
 
 ===Format===

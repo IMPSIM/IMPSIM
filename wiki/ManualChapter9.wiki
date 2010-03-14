@@ -10,7 +10,8 @@ The first example presented is the two degree of freedom differential control li
 
 The next several pages show portions of the printed IMP output. The IMP language statements typed by the user are printed exactly as submitted to the IMP interpreter.
 
-[Image:Manual_figure_ch9_1.png|center|_Figure 9-1_ A Differential Control Linkage.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_1.png" />
+_Figure 9-1_ A Differential Control Linkage.
 
                             <<<  Notice  >>>
  
@@ -122,7 +123,8 @@ The next several pages show portions of the printed IMP output. The IMP language
  AXES 1 ALL                   $$ MAKE JOINT AXES VISIBLE.
  DRAW                         $$ DRAW NOW.
 
-[Image:Manual_figure_ch9_2.png|center|_Figure 9-2_ Example of a modeled system.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_2.png" />
+_Figure 9-2_ Example of a modeled system.
 
  AXES 0 ALL                   $$ MAKE JOINT AXES INVISIBLE.
  REMARK: REQUEST STATEMENTS.
@@ -157,7 +159,8 @@ The next several pages show portions of the printed IMP output. The IMP language
    5.0 -12.487
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_3.png|center|_Figure 9-3_ Position of joint JT5 vs. time]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_3.png" />
+_Figure 9-3_ Position of joint JT5 vs. time
 
  Listing of position of point END
    Time         X          Y          Z
@@ -179,7 +182,8 @@ The next several pages show portions of the printed IMP output. The IMP language
  RETURN
  > execute                                                                   [#Notes|(17)]
 
-[Image:Manual_figure_ch9_4.png|center|_Figure 9-4_ Animation of the differential control linkage.][#Notes|(18)]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_4.png" />
+_Figure 9-4_ Animation of the differential control linkage.[#Notes|(18)]
 
  Press 'ENTER' to continue: >
  Press 'ENTER' to continue: >
@@ -208,7 +212,8 @@ The next several pages show portions of the printed IMP output. The IMP language
   5.000000     -8.260      1.378  0.000
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_5.png|center|_Figure 9-5_ Position of joint JT5 vs. time.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_5.png" />
+_Figure 9-5_ Position of joint JT5 vs. time.
 
  Press 'ENTER' to continue: >
  > recall input
@@ -218,7 +223,8 @@ The next several pages show portions of the printed IMP output. The IMP language
  RETURN
  > execute
 
-[Image:Manual_figure_ch9_6.png|center|_Figure 9-6_ Animation of the differential control linkage.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_6.png" />
+_Figure 9-6_ Animation of the differential control linkage.
 
  Press 'ENTER' to continue: >
  Press 'ENTER' to continue: >
@@ -247,7 +253,8 @@ The next several pages show portions of the printed IMP output. The IMP language
   5.000000     -8.773      2.728  0.000
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_7.png|center|_Figure 9-7_ Position of joint JT5 vs. time.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_7.png" />
+_Figure 9-7_ Position of joint JT5 vs. time.
 
  Press 'ENTER' to continue: >
  > recall input                                                     [#Notes|(19)]
@@ -280,7 +287,8 @@ The second example is the lift mechanism of a front end loader, with hydraulic c
 
 The first portion of the simulation demonstrates the kinematic performance of the loader and also illustrates some of the graphic capabilities of IMP. The second portion examines the forces at particular joints during the lift operation with a load applied in the bucket. IMP's plotting capabilities are demonstrated here.
 
-[Image:Manual_figure_ch9_8.png|center|_Figure 9-8_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_8.png" />
+_Figure 9-8_ Unnamed.
 
                           <<< Notice >>>
  
@@ -460,7 +468,8 @@ The first portion of the simulation demonstrates the kinematic performance of th
  SLIDE (Y)=-20
  ZOOM(0.7)
 
-[Image:Manual_figure_ch9_9.png|center|_Figure 9-9_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_9.png" />
+_Figure 9-9_ Unnamed.
 
  Press 'ENTER' to continue: >
  
@@ -492,7 +501,8 @@ The first portion of the simulation demonstrates the kinematic performance of th
  Press 'ENTER' to continue: >
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_10.png|center|_Figure 9-10_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_10.png" />
+_Figure 9-10_ Unnamed.
 
  Press 'ENTER' to continue: >
  
@@ -531,7 +541,8 @@ The first portion of the simulation demonstrates the kinematic performance of th
  6.000000 170.339 148.479 40.000
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_11.png|center|_Figure 9-11_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_11.png" />
+_Figure 9-11_ Unnamed.
 
  Press 'ENTER' to continue: >
  
@@ -558,7 +569,8 @@ The first portion of the simulation demonstrates the kinematic performance of th
  Press 'ENTER' to continue: >
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_12.png|center|_Figure 9-12_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_12.png" />
+_Figure 9-12_ Unnamed.
 
  Press 'ENTER' to continue: >
  
@@ -601,7 +613,8 @@ The first portion of the simulation demonstrates the kinematic performance of th
  7.000000 157.051 109.972 40.000
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_13.png|center|_Figure 9-13_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_13.png" />
+_Figure 9-13_ Unnamed.
 
  Press 'ENTER' to continue: >
  > recall input
@@ -625,11 +638,13 @@ The first portion of the simulation demonstrates the kinematic performance of th
  Press 'ENTER' to continue: >
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_14.png|center|_Figure 9-14_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_14.png" />
+_Figure 9-14_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_15.png|center|_Figure 9-15_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_15.png" />
+_Figure 9-15_ Unnamed.
 
  Press 'ENTER' to continue: >
  
@@ -656,31 +671,38 @@ The first portion of the simulation demonstrates the kinematic performance of th
  Press 'ENTER' to continue: >
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_16.png|center|_Figure 9-16_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_16.png" />
+_Figure 9-16_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_17.png|center|_Figure 9-17_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_17.png" />
+_Figure 9-17_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_18.png|center|_Figure 9-18_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_18.png" />
+_Figure 9-18_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_19.png|center|_Figure 9-19_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_19.png" />
+_Figure 9-19_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_20.png|center|_Figure 9-20_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_20.png" />
+_Figure 9-20_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_21.png|center|_Figure 9-21_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_21.png" />
+_Figure 9-21_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_22.png|center|_Figure 9-22_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_22.png" />
+_Figure 9-22_ Unnamed.
 
  Press 'ENTER' to continue: >
  
@@ -708,7 +730,8 @@ The third example presented is a drive train for the thread looper in an industr
 
 The first of these two problems, being strictly geometric, is solved in kinematic mode. The second problem can also be solved in kinematic mode if it is assumed that the motor speed is constant under the variable dynamic load. This very reasonable assumption results in considerable saving over use of the dynamic mode. 1. Courtesy of Union Special Machine Company, Chicago, Illinois.
 
-[Image:Manual_figure_ch9_23.png|center|_Figure 9-23_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_23.png" />
+_Figure 9-23_ Unnamed.
 
                         <<< Notice >>>
  
@@ -896,23 +919,28 @@ The first of these two problems, being strictly geometric, is solved in kinemati
  0.007500 9.766 17.005 14.719 3.945 -51.987 57.442
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_24.png|center|_Figure 9-24_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_24.png" />
+_Figure 9-24_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_25.png|center|_Figure 9-25_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_25.png" />
+_Figure 9-25_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_26.png|center|_Figure 9-26_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_26.png" />
+_Figure 9-26_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_27.png|center|_Figure 9-27_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_27.png" />
+_Figure 9-27_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_28.png|center|_Figure 9-28_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_28.png" />
+_Figure 9-28_ Unnamed.
 
  Press 'ENTER' to continue: >
  > end
@@ -933,7 +961,8 @@ The suspension system modeled is shown in the figure on the next page. It can be
 
 In the first simulation presented, the equilibrium position is sought, while the geometry, and the forces in all joints are printed. This is followed by a second simulation in which the bottom of the tire is subjected to a deep hole at a speed corresponding to the first resonant frequency, the "wheel hop" frequency. VALUE statements are used to simulate the separation of the tire from the road, to allow impact with the jounce and rebound bumpers, and to change the shock absorber damping rates for extension and compression. Partial listings are presented of the dynamic mode simulation results. These were compared and correlated well with experimental results gathered by tests made for the committee under the same conditions by a major US auto company. 
 
-[Image:Manual_figure_ch9_29.png|center|_Figure 9-29_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_29.png" />
+_Figure 9-29_ Unnamed.
 
                           <<< Notice >>>
  
@@ -1351,11 +1380,13 @@ In the first simulation presented, the equilibrium position is sought, while the
  
  0.250000 25.295 -25.005 3.197
 
-[Image:Manual_figure_ch9_30.png|center|_Figure 9-30_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_30.png" />
+_Figure 9-30_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_31.png|center|_Figure 9-31_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_31.png" />
+_Figure 9-31_ Unnamed.
 
  Press 'ENTER' to continue: >
  
@@ -1490,11 +1521,13 @@ In the first simulation presented, the equilibrium position is sought, while the
  0.250000 0.000 0.000 -931.095 -26.066 28613.165 0.000
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_32.png|center|_Figure 9-32_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_32.png" />
+_Figure 9-32_ Unnamed.
 
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_33.png|center|_Figure 9-33_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_33.png" />
+_Figure 9-33_ Unnamed.
 
  Press 'ENTER' to continue: >
  
@@ -1519,7 +1552,8 @@ In the first simulation presented, the equilibrium position is sought, while the
 ==A Double Toggle Bench Clamp==
 The next example is the simulation of a double toggle bench clamp. This clamp could be used in many places in a manufacturing environment. The purpose of the clamp is to keep the clamping pad forced against a vertical surface holding an object in place while work is performed.
 
-[Image:Manual_figure_ch9_34.png|center|_Figure 9-34_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_34.png" />
+_Figure 9-34_ Unnamed.
 
                       <<< Notice >>>
  
@@ -1620,13 +1654,15 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
  >
  draw
 
-[Image:Manual_figure_ch9_35.png|center|_Figure 9-35_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_35.png" />
+_Figure 9-35_ Unnamed.
 
  > data view front
  > slide x 5.0
  > draw
 
-[Image:Manual_figure_ch9_36.png|center|_Figure 9-36_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_36.png" />
+_Figure 9-36_ Unnamed.
 
  > data position A = 0 30 2
  > animate
@@ -1643,7 +1679,8 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
  time = 1.000000
  time = 2.000000
 
-[Image:Manual_figure_ch9_37.png|center|_Figure 9-37_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_37.png" />
+_Figure 9-37_ Unnamed.
 
  > data position A = 0 4 15
  *** Input motion for joint A 1 is redefined. ***
@@ -1669,7 +1706,8 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
  Press 'ENTER' to continue: >
  Press 'ENTER' to continue: >
 
-[Image:Manual_figure_ch9_38.png|center|_Figure 9-38_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_38.png" />
+_Figure 9-38_ Unnamed.
 
  Listing of position of point F0
  Time X Y Z
@@ -1693,7 +1731,8 @@ The next example is the simulation of a double toggle bench clamp. This clamp co
  
  15.000000 -0.037 11.306 0.000
 
-[Image:Manual_figure_ch9_39.png|center|_Figure 9-39_ Unnamed.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_39.png" />
+_Figure 9-39_ Unnamed.
 
  Press 'ENTER' to continue: >
  > end

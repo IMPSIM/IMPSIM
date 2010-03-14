@@ -12,7 +12,8 @@ and the resulting impacts simulated. The system can be driven either by applied 
 motions, which can be specified functions of time or system geometry. A system of this type is shown
 in the figure on the next page.
 
-[Image:Manual_figure_ch1_1.png|thumb|400px|center|_Figure 1-1_ Example of a modeled system.]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch1_1.png" height="400px" />
+_Example of a modeled system._
 
 The IMP system is capable of simulation in any of three different modes: kinematic (geometric),
 static (equilibrium), or dynamic (time response) mode. In any of these modes IMP will calculate
@@ -128,7 +129,8 @@ supply references for those users interested in more detail. The main references
 analytical formulation are the doctoral dissertation of P. N. Sheth [ManualChapter1#Footnotes [1]] and the associated
 publication.[ManualChapter1#Footnotes [2],[3]]
 
-[[Image:Manual_figure_ch1_2.png|thumb|400px|center|_Figure 1-2_ Example of a modeled system.]]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch1_2.png" height="400px" />
+_Figure 1-2_ Example of a modeled system.
 
 === Topological Analysis ===
 The first phase of a systematic study of a mechanical system must be the topological analysis of the
