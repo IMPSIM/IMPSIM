@@ -16,7 +16,7 @@ In the folder you checked out from the repository, navigate to the lib folder an
 	# Select the ‘I Agree’ button on the license agreement
 	# Choose the default installation directory 
 	# On the next window pop-up, 
-	 # select the ‘Include 16-bit compilers’ checkbox box
+	 # Select the ‘Include 16-bit compilers’ checkbox box
          # Click the button labeled ‘Target’
 	  # Select the checkbox labeled ‘DOS’
 	  # Press the button labeled ‘OK’
