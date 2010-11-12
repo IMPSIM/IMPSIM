@@ -1,15 +1,7 @@
-#summary One-sentence summary of this page.
+#Step by Step Instructions to Build and Compile IMP from the C Code and run it.
 
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
-
-*A Guide to the C*
+=A Guide to the C=
 DON’T PANIC
 
  
@@ -17,7 +9,7 @@ Located in the root directory of the IMP repository is a folder labeled trunk (t
 
 This guide will walk you through the process of installing the IDE, OpenWatcom, making the different libraries of IMP, and finally making an executable of IMP.  Then once you have the executable, we’ll tell you how to run the 16-bit executable on 64-bit Windows 7 (which is a trick in itself).  The following instructions assume that you are running on 64-bit Windows 7 Professional.  Instructions for Windows XP are at the end.  No instructions exist for Windows Vista, Mac OS or Linus.
 
-*OpenWatcom installation*
+==OpenWatcom Installation==
 
 These instructions assume installation on Windows 7 64-bit.  These instructions might work for 32-bit Windows 7.  This author assumes no responsibility for those running 32 bit.
 In the folder you checked out from the repository, navigate to the lib folder and open up the OpenWatcom folder.  Without wincing, double click the executable.
@@ -40,7 +32,7 @@ In the folder you checked out from the repository, navigate to the lib folder an
 	##Press the ‘OK’ button 
 	#You’ll get a message that tells you that Setup is complete.  It’ll ask you to reboot your computer.  Reboot your computer now, unless you need to save things first. 
 
-*Opening the project workspace*
+==Opening the project workspace==
 
 If you accepted all the default installations settings, you should be able to start the OpenWatcom IDE by finding the link in the start menu (under the Open Watcom folder, it’ll be labeled IDE).  If you didn’t accept the default installation settings, good luck.
 	#Once in the IDE, go to File > Open Project
@@ -48,7 +40,7 @@ If you accepted all the default installations settings, you should be able to st
 	#Go inside the folder labeled workspace inside of the IMP folder
 	#Inside of the workspace folder is a file called imp.wpj. This is the project file. Open this project file.
 
-*Building and Compiling IMP*
+==Building and Compiling IMP==
 
 Once inside the project, you will be bombarded with windows that contain lists of files.  These are the different libraries of IMP.  They need to be made and compiled in the proper order.  
 	#Go to Actions>Mark All Targets for Remake
@@ -78,7 +70,7 @@ Once inside the project, you will be bombarded with windows that contain lists o
 	##Normally running this program wouldn’t be an issue on Windows OS’es.  However, Windows 7 no longer contains the NTVDM (NT Virtual Dos Machine).  It can’t run legacy programs like IMP natively.
 	##In order to run IMP, we’ll use the Windows XP mode of Windows 7.
 
-*Running Windows XP Mode On Windows 7*
+==Running Windows XP Mode On Windows 7==
 
 There is a trick to getting IMP to run in Windows XP Mode due to the implementation of Windows XP Mode on Windows 7.
 Follow this link here:
@@ -90,7 +82,7 @@ Specific information for how Windows XP works is available here.   Read while in
 http://www.withinwindows.com/2009/04/25/windows-xp-mode-internals-part-1-overview/
 http://www.withinwindows.com/2009/04/28/windows-xp-mode-internals-part-2-application-publishing-magic/
 
-*Using Windows XP Mode*
+==Using Windows XP Mode==
 
 	#In your start menu, navigate to the Windows Virtual PC Folder, open it and click on the link to Windows XP Mode
 	#You’ll have to accept a license agreement, create an account, select an update pattern and then click Start setup.  It’ll now do some magical setup stuff.
@@ -113,6 +105,6 @@ http://www.withinwindows.com/2009/04/28/windows-xp-mode-internals-part-2-applica
 
 If you don’t have IMP running at this time, please make sure you followed all of the instructions
 
-*Windows XP*
+==Windows XP==
 
 With a native installation, IMP should run no problem.  If you encounter any issues, try following the instructions above that disable the Terminal Service service in the Control Panel.  Also try placing the DOS4GW executable in the same directory as the imp executable.  Anything beyond this and the author of this document cannot help as he is not running Windows XP natively anymore.
