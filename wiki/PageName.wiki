@@ -18,8 +18,8 @@ In the folder you checked out from the repository, navigate to the lib folder an
 	# On the next window pop-up, 
 	 # Select the ‘Include 16-bit compilers’ checkbox box
          # Click the button labeled ‘Target’
-	  # Select the checkbox labeled ‘DOS’
-	  # Press the button labeled ‘OK’
+          # Select the checkbox labeled ‘DOS’
+          # Press the button labeled ‘OK’
 	 # Press the ‘Next’ button
 	# You should see ‘Setup will now copy any selected files’ on a new pop-up window
 	 # Press the ‘Next’ button
@@ -28,8 +28,8 @@ In the folder you checked out from the repository, navigate to the lib folder an
 	 # Select ‘Make all the modifications for you’ (unless you want headaches later)
 	 # Press the ‘OK’ button
 	# A new window will pop up that asks to if Setup can modify associations for you.
-  	 # Select the ‘Modify Associations’ option 
-	 # Press the ‘OK’ button 
+         # Select the ‘Modify Associations’ option 
+         # Press the ‘OK’ button 
 	# You’ll get a message that tells you that Setup is complete.  It’ll ask you to reboot your computer.  Reboot your computer now, unless you need to save things first. 
 
 ==Opening the project workspace==
