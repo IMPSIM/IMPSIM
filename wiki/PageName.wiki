@@ -20,7 +20,7 @@ In the folder you checked out from the repository, navigate to the lib folder an
          # Click the button labeled ‘Target’
           # Select the checkbox labeled ‘DOS’
           # Press the button labeled ‘OK’
-	 # Press the ‘Next’ button
+         # Press the ‘Next’ button
 	# You should see ‘Setup will now copy any selected files’ on a new pop-up window
 	 # Press the ‘Next’ button
 	# It will now install, don’t get up
