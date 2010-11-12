@@ -73,12 +73,18 @@ Once inside the project, you will be bombarded with windows that contain lists o
 ==Running Windows XP Mode On Windows 7==
 
 There is a trick to getting IMP to run in Windows XP Mode due to the implementation of Windows XP Mode on Windows 7.
+
 Follow this link here:
 http://www.microsoft.com/windows/virtual-pc/download.aspx
+
 The link will get you to everything you need to download for Windows XP Mode.  This does require you to validate your copy of windows (which shouldn’t be a problem for you, should it?)
+
 After installing the Validation update, you might have to restart your browser and/or computer ( I don’t know why, it doesn’t seem like you should, but I had to)
+
 Download everything and install it.
+
 Specific information for how Windows XP works is available here.   Read while installing (for best time efficiency)
+
 http://www.withinwindows.com/2009/04/25/windows-xp-mode-internals-part-1-overview/
 http://www.withinwindows.com/2009/04/28/windows-xp-mode-internals-part-2-application-publishing-magic/
 
