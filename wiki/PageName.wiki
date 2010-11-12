@@ -16,20 +16,20 @@ In the folder you checked out from the repository, navigate to the lib folder an
 	#Select the ‘I Agree’ button on the license agreement
 	#Choose the default installation directory 
 	#On the next window pop-up, 
-	##select the ‘Include 16-bit compilers’ checkbox box
-        ##Click the button labeled ‘Target’
-	###Select the checkbox labeled ‘DOS’
-	###Press the button labeled ‘OK’
-	##Press the ‘Next’ button
+	 #select the ‘Include 16-bit compilers’ checkbox box
+         #Click the button labeled ‘Target’
+	  #Select the checkbox labeled ‘DOS’
+	  #Press the button labeled ‘OK’
+	 #Press the ‘Next’ button
 	#You should see ‘Setup will now copy any selected files’ on a new pop-up window
-	##Press the ‘Next’ button
+	 #Press the ‘Next’ button
 	#It will now install, don’t get up
 	#A window might pop up that asks if Setup can modify environment variables in the registry for you.  
-	##Select ‘Make all the modifications for you’ (unless you want headaches later)
-	##Press the ‘OK’ button
+	 #Select ‘Make all the modifications for you’ (unless you want headaches later)
+	 #Press the ‘OK’ button
 	#A new window will pop up that asks to if Setup can modify associations for you.
-  	##Select the ‘Modify Associations’ option 
-	##Press the ‘OK’ button 
+  	 #Select the ‘Modify Associations’ option 
+	 #Press the ‘OK’ button 
 	#You’ll get a message that tells you that Setup is complete.  It’ll ask you to reboot your computer.  Reboot your computer now, unless you need to save things first. 
 
 ==Opening the project workspace==
@@ -45,30 +45,30 @@ If you accepted all the default installations settings, you should be able to st
 Once inside the project, you will be bombarded with windows that contain lists of files.  These are the different libraries of IMP.  They need to be made and compiled in the proper order.  
 	#Go to Actions>Mark All Targets for Remake
 	#Now go to Windows > More Windows
-	##Each entry that you see labeled *.lib in the More Windows window needs to be made first
-	##Bring each *.lib labeled window into focus in turn and press F4 (this makes the lib file) (F4 is mapped to Target>Make).
-	##After all the lib files have been made, you can make the IMP executable.
-	###Go to the window titled imp.exe and press F4.
-	###Go to the window titled eclplt.exe and press F4 (this is a program that runs example problems for IMP).
+	 #Each entry that you see labeled *.lib in the More Windows window needs to be made first
+	 #Bring each *.lib labeled window into focus in turn and press F4 (this makes the lib file) (F4 is mapped to Target>Make).
+	 #After all the lib files have been made, you can make the IMP executable.
+	  #Go to the window titled imp.exe and press F4.
+	  #Go to the window titled eclplt.exe and press F4 (this is a program that runs example problems for IMP).
 	#In the workspace directory (where you opened the project file) is where the .exe’s are created.  
-	##Navigate to the workspace directory in the IMP directory.  There will be a lot of files there.  The following file types can be deleted (and probably should be, don’t check them into the repository)
-	###.OBJ
-	###.LB1
-	###.LIB
-	###Lk1
-	###MAP
-	###MK
-	###MK1	
-	###SYM
-	##Save the following file types
-	###.tgt
-	###.wpj
-	###.exe	
+	 #Navigate to the workspace directory in the IMP directory.  There will be a lot of files there.  The following file types can be deleted (and probably should be, don’t check them into the repository)
+	  #.OBJ
+	  #.LB1
+	  #.LIB
+	  #Lk1
+	  #MAP
+	  #MK
+	  #MK1	
+	  #SYM
+	 #Save the following file types
+	  #.tgt
+	  #.wpj
+	  #.exe	
 	#Now that you have the .exe’s, double click to run them.
-	##Note, the above step is impossible to do because IMP was designed to run on DOS.
-	##The project is set up to compile the IMP program for DOS (that’s 16-bit) with the 4G extensions (a 32 bit extension to DOS that allows programs to access more than 640KB of memory (up to 64 MB))
-	##Normally running this program wouldn’t be an issue on Windows OS’es.  However, Windows 7 no longer contains the NTVDM (NT Virtual Dos Machine).  It can’t run legacy programs like IMP natively.
-	##In order to run IMP, we’ll use the Windows XP mode of Windows 7.
+	 #Note, the above step is impossible to do because IMP was designed to run on DOS.
+  	 #The project is set up to compile the IMP program for DOS (that’s 16-bit) with the 4G extensions (a 32 bit extension to DOS that allows programs to access more than 640KB of memory (up to 64 MB))
+	 #Normally running this program wouldn’t be an issue on Windows OS’es.  However, Windows 7 no longer contains the NTVDM (NT Virtual Dos Machine).  It can’t run legacy programs like IMP natively.
+	 #In order to run IMP, we’ll use the Windows XP mode of Windows 7.
 
 ==Running Windows XP Mode On Windows 7==
 
@@ -89,19 +89,19 @@ http://www.withinwindows.com/2009/04/28/windows-xp-mode-internals-part-2-applica
 	#After setup, it should bring you into the familiar Windows XP environment.
 	#Open Windows Explorer on the Windows XP VM.  Click on the Computer Node.  You should see icons that correspond to your partitions that Windows 7 is installed on
 	#Using these icons, navigate to the directory where you checked out the IMP directory from the repository.  
-	##Get the IMP.exe and copy it to the desktop.
-	##You still won’t be able to run it
+	 #Get the IMP.exe and copy it to the desktop.
+	 #You still won’t be able to run it
 	#To Run IMP
-	##Go to the bin directory of the directory you checked out from the repository
-	###Get a file called DOS4GW and copy it onto the desktop where IMP should be copied (the purpose of this is to make sure both files stay relative to each other)
-	##Go to Control Panel > Performance and Maintenance > Administrative Tools > Services.
-	###Find the service called Terminal Services, go to its properties and change its startup type to disabled
-	###Note, doing the above will turn off Application Publishing (and by extension Remote Applications.  Read the above links if this confuses you).  This means that Windows 7 and Windows XP Mode won’t talk to each other and Windows XP Mode becomes just another virtual machine
-	###The reason Terminal Services has to be disabled is because it prevents IMP from running in full screen mode (which it does no matter your needs or wants)
-	##Reboot the Windows XP Mode System
-	##When it starts back up, double click IMP.
-	##The executable should run now, type in ‘graphic’ for the display mode.
-	##For instructions on the commands to use with IMP, see another document.
+	 #Go to the bin directory of the directory you checked out from the repository
+	  #Get a file called DOS4GW and copy it onto the desktop where IMP should be copied (the purpose of this is to make sure both files stay relative to each other)
+	 #Go to Control Panel > Performance and Maintenance > Administrative Tools > Services.
+	  #Find the service called Terminal Services, go to its properties and change its startup type to disabled
+	  #Note, doing the above will turn off Application Publishing (and by extension Remote Applications.  Read the above links if this confuses you).  This means that Windows 7 and Windows XP Mode won’t talk to each other and Windows XP Mode becomes just another virtual machine
+	  #The reason Terminal Services has to be disabled is because it prevents IMP from running in full screen mode (which it does no matter your needs or wants)
+	 #Reboot the Windows XP Mode System
+	 #When it starts back up, double click IMP.
+	 #The executable should run now, type in ‘graphic’ for the display mode.
+	 #For instructions on the commands to use with IMP, see another document.
 
 If you don’t have IMP running at this time, please make sure you followed all of the instructions
 
