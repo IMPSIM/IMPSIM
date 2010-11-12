@@ -5,14 +5,14 @@
 DON’T PANIC
 
  
-Located in the root directory of the IMP repository is a folder labeled trunk (this should not surprise you). Inside of the trunk folder are thre more folders (this might surprise you).  Check out this folder (the trunk folder) onto your local filesystem.  Do not re-arrange any subfolders or files with in the folder.  The trunk folder is organized in a way the IDE you will be using, OpenWatcom, sees as a project workspace.
+Located in the root directory of the IMP repository is a folder labeled trunk (this should not surprise you). Inside of the trunk folder are three more folders (this might surprise you).  Check out this folder (the trunk folder) onto your local filesystem.  Do not re-arrange any subfolders or files with in the folder.  The trunk folder is organized in a way the IDE you will be using, Open Watcom, sees as a project workspace.
 
-This guide will walk you through the process of installing the IDE, OpenWatcom, making the different libraries of IMP, and finally making an executable of IMP.  Then once you have the executable, we’ll tell you how to run the 16-bit executable on 64-bit Windows 7 (which is a trick in itself).  The following instructions assume that you are running on 64-bit Windows 7 Professional.  Instructions for Windows XP are at the end.  No instructions exist for Windows Vista, Mac OS or Linus.
+This guide will walk you through the process of installing the IDE, Open Watcom, making the different libraries of IMP, and finally making an executable of IMP.  Then once you have the executable, we’ll tell you how to run the 16-bit executable on 64-bit Windows 7 (which is a trick in itself).  The following instructions assume that you are running on 64-bit Windows 7 Professional.  Instructions for Windows XP are at the end.  No instructions exist for Windows Vista, Mac OS or Linus.
 
 ==Open Watcom Installation==
 
 These instructions assume installation on Windows 7 64-bit.  These instructions might work for 32-bit Windows 7.  This author assumes no responsibility for those running 32 bit.
-In the folder you checked out from the repository, navigate to the lib folder and open up the OpenWatcom folder.  Without wincing, double click the executable.
+In the folder you checked out from the repository, navigate to the lib folder and open up the Open Watcom folder.  Without wincing, double click the executable.
 	#Select the ‘I Agree’ button on the license agreement
 	#Choose the default installation directory 
 	#On the next window pop-up, 
