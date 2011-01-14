@@ -169,33 +169,17 @@ number is ended when a separator (see the next section) is encountered.
 Adjacent words or numbers within an IMP statement must be separated from each other by one or more
 blanks or by one of the following special characters called _separators_:
 
-{| border="1" cellpadding="5"
-|+ align="bottom" | _Table 2.2:_ IMP Separators
-! ,
-| comma
-! +
-| plus sign
-|-
-! ;
-| semicolon
-! -
-| minus sign
-|-
-! :
-| colon
-! *
-| asterisk
-|-
-! (
-| left parenthesis
-! /
-| slash
-|-
-! =
-| equal sign
-! @
-| at sign
-|}
+Table 2.2: IMP Separators
+|| , || comma ||
+|| + || plus sign ||
+|| ; || semicolon ||
+|| - || minus sign ||
+|| * || asterisk ||
+|| ( || left parenthesis ||
+|| / || slash ||
+|| = || equals sign ||
+|| @ || at sign ||
+
 
 Except in <tt>VALUE</tt> expressions (see Section 2-7), these separators are treated in identical manner to
 each other and are, therefore, interchangeable. The format of each IMP statement, however, leads to
