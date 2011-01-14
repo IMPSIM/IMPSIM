@@ -113,43 +113,24 @@ the vocabulary of the typical designer, without requiring an excessive amount of
 
 The keywords recognized within IMP are as follows:
 
-{| border="1" cellpadding="5"
-|+ align="bottom" | _Table 2-1:_ IMP Keywords
-|-
-| <tt>ABS</tt> || <tt>ABSO</tt>lute || <tt>ACCE</tt>leration || <tt>ACOS</tt> || <tt>ALL</tt> || <tt>ALPH</tt>a || <tt>ANIM</tt>ate || <tt>ASIN</tt>
-|-
-| <tt>ATAN2</tt> || <tt>AXES</tt> || <tt>BACK</tt> || <tt>BASE</tt> || <tt>BEVEl</tt> || <tt>BLAC</tt>k || <tt>BLUE</tt> || <tt>BOTT</tt>om
-|-
-| <tt>CAM</tt> || <tt>CLEA</tt>r || <tt>CONS</tt>tant || <tt>CONT</tt>act || <tt>COS</tt> || <tt>CYAN</tt> || <tt>CYLI</tt>nder || <tt>DAMP</tt>er
-|-
-| <tt>DATA</tt> || <tt>DELE</tt>te || <tt>DENS</tt>ity || <tt>DEVI</tt>ce || <tt>DRAW</tt> || <tt>DYNA</tt>mic || <tt>END</tt> || <tt>EQUI</tt>librium
-|-
-| <tt>ERAS</tt>e || <tt>EXEC</tt>ute || <tt>EXP</tt> || <tt>FIND</tt> || <tt>FINI</tt>sh || <tt>FLAT</tt> || <tt>FORC</tt>e || <tt>FREQ</tt>uency
-|-
-| <tt>FRON</tt>t || <tt>GEAR</tt> || <tt>GRAV</tt>ity || <tt>GREE</tt>n || <tt>GROU</tt>nd || <tt>HEAD</tt>ing || <tt>HOLD</tt> || <tt>IC</tt>
-|-
-| <tt>IDEN</tt>tify || <tt>IF</tt> || <tt>IMPA</tt>ct || <tt>INER</tt>tia || <tt>INPU</tt>t || <tt>ISOM</tt>etric || <tt>JOIN</tt>t || <tt>LEFT</tt>
-|-
-| <tt>LINK</tt> || <tt>LIST</tt> || <tt>LOG</tt> || <tt>LOG10</tt> || <tt>LOOP</tt> || <tt>MAGE</tt>nta || <tt>MASS</tt> || <tt>MOTI</tt>on
-|-
-| <tt>NONE</tt> || <tt>OFF</tt> || <tt>ON</tt> || <tt>OPEN</tt> || <tt>ORAN</tt>ge || <tt>PAIR</tt> || <tt>PAUS</tt>e || <tt>PI</tt>
-|-
-| <tt>PLAN</tt>ar || <tt>PLOT</tt> || <tt>POIN</tt>t || <tt>POSI</tt>tion || <tt>PRIN</tt>t || <tt>PRIS</tt>m || <tt>RACK</tt> || <tt>RECA</tt>ll
-|-
-| <tt>RED</tt> || <tt>REMA</tt>rk || <tt>RESE</tt>t || <tt>RETU</tt>rn || <tt>REVO</tt>lute || <tt>RIGH</tt>t || <tt>RIGI</tt>d || <tt>SCRE</tt>w
-|-
-| <tt>SHAP</tt>e || <tt>SHOW</tt> || <tt>SIN</tt> || <tt>SLID</tt>e || <tt>SLOT</tt> || <tt>SOLI</tt>d || <tt>SPHE</tt>re || <tt>SPRI</tt>ng
-|-
-| <tt>SQRT</tt> || <tt>STAT</tt>ic || <tt>STOR</tt>e || <tt>SYST</tt>em || <tt>T</tt> || <tt>TABL</tt>e || <tt>TAN</tt> || <tt>TIME</tt>
-|-
-| <tt>TITL</tt>e || <tt>TOP</tt> || <tt>TORQ</tt>ue || <tt>TURN</tt> || <tt>UJOI</tt>nt || <tt>UNIT</tt> || <tt>USER</tt> || <tt>VAL</tt>
-|-
-| <tt>VALU</tt>e || <tt>VELO</tt>city || <tt>VIEW</tt> || <tt>WHIT</tt>e || <tt>X</tt> || <tt>XPIN</tt> || <tt>XSLI</tt>de || <tt>Y</tt>
-|-
-| <tt>YELL</tt>ow || <tt>YPIN</tt> || <tt>YSLI</tt>de || <tt>Z</tt> || <tt>ZERO</tt> || <tt>ZOOM</tt> || <tt>ZPIN</tt> || <tt>ZSLI</tt>de
-|-
-| <tt>?</tt> || <tt>????</tt> || <tt>!</tt> || || || || ||
-|}
+
+|| <tt>ABS</tt> || <tt>ABSO</tt>lute || <tt>ACCE</tt>leration || <tt>ACOS</tt> || <tt>ALL</tt> || <tt>ALPH</tt>a || <tt>ANIM</tt>ate || <tt>ASIN</tt> || 
+|| <tt>ATAN2</tt> || <tt>AXES</tt> || <tt>BACK</tt> || <tt>BASE</tt> || <tt>BEVEl</tt> || <tt>BLAC</tt>k || <tt>BLUE</tt> || <tt>BOTT</tt>om || 
+|| <tt>CAM</tt> || <tt>CLEA</tt>r || <tt>CONS</tt>tant || <tt>CONT</tt>act || <tt>COS</tt> || <tt>CYAN</tt> || <tt>CYLI</tt>nder || <tt>DAMP</tt>er ||
+|| <tt>DATA</tt> || <tt>DELE</tt>te || <tt>DENS</tt>ity || <tt>DEVI</tt>ce || <tt>DRAW</tt> || <tt>DYNA</tt>mic || <tt>END</tt> || <tt>EQUI</tt>librium  ||
+|| <tt>ERAS</tt>e || <tt>EXEC</tt>ute || <tt>EXP</tt> || <tt>FIND</tt> || <tt>FINI</tt>sh || <tt>FLAT</tt> || <tt>FORC</tt>e || <tt>FREQ</tt>uency ||
+|| <tt>FRON</tt>t || <tt>GEAR</tt> || <tt>GRAV</tt>ity || <tt>GREE</tt>n || <tt>GROU</tt>nd || <tt>HEAD</tt>ing || <tt>HOLD</tt> || <tt>IC</tt> ||
+|| <tt>IDEN</tt>tify || <tt>IF</tt> || <tt>IMPA</tt>ct || <tt>INER</tt>tia || <tt>INPU</tt>t || <tt>ISOM</tt>etric || <tt>JOIN</tt>t || <tt>LEFT</tt> ||
+|| <tt>LINK</tt> || <tt>LIST</tt> || <tt>LOG</tt> || <tt>LOG10</tt> || <tt>LOOP</tt> || <tt>MAGE</tt>nta || <tt>MASS</tt> || <tt>MOTI</tt>on ||
+|| <tt>NONE</tt> || <tt>OFF</tt> || <tt>ON</tt> || <tt>OPEN</tt> || <tt>ORAN</tt>ge || <tt>PAIR</tt> || <tt>PAUS</tt>e || <tt>PI</tt> ||
+|| <tt>PLAN</tt>ar || <tt>PLOT</tt> || <tt>POIN</tt>t || <tt>POSI</tt>tion || <tt>PRIN</tt>t || <tt>PRIS</tt>m || <tt>RACK</tt> || <tt>RECA</tt>ll ||
+|| <tt>RED</tt> || <tt>REMA</tt>rk || <tt>RESE</tt>t || <tt>RETU</tt>rn || <tt>REVO</tt>lute || <tt>RIGH</tt>t || <tt>RIGI</tt>d || <tt>SCRE</tt>w ||
+|| <tt>SHAP</tt>e || <tt>SHOW</tt> || <tt>SIN</tt> || <tt>SLID</tt>e || <tt>SLOT</tt> || <tt>SOLI</tt>d || <tt>SPHE</tt>re || <tt>SPRI</tt>ng ||
+|| <tt>SQRT</tt> || <tt>STAT</tt>ic || <tt>STOR</tt>e || <tt>SYST</tt>em || <tt>T</tt> || <tt>TABL</tt>e || <tt>TAN</tt> || <tt>TIME</tt> ||
+|| <tt>TITL</tt>e || <tt>TOP</tt> || <tt>TORQ</tt>ue || <tt>TURN</tt> || <tt>UJOI</tt>nt || <tt>UNIT</tt> || <tt>USER</tt> || <tt>VAL</tt> ||
+|| <tt>VALU</tt>e || <tt>VELO</tt>city || <tt>VIEW</tt> || <tt>WHIT</tt>e || <tt>X</tt> || <tt>XPIN</tt> || <tt>XSLI</tt>de || <tt>Y</tt> ||
+|| <tt>YELL</tt>ow || <tt>YPIN</tt> || <tt>YSLI</tt>de || <tt>Z</tt> || <tt>ZERO</tt> || <tt>ZOOM</tt> || <tt>ZPIN</tt> || <tt>ZSLI</tt>de ||
+|| <tt>?</tt> || <tt>????</tt> || <tt>!</tt> || || || || ||
 
 These keywords, but not other words, are recognized by IMP whether they are spelled with upper case
 or lower-case letters.
