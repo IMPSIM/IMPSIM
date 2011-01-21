@@ -89,58 +89,6 @@ The above example might also take any of the following forms:
 
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above example).
 
-
-==The <tt>DATA RIGID</tt> Statement==
-<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_2.png" height="400px" />
-_Figure 4-2:_
-The <tt>DATA RIGID</tt> statement simultaneously specifies the numeric data which locate the two local
-coordinate systems attached to the two links on either side of a <tt>RIGID</tt> joint relative to the
-absolute (global) frame of reference for the system.
-
-The <tt>DATA RIGID</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints and
-the <tt>DATA LINK</tt> statements, describe the relative locations of the various links and joints of the
-system at the initial (design) position.
-
-The initial locations of the two local coordinate systems attached to the two links joined by a
-<tt>RIGID</tt> statement are coincident and are both defined by a single <tt>DATA RIGID</tt> statement by
-specifying the global coordinates of three points (see figure). The first point defines the common
-origins of the two local coordinate systems. The second point lies on the common local _w_ and
-<i>w</i> axes and the third point lies on the common local _u_ and <i>u</i> axes of the coordinate
-systems attached to the two links joined.
-
-===Format===
- DATA RIGID (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>; x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>; x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>
-
-where _joint name_ is the alphanumeric name of the <tt>RIGID</tt> joint connecting the two links to which
-the local coordinate systems are attached. The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups are numeric
-values for the global coordinates of the three points defining the initial locations of the two
-local coordinate systems.
-
-===Example===
- DATA RIGID (WELD) = -1.0,2.5,0.0; -1.0,3.5,0.0; -2.0,2.5,1.0
-
-specifies the initial locations of the two coincident local coordinate systems attached to the two
-links connected by a <tt>RIGID</tt> joint named _WELD_. The above example might also take any of the
-following forms:
-
- DATA RIGID (WELD) = -1,2.5,0; -1,3.5,0; -2,2.5,1
- DATA RIGID (WELD) = -1,2.5, ; -1,3.5, ; -2,2.5,1
- DATA RIGID (WELD) = PT1; PT2; -2,2.5,1
- DATA RIGID (WELD) = PT1; PT2
-
-===Notes===
-# The _joint name_ specified must have been defined by a previous <tt>RIGID</tt> statement. If not, the <tt>DATA RIGID</tt> statement is ignored and a message is printed.
-# If a <tt>DATA RIGID</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by a <tt>RIGID</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-# If more than one <tt>DATA RIGID</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
-# The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA RIGID</tt> statement are length units.
-# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
-# The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must define two coincident local coordinate systems (see <tt>RIGID</tt> statement).
-# The three points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
-# The angle formed by points _2_,_1_,_3_ need not be a right angle. IMP uses the first and second point to locate the common local origins and the common local _w_ and <i>w</i> axes; the common local _u_ and <i>u</i> axes are then formed in the half-plane defined by the common local _w_ and <i>w</i> axes and the third point. A right angle is formed for the common local _u_ and <i>u</i> axes in this half-plane even though this direction may not pass through the third point given.
-# If the _x<sub>3</sub>_,_y<sub>3</sub>_,_z<sub>3</sub>_ data are not given for the third point, the coordinates of the global origin are used. This may be a convenient shortcut if the user is not concerned with the _u_,<i>u</i> axis placement (see final example above). In view of note 8) above, this does not produce an error unless the common local _w_,<i>w</i> axes pass through the global origin.
-# Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
-
-
 ==The <tt>DATA XPIN</tt> Statement==
 <img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_3.png" height="400px" />
 _Figure 4-3:_
@@ -615,6 +563,123 @@ The above example might also take any of the following forms:
 
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
 
+==The <tt>DATA CYLINDER</tt> Statement==
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_11.png" height="400px" />
+_Figure 4-11:_
+The <tt>DATA CYLINDER</tt> statement specifies the numeric data which simultaneously locates the two local coordinate systems attachedto the two links on either side of a <tt>CYLINDER</tt> joint relative tothe absolute (global) frame of reference for the system.
+
+The <tt>DATA CYLINDER</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints and the <tt>DATA LINK</tt> statements,describe the relative locations of the various links of the systemat the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a <tt>CYLINDER</tt> statement are coincident and are both defined by a single <tt>DATA CYLINDER</tt> statement by specifying the global coordinates of three points (see figure). The first point must lie at the common origin of the two localcoordinate systems. The second point must be located on the common local positive _w_,<i>w</i> axes. The third point must lie in the half-plane defined by the common local _w_,<i>w</i> axes and the common local positive _u_,<i>u</i> axes.
+
+===Format===
+ DATA CYLINDER (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>; x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>; x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>
+
+where _joint name_ is the alphanumeric name of the <tt>CYLINDER</tt> joint connecting the two links to
+which the local coordinate systems are attached. The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups are
+numeric values for the global coordinates of the three points defining the initial locations of
+the two local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> coordinate systems.
+
+===Examples===
+ DATA CYLINDER(CYL)=-1.0,1.0,0.0;-1.0,4.0,0.0;0.0,1.0,-0.5
+
+specifies the initial locations of the two coincident _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i>
+coordinate systems attached to the two links on either side of a <tt>CYLINDER</tt> joint named CYL. The
+numeric data corresponds approximately to the figure.
+
+The above example might also take any of the following forms:
+ DATA CYLINDER (CYL) = -1,1,0; -1,4,0; 0,1,-.5
+
+ DATA CYLINDER (CYL) = -1,1, ; -1,4, ; ,1,-.5
+
+ DATA CYLINDER (CYL) = PT1; PT2; 0,1,-.5
+
+ DATA CYLINDER (CYL) = PT1; PT2
+
+===Notes===
+# The _joint name_ specified must have been defined by a previous <tt>CYLINDER</tt> statement. If not, the <tt>DATA CYLINDER</tt> statement is ignored and a message is printed.
+
+# If a <tt>DATA CYLINDER</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by a <tt>CYLINDER</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+
+# If more than one <tt>DATA CYLINDER</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
+
+# The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA CYLINDER</tt> statement are length units.
+
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+
+# The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must conform to the rules for the placement of the local coordinate systems for a <tt>CYLINDER</tt> joint (see <tt>CYLINDER</tt> statement). If errors are detected, the <tt>DATA CYLINDER</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
+
+# The three points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
+
+# The angle formed by points _2_,_1_,_3_ need not be a right angle. IMP uses the first point to locate the two coincident local origins; extending a vector toward the second point, it then forms the common local _w_ and <i>w</i> axes. The common local positive _u_ and <i>u</i> axes are then taken in the half-plane defined by the common local _w_ and <i>w</i> axes and the third point; a right angle is formed for the common local _u_ and <i>u</i> axes in this half-plane even though they may not exactly pass through the third point.
+
+# If the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are not given for the third point, the coordinates of the global origin are used. In view of note 8) above, this does not produce an error unless the common local _w_,<i>w</i> axes pass through the global origin. This may be a convenient shortcut (see final example above) if the user is not concerned about the particular placement of the local _u_ and <i>u</i> axes.
+
+# Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
+
+
+==The <tt>DATA RIGID</tt> Statement==
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_2.png" height="400px" />
+_Figure 4-2:_
+The <tt>DATA RIGID</tt> statement simultaneously specifies the numeric data which locate the two local
+coordinate systems attached to the two links on either side of a <tt>RIGID</tt> joint relative to the
+absolute (global) frame of reference for the system.
+
+The <tt>DATA RIGID</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints and
+the <tt>DATA LINK</tt> statements, describe the relative locations of the various links and joints of the
+system at the initial (design) position.
+
+The initial locations of the two local coordinate systems attached to the two links joined by a
+<tt>RIGID</tt> statement are coincident and are both defined by a single <tt>DATA RIGID</tt> statement by
+specifying the global coordinates of three points (see figure). The first point defines the common
+origins of the two local coordinate systems. The second point lies on the common local _w_ and
+<i>w</i> axes and the third point lies on the common local _u_ and <i>u</i> axes of the coordinate
+systems attached to the two links joined.
+
+===Format===
+ DATA RIGID (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>; x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>; x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>
+
+where _joint name_ is the alphanumeric name of the <tt>RIGID</tt> joint connecting the two links to which
+the local coordinate systems are attached. The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups are numeric
+values for the global coordinates of the three points defining the initial locations of the two
+local coordinate systems.
+
+===Example===
+ DATA RIGID (WELD) = -1.0,2.5,0.0; -1.0,3.5,0.0; -2.0,2.5,1.0
+
+specifies the initial locations of the two coincident local coordinate systems attached to the two
+links connected by a <tt>RIGID</tt> joint named _WELD_. The above example might also take any of the
+following forms:
+
+ DATA RIGID (WELD) = -1,2.5,0; -1,3.5,0; -2,2.5,1
+
+ DATA RIGID (WELD) = -1,2.5, ; -1,3.5, ; -2,2.5,1
+
+ DATA RIGID (WELD) = PT1; PT2; -2,2.5,1
+
+ DATA RIGID (WELD) = PT1; PT2
+
+===Notes===
+# The _joint name_ specified must have been defined by a previous <tt>RIGID</tt> statement. If not, the <tt>DATA RIGID</tt> statement is ignored and a message is printed.
+
+# If a <tt>DATA RIGID</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by a <tt>RIGID</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+
+# If more than one <tt>DATA RIGID</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
+
+# The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA RIGID</tt> statement are length units.
+
+# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+
+# The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must define two coincident local coordinate systems (see <tt>RIGID</tt> statement).
+
+# The three points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
+
+# The angle formed by points _2_,_1_,_3_ need not be a right angle. IMP uses the first and second point to locate the common local origins and the common local _w_ and <i>w</i> axes; the common local _u_ and <i>u</i> axes are then formed in the half-plane defined by the common local _w_ and <i>w</i> axes and the third point. A right angle is formed for the common local _u_ and <i>u</i> axes in this half-plane even though this direction may not pass through the third point given.
+
+# If the _x<sub>3</sub>_,_y<sub>3</sub>_,_z<sub>3</sub>_ data are not given for the third point, the coordinates of the global origin are used. This may be a convenient shortcut if the user is not concerned with the _u_,<i>u</i> axis placement (see final example above). In view of note 8) above, this does not produce an error unless the common local _w_,<i>w</i> axes pass through the global origin.
+
+# Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
+
 ==The <tt>DATA GEAR</tt> Statement==
 The <tt>DATA GEAR</tt> statement specifies the gear ratio and the center to
 center distance for a <tt>GEAR</tt> joint.
@@ -772,48 +837,6 @@ specified by a file named “datafile.dat_ and a <tt>VALUE</tt> expression named
 # The argument of the <tt>TABLE</tt> function is arbitrary and is not used. During the simulation, the <tt>TABLE</tt> function is evaluated as if the independent variable is the first joint variable of the <tt>SLOT</tt> joint, a distance along the u axis (see figure for the <tt>SLOT</tt> joint). Thus the datafile referred to by the <tt>TABLE</tt> function should specify tabular data (see section 2-7.29) for the v distances for the profiled slot centerline as a function of u relative to the u,v coordinate system of the first link named in the <tt>SLOT</tt> statement. The tabular data should specify v(u) values for equally spaced increment of u over the full length of the slot.
 # The dimensions for v in the tabular data for the slot profile are length units.
 
-
-==The <tt>DATA CYLINDER</tt> Statement==
-<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_11.png" height="400px" />
-_Figure 4-11:_
-The <tt>DATA CYLINDER</tt> statement specifies the numeric data which simultaneously locates the two local coordinate systems attachedto the two links on either side of a <tt>CYLINDER</tt> joint relative tothe absolute (global) frame of reference for the system.
-
-The <tt>DATA CYLINDER</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints and the <tt>DATA LINK</tt> statements,describe the relative locations of the various links of the systemat the initial (design) position.
-
-The initial locations of the two local coordinate systems attached to the two links joined by a <tt>CYLINDER</tt> statement are coincident and are both defined by a single <tt>DATA CYLINDER</tt> statement by specifying the global coordinates of three points (see figure). The first point must lie at the common origin of the two localcoordinate systems. The second point must be located on the common local positive _w_,<i>w</i> axes. The third point must lie in the half-plane defined by the common local _w_,<i>w</i> axes and the common local positive _u_,<i>u</i> axes.
-
-===Format===
- DATA CYLINDER (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>; x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>; x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>
-
-where _joint name_ is the alphanumeric name of the <tt>CYLINDER</tt> joint connecting the two links to
-which the local coordinate systems are attached. The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups are
-numeric values for the global coordinates of the three points defining the initial locations of
-the two local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> coordinate systems.
-
-===Examples===
- DATA CYLINDER(CYL)=-1.0,1.0,0.0;-1.0,4.0,0.0;0.0,1.0,-0.5
-
-specifies the initial locations of the two coincident _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i>
-coordinate systems attached to the two links on either side of a <tt>CYLINDER</tt> joint named CYL. The
-numeric data corresponds approximately to the figure.
-
-The above example might also take any of the following forms:
- DATA CYLINDER (CYL) = -1,1,0; -1,4,0; 0,1,-.5
- DATA CYLINDER (CYL) = -1,1, ; -1,4, ; ,1,-.5
- DATA CYLINDER (CYL) = PT1; PT2; 0,1,-.5
- DATA CYLINDER (CYL) = PT1; PT2
-
-===Notes===
-# The _joint name_ specified must have been defined by a previous <tt>CYLINDER</tt> statement. If not, the <tt>DATA CYLINDER</tt> statement is ignored and a message is printed.
-# If a <tt>DATA CYLINDER</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by a <tt>CYLINDER</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-# If more than one <tt>DATA CYLINDER</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
-# The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA CYLINDER</tt> statement are length units.
-# Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
-# The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must conform to the rules for the placement of the local coordinate systems for a <tt>CYLINDER</tt> joint (see <tt>CYLINDER</tt> statement). If errors are detected, the <tt>DATA CYLINDER</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
-# The three points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
-# The angle formed by points _2_,_1_,_3_ need not be a right angle. IMP uses the first point to locate the two coincident local origins; extending a vector toward the second point, it then forms the common local _w_ and <i>w</i> axes. The common local positive _u_ and <i>u</i> axes are then taken in the half-plane defined by the common local _w_ and <i>w</i> axes and the third point; a right angle is formed for the common local _u_ and <i>u</i> axes in this half-plane even though they may not exactly pass through the third point.
-# If the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are not given for the third point, the coordinates of the global origin are used. In view of note 8) above, this does not produce an error unless the common local _w_,<i>w</i> axes pass through the global origin. This may be a convenient shortcut (see final example above) if the user is not concerned about the particular placement of the local _u_ and <i>u</i> axes.
-# Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
 
 ==The <tt>DATA UJOINT</tt> Statement==
 <img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_12.png" height="400px" />
