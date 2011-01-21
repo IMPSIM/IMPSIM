@@ -55,23 +55,38 @@ corresponds approximately to the figure.
 The above example might also take any of the following forms:
 
  DATA LINK (BAR, PIN) = -1,2.5,0; -1,3.5,0; -2,2.5,1
+
  DATA LINK (BAR, PIN) = -1,2.5, ; -1,3.5, ; -2,2.5,1
+
  DATA LINK (BAR, PIN) = PT1; PT2; -2,2.5,1
 
 ===Notes===
 # When a _link name_ is first defined in the system model (whether by a <tt>LINK</tt> statement or by a joint definition statement) a local coordinate system for the link is formed in the system memory. This link coordinate system is initially located coincident with the global coordinate system, but may be moved to another location by the <tt>LINK</tt> form of the <tt>DATA LINK</tt> statement.
+
 # When a _joint name_ is first defined by a joint definition statement, two local joint coordinate systems are formed in the system memory, one attached to each of the two _link names_ joined by the joint. These are initially placed coincident with the local coordinate systems of the two _link names_, but each may be moved to some other location on the link by the _joint name_ form of the <tt>DATA LINK</tt> statement.
+
 # If the _joint name_ form is used, both _link name_ and _joint name_ must have been used in the same previous statement defining that joint. If not, the <tt>DATA LINK</tt> statement is ignored and a message is printed.
+
 # When the _joint name_ form is used, global coordinate data are given by the user for the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups. However, this is converted in memory to a (_u_,_v_,_w_) or (<i>u</i>,<i>v</i>,<i>w</i>) location for that _joint name_ element with respect to the specified _link name_. This data is then considered fixed; if the link is moved, the joint elements move in unison with it.
+
 # When the <tt>LINK</tt> form is used, the local coordinate system of the link is moved to another location as specified by the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ data. Any data referenced to the link coordinate system (such as the locations of local joint coordinate systems, any points attached to the link, any geometric shape data from a <tt>SHAPE</tt> statement, etc.) all move if the local link coordinate system is moved by the <tt>LINK</tt> form of a <tt>DATA LINK</tt> statement.
+
 # If more than one <tt>DATA LINK</tt> statement is given for the same _link name_, the later statement takes precedence and earlier data are replaced. No message is printed.
+
 # Notice that notes 1) through 6) above make the order in which related <tt>DATA LINK</tt> statements are given very important; related <tt>DATA LINK</tt> statements might not produce the same result if given in different orders.
+
 # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA LINK</tt> statement are length units measured in the global coordinate system.
+
 # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+
 # The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data must correspond to the rules for the placement of the local joint coordinate systems (refer to the statement defining each particular type of joint). If errors are detected, the corresponding <tt>DATA LINK</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
+
 # The three points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local coordinate axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
+
 # The angle formed by points _2_,_1_,_3_ need not be a right angle. IMP uses the first point to locate the local origin and uses the second point to define the direction of the local w or z axis; the local _u_ or _x_ axis is then taken in the half-plane defined by the local _w_ or _z_ axis and the third point. Any necessary adjustments are made to the third point to produce a local coordinate system with exact right angles.
+
 # If the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are not given for the third point, the coordinates of the global origin are used. This may be a convenient shortcut if the user is not concerned about the particular placement of the local u or x axis. In view of notes 11) and 12) above, this does not produce an error unless the local w or z axis passes through the global origin.
+
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above example).
 
 
@@ -161,20 +176,32 @@ side of an <tt>XPIN</tt> joint named _PIN_. The numeric data corresponds approxi
 above example might also take any of the following forms:
 
  DATA XPIN (PIN) = -2,2.5,0; -2,3.5,0; -2,2.5,1
+
  DATA XPIN (PIN) = -2,2.5, ; -2,3.5, ; -2,2.5,1
+
  DATA XPIN (PIN) = PT1; -2,3.5,0; -2,2.5,1
+
  DATA XPIN (PIN) = PT1
 
 ===Notes===
 # The _joint name_ specified must have been defined by a previous <tt>XPIN</tt> statement. If not, the <tt>DATA XPIN</tt> statement is ignored and a message is printed.
+
 # If a <tt>DATA XPIN</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by an <tt>XPIN</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+
 # If more than one <tt>DATA XPIN</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
+
 # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA XPIN</tt> statement are length units.
+
 # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+
 # The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must conform to the rules for the placement of the local coordinate systems for an <tt>XPIN</tt> joint (see <tt>XPIN</tt> statement). If errors are detected, the <tt>DATA XPIN</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
+
 # The three points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however (except, perhaps, for the second and third points); larger distances achieve more accurate placement of axes.
+
 # The angles formed by points _2_,_1_,_3_ need not lie in a plane perpendicular to the global X axis. IMP uses the first point to locate the common local origins and the common local _u_,<i>u</i> axes; the local _v_ and <i>v</i> axes are then taken in the half-planes defined by the common local _u_,<i>u</i> axes and the second and third points, respectively. Right angles are formed for the local _v_ and <i>v</i> axes in these half-planes even though they may not pass precisely through the second and third points, respectively.
+
 # If the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are not given for the second and/or third points, the local coordinate systems are placed parallel to those of the global system. This may be a convenient shortcut (see final example above), if the user is not concerned about the particular placement of the two local _v_ and/or <i>v</i> axes.
+
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
 
 
@@ -213,20 +240,32 @@ side of a <tt>YPIN</tt> joint named PIN. The numeric data corresponds approximat
 above example might also take any of the following forms:
 
  DATA YPIN (PIN) = -2,2.5,0; 0,2.5,.5; -3,2.5,1
+
  DATA YPIN (PIN) = -2,2.5, ; ,2.5,.5; -3,2.5,1
+
  DATA YPIN (PIN) = PT1; ,2.5,.5; -3,2.5,1
+
  DATA YPIN (PIN) = PT1
 
 ===Notes===
 # The _joint name_ specified must have been defined by a previous <tt>YPIN</tt> statement. If not, the <tt>DATA YPIN</tt> statement is ignored and a message is printed.
+
 # If a <tt>DATA YPIN</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by a <tt>YPIN</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+
 # If more than one <tt>DATA YPIN</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
+
 # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA YPIN</tt> statement are length units.
+
 # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+
 # The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must conform to the rules for the placement of the local coordinate systems for a <tt>YPIN</tt> joint (see <tt>YPIN</tt> statement). If errors are detected, the <tt>DATA YPIN</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
+
 # The three points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however (except, perhaps, for the second and third points); larger distances achieve more accurate placement of axes.
+
 # The angles formed by points _2_,_1_,_3_ need not lie in a plane perpendicular to the global Y axis. IMP uses the first point to locate the common local origins and the common local _v_,<i>v</i> axes; the local _w_ and <i>w</i> axes are then taken in the half-planes defined by the common local _v_,<i>v</i> axes and the second and third points, respectively. Right angles are formed for the local _w_ and <i>w</i> axes in these half-planes even though they may not pass precisely through the second and third points, respectively.
+
 # If the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are not given for the second and/or third points, the local coordinate systems are placed parallel to those of the global system. This may be a convenient shortcut (see final example above), if the user is not concerned about the particular placement of the local _w_ and <i>w</i> axes.
+
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
 
 ==The <tt>DATA ZPIN</tt> Statement==
@@ -264,20 +303,32 @@ side of a <tt>ZPIN</tt> joint named PIN. The numeric data corresponds approximat
 above example might also take any of the following forms:
 
  DATA ZPIN (PIN) = -2,2.5,0; -2,3.5,0; 0,2.5,.5
+
  DATA ZPIN (PIN) = -2,2.5, ; -2,3.5, ; ,2.5,.5
+
  DATA ZPIN (PIN) = PT1; PT2; 0,2.5,.5
+
  DATA ZPIN (PIN) = PT1
 
 ===Notes===
 # The _joint name_ specified must have been defined by a previous <tt>ZPIN</tt> statement. If not, the <tt>DATA ZPIN</tt> statement is ignored and a message is printed.
+
 # If a <tt>DATA ZPIN</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by a <tt>ZPIN</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+
 # If more than one <tt>DATA ZPIN</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
+
 # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA ZPIN</tt> statement are length units.
+
 # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+
 # The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must conform to the rules for the placement of the local coordinate systems for a <tt>ZPIN</tt> joint (see <tt>ZPIN</tt> statement). If errors are detected, the <tt>DATA ZPIN</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
+
 # The three points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however (except, perhaps, for the second and third points); larger distances achieve more accurate placement of axes.
+
 # The angles formed by points _2_,_1_,_3_ need not lie in a plane perpendicular to the global _Z_ axis. IMP uses the first point to locate the common local origins and the common local _w_,<i>w</i> axes; the local _u_ and <i>u</i> axes are then taken in the half-planes defined by the common local _w_,<i>w</i> axes and the second and third points, respectively. Right angles are formed for the local _u_ and <i>u</i> axes in these half-planes even though they may not pass precisely through the second and third points, respectively.
+
 # If the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are not given for the second and/or third points, the local coordinate systems are placed parallel to those of the global system. This may be a convenient shortcut (see final example above), if the user is not concerned about the particular placement of the two local _u_ and <i>u</i> axes.
+
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
 
 ==The <tt>DATA REVOLUTE</tt> Statement==
@@ -316,20 +367,32 @@ side of a <tt>REVOLUTE</tt> joint named PIN. The numeric data corresponds approx
 above example might also take any of the following forms:
 
  DATA REVOLUTE (PIN) = -2,2.5,0; -2,3.5,0; 0,2.5,.5; -3,2.5,1
+
  DATA REVOLUTE (PIN) = -2,2.5, ; -2,3.5, ; ,2.5,.5; -3,2.5,1
+
  DATA REVOLUTE (PIN) = PT1; PT2; 0,2.5,.5; -3,2.5,1
+
  DATA REVOLUTE (PIN) = PT1; PT2
 
 ===Notes===
 # The _joint name_ specified must have been defined by a previous <tt>REVOLUTE</tt> statement. If not the <tt>DATA REVOLUTE</tt> statement is ignored and a message is printed.
+
 # If a <tt>DATA REVOLUTE</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by a <tt>REVOLUTE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+
 # If more than one <tt>DATA REVOLUTE</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
+
 # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA REVOLUTE</tt> statement are length units.
+
 # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+
 # The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must conform to the rules for the placement of the local coordinate systems for a revolute joint (see <tt>REVOLUTE</tt> statement). If errors are detected, the <tt>DATA REVOLUTE</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
+
 # The four points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however (except, perhaps, for the third and fourth points); larger distances achieve more accurate placement of axes.
+
 # The angles formed by points _2_,_1_,_3_ and by points _2_,_1_,_4_ need not be right angles. IMP uses the first and second points to locate the common local origins and the common local _w_,<i>w</i> axes; the local _u_ and <i>u</i> axes are then taken in the half-planes defined by the common local _w_,<i>w</i> axes and the third and fourth points, respectively. Right angles are formed for the local _u_ and <i>u</i> axes in these half-planes even though they may not pass through the third and fourth points, respectively.
+
 # If the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are not given for the third and/or fourth points, the coordinates of the global origin are used. In view of note 8) above, this does not produce an error unless the pin axis passes through the global origin. This may be a convenient shortcut (see final example above), if the user is not concerned about the particular placement of the local _u_ and <i>u</i> axes.
+
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see above examples).
 
 ==The <tt>DATA XSLIDE</tt> Statement==
@@ -367,15 +430,22 @@ of a <tt>XSLIDE</tt> joint named <tt>SLIP</tt>. The numeric data corresponds app
 The above example might also take any of the following forms:
 
  DATA XSLIDE (SLIP) = -1,1,0
+
  DATA XSLIDE (SLIP) = -1,1
+
  DATA XSLIDE (SLIP) = PT1
 
 ===Notes===
 # The _joint name_ specified must have been defined by a previous <tt>XSLIDE</tt> statement. If not, the <tt>DATA XSLIDE</tt> statement is ignored and a message is printed.
+
 # If a <tt>DATA XSLIDE</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by an <tt>XSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+
 # If more than one <tt>DATA XSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
+
 # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA XSLIDE</tt> statement are length units.
+
 # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+
 # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
 
 ==The <tt>DATA YSLIDE</tt> Statement==
@@ -413,15 +483,22 @@ of a <tt>YSLIDE</tt> joint named <tt>SLIP</tt>. The numeric data corresponds app
 The above example might also take any of the following forms:
 
  DATA YSLIDE (SLIP) = -1,1,0
+
  DATA YSLIDE (SLIP) = -1,1
+
  DATA YSLIDE (SLIP) = PT1
 
 ===Notes===
 # The _joint name_ specified must have been defined by a previous <tt>YSLIDE</tt> statement. If not, the <tt>DATA YSLIDE</tt> statement is ignored and a message is printed.
+
 # If a <tt>DATA YSLIDE</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by a <tt>YSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+
 # If more than one <tt>DATA YSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
+
 # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA YSLIDE</tt> statement are length units.
+
 # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+
 # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
 
 ==The <tt>DATA ZSLIDE</tt> Statement==
@@ -458,15 +535,22 @@ of a <tt>ZSLIDE</tt> joint named <tt>SLIP</tt>. The numeric data corresponds app
 
 The above example might also take any of the following forms:
  DATA ZSLIDE (SLIP) = -1,1,0
+
  DATA ZSLIDE (SLIP) = -1,1
+
  DATA ZSLIDE (SLIP) = PT1
 
 ===Notes===
 # The _joint name_ specified must have been defined by a previous <tt>ZSLIDE</tt> statement. If not, the <tt>DATA ZSLIDE</tt> statement is ignored and a message is printed.
+
 # If a <tt>DATA ZSLIDE</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by a <tt>ZSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+
 # If more than one <tt>DATA ZSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
+
 # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA ZSLIDE</tt> statement are length units.
+
 # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+
 # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has been previously given (see last example above).
 
 ==The <tt>DATA PRISM</tt> Statement==
@@ -503,20 +587,32 @@ of a <tt>PRISM</tt> joint named <tt>SLIP</tt>. The numeric data correspond appro
 
 The above example might also take any of the following forms:
  DATA PRISM (SLIP) = -1,1,0; -1,4,0; 0,1,-.5
+
  DATA PRISM (SLIP) = -1,1, ; -1,4, ; ,1,-.5
+
  DATA PRISM (SLIP) = PT1; PT2; 0,1,-.5
+
  DATA PRISM (SLIP) = PT1; PT2
 
 ===Notes===
 # The _joint name_ specified must have been defined by a previous <tt>PRISM</tt> statement. If not, the <tt>DATA PRISM</tt> statement is ignored and a message is printed.
+
 # If a <tt>DATA PRISM</tt> statement or the two equivalent <tt>DATA LINK</tt> statements are not specified for each _joint name_ defined by a <tt>PRISM</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+
 # If more than one <tt>DATA PRISM</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
+
 # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA PRISM</tt> statement are length units.
+
 # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+
 # The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must conform to the rules for the placement of the local coordinate systems for a <tt>PRISM</tt> joint (see <tt>PRISM</tt> statement). If errors are detected, the <tt>DATA PRISM</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
+
 # The three points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
+
 # The angle formed by points _2_,_1_,_3_ need not be a right angle. IMP uses the first point to locate the common local origins extending vectors from there toward the second point; it forms the common local _w_,<i>w</i> axes. The common local positive _u_,<i>u</i> axes are taken in the half-plane defined by the common local _w_,<i>w</i> axes and the third point; a right angle is then formed for the common local _u_,<i>u</i> axes in the half-plane even though they may not pass through the third point.
+
 # If the _x<sub>3</sub>_,_y<sub>3</sub>_,_z<sub>3</sub>_ numeric data are not given for the third point, the coordinates of the global origin are used. In view of note 8) above, this does not produce an error unless the common local _w_,<i>w</i> axes pass through the global origin. This may be a convenient shortcut (see final example above) if the user is not concerned about the particular placement of the local _u_ and <i>u</i> axes.
+
 # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
 
 ==The <tt>DATA GEAR</tt> Statement==
