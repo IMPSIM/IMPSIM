@@ -1,3 +1,5 @@
+<wiki:toc />
+
 =Chapter 3: Definition Statements=
 The various definition statements recognized by the IMP interpreter are presented in this chapter. The first word of each statement is a keyword instructing the IMP system to interpret the remainder of the statement according to one of the formats on the following pages.
 
