@@ -1,4 +1,8 @@
 =Chapter 2: The IMP Language=
+
+==Table of Contents==
+<wiki:toc />
+
 The IMP (Integrated Mechanisms Program) language is a problem oriented language. It enables the user
 to describe a mechanical system to IMP and to request certain types of analyses using terms which
 are familiar to them. They are not required to be familiar with other computer programming languages
