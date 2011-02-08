@@ -1,0 +1,71 @@
+#summary Introduction of the imp language
+
+<h1> Table of Contents </h1>
+<wiki:toc />
+
+=IMP Basics=
+The IMP (Integrated Mechanisms Program) language is a problem oriented language. It enables the user to describe a mechanical system to IMP and to request certain types of analyses using terms which are familiar to them. They are not required to be familiar with other computer programming languages such as C or Java.
+
+==Statement Types==
+The IMP-language program for simulating a particular system consists of a series of statements to be described individually in the following chapters:
+  * Chapter 3: !TODO! Definition statements are used to define the component parts of the system being modeled, the applied forces and torques, the fixed link, points of interest, etc., and to specify their relationships to each other.  
+  * Chapter 4: !TODO! Data statements are used to provide numeric values for the parameters of the model
+  * Chapter 5: !TODO! Request statements are those which describe the entities for which analysis should be performed and the form of the output for each
+  * Chapter 6: !TODO! Control statements ([ManualChapter6|Chapter 6]) are used to set the mode of the analysis and to provide flexibility and control over the simulation and the user's interaction with the terminal
+  * Chapter 7: !TODO! Delete statements may be used to eliminate components from the system model.
+  * Chapter 8: !TODO! Graphics statements are used when a graphic device is at hand, and allow drawing different views of thesystem model, showing animations, and plotting graphs of the simulation results.
+
+==Individual Statements==
+Each IMP statement must begin on a separate line.  If a statement becomes too long for one line, the statement my be split onto multiple lines by placing a dollar sign '<tt>$</tt>' on the end the first line, and then continuing the statement onto the the next line.  For example, the following long statement:
+{{{
+DATA:XPIN(P1) = 1.2345678e9, 1.2345678e9, 1.2345678e9; 1.2345678e9, 1.2345678e9, 1.2345678e9; 1.2345678e9, 1.2345678e9, 1.2345678e9
+}}}
+may be split into three lines like so
+{{{
+DATA:XPIN(P1) = 1.2345678e9, 1.2345678e9, 1.2345678e9; $
+                1.2345678e9, 1.2345678e9, 1.2345678e9; $
+                1.2345678e9, 1.2345678e9, 1.2345678e9
+}}}
+by placing a <tt>$</tt> on the end of the first two lines
+
+==Case Insensitivity ==
+IMP is a case insensitive language, meaning it does not matter whether words are spelled with uppercase letters, lowercase letters, or any combination of the two.  The following three statements are equivalent to each other:
+
+{{{
+XPIN(A,B) = C
+xpin(a,b) = c
+xPiN(a,B) = c
+}}}
+
+=IMP Words=
+Each IMP statement is made up of a series of words and/or numbers.  Each word consists of one or more alphanumeric characters (A-Z or 0-9) or underscore ('`_`') with the condition that the first character is not a number.  Examples of words:
+|| *Word* ||
+|| PIN ||
+|| PIN12 ||
+|| `_`PIN ||
+|| Pin_34 ||
+|| `_`123 ||
+
+Examples of invalid words:
+|| *Word* || *Invalid Reasoning* ||
+||3PIN|| Begins with a number ||
+||MY-PIN|| Contains a dash ||
+||Your Pin|| Contains a space ||
+
+=Keywords=
+|| ABS|| ABSOLUTE|| ACCELERATION|| ACOS|| ALL|| ALPHA|| ANIMATE|| ASIN||
+|| ATAN2|| AXES|| BACK|| BASE|| BEVEL|| BLACK|| BLUE|| BOTTOM||
+|| CAM|| CLEAR|| CONSTANT|| CONTACT|| COS|| CYAN|| CYLINDER|| DAMPER||
+|| DATA|| DELETE|| DENSITY|| DEVICE|| DRAW|| DYNAMIC|| END|| EQUILIBRIUM||
+|| ERASE|| EXECUTE|| EXP|| FIND|| FINISH|| FLAT|| FORCE|| FREQUENCY||
+|| FRONT|| GEAR|| GRAVITY|| GREEN|| GROUND|| HEADING|| HOLD|| IC||
+|| IDENTIFY|| IF|| IMPACT|| INERTIA|| INPUT|| ISOMETRIC|| JOINT|| LEFT||
+|| LINK|| LIST|| LOG|| LOG10|| LOOP|| MAGENTA|| MASS|| MOTION||
+|| NONE|| OFF|| ON|| OPEN|| ORANGE|| PAIR|| PAUSE|| PI||
+|| PLANAR|| PLOT|| POINT|| POSITION|| PRINT|| PRISM|| RACK|| RECALL||
+|| RED|| REMARK|| RESET|| RETURN|| REVOLUTE|| RIGHT|| RIGID|| SCREW||
+|| SHAPE|| SHOW|| SIN|| SLIDE|| SLOT|| SOLID|| SPHERE|| SPRING||
+|| SQRT|| STATIC|| STORE|| SYSTEM|| T|| TABLE|| TAN|| TIME||
+|| TITLE|| TOP|| TORQUE|| TURN|| UJOINT|| UNIT|| USER|| VAL||
+|| VALUE|| VELOCITY|| VIEW|| WHITE|| X|| XPIN|| XSLIDE|| Y||
+|| YELLOW|| YPIN|| YSLIDE|| Z|| ZERO|| ZOOM|| ZPIN|| ZSLIDE||
