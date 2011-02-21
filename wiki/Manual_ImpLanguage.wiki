@@ -50,6 +50,8 @@ Each IMP statement is made up of a series of words and/or numbers.  Each word co
 ||Your Pin|| Invalid (Contains a space) ||
 
 =Keywords=
+While the number of words that you can use in IMP is unlimited, there are some words which the language will not allow.  These are words that are used as functions or used in statements, and thus cannot be used as a variable name.  The following lists all keywords in the IMP language:
+
 || ABS|| ABSOLUTE|| ACCELERATION|| ACOS|| ALL|| ALPHA|| ANIMATE|| ASIN||
 || ATAN2|| AXES|| BACK|| BASE|| BEVEL|| BLACK|| BLUE|| BOTTOM||
 || CAM|| CLEAR|| CONSTANT|| CONTACT|| COS|| CYAN|| CYLINDER|| DAMPER||
