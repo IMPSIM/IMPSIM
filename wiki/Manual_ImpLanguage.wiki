@@ -38,19 +38,16 @@ xPiN(a,B) = c
 }}}
 
 =IMP Words=
-Each IMP statement is made up of a series of words and/or numbers.  Each word consists of one or more alphanumeric characters (A-Z or 0-9) or underscore ('`_`') with the condition that the first character is not a number.  Examples of words:
-|| *Word* ||
-|| PIN ||
-|| PIN12 ||
-|| `_`PIN ||
-|| Pin_34 ||
-|| `_`123 ||
-
-Examples of invalid words:
-|| *Word* || *Invalid Reasoning* ||
-||3PIN|| Begins with a number ||
-||MY-PIN|| Contains a dash ||
-||Your Pin|| Contains a space ||
+Each IMP statement is made up of a series of words and/or numbers.  Each word consists of one or more alphanumeric characters (A-Z or 0-9) or underscore ('`_`') with the condition that the first character is not a number.  The following is a list of combinations and whether or not they are valid
+|| *Word* || *Valid or Invalid* ||
+|| PIN || Valid ||
+|| PIN12 || Valid ||
+||3PIN|| Invalid (Begins with a number) ||
+|| `_`PIN || Valid ||
+|| Pin_34 || Valid ||
+||MY-PIN|| Invalid (Contains a dash) ||
+|| `_`123 || Valid ||
+||Your Pin|| Invalid (Contains a space) ||
 
 =Keywords=
 || ABS|| ABSOLUTE|| ACCELERATION|| ACOS|| ALL|| ALPHA|| ANIMATE|| ASIN||
