@@ -58,12 +58,7 @@ two local coordinate systems.
    0.0,2.5,0.5; -3.0,2.5,1.0
 
 specifies the initial locations of the local coordinate systems attached to the two links on either
-side of a <tt>REVOLUTE</tt> joint named PIN. The numeric data corresponds approximately to the figure. The
-above example might also take any of the following forms:
-
- DATA REVOLUTE (PIN) = -2,2.5,0; -2,3.5,0; 0,2.5,.5; -3,2.5,1
-
- DATA REVOLUTE (PIN) = -2,2.5, ; -2,3.5, ; ,2.5,.5; -3,2.5,1
+side of a <tt>REVOLUTE</tt> joint named PIN. The numeric data corresponds approximately to the figure.
 
 ===Notes===
   # The _joint name_ specified must have been defined by a previous <tt>REVOLUTE</tt> statement. If not the <tt>DATA REVOLUTE</tt> statement is ignored and a message is printed.
@@ -131,12 +126,7 @@ points defining the initial locations of the two local coordinate systems.
  DATA XPIN (PIN) = -2.0,2.5,0.0; -2.0,3.5,0.0; -2.0,2.5,1.0
 
 specifies the initial locations of the local coordinate systems attached to the two links on either
-side of an <tt>XPIN</tt> joint named _PIN_. The numeric data corresponds approximately to the figure. The
-above example might also take any of the following forms:
-
- DATA XPIN (PIN) = -2,2.5,0; -2,3.5,0; -2,2.5,1
-
- DATA XPIN (PIN) = -2,2.5, ; -2,3.5, ; -2,2.5,1
+side of an <tt>XPIN</tt> joint named _PIN_. The numeric data corresponds approximately to the figure.
 
 ===Notes===
   # The _joint name_ specified must have been defined by a previous <tt>XPIN</tt> statement. If not, the <tt>DATA XPIN</tt> statement is ignored and a message is printed.
@@ -199,12 +189,7 @@ points defining the initial locations of the two local coordinate systems.
  DATA YPIN (PIN) = -2.0,2.5,0.0; 0.0,2.5,0.5; -3.0,2.5,1.0
 
 specifies the initial locations of the local coordinate systems attached to the two links on either
-side of a <tt>YPIN</tt> joint named PIN. The numeric data corresponds approximately to the figure. The
-above example might also take any of the following forms:
-
- DATA YPIN (PIN) = -2,2.5,0; 0,2.5,.5; -3,2.5,1
-
- DATA YPIN (PIN) = -2,2.5, ; ,2.5,.5; -3,2.5,1
+side of a <tt>YPIN</tt> joint named PIN. The numeric data corresponds approximately to the figure.
 
 ===Notes===
   # The _joint name_ specified must have been defined by a previous <tt>YPIN</tt> statement. If not, the <tt>DATA YPIN</tt> statement is ignored and a message is printed.
@@ -271,12 +256,7 @@ local coordinate systems.
  DATA ZPIN (PIN) = -2.0,2.5,0.0; -2.0,3.5,0.0; 0.0,2.5,0.5
 
 specifies the initial locations of the local coordinate systems attached to the two links on either
-side of a <tt>ZPIN</tt> joint named PIN. The numeric data corresponds approximately to the figure. The
-above example might also take any of the following forms:
-
- DATA ZPIN (PIN) = -2,2.5,0; -2,3.5,0; 0,2.5,.5
-
- DATA ZPIN (PIN) = -2,2.5, ; -2,3.5, ; ,2.5,.5
+side of a <tt>ZPIN</tt> joint named PIN. The numeric data corresponds approximately to the figure.
 
 ===Notes===
   # The _joint name_ specified must have been defined by a previous <tt>ZPIN</tt> statement. If not, the <tt>DATA ZPIN</tt> statement is ignored and a message is printed.
