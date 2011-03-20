@@ -1,3 +1,5 @@
+<wiki:toc />
+
 =Chapter 4: Data Statements=
 The definition statements of the previous chapter are used to define the components of the system
 and the relationships between the various components. Before the system can be analyzed, however, it
