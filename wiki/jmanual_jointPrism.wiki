@@ -3,6 +3,7 @@
 ==The <tt>PRISM</tt> Statement==
 <img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_9.png" height="400px" />
 _Figure 3-9:_ Example of a sliding joint connecting two links.
+
 The <tt>PRISM</tt> statement defines a sliding joint connecting two links of the system (see figure 3-9).
 
 ===Format===
