@@ -2,9 +2,8 @@
 
 ==The <tt>PRISM</tt> Statement==
 <img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_9.png" height="400px" />
-_Figure 3-9:_ Example of a sliding joint connecting two links.
 
-The <tt>PRISM</tt> statement defines a sliding joint connecting two links of the system (see figure 3-9).
+_Figure 3-9:_ Example of a sliding joint connecting two links.  The <tt>PRISM</tt> statement defines a sliding joint connecting two links of the system (see figure 3-9).
 
 ===Format===
  <tt>PRISM</tt> (link name, link name) = joint name
@@ -15,18 +14,28 @@ where each _link name_ refers to the alphanumeric name given to one of the two c
 defines a sliding joint named _SLIP_ connecting two links named _LK1_ and _LK2_.
 
 ===Notes===
+
 # Each prismatic joint in the system must be defined by a separate <tt>PRISM</tt> statement.
-# No other joint of any type may be defined having the same _joint name_. An attempt to do so results in the deletion of the previously defined joint of the same _joint name_ (and all information dependent on it); a warning message is printed.
+
+# No other joint of any type may be defined having the same _joint name_. An attempt to do so results in an exception being thrown.
+
 # The same _link name_ may appear in more than one statement defining a joint.
-# Each statement defining a joint must refer to two distinct _link names_. An attempt to join a link to itself causes the statement to be ignored and a message to be printed.
+
+# Each statement defining a joint must refer to two distinct _link names_. An attempt to join a link to itself causes an exception to be thrown.
+
 # Two local coordinate systems must be chosen for each _joint name_ (see figure), and defined by a subsequent <tt>DATA PRISM</tt> statement or by two subsequent <tt>DATA LINK</tt> statements. One local coordinate system (u,v,w) is rigidly attached to the first _link name_, while the other (u',v',w') is rigidly attached to the second _link name_. The local w and w' axes must be collinear and must both be directed parallel to the relative motion of the joint. Both local w axes must have the same positive sense, and the local u and u' axes must be parallel and must have the same positive sense (see figure).
+
 # If an appropriate <tt>DATA PRISM</tt> statement or <tt>DATA LINK</tt> statement is not defined before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is encountered, it is assumed that the corresponding local coordinate systems(s) is (are) coincident with the link coordinate system. No message is printed.
+
 # The joint variable for a <tt>PRISM</tt> joint is the distance from the positive local u axis to the positive local u' axis. It has units of length and is considered positive when in the same direction as the positive local w,w' axes.
+
 # The order in which the two _link names_ appear is arbitrary. This choice, however, does affect the sign of the joint variable and its derivatives (see Note 7 above) and also the signs of the constraint force and torque components within the joint (see, for example, the <tt>PRINT FORCE</tt> statement).
+
 # It is assumed that there is no limit on the magnitude of the joint variable (sliding motion of the joint).
 
 ==The <tt>DATA PRISM</tt> Statement==
 <img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_10.png" height="400px" />
+
 _Figure 4-10:_
 The <tt>DATA PRISM</tt> statement specifies the numeric data which simultaneously locates the two local
 coordinate systems attached to the two links on either side of a prismatic joint relative to the
