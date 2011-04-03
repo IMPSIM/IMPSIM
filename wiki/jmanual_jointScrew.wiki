@@ -1,8 +1,19 @@
 #summary Screw joint definition and data assignment.
 
 = Introduction =
+The SCREW Statement
+ Figure 3-13: Example of a screw joint connecting two links. The SCREW statement defines a screw joint connecting two links of the system (see figure 3-13).
 
-Add your content here.
+Format
+SCREW (link name, link name) = joint name
+where each link name refers to the alphanumeric name given to one of the two connected links and joint name is an arbitrarily chosen alphanumeric name assigned to the joint.
+
+Example
+SCREW (BOLT, NUT) = THRD
+defines a screw joint named THRD connecting two links named BOLT and NUT.
+
+Notes
+# Each screw joint in the system must be defined by a separate SCREW statement. # No other joint of any type may be defined having the same joint name. An attempt to do so results in the deletion of the previously defined joint of the same joint name (and all information dependent on it); a message is printed. # The same link name may appear in more than one statement defining a joint. # Each statement defining a joint must refer to two distinct link names. An attempt to join a link to itself causes the statement to be ignored and a message to be printed. # Two local coordinate systems must be chosen for each joint name (see figure), and defined by two subsequent DATA LINK statements. One local coordinate system (u,v,w) is rigidly attached to the first link name, while the other (u',v',w') is rigidly attached to the second link name. The local w and w' axes must be collinear and must be directed along the joint axis; both must have the same positive sense. The local u and u' axes must be chosen such that, at one position of the joint, they are collinear and the two local origins coincide (see figure). # If an appropriate DATA LINK statement is not defined before an EXECUTE or EXECUTE HOLD statement is encountered, it is assumed that the corresponding local coordinate system(s) is (are) coincident with the link coordinate system; no message is printed. # The joint variable for a joint is the distance from the positive local u axis to the positive local u' axis. It has units of length and is considered positive when in the same direction as the positive local w,w' axes. # The order in which the two link names appear is arbitrary. This choice, however, does affect the designation of the joint variable (see Note 7 above) and also the signs of the constraint force and torque components within the joint (see the PRINT FORCE statement). # It is assumed that there is no limit on the travel of the joint variable. # The lead of the screw thread of each SCREW joint must be defined by a subsequent DATA SCREW statement. Notice that the sign of the lead distinguishes a right-hand from a left-hand thread.
 
 
 = Details =
