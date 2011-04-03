@@ -45,8 +45,8 @@ value of the lead of the <tt>SCREW</tt> joint thread, and the x,y,z coordinates 
 ===Example===
  DATA SCREW (THRD) = -0.750; -1.0,1.0,0.0; -1.0,4.0,0.0; 0.0,1.0,-0.5
 
-specifies the lead of a as 0.750 length units per revolution with a
-left-hand thread and specifies the initial locations of the coordinate systems attached to the two links for a <tt>SCREW</tt> joint named <tt>THRD</tt> . The numeric data correspond approximately to the figure.
+specifies the lead as 0.750 length units per revolution with a
+left-hand thread and specifies the initial locations of the coordinate systems attached to the two links for a <tt>SCREW</tt> joint named <tt>THRD</tt>.
 
 ===Notes===
  # There must be a <tt>DATA SCREW</tt> statement for each joint defined by a <tt>SCREW</tt> statement. If these are not specified before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the simulation is halted and a message is printed.
