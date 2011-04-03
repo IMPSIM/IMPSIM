@@ -43,7 +43,7 @@ where _joint name_ is the alphanumeric name of the <tt>SCREW</tt> joint, _value_
 value of the lead of the <tt>SCREW</tt> joint thread, and the x,y,z coordinates define three points which are used to define the two local coordinate systems.
 
 ===Example===
- DATA SCREW (THRD) = -0.750;0.0,0.0,0.0;0.0,8.0,0.0;0.0,0.0.8.0
+ DATA SCREW (THRD) = -0.750; 1.0,4.0,0.0; 1.0,8.0,0.0; 1.0,0.0.8.0
 
 specifies the lead of a <tt>SCREW</tt> joint named <tt>THRD</tt> as 0.750 length units per revolution with a
 left-hand thread.
