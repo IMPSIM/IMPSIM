@@ -4,7 +4,10 @@
 
 =The <tt>SCREW</tt> Statement==
 <img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_13.png" height="400px" />
+
 _Figure 3-13:_ Example of a screw joint connecting two links.
+
+
 The <tt>SCREW</tt> statement defines a screw joint connecting two links of the system (see figure 3-13).
 
 ===Format===
@@ -26,6 +29,9 @@ defines a screw joint named _THRD_ connecting two links named _BOLT_ and _NUT_.
  # The order in which the two _link names_ appear is arbitrary. This choice, however, does affect the designation of the joint variable (see Note 7 above) and also the signs of the constraint force and torque components within the joint (see the <tt>PRINT FORCE</tt> statement).
  # It is assumed that there is no limit on the travel of the joint variable.
  # The lead of the screw thread of each <tt>SCREW</tt> joint must be defined by a subsequent <tt>DATA SCREW</tt> statement. Notice that the sign of the lead distinguishes a right-hand from a left-hand thread.
+
+
+
 
 ==The <tt>DATA SCREW</tt> Statement==
 The <tt>DATA SCREW</tt> statement specifies the lead of a screw joint.
