@@ -27,9 +27,25 @@ defines a screw joint named _THRD_ connecting two links named _BOLT_ and _NUT_.
 # It is assumed that there is no limit on the travel of the joint variable.
 # The lead of the screw thread of each <tt>SCREW</tt> joint must be defined by a subsequent <tt>DATA SCREW</tt> statement. Notice that the sign of the lead distinguishes a right-hand from a left-hand thread.
 
-= Details =
+==The <tt>DATA SCREW</tt> Statement==
+The <tt>DATA SCREW</tt> statement specifies the lead of a screw joint.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+===Format===
+ DATA SCREW (joint name) = value
+
+where _joint name_ is the alphanumeric name of the <tt>SCREW</tt> joint and _value_ is the numeric
+value of the lead of the <tt>SCREW</tt> joint thread.
+
+===Example===
+ DATA SCREW (THRD) = -0.750
+
+specifies the lead of a <tt>SCREW</tt> joint named <tt>THRD</tt> as 0.750 length units per revolution with a
+left-hand thread.
+
+===Notes===
+# There must be a <tt>DATA SCREW</tt> statement for each joint defined by a <tt>SCREW</tt> statement. If these are not specified before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the simulation is halted and a message is printed.
+# The _joint name_ specified must have been defined by a previous <tt>SCREW</tt> statement. If not, the <tt>DATA SCREW</tt> statement is ignored and a message is printed.
+# Unlike <tt>DATA</tt> statements describing certain other types of joints (for example, the <tt>DATA ZPIN</tt> statement), the <tt>DATA SCREW</tt> statement does not specify the locations of the two local coordinate systems for the <tt>SCREW</tt> joint; two <tt>DATA LINK</tt> statements must also be specified for each _joint name_ defined by a <tt>SCREW</tt> statement. If these do not appear before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+# If more than one <tt>DATA SCREW</tt> statement is given for the same _joint name_, the later statement takes precedence; earlier data are replaced and a message is printed.
+# The dimensions of _value_ are length units of advance of the screw per revolution. A right-hand thread has a positive _value_ and a left-hand thread has a negative _value_.
+# The _value_ of the lead may not be zero. A <tt>REVOLUTE</tt> statement should be used instead of a <tt>SCREW</tt> for this case. If zero is specified for _value_, the <tt>DATA SCREW</tt> statement is ignored and a message is printed.
