@@ -37,7 +37,7 @@ defines a screw joint named _THRD_ connecting two links named _BOLT_ and _NUT_.
 The <tt>DATA SCREW</tt> statement specifies the lead of a screw joint.
 
 ===Format===
- DATA SCREW (joint name) = value
+ DATA SCREW (joint name) = value, x1,y1,z1
 
 where _joint name_ is the alphanumeric name of the <tt>SCREW</tt> joint and _value_ is the numeric
 value of the lead of the <tt>SCREW</tt> joint thread.
