@@ -1,7 +1,7 @@
 #summary Screw joint definition and data assignment.
 
 = Introduction =
-
+The bodies of a screw joint rotate and traverse a common axis, just as those of a cylinder joint. With a screw joint, however, the rotation and slide movements are linked to each other by the lead angle. This means that as the distance between the bodies changes, the angle also changes by a specified amount calculated from the slide distance and the lead.
 
 =The <tt>SCREW</tt> Statement==
 <img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_13.png" height="400px" />
