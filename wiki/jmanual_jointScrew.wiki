@@ -2,6 +2,7 @@
 
 = Introduction =
 
+
 =The <tt>SCREW</tt> Statement==
 <img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_13.png" height="400px" />
 
@@ -52,5 +53,6 @@ left-hand thread and specifies the initial locations of the coordinate systems a
  # There must be a <tt>DATA SCREW</tt> statement for each joint defined by a <tt>SCREW</tt> statement. If these are not specified before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the simulation is halted and a message is printed.
  # The _joint name_ specified must have been defined by a previous <tt>SCREW</tt> statement. If not, the <tt>DATA SCREW</tt> statement is ignored and a message is printed.
  # If more than one <tt>DATA SCREW</tt> statement is given for the same _joint name_, the later statement takes precedence; earlier data are replaced and a message is printed.
+ # The coordinate systems of the bodies are defined such that the distance and angle between the bodies are initially zero.
  # The dimensions of _value_ are length units of advance of the screw per revolution. A right-hand thread has a positive _value_ and a left-hand thread has a negative _value_.
  # The _value_ of the lead may not be zero. A <tt>REVOLUTE</tt> statement should be used instead of a <tt>SCREW</tt> for this case. If zero is specified for _value_, the <tt>DATA SCREW</tt> statement is ignored and a message is printed.
