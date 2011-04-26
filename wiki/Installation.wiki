@@ -27,8 +27,7 @@ IMP is a DOS program and so it needs....DOS to run.  Current operating systems h
   [autoexec]
   mount c "c:\users\john\dos"
   c:
-}}} 
-and save it
+}}}
 
 === Running ===
 
