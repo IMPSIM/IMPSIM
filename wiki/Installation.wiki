@@ -17,7 +17,7 @@ IMP is a DOS program and so it needs....DOS to run.  Current operating systems h
 
   # Download and install Dosbox.  http://www.dosbox.com/
   # Create a folder for dos stuff. Ex: C:\Users\John\dos
-  # Download dos extender (dos4gw stand in ) dos32a.
+  # Download dos extender (dos4gw stand in ) dos32a. http://dos32a.narechk.net/index_en.html
   # Put the extracted dos32a\binw\dos32a.exe into folder you created before C:\Users\John\dos\dos32a.exe
   # Copy dos32a.exe and name the copy dos4gw.exe (also in the dos folder).
   # Download imp.exe and put it in the C:\Users\John\dos folder
