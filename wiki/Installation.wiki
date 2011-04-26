@@ -1,0 +1,41 @@
+#summary Installing IMP
+
+= Introduction =
+
+IMP is a DOS program and so it needs....DOS to run.  Current operating systems have a few options.
+
+  * Windows 7: Dosbox with a dos extender (dos32a) work fine.
+  * Windows XP: IMP works fine with XP's dos mode.  Running in XP in Virtual Box has been confirmed to work as well.
+  * Linux: Dosbox and dos32a should work fine here too but this has yet to be tested.
+
+
+= Details =
+
+== Windows 7 ==
+
+=== Installing ===
+
+  # Download and install Dosbox.  http://www.dosbox.com/
+  # Create a folder for dos stuff. Ex: C:\Users\John\dos
+  # Download dos extender (dos4gw stand in ) dos32a.
+  # Put the extracted dos32a\binw\dos32a.exe into folder you created before C:\Users\John\dos\dos32a.exe
+  # Copy dos32a.exe and name the copy dos4gw.exe (also in the dos folder).
+  # Download imp.exe and put it in the C:\Users\John\dos folder
+  # edit "C:\Users\John\AppData\Local\DOSBox\dosbox-0.74.conf"
+  Make the autoexec part look like this:
+{{{
+  [autoexec]
+  mount c "c:\users\john\dos"
+  c:
+}}} 
+and save it
+
+=== Running ===
+
+  # Run dosbox
+  # Run imp: imp.exe
+
+== Windows XP ==
+
+  * You should be able to just run imp.exe from the terminal
+  * You can download a virtual machine to run Windows XP if you don't want to use it as your base install. We recommend VirtualBox http://www.virtualbox.org/
