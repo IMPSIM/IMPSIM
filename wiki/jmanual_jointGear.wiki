@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Add your content here.
+A gear joint is when the connection between the two bodies is in the form of interlocking gears.
 
 
 ==The <tt>GEAR</tt> Statement==
