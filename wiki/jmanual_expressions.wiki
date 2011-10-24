@@ -22,9 +22,24 @@ IMP supports several operators, most of which are math based.  The operators sup
 || 2 ||  - ||  Negation ||  Used to negate a number/point || 
 || 3 ||  ^ ||  Exponent ||  Raise one number to another || 
 || 4 ||  * ||  Multiplication ||  Multiply two numbers together || 
-|| 4 ||  / ||  Forward Slash ||  Divide two numbers together || 
+|| 4 ||  / ||  Division ||  Divide two numbers together || 
 || 5 ||  + ||  Plus ||  Add two numbers together || 
 || 5 ||  - ||  Minus ||  Subtract two numbers || 
 || 6 ||  & ||  Concatenation ||  Concatenate two values to a string || 
 || 7 ||  , ||  Comma ||  Parameter Separation || 
 || 10 ||  = ||  Equals ||  Assign a value to a variable || 
+
+== Functions ==
+Functions in IMP are called like functions in other languages as well.  Use the name of the function, a parenthesis, the parameters to give to the function, and a closing parenthesis.
+
+{{{
+X = MYFUNCTION(ARG1, 7)
+}}}
+
+If multiple functions exist with the same name, use the namespace qualifier to distinguish between functions:
+
+{{{
+X1 = imp~core~abs(-Y)
+X2 = your~own~abs(-Y)
+}}}
+}}}
