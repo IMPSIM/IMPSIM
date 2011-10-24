@@ -1,0 +1,19 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+IMP Expressions allow you to assign values to variables and to specify the values of joint positions as time goes on.  Expressions transform IMP from a modeling engine into a simulation engine.
+
+= Expressions =
+
+Expressions in IMP are familiar to expressions in math and other programming languages, with one exception.  In IMP, expressions are stored into variables, rather than the expressions value.  For instance, in most programming languages:
+{{{
+X = Y + 3
+}}}
+
+Would take the value of Y, add 3, and assign the result to X.  In IMP, when the above command is executed, the expression "Y + 3" is stored into X, meaning that whenever the value of X is requested, the expression "Y + 3" is reevaluated.  
+
+== Operators ==
+IMP supports several operators, most of which are math based.  The operators supported, with their precedence, are as follows:
+
+
