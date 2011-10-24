@@ -70,26 +70,26 @@ of a <tt>PRISM</tt> joint named <tt>SLIP</tt>. The numeric data correspond appro
   # If the _x<sub>3</sub>_,_y<sub>3</sub>_,_z<sub>3</sub>_ numeric data are not given for the third point, the coordinates of the global origin are used. In view of note 8) above, this does not produce an error unless the common local _w_,<i>w</i> axes pass through the global origin. This may be a convenient shortcut (see final example above) if the user is not concerned about the particular placement of the local _u_ and <i>u</i> axes.
   # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
 
-==The <tt>DATA XSLIDE</tt> Statement==
+==The <tt>DATA::XSLIDE</tt> Statement==
 <img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_7.png" height="400px" />
 _Figure 4-7:_
-The <tt>DATA XSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
+The <tt>DATA::XSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
 coordinate systems attached to the two links on either side of an <tt>XSLIDE</tt> joint relative to the
 absolute (global) frame of reference for the system. The sliding axis is initially aligned parallel
 to the global X axis.
 
-The <tt>DATA XSLIDE</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints
+The <tt>DATA::XSLIDE</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints
 and the <tt>DATA::LINK</tt> statements, describe the relative locations of the various links of the system
 at the initial (design) position.
 
 The initial locations of the two local coordinate systems attached to the two links joined by an
-<tt>XSLIDE</tt> statement are coincident and are both defined by a single <tt>DATA XSLIDE</tt> statement by
+<tt>XSLIDE</tt> statement are coincident and are both defined by a single <tt>DATA::XSLIDE</tt> statement by
 specifying the global coordinates of one point (see figure). The point defines the common origins of
 the two local coordinate systems. The local coordinate axes attached to the two links are set
 parallel to the global axes.
 
 ===Format===
- DATA XSLIDE (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>
+ DATA::XSLIDE (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>
 
 where _joint name_ is the alphanumeric name of the <tt>XSLIDE</tt> joint connecting the two links to
 which the local coordinate systems are attached. The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ are numeric values for
@@ -104,33 +104,33 @@ of a <tt>XSLIDE</tt> joint named <tt>SLIP</tt>. The numeric data corresponds app
 
 
 ===Notes===
-  # The _joint name_ specified must have been defined by a previous <tt>XSLIDE</tt> statement. If not, the <tt>DATA XSLIDE</tt> statement is ignored and a message is printed.
-  # If a <tt>DATA XSLIDE</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by an <tt>XSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-  # If more than one <tt>DATA XSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
-  # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA XSLIDE</tt> statement are length units.
+  # The _joint name_ specified must have been defined by a previous <tt>XSLIDE</tt> statement. If not, the <tt>DATA::XSLIDE</tt> statement is ignored and a message is printed.
+  # If a <tt>DATA::XSLIDE</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by an <tt>XSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+  # If more than one <tt>DATA::XSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
+  # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA::XSLIDE</tt> statement are length units.
   # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
   # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
 
-==The <tt>DATA YSLIDE</tt> Statement==
+==The <tt>DATA::YSLIDE</tt> Statement==
 <img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_8.png" height="400px" />
 _Figure 4-8:_
-The <tt>DATA YSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
+The <tt>DATA::YSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
 coordinate systems attached to the two links on either side of a <tt>YSLIDE</tt> joint relative to the
 absolute (global) frame of reference for the system. The sliding axis is initially aligned parallel
 to the global Y axis.
 
-The <tt>DATA YSLIDE</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints
+The <tt>DATA::YSLIDE</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints
 and the <tt>DATA::LINK</tt> statements, describe the relative locations of the various links of the system
 at the initial (design) position.
 
 The initial locations of the two local coordinate systems attached to the two links joined by a
-<tt>YSLIDE</tt> statement are coincident and are both defined by a single <tt>DATA YSLIDE</tt> statement by
+<tt>YSLIDE</tt> statement are coincident and are both defined by a single <tt>DATA::YSLIDE</tt> statement by
 specifying the global coordinates of one point (see figure). The point defines the common origins of
 the two local coordinate systems. The local coordinate axes attached to the two links are set
 parallel to the global axes.
 
 ===Format===
- DATA YSLIDE (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>
+ DATA::YSLIDE (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>
 
 where _joint name_ is the alphanumeric name of the <tt>YSLIDE</tt> joint connecting the two links to
 which the local coordinate systems are attached. The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ are numeric values for
@@ -138,39 +138,39 @@ the global coordinates of the point defining the initial location of the origin 
 coordinate systems.
 
 ===Examples===
- DATA YSLIDE (SLIP) = -1.0,1.0,1.0
+ DATA::YSLIDE (SLIP) = -1.0,1.0,1.0
 
 specifies the initial locations of the coordinate systems attached to the two links on either side
 of a <tt>YSLIDE</tt> joint named <tt>SLIP</tt>. The numeric data corresponds approximately to the figure.
 
 ===Notes===
-  # The _joint name_ specified must have been defined by a previous <tt>YSLIDE</tt> statement. If not, the <tt>DATA YSLIDE</tt> statement is ignored and a message is printed.
-  # If a <tt>DATA YSLIDE</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by a <tt>YSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-  # If more than one <tt>DATA YSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
-  # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA YSLIDE</tt> statement are length units.
+  # The _joint name_ specified must have been defined by a previous <tt>YSLIDE</tt> statement. If not, the <tt>DATA::YSLIDE</tt> statement is ignored and a message is printed.
+  # If a <tt>DATA::YSLIDE</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by a <tt>YSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+  # If more than one <tt>DATA::YSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
+  # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA::YSLIDE</tt> statement are length units.
   # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
   # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
 
-==The <tt>DATA ZSLIDE</tt> Statement==
+==The <tt>DATA::ZSLIDE</tt> Statement==
 <img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_9.png" height="400px" />
 _Figure 4-9:_
-The <tt>DATA ZSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
+The <tt>DATA::ZSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
 coordinate systems attached to the two links on either side of a <tt>ZSLIDE</tt> joint relative to the
 absolute (global) frame of reference for the system. The sliding axis is aligned parallel to the
 global Z axis.
 
-The <tt>DATA ZSLIDE</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints
+The <tt>DATA::ZSLIDE</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints
 and the <tt>DATA::LINK</tt> statements, describe the relative locations of the various links of the system
 at the initial (design) position.
 
 The initial locations of the two local coordinate systems attached to the two links joined by a
-<tt>ZSLIDE</tt> statement are coincident and are both defined by a single <tt>DATA ZSLIDE</tt> statement by
+<tt>ZSLIDE</tt> statement are coincident and are both defined by a single <tt>DATA::ZSLIDE</tt> statement by
 specifying the global coordinates of one point (see figure). The point defines the common origins of
 the two local coordinate systems. The local coordinate axes attached to the two links are set
 parallel to the global axes.
 
 ===Format===
- DATA ZSLIDE (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>
+ DATA::ZSLIDE (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>
 
 where _joint name_ is the alphanumeric name of the <tt>ZSLIDE</tt> joint connecting the two links to
 which the local coordinate systems are attached. The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ are numeric values for
@@ -178,15 +178,15 @@ the global coordinates of the point defining the initial location of the origin 
 coordinate systems.
 
 ===Examples===
- DATA ZSLIDE (SLIP) = -1.0,1.0,1.0
+ DATA::ZSLIDE (SLIP) = -1.0,1.0,1.0
 
 specifies the initial locations of the coordinate systems attached to the two links on either side
 of a <tt>ZSLIDE</tt> joint named <tt>SLIP</tt>. The numeric data corresponds approximately to the figure.
 
 ===Notes===
-  # The _joint name_ specified must have been defined by a previous <tt>ZSLIDE</tt> statement. If not, the <tt>DATA ZSLIDE</tt> statement is ignored and a message is printed.
-  # If a <tt>DATA ZSLIDE</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by a <tt>ZSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-  # If more than one <tt>DATA ZSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
-  # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA ZSLIDE</tt> statement are length units.
+  # The _joint name_ specified must have been defined by a previous <tt>ZSLIDE</tt> statement. If not, the <tt>DATA::ZSLIDE</tt> statement is ignored and a message is printed.
+  # If a <tt>DATA::ZSLIDE</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by a <tt>ZSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
+  # If more than one <tt>DATA::ZSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
+  # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA::ZSLIDE</tt> statement are length units.
   # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
   # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has been previously given (see last example above).
