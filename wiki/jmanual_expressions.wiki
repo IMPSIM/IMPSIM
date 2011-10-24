@@ -16,4 +16,18 @@ Would take the value of Y, add 3, and assign the result to X.  In IMP, when the 
 == Operators ==
 IMP supports several operators, most of which are math based.  The operators supported, with their precedence, are as follows:
 
+|| *Precedence* ||  *Symbol* ||  *Name* ||  *Description* || 
+|| 1 ||  () ||  Parenthesis ||  Used for grouping || 
+|| 1 ||  {} ||  Curly Brackets ||  Used for specifying lists || 
+|| 2 ||  - ||  Negation ||  Used to negate a number/point || 
+|| 3 ||  ^ ||  Exponent ||  Raise one number to another || 
+|| 4 ||  * ||  Multiplication ||  Multiply two numbers together || 
+|| 4 ||  / ||  Forward Slash ||  Divide two numbers together || 
+|| 5 ||  + ||  Plus ||  Add two numbers together || 
+|| 5 ||  - ||  Minus ||  Subtract two numbers || 
+|| 6 ||  & ||  Concatenation ||  Concatenate two values to a string || 
+|| 7 ||  , ||  Comma ||  Parameter Separation || 
+|| 8 ||  ; ||  Semicolon ||  Point separation.  Syntactical sugar || 
+|| 10 ||  = ||  Equals ||  Assign a value to a variable || 
+|| 10 ||  := ||  Assign To ||  Assign an expression to a variable || 
 
