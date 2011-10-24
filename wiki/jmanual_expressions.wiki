@@ -27,7 +27,4 @@ IMP supports several operators, most of which are math based.  The operators sup
 || 5 ||  - ||  Minus ||  Subtract two numbers || 
 || 6 ||  & ||  Concatenation ||  Concatenate two values to a string || 
 || 7 ||  , ||  Comma ||  Parameter Separation || 
-|| 8 ||  ; ||  Semicolon ||  Point separation.  Syntactical sugar || 
 || 10 ||  = ||  Equals ||  Assign a value to a variable || 
-|| 10 ||  := ||  Assign To ||  Assign an expression to a variable || 
-
