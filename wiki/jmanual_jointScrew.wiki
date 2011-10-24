@@ -38,13 +38,13 @@ defines a screw joint named _THRD_ connecting two links named _BOLT_ and _NUT_.
 The <tt>DATA SCREW</tt> statement specifies the lead of a screw joint, the location of the joint, and the location of the two local coordinate systems.
 
 ===Format===
- DATA SCREW (joint name) = value; x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>; x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>; x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>
+ DATA::SCREW (joint name) = value; x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>; x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>; x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>
 
 where _joint name_ is the alphanumeric name of the <tt>SCREW</tt> joint, _value_ is the numeric
 value of the lead of the <tt>SCREW</tt> joint thread, and the x,y,z coordinates define three points which are used to define the two local coordinate systems.
 
 ===Example===
- DATA SCREW (THRD) = -0.750; -1.0,1.0,0.0; -1.0,4.0,0.0; 0.0,1.0,-0.5
+ DATA::SCREW (THRD) = -0.750; -1.0,1.0,0.0; -1.0,4.0,0.0; 0.0,1.0,-0.5
 
 specifies the lead as 0.750 length units per revolution with a
 left-hand thread and specifies the initial locations of the coordinate systems attached to the two links for a <tt>SCREW</tt> joint named <tt>THRD</tt>.
