@@ -50,21 +50,9 @@ Each IMP statement is made up of a series of words and/or numbers.  Each word co
 ||Your Pin|| Invalid (Contains a space) ||
 
 =Keywords=
-While the number of words that you can use in IMP is unlimited, there are some words which the language will not allow.  These are words that are used as functions or used in statements, and thus cannot be used as a variable name.  The following lists all keywords in the IMP language:
+While the number of words that you can use in IMP is unlimited, there are some words in the language which are reserved.  These are words that are used to define certain commands or expression, and thus cannot be used as a variable name.  The following lists all keywords in the IMP language:
 
-|| ABS|| ABSOLUTE|| ACCELERATION|| ACOS|| ALL|| ALPHA|| ANIMATE|| ASIN||
-|| ATAN2|| AXES|| BACK|| BASE|| BEVEL|| BLACK|| BLUE|| BOTTOM||
-|| CAM|| CLEAR|| CONSTANT|| CONTACT|| COS|| CYAN|| CYLINDER|| DAMPER||
-|| DATA|| DELETE|| DENSITY|| DEVICE|| DRAW|| DYNAMIC|| END|| EQUILIBRIUM||
-|| ERASE|| EXECUTE|| EXP|| FIND|| FINISH|| FLAT|| FORCE|| FREQUENCY||
-|| FRONT|| GEAR|| GRAVITY|| GREEN|| GROUND|| HEADING|| HOLD|| IC||
-|| IDENTIFY|| IF|| IMPACT|| INERTIA|| INPUT|| ISOMETRIC|| JOINT|| LEFT||
-|| LINK|| LIST|| LOG|| LOG10|| LOOP|| MAGENTA|| MASS|| MOTION||
-|| NONE|| OFF|| ON|| OPEN|| ORANGE|| PAIR|| PAUSE|| PI||
-|| PLANAR|| PLOT|| POINT|| POSITION|| PRINT|| PRISM|| RACK|| RECALL||
-|| RED|| REMARK|| RESET|| RETURN|| REVOLUTE|| RIGHT|| RIGID|| SCREW||
-|| SHAPE|| SHOW|| SIN|| SLIDE|| SLOT|| SOLID|| SPHERE|| SPRING||
-|| SQRT|| STATIC|| STORE|| SYSTEM|| T|| TABLE|| TAN|| TIME||
-|| TITLE|| TOP|| TORQUE|| TURN|| UJOINT|| UNIT|| USER|| VAL||
-|| VALUE|| VELOCITY|| VIEW|| WHITE|| X|| XPIN|| XSLIDE|| Y||
-|| YELLOW|| YPIN|| YSLIDE|| Z|| ZERO|| ZOOM|| ZPIN|| ZSLIDE||
+||BECEL   || CYLINDER || DATA  || DATA || GEAR     || GROUND || IS || LINK ||
+|| NUMBER || POINT    || PRISM || RACK || REVOLUTE || SCREW  || STRING || TICKS ||
+|| TIME   || XPIN     || XSLIDE|| YPIN || YSLIDE   || ZPIN   || ZSLIDE || 
+
