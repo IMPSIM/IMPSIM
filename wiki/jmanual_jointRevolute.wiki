@@ -131,7 +131,7 @@ side of an <tt>XPIN</tt> joint named _PIN_. The numeric data corresponds approxi
 ===Notes===
   # The _joint name_ specified must have been defined by a previous <tt>XPIN</tt> statement. If not, the <tt>DATA::XPIN</tt> statement is ignored and a message is printed.
   # If a <tt>DATA::XPIN</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by an <tt>XPIN</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-  # If more than one <tt>DATA XPIN</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
+  # If more than one <tt>DATA::XPIN</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
   # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA::XPIN</tt> statement are length units.
   # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
   # The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must conform to the rules for the placement of the local coordinate systems for an <tt>XPIN</tt> joint (see <tt>XPIN</tt> statement). If errors are detected, the <tt>DATA::XPIN</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
@@ -164,7 +164,7 @@ defines a pinned joint named _PIN_ connecting two links named _LK1_ and _LK2_.
  # It is assumed that there is no limit on the magnitude of the joint variable (rotation of the joint).
 
 
-==The <tt>DATA YPIN</tt> Statement==
+==The <tt>DATA::YPIN</tt> Statement==
 
 The <tt>DATA::YPIN</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints and
 the <tt>DATA::LINK</tt> statements, describe the relative locations of the various links of the system at
