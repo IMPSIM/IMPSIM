@@ -1,1 +1,12 @@
 #summary The Table of Contents for the java manual
+
+  * [jmanual_ImpIntro Introduction]
+  * [jmanual_expressions Expressions]
+  * Gears
+   * [jmanual_jointGear Gear]
+   * [jmanual_jointRack Rack]
+   * [jmanual_jointBevel Bevel]
+   * [jmanual_jointScrew Screw]
+   * [jmanual_jointCylinder Cylinder]
+   * [jmanual_jointPrism Prism]
+   * [jmanual_jointRevolute Revolute]
