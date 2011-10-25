@@ -2,19 +2,33 @@
 
 = Introduction =
 
-IMP Expressions allow you to assign values to variables and to specify the values of joint positions as time goes on.  Expressions transform IMP from a modeling engine into a simulation engine.
+IMP Expressions allow you to dynamically change the positions of joints and bodies as time goes on.  Expressions are core to the idea of transforming IMP from a modeling engine into a simulation engine.
 
 = Expressions =
+In order to reach a large audience, expressions in IMP are familiar to expressions in math and other programming languages, with one exception.  In most languages, a variable assignment results in a value being assigned to a variable.  However, in IMP, the expressions themselves are stored into variables.
 
-Expressions in IMP are familiar to expressions in math and other programming languages, with one exception.  In IMP, expressions are stored into variables, rather than the expressions value.  For instance, in most programming languages:
+For instance, in most programming languages the following expression:
 {{{
 X = Y + 3
 }}}
+would take the value of Y, add 3, and assign the result to X. Thus,
+{{{
+Y = 3
+X = Y + 3
+Y = 12
+}}}
+would result in X having a value of 6, and Y having a value of 12.
 
-Would take the value of Y, add 3, and assign the result to X.  In IMP, when the above command is executed, the expression "Y + 3" is stored into X, meaning that whenever the value of X is requested, the expression "Y + 3" is reevaluated.  
+In IMP, when the above commands are executed, the expression "Y + 3" is stored into X, meaning that whenever the value of X is requested, the expression "Y + 3" is reevaluated.  Thus at the end of the following:
+{{{
+Y = 3
+X = Y + 3
+Y = 12
+}}}
+X would evaluate to 15, and Y would evaluate to 12.
 
 == Operators ==
-IMP supports several operators, most of which are math based.  The operators supported, with their precedence, are as follows:
+As has already been demonstrated, IMP understands the concept of operators.  In fact, IMP supports several operators, most of which are math based.  The operators supported, with their precedence, are as follows:
 
 || *Precedence* ||  *Symbol* ||  *Name* ||  *Description* || 
 || 1 ||  () ||  Parenthesis ||  Used for grouping || 
@@ -30,11 +44,17 @@ IMP supports several operators, most of which are math based.  The operators sup
 || 10 ||  = ||  Equals ||  Assign a value to a variable || 
 
 == Functions ==
-Functions in IMP are called like functions in other languages as well.  Use the name of the function, a parenthesis, the parameters to give to the function, and a closing parenthesis.
+While many expressions can be represented only with operators, there are some situations in which it is more efficient or even necessary to express an expressions with higher level constructs.  For this purpose, IMP has functions.
 
+Functions in IMP resemble functions in other languages.  Use the name of the function, a parenthesis, the parameters to give to the function, and a closing parenthesis.
 {{{
 X = MYFUNCTION(ARG1, 7)
 }}}
+For instance, the SIN of the absolute value of X can be found as follows:
+{{{
+Y = SIN( ABS(X) )
+}}}
+The list of functions that IMP supports by default can be found at [jmanual_functionlist].
 
 If multiple functions exist with the same name, use the namespace qualifier to distinguish between functions:
 
