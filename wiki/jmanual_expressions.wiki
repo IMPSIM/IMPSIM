@@ -86,3 +86,11 @@ P3 = POINT(0,0,0)
 }}}
 
 === Strings ===
+Strings in imp are used to relay information to the user as messages, or for specifying filenames: 
+{{{
+SYSTEM[TITLE] = "Hello, World!"
+}}}
+In order to create dynamic messages, the concatenation operator can be used to "glue" data (even different data types) together:
+{{{
+SYSTEM[TITLE] = "Hello " & NAME & "!"
+}}}
