@@ -62,4 +62,27 @@ If multiple functions exist with the same name, use the namespace qualifier to d
 X1 = IMP~CORE~ABS(-Y)
 X2 = YOUR~OWN~ABS(-Y)
 }}}
+
+== Data Types ==
+
+While the most common type of data used in a physics engine is a single number, there are a couple of other data types supported to make the IMP engine more robust.
+
+=== Numbers ===
+The most basic data type, the number, is also the most familiar to the world.  As such, it can be used in the same manner as in math:
+{{{
+X1 = 3.4323
+X2 = 2
+X3 = 234e3
+X4 = -34e-1
 }}}
+
+=== Points ===
+Points are merely a set of 3 numbers, constructed with the POINT function.  Points are used to hold coordinates and to specify locations of data:
+{{{
+P1 = POINT(12.3, 43.2, 10.3)
+P2 = POINT()
+#POINT() without parameters is equivalent to:
+P3 = POINT(0,0,0)
+}}}
+
+=== Strings ===
