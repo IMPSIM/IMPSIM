@@ -59,7 +59,7 @@ The list of functions that IMP supports by default can be found at [jmanual_func
 If multiple functions exist with the same name, use the namespace qualifier to distinguish between functions:
 
 {{{
-X1 = imp~core~abs(-Y)
-X2 = your~own~abs(-Y)
+X1 = IMP~CORE~ABS(-Y)
+X2 = YOUR~OWN~ABS(-Y)
 }}}
 }}}
