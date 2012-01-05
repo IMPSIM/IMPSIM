@@ -8,3 +8,14 @@
     * [ManualChapter7 7: DELETE Statements]
     * [ManualChapter8 8: Graphics Statements]
     * [ManualChapter9 9: Application Examples]
+  * Java IMP
+    * [jmanual_ImpIntro  Introduction]
+    * [jmanual_expressions Expressions]
+    * Java IMP Gears
+      * [jmanual_jointGear Gear]
+      * [jmanual_jointRack Rack]
+      * [jmanual_jointBevel Bevel]
+      * [jmanual_jointScrew Screw]
+      * [jmanual_jointCylinder Cylinder]
+      * [jmanual_jointPrism Prism]
+      * [jmanual_jointRevolute Revolute]
