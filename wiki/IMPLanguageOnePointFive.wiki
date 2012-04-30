@@ -1,0 +1,64 @@
+#summary One-sentence summary of this page.
+
+= Parser Specification =
+== Project Description ==
+This project is to allow the Main IMP program parse out data from text files.  It will look for specific keywords and data, and pull it out.
+
+== Delimited Statements ==
+All statements need to be ended with a semicolon as IMP will take recongnize a semicolon as the end of a statement.
+
+        [Statement];
+
+*Example:* Revo1 BodyA BodyB 0,0,0 1,1,1 2,2,2 3,3,3;
+
+== Specifying a Model ==
+Beginning of each model a Model keyword is used to allow the parser to recognize the start of a model.  This will allow for multiple models per Imp file.
+
+*Example:*
+     Model {Model name}  :  Model Hand
+
+== Specifying a Joint ==
+To create a new Joint you use the specified Command.  It works for any joint.
+
+{Joint Type} {Joint Name} {Body 1} {Body 2} {Origin} {Point 1/Halfplane} {Point 2/Common Axis} etc...
+
+=== Revolute Joint ===
+*Example:*  Revolute Revo1 BodyA BodyB 0,0,0 1,0,2 1,1,1 2,2,2 -1,3,1
+
+==== XPin ====
+*Example:* XPin Xpin1 Body1 Body2 0,0,0 1,1,1 2,2,2
+
+==== YPin ====
+*Example:* YPin Ypin1 Body1 Body2 0,0,0 1,1,1 2,2,2
+
+==== ZPin ====
+*Example:* ZPin Zpin1 Body1 Body2 0,0,0 1,1,1 2,2,2
+
+=== Cylinder Joint ===
+*Example:* Cylinder Cy1 Body1 Body2 1,1,1 2,2,2 0,0,0
+
+=== Prism Joint ===
+*Example:* Prism Pris Body1 Body2 8,8,8 9,9,9 5,5,5
+
+==== XSlide ====
+*Example:* XSlide XSl Body1 Body2 8,8,8 9,9,9 5,5,5
+
+==== YSlide ====
+*Example:* YSlide YSl Body1 Body2 8,8,8 9,9,9 5,5,5
+
+==== ZSlide ====
+*Example:* ZSlide ZSl Body1 Body2 8,8,8 9,9,9 5,5,5
+
+=== Screw Joint(TODO once implemented) ===
+
+=== Gear Joint (TODO once implemented) ===
+
+== Specifying a Property ==
+[Joint Name]{[Property]} = {Expression}
+
+*Example:* Revo1[OBJ_FILE] = "default.obj"
+
+== Specifying Ground ==
+Ground = {Body}
+
+*Example:* Ground = Frame
