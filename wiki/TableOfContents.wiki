@@ -11,7 +11,7 @@
   * Java IMP
     * [jmanual_ImpIntro  Introduction]
     * [jmanual_expressions Expressions]
-    * [IMPLanguageOnepointfive IMP Language 1.5 Specification]
+    * [IMPLanguageOnePointFive IMP Language 1.5 Specification]
     * Java IMP Gears
       * [jmanual_jointGear Gear]
       * [jmanual_jointRack Rack]
