@@ -7,7 +7,7 @@ This project is to allow the Main IMP program parse out data from text files.  I
 == Delimited Statements ==
 All statements need to be ended with a semicolon as IMP will take recongnize a semicolon as the end of a statement.
 
-        [Statement];
+        Statement;
 
 *Example:* Revo1 BodyA BodyB 0,0,0 1,1,1 2,2,2 3,3,3;
 
@@ -54,7 +54,7 @@ To create a new Joint you use the specified Command.  It works for any joint.
 === Gear Joint (TODO once implemented) ===
 
 == Specifying a Property ==
-[Joint Name]{[Property]} = {Expression}
+Joint Name{[Property]} = {Expression}
 
 *Example:* Revo1[OBJ_FILE] = "default.obj"
 
