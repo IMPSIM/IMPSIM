@@ -1,75 +1,50 @@
 #summary Revolute joints and pins
 
 ==The <tt>REVOLUTE</tt> Statement==
-<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_5.png" height="400px" />
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_5.2.png" height="400px" />
+
 _Figure 3-5:_ Example of a pin joint connecting two links.
-The <tt>REVOLUTE</tt> statement defines a pin joint connecting two links of the system (see figure 3-5).
+The <tt>REVOLUTE</tt> statement defines a pin joint connecting two links of the system.  This statement also specifies the numeric data which simultaneously locate the two local
+coordinate systems attached to the two links on either side of a <tt>REVOLUTE</tt> joint relative to the
+absolute (global) frame of reference for the system.
+
+The first point must lie at the common origins of the two
+local coordinate systems and the second point must lie on the common local positive _w_,<i>w</i>
+axes. The third and fourth points must lie on the local positive _u_ and <i>u</i> axes of the
+coordinate systems attached to the first and second links named in the <tt>REVOLUTE</tt> statement,
+respectively.
+
 
 ===Format===
- <tt>REVOLUTE</tt> (link name, link name) = joint name
-where each _link name_ refers to the alphanumeric name given to one of the two connected links and _joint name_ is an arbitrarily chosen alphanumeric name assigned to the joint.
+ <tt>REVOLUTE</tt> Joint Name link name link name Point 1 Point 2 Point 3 Point 4;
+or
+ <tt>REVOLUTE</tt> Joint Name link name link name x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub> x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub> x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub> x<sub>4</sub>,y<sub>4</sub>,z<sub>4</sub>;
+where each _link name_ refers to the alphanumeric name given to one of the two connected links and _joint name_ is an arbitrarily chosen alphanumeric name assigned to the joint.  The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups are
+numeric values for the global coordinates of the four points defining the initial locations of the
+two local coordinate systems.
 
 ===Example===
- <tt>REVOLUTE</tt> (LK1, LK2) = PIN
-defines a pinned joint named _PIN_ connecting two links named _LK1_ and _LK2_.
+ <tt>REVOLUTE</tt> PIN LK1 LK2 4.1,2.7,0 5.0,2.7,0 8.1,13.2,0;
+defines a pinned joint named _PIN_ connecting two links named _LK1_ and _LK2_.  This also specifies the initial locations of the local coordinate systems attached to the two links on either
+side of the joint named PIN. The numeric data corresponds approximately to the figure.
+
 
 ===Notes===
  # Each revolute joint in the system must be defined by a separate <tt>REVOLUTE</tt> statement.
  # No other joint of any type may be defined having the same _joint name_. An attempt to do so results in the deletion of the previously defined joint of the same _joint name_ (and all information dependent on it); a warning message is printed.
  # The same _link name_ may appear in more than one statement defining a joint.
  # Each <tt>REVOLUTE</tt> statement defining a joint must refer to two distinct _link names_. An attempt to join a link to itself causes the statement to be ignored and a message to be printed.
- # Two local coordinate systems must be chosen for each _joint name_ (see figure), and defined by a subsequent <tt>DATA::REVOLUTE</tt> statement or by two subsequent <tt>DATA::LINK</tt> statements. One local coordinate system (u,v,w) is rigidly attached to the first _link name_, while the other (u',v',w') is rigidly attached to the second _link name_. The origins of the two local coordinate systems must be coincident the local w and w' axes must be collinear and must be directed along the joint axis and both local w axes must have the same positive sense (see figure).
- # If an appropriate <tt>DATA::REVOLUTE</tt> statement or <tt>DATA::LINK</tt> statement is not defined before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is encountered, it is assumed that the corresponding local coordinate systems(s) is (are) coincident with the link coordinate system; no message is printed.
+ # Two local coordinate systems must be chosen for each _joint name_ (see figure). One local coordinate system (u,v,w) is rigidly attached to the first _link name_, while the other (u',v',w') is rigidly attached to the second _link name_. The origins of the two local coordinate systems must be coincident the local w and w' axes must be collinear and must be directed along the joint axis and both local w axes must have the same positive sense (see figure).
  # The joint variable for a <tt>REVOLUTE</tt> joint is the angle from the positive local u axis to the positive local u' axis. It has units of degrees and is considered positive when counterclockwise as seen from the positive local w,w' axes.
  # The order in which the two _link names_ appear is arbitrary. This choice, however, does affect the sign of the joint variable and its derivatives (see Note 7 above) and also the signs of the constraint force and torque components within the joint (see, for example, the <tt>PRINT FORCE</tt> statement).
  # It is assumed that there is no limit on the magnitude of the joint variable (rotation of the joint).
-
-
-
-==The <tt>DATA::REVOLUTE</tt> Statement==
-<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_6.png" height="400px" />
-_Figure 4-6:_
-The <tt>DATA::REVOLUTE</tt> statement specifies the numeric data which simultaneously locate the two local
-coordinate systems attached to the two links on either side of a <tt>REVOLUTE</tt> joint relative to the
-absolute (global) frame of reference for the system.
-
-The <tt>DATA::REVOLUTE</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints
-and the <tt>DATA::LINK</tt> statements, describe the relative locations of the various links of the system
-at the initial (design) position.
-
-The initial locations of the two local coordinate systems attached to the two links joined by a
-<tt>REVOLUTE</tt> statement are both defined by a single <tt>DATA::REVOLUTE</tt> statement by specifying the global
-coordinates of four points (see figure). The first point must lie at the common origins of the two
-local coordinate systems and the second point must lie on the common local positive _w_,<i>w</i>
-axes. The third and fourth points must lie on the local positive _u_ and <i>u</i> axes of the
-coordinate systems attached to the first and second links named in the <tt>REVOLUTE</tt> statement,
-respectively.
-
-===Format===
- DATA::REVOLUTE (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>; x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>; x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>; x<sub>4</sub>,y<sub>4</sub>,z<sub>4</sub>
-
-where _joint name_ is the alphanumeric name of the <tt>REVOLUTE</tt> joint connecting the two links to
-which the local coordinate systems are attached. The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups are
-numeric values for the global coordinates of the four points defining the initial locations of the
-two local coordinate systems.
-
-===Examples===
- DATA::REVOLUTE (PIN) = -2.0,2.5,0.0; -2.0,3.5,0.0; $
-   0.0,2.5,0.5; -3.0,2.5,1.0
-
-specifies the initial locations of the local coordinate systems attached to the two links on either
-side of a <tt>REVOLUTE</tt> joint named PIN. The numeric data corresponds approximately to the figure.
-
-===Notes===
-  # The _joint name_ specified must have been defined by a previous <tt>REVOLUTE</tt> statement. If not the <tt>DATA::REVOLUTE</tt> statement is ignored and a message is printed.
-  # If a <tt>DATA::REVOLUTE</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by a <tt>REVOLUTE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-  # If more than one <tt>DATA::REVOLUTE</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
-  # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA::REVOLUTE</tt> statement are length units.
-  # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
-  # The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must conform to the rules for the placement of the local coordinate systems for a revolute joint (see <tt>REVOLUTE</tt> statement). If errors are detected, the <tt>DATA::REVOLUTE</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
-  # The four points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however (except, perhaps, for the third and fourth points); larger distances achieve more accurate placement of axes.
-  # The angles formed by points _2_,_1_,_3_ and by points _2_,_1_,_4_ need not be right angles. IMP uses the first and second points to locate the common local origins and the common local _w_,<i>w</i> axes; the local _u_ and <i>u</i> axes are then taken in the half-planes defined by the common local _w_,<i>w</i> axes and the third and fourth points, respectively. Right angles are formed for the local _u_ and <i>u</i> axes in these half-planes even though they may not pass through the third and fourth points, respectively.
+ # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are length units.
+ # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
+ # The four points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however (except, perhaps, for the third and fourth points); larger distances achieve more accurate placement of axes.
+ # The angles formed by points _2_,_1_,_3_ and by points _2_,_1_,_4_ need not be right angles. IMP uses the first and second points to locate the common local origins and the common local _w_,<i>w</i> axes; the local _u_ and <i>u</i> axes are then taken in the half-planes defined by the common local _w_,<i>w</i> axes and the third and fourth points, respectively. Right angles are formed for the local _u_ and <i>u</i> axes in these half-planes even though they may not pass through the third and fourth points, respectively.
   # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA::POINT</tt> statement has previously been given (see above examples).
+
+
 
 
 
