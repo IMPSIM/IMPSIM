@@ -16,25 +16,25 @@ The IMP-language program for simulating a particular system consists of a series
   * Chapter 8: !TODO! Graphics statements are used when a graphic device is at hand, and allow drawing different views of thesystem model, showing animations, and plotting graphs of the simulation results.
 
 ==Individual Statements==
-Each IMP statement must begin on a separate line.  If a statement becomes too long for one line, the statement my be split onto multiple lines by placing a dollar sign '<tt>$</tt>' on the end the first line, and then continuing the statement onto the the next line.  For example, the following long statement:
+Each IMP statement must begin on a separate line.  If a statement becomes too long for one line, the statement my be split onto multiple lines as long as the last part of the statement is delimited by a semicolon.  For example, the following long statement:
 {{{
-DATA:XPIN(P1) = 1.2345678e9, 1.2345678e9, 1.2345678e9; 1.2345678e9, 1.2345678e9, 1.2345678e9; 1.2345678e9, 1.2345678e9, 1.2345678e9
+XPIN P1 Body1 Body2 1.2345678e9, 1.2345678e9, 1.2345678e9 1.2345678e9,1.2345678e9,1.2345678e9 1.2345678e9,1.2345678e9,1.2345678e9;
 }}}
 may be split into three lines like so
 {{{
-DATA:XPIN(P1) = 1.2345678e9, 1.2345678e9, 1.2345678e9; $
-                1.2345678e9, 1.2345678e9, 1.2345678e9; $
-                1.2345678e9, 1.2345678e9, 1.2345678e9
+XPIN P1 Body1 Body2 1.2345678e9,1.2345678e9,1.2345678e9
+                1.2345678e9,1.2345678e9,1.2345678e9
+                1.2345678e9,1.2345678e9,1.2345678e9;
 }}}
-by placing a <tt>$</tt> on the end of the first two lines
+by placing a <tt>;</tt> on the end of the last line.
 
 ==Case Insensitivity ==
 IMP is a case insensitive language, meaning it does not matter whether words are spelled with uppercase letters, lowercase letters, or any combination of the two.  The following three statements are equivalent to each other:
 
 {{{
-XPIN(A,B) = C
-xpin(a,b) = c
-xPiN(a,B) = c
+XPIN C A B
+xpin c a b
+xPiN c a B
 }}}
 
 =IMP Words=
@@ -55,4 +55,3 @@ While the number of words that you can use in IMP is unlimited, there are some w
 ||BECEL   || CYLINDER || DATA  || DATA || GEAR     || GROUND || IS || LINK ||
 || NUMBER || POINT    || PRISM || RACK || REVOLUTE || SCREW  || STRING || TICKS ||
 || TIME   || XPIN     || XSLIDE|| YPIN || YSLIDE   || ZPIN   || ZSLIDE || 
-
