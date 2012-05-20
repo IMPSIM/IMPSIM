@@ -11,7 +11,7 @@
   * Java IMP
     * [jmanual_ImpIntro  Introduction]
     * [jmanual_expressions Expressions]
-    * Java IMP Gears
+    * Java IMP Joints
       * [jmanual_jointGear Gear]
       * [jmanual_jointRack Rack]
       * [jmanual_jointBevel Bevel]
