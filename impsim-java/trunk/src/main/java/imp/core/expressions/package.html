@@ -1,0 +1,44 @@
+<html>
+<body>
+	<p>This packages contains the classes representing expressions and functions in the IMP language.  </p>
+<h3>Expressions</h3>
+	<p>
+	Expressions are used to represent equations and their values.  All expressions are dervied from a single abstract class, <code>Expression</code>.  Although the imp language can use very complex and long equations, they can all be represented by only 2 classes:
+	<ul>
+		<li><code>ExpressionLiteral</code></li>
+		<li><code>FunctionExpression</code></li>
+	</ul>
+	</p>
+	<p>
+		<code>ExpressionLiteral</code> contains a literal value (a number, a point, a string, list of numbers, a list of points, or a list of strings).  When the value of <code>ExpressionLiteral</code>s are evaluated, they return the literal value that they hold.
+		<code>FunctionExpression</code> represents calling a function with 0 or more expression arguments.  This is how all operators and imp functions are evalulated.  Complex expressions will have many more FunctionExpressions than ExpressionLiterals.  
+	</p>
+	<p>
+		An example expression, <code>2 + 3 / 7 ^ Math~PI()</code> would be the following in expressions
+		<ul>
+			<li><code>FunctionExpression[name="+"]</code></li>
+			<ul>
+				<li><code>ExpressionLiteral[value=2]</code></li>
+				
+				<li><code>FunctionExpression[name="/"]</code></li>
+				<ul>
+					<li><code>ExpressionLiteral[value=3]</code></li>
+					
+					<li><code>FunctionExpression[name="^"]</code></li>
+					<ul>
+						<li><code>ExpressionLiteral[value=7]</code></li>
+						<li><code>FunctionExpression[name="PI",namespace="Math"]</code></li>
+					</ul>
+				
+				</ul>
+
+			</ul>
+		</ul>
+		Where the value of the expression is calculated by retreiving the value of each subexpression recursively.
+	</p>
+<h3>Functions</h3>
+	<p>
+		<code>FunctionExpression</code>s are implemented by calling <code>Function</code>s that have been added to the model's <code>FunctionManager</code>.  <code>Function</code>s are basically method pointers (delegates in other languages), allowing the methods to be called and registered dynamically within java.  
+	</p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+#this is a test file for obj
+#objects that have comments in odd places
+
+#this is a comment v 1 2 3
+#v 1 2 3
+
+v 1 2 3#this is a valid line
+v 1 2 3 1#so is this
+v 1 2 3 #and this
+# v 3 4 5 #this whole line is a comment
+
+#define normals
+vn 1 2 3
+#vn 1 2 3
+
+# define textures
+vt 1 2 3
+#vt weifjwefioj
+
+#faces f 1 2 3 
+f 1 2 3#this is really the first face
+
+#should have 1 face, texture, normal and 3 verticies

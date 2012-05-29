@@ -1,0 +1,17 @@
+MODEL M3;
+
+ZPIN A0 G Two 4.1,2.7,0 5.0,2.7,0 8.1,13.2,0;
+ZPIN A Two Three 8.1,13.2,9 4.1,2.7,0 38.1,28.3,0;
+ZPIN C Two Five 5.5,19.2,0 8.1,13.2,0 27.8,41.4,0;
+ZPIN B0 G Four 37.4,8.5,0 47.4,8.5,0 38.1,28.3,0;
+ZPIN B Four Three 38.1,28.3,0 37.4,8.5,0 8.1,13.2,0;
+ZPIN E Four Six 51.3,32.9,0 38.1,28.3,0 27.8,41.4,0;
+ZPIN D Six Five 27.8,41.4,0 51.3,32.9,0 5.5,19.2,0;
+
+GROUND = G;
+
+A0.Theta = ticks() * -0.0174532925;
+
+CAMERA[UP] = {0,1,0};
+CAMERA[LOCATION] = {20,0,100};
+CAMERA[DIRECTION] = {0,0,-1};

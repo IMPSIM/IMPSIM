@@ -1,0 +1,15 @@
+MODEL M4;
+
+ZPIN R1 G One 0,0,0 10,0,0 0,3,0;
+ZPIN R2 One Two 0,3,0 0,0,0 4,0,0;
+ZPIN R3 Two Three 4,0,0 0,3,0 10,0,0;
+XSLIDE P Three G 4,0,0;
+
+GROUND = G;
+
+R1.Theta = ticks() * -0.0174532925;
+
+
+CAMERA[UP] = {0,1,0};
+CAMERA[LOCATION] = {0,0,40};
+CAMERA[DIRECTION] = {0,0,-1};

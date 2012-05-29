@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!-- From http://help.eclipse.org/indigo/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fmisc%2Fplugin_manifest.html -->
+<!DOCTYPE plugin [
+<!ELEMENT plugin (extension-point*, extension*)>
+
+<!ELEMENT fragment (extension-point*, extension*)>
+
+<!ELEMENT extension-point EMPTY>
+<!ATTLIST extension-point
+ name                CDATA #REQUIRED
+ id                  CDATA #REQUIRED
+ schema              CDATA #IMPLIED
+>
+
+<!ELEMENT extension ANY>
+<!ATTLIST extension
+ point               CDATA #REQUIRED
+ name                CDATA #IMPLIED
+ id                  CDATA #IMPLIED
+>
+]>
+<plugin>
+   <extension
+         id="views"
+         name="IMPViews"
+         point="org.eclipse.ui.views">
+      <view
+            category="IMP"
+            class="impplugin.views.CanvasView"
+            id="IMPPlugIn.CanvasView"
+            name="IMPCanvasView"
+            restorable="true">
+      </view>
+      <view
+            category="IMP"
+            class="impplugin.views.ObjectView"
+            id="IMPPlugIn.OjbectView"
+            name="IMPObjectView"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="impplugin.Perspectives.IMPPerspective"
+            icon="icons/IMPLogo2.png"
+            id="IMPPlugIn.Perspective"
+            name="IMP">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="IMPPlugIn.category.wizards"
+            name="Imp">
+      </category>
+      <wizard
+            category="IMPPlugIn.category.wizards"
+            class="impplugin.projectWizard.ImpProjectNewImpFile"
+            descriptionImage="icons/IMPLogo2.png"
+            icon="icons/IMPLogo2.png"
+            id="impplugin.projectWizard.impplugin.projectWizard.ImpProjectNewImpFile"
+            name="Imp File">
+      </wizard>
+      <wizard
+            category="IMPPlugIn.category.wizards"
+            class="impplugin.projectWizard.NewImpProject"
+            icon="icons/IMPLogo2.png"
+            id="IMPPlugIn.ProjectWizard"
+            name="IMP Project Wizard">
+      </wizard>
+   </extension>
+   <extension
+         id="IMPPlugIn.projectNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="impplugin.natures.ProjectNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="impplugin.editors.Editor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            default="false"
+            extensions="imp"
+            id="IMPPlugin.IMPEditor"
+            name="IMPEditor">
+      </editor>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="IMP Plugin">
+         <property
+               name="appName"
+               value="IMP Plugin">
+         </property>
+      </product>
+   </extension>
+</plugin>

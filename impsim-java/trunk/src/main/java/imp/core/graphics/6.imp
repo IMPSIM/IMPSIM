@@ -1,0 +1,39 @@
+
+ZPIN  O FRAME L -58,0,0 10,0,0 0,-188,0;
+
+ZPIN  B L S 0,18,0 10,0,0 -21.5,0,0;
+ZPIN  Q S R 15,0,0 -25,0,0 -21,30,0;
+ZPIN  D R A 0,-18,0 -30,30,0 11.8,20,0;
+ZPIN  V A FRAME -58,0,0 10,0,0 10,0,0;
+ZPIN  P M C -15,0,0 10,0,0 -27.5,-10,0;
+ZPIN  B2 M S 0,18,0 10,18,0 10,18,0;
+ZPIN  D2 C R 0,-18,0 10,-18,0 10,-18,0;
+ZPIN  Op FRAME T -38,0,0 10,0,0 10,0,0;
+ZPIN  P2 M T -15,0,0 10,0,0 -15,100,0;
+
+ZPIN  J1 FRAME L1 -25,-15,0 0,-15,0 0,-15,0;
+ZPIN  J2 L1 L2 -16,-15,0 0,-15,0 0,-15,0;
+ZPIN  J3 L2 T -25,0,0 0,0,0 0,0,0;
+
+GROUND = FRAME;
+
+J1.Theta = Ticks() * 0.01;
+
+CAMERA[UP] = {0,1,0};
+CAMERA[LOCATION] = {-25,0,110};
+CAMERA[DIRECTION] = {0,0,-1};
+
+
+O[OBJ_FILE] = "resources/models/model_O.obj";
+B[OBJ_FILE] = "resources/models/model_B.obj";
+Q[OBJ_FILE] = "resources/models/model_Q.obj";
+D[OBJ_FILE] = "resources/models/model_D.obj";
+
+
+P[OBJ_FILE] = "resources/models/model_P.obj";
+P2[OBJ_FILE] = "resources/models/model_P2.obj";
+B2[OBJ_FILE] = "resources/models/model_B2.obj";
+
+J1[OBJ_FILE] = "NONE";
+J2[OBJ_FILE] = "NONE";
+J3[OBJ_FILE] = "NONE";

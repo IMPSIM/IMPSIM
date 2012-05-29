@@ -1,0 +1,31 @@
+#A cube
+v 0 0 0# bottom vertices
+v 1 0 0
+v 1 0 -1
+v 0 0 -1
+
+v 0 1 0
+v 1 1 0
+v 1 1 -1
+v 0 1 -1
+
+#faces
+f 1 2 3 #top
+f 1 3 4
+
+f 7 6 5 #bottom
+f 8 7 5
+
+f 6 3 2 # right
+f 3 6 7
+
+f 1 4 5 #left
+f 8 5 4
+
+#back
+f 8 4 3
+f 3 7 8 
+
+#back
+f 6 2 1
+f 1 5 6
