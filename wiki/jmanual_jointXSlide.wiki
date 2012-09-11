@@ -27,7 +27,7 @@ specifies the initial locations of the coordinate systems attached to the two li
 The numeric data corresponds approximately to the figure.
 
 ===Notes===
-  # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA::XSLIDE</tt> statement are length units.
+  # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>XSLIDE</tt> statement are length units.
   # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
   # Each XSlide statement defining a joint must refer to two distinct link names. An attempt to join a link to itself causes the statement to be ignored and a message to be printed.
   # The joint name specified must have been defined in the XSLIDE statement. If not, the XSLIDE statement is ignored and a message is printed.
