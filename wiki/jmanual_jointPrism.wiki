@@ -6,11 +6,11 @@
 _Figure 3-9:_ Example of a sliding joint connecting two links.  The <tt>PRISM</tt> statement defines a sliding joint connecting two links of the system (see figure 3-9).
 
 ===Format===
- <tt>PRISM</tt> JointName LinkName LinkName Point1 Point2 Point3;
+ <tt>PRISM</tt> Joint Name Link Name Link Name Point1 Point2 Point3;
  
  or
  
-  <tt>PRISM</tt> JointName LinkName LinkName x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub> x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub> x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>;
+  <tt>PRISM</tt> Joint Name Link Name Link Name x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub> x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub> x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>;
   
 where each _link name_ refers to the alphanumeric name given to one of the two connected links and _joint name> is an arbitrarily chosen alphanumeric name assigned to the joint.  The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups are
 numeric values for the global coordinates of the three points defining the initial locations of the
