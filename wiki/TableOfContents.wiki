@@ -18,4 +18,5 @@
       * [jmanual_jointScrew Screw]
       * [jmanual_jointCylinder Cylinder]
       * [jmanual_jointPrism Prism]
+      * [jmanual_jointXSlide XSlide]
       * [jmanual_jointRevolute Revolute]
