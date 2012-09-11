@@ -1,7 +1,7 @@
 #summary XSlide joints
 
 ==The <tt>XSLIDE</tt> Statement==
-<img sr"" height="400px" />
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_7.png" height="400px" />
 
 _Figure 4-7:_ The <tt>XSLIDE</tt> statement defines a joint that slides along the X axis connecting two links in the system.
 
