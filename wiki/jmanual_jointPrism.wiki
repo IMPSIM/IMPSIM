@@ -1,192 +1,39 @@
-#summary Prism joints and slides
+#summary Prism joints
 
 ==The <tt>PRISM</tt> Statement==
-<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_9.png" height="400px" />
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_9.2.png" height="400px"/>
 
 _Figure 3-9:_ Example of a sliding joint connecting two links.  The <tt>PRISM</tt> statement defines a sliding joint connecting two links of the system (see figure 3-9).
 
 ===Format===
- <tt>PRISM</tt> (link name, link name) = joint name
-where each _link name_ refers to the alphanumeric name given to one of the two connected links and _joint name_ is an arbitrarily chosen alphanumeric name assigned to the joint.
+ <tt>PRISM</tt> JointName LinkName LinkName Point1 Point2 Point3;
+ 
+ or
+ 
+  <tt>PRISM</tt> JointName LinkName LinkName x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub> x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub> x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>;
+  
+where each _link name_ refers to the alphanumeric name given to one of the two connected links and _joint name> is an arbitrarily chosen alphanumeric name assigned to the joint.  The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups are
+numeric values for the global coordinates of the three points defining the initial locations of the
+two local coordinate systems.  The first point defines the common origins of the two local coordinate systems.  The second point must be located on the common local positive _w_,<i>w</i> axes.  The third point must lie in the half-plane defined by the common local _w_,<i>w</i>
+ axes and the common local positive _u_,<i>u</i> axes.
 
 ===Example===
- <tt>PRISM</tt> (LK1, LK2) = SLIP
-defines a sliding joint named _SLIP_ connecting two links named _LK1_ and _LK2_.
+ <tt>PRISM</tt> PPin LK1 LK2 0,6.5,4 2,6.8,4  2,6.5,7;
+defines a sliding joint named _PPin_ connecting two links named _LK1_ and _LK2_.  This also specifies the initial locations of the local coordinate systems attached to the two links on either side of the joint named PPin.  The numeric data
+corresponds approximately to the figure.
 
 ===Notes===
 
   # Each prismatic joint in the system must be defined by a separate <tt>PRISM</tt> statement.
   # No other joint of any type may be defined having the same _joint name_. An attempt to do so results in an exception being thrown.
-  # The same _link name_ may appear in more than one statement defining a joint.
-  # Each statement defining a joint must refer to two distinct _link names_. An attempt to join a link to itself causes an exception to be thrown
-  # Two local coordinate systems must be chosen for each _joint name_ (see figure), and defined by a subsequent <tt>DATA::PRISM</tt> statement or by two subsequent <tt>DATA::LINK</tt> statements. One local coordinate system (u,v,w) is rigidly attached to the first _link name_, while the other (u',v',w') is rigidly attached to the second _link name_. The local w and w' axes must be collinear and must both be directed parallel to the relative motion of the joint. Both local w axes must have the same positive sense, and the local u and u' axes must be parallel and must have the same positive sense (see figure).
-  # If an appropriate <tt>DATA::PRISM</tt> statement or <tt>DATA::LINK</tt> statement is not defined before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is encountered, it is assumed that the corresponding local coordinate systems(s) is (are) coincident with the link coordinate system. No message is printed.
+  # Each statement defining a joint must refer to two distinct _link names_. An attempt to join a link to itself causes an exception to be thrown.
   # The joint variable for a <tt>PRISM</tt> joint is the distance from the positive local u axis to the positive local u' axis. It has units of length and is considered positive when in the same direction as the positive local w,w' axes.
-  # The order in which the two _link names_ appear is arbitrary. This choice, however, does affect the sign of the joint variable and its derivatives (see Note 7 above) and also the signs of the constraint force and torque components within the joint (see, for example, the <tt>PRINT FORCE</tt> statement).
+  # The order in which the two _link names_ appear is arbitrary. This choice, however, does affect the sign of the joint variable and its derivatives (see Note 4 above) and also the signs of the constraint force and torque components within the joint (see, for example, the <tt>PRINT FORCE</tt> statement).
+  # Two local coordinate systems must be chosen for each _joint name_ (see figure), and defined in the <tt>PRISM</tt> statement. One local coordinate system (u,v,w) is rigidly attached to the first _link name_, while the other (u',v',w') is rigidly attached to the second _link name_. The local w and w' axes must be collinear and must both be directed parallel to the relative motion of the joint. Both local w axes must have the same positive sense, and the local u and u' axes must be parallel and must have the same positive sense (see figure).
   # It is assumed that there is no limit on the magnitude of the joint variable (sliding motion of the joint).
-
-==The <tt>DATA::PRISM</tt> Statement==
-<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_10.png" height="400px" />
-
-_Figure 4-10:_
-The <tt>DATA::PRISM</tt> statement specifies the numeric data which simultaneously locates the two local
-coordinate systems attached to the two links on either side of a prismatic joint relative to the
-absolute (global) frame of reference for the system.
-
-The <tt>DATA::PRISM</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints and
-the <tt>DATA::LINK</tt> statements, describe the relative locations of the various links of the system at
-the initial (design) position.
-
-The initial locations of the two local coordinate systems attached to the two links joined by a
-<tt>PRISM</tt> statement are coincident and are both defined by a single <tt>DATA::PRISM</tt> statement by
-specifying the global coordinates of three points (see figure). The first point defines the common
-origins of the two local coordinate systems. The second point must be located on the common local
-positive _w_,<i>w</i> axes. The third point must lie in the half-plane defined by the common local
-_w_,<i>w</i> axes and the common local positive _u_,<i>u</i> axes.
-
-===Format===
- DATA::PRISM (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>; x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>; x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>
-
-where _joint name_ is the alphanumeric name of the <tt>PRISM</tt> joint connecting the two links to which
-the local coordinate systems are attached. The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups are numeric
-values for the global coordinates of the three points defining the initial locations of the two
-local coordinate systems.
-
-===Examples===
- DATA:PRISM (SLIP)= -1.0,1.0,0.0; -1.0,4.0,0.0; 0.0,1.0,-0.5
-
-specifies the initial locations of the coordinate systems attached to the two links on either side
-of a <tt>PRISM</tt> joint named <tt>SLIP</tt>. The numeric data correspond approximately to the figure.
-
-===Notes===
-  # The _joint name_ specified must have been defined by a previous <tt>PRISM</tt> statement. If not, the <tt>DATA::PRISM</tt> statement is ignored and a message is printed.
-  # If a <tt>DATA::PRISM</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by a <tt>PRISM</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-  # If more than one <tt>DATA::PRISM</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
-  # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA::PRISM</tt> statement are length units.
+  # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>PRISM</tt> statement are length units.
   # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
-  # The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must conform to the rules for the placement of the local coordinate systems for a <tt>PRISM</tt> joint (see <tt>PRISM</tt> statement). If errors are detected, the <tt>DATA::PRISM</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
   # The three points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however; larger distances achieve more accurate placement of axes.
   # The angle formed by points _2_,_1_,_3_ need not be a right angle. IMP uses the first point to locate the common local origins extending vectors from there toward the second point; it forms the common local _w_,<i>w</i> axes. The common local positive _u_,<i>u</i> axes are taken in the half-plane defined by the common local _w_,<i>w</i> axes and the third point; a right angle is then formed for the common local _u_,<i>u</i> axes in the half-plane even though they may not pass through the third point.
-  # If the _x<sub>3</sub>_,_y<sub>3</sub>_,_z<sub>3</sub>_ numeric data are not given for the third point, the coordinates of the global origin are used. In view of note 8) above, this does not produce an error unless the common local _w_,<i>w</i> axes pass through the global origin. This may be a convenient shortcut (see final example above) if the user is not concerned about the particular placement of the local _u_ and <i>u</i> axes.
-  # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
-
-==The <tt>DATA::XSLIDE</tt> Statement==
-<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_7.png" height="400px" />
-_Figure 4-7:_
-The <tt>DATA::XSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
-coordinate systems attached to the two links on either side of an <tt>XSLIDE</tt> joint relative to the
-absolute (global) frame of reference for the system. The sliding axis is initially aligned parallel
-to the global X axis.
-
-The <tt>DATA::XSLIDE</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints
-and the <tt>DATA::LINK</tt> statements, describe the relative locations of the various links of the system
-at the initial (design) position.
-
-The initial locations of the two local coordinate systems attached to the two links joined by an
-<tt>XSLIDE</tt> statement are coincident and are both defined by a single <tt>DATA::XSLIDE</tt> statement by
-specifying the global coordinates of one point (see figure). The point defines the common origins of
-the two local coordinate systems. The local coordinate axes attached to the two links are set
-parallel to the global axes.
-
-===Format===
- DATA::XSLIDE (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>
-
-where _joint name_ is the alphanumeric name of the <tt>XSLIDE</tt> joint connecting the two links to
-which the local coordinate systems are attached. The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ are numeric values for
-the global coordinates of the point defining the initial location of the origin of the two local
-coordinate systems.
-
-===Examples===
- DATA:XSLIDE (SLIP) = -1.0,1.0,1.0
-
-specifies the initial locations of the coordinate systems attached to the two links on either side
-of a <tt>XSLIDE</tt> joint named <tt>SLIP</tt>. The numeric data corresponds approximately to the figure.
-
-
-===Notes===
-  # The _joint name_ specified must have been defined by a previous <tt>XSLIDE</tt> statement. If not, the <tt>DATA::XSLIDE</tt> statement is ignored and a message is printed.
-  # If a <tt>DATA::XSLIDE</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by an <tt>XSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-  # If more than one <tt>DATA::XSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
-  # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA::XSLIDE</tt> statement are length units.
-  # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
-  # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
-
-==The <tt>DATA::YSLIDE</tt> Statement==
-<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_8.png" height="400px" />
-_Figure 4-8:_
-The <tt>DATA::YSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
-coordinate systems attached to the two links on either side of a <tt>YSLIDE</tt> joint relative to the
-absolute (global) frame of reference for the system. The sliding axis is initially aligned parallel
-to the global Y axis.
-
-The <tt>DATA::YSLIDE</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints
-and the <tt>DATA::LINK</tt> statements, describe the relative locations of the various links of the system
-at the initial (design) position.
-
-The initial locations of the two local coordinate systems attached to the two links joined by a
-<tt>YSLIDE</tt> statement are coincident and are both defined by a single <tt>DATA::YSLIDE</tt> statement by
-specifying the global coordinates of one point (see figure). The point defines the common origins of
-the two local coordinate systems. The local coordinate axes attached to the two links are set
-parallel to the global axes.
-
-===Format===
- DATA::YSLIDE (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>
-
-where _joint name_ is the alphanumeric name of the <tt>YSLIDE</tt> joint connecting the two links to
-which the local coordinate systems are attached. The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ are numeric values for
-the global coordinates of the point defining the initial location of the origin of the two local
-coordinate systems.
-
-===Examples===
- DATA::YSLIDE (SLIP) = -1.0,1.0,1.0
-
-specifies the initial locations of the coordinate systems attached to the two links on either side
-of a <tt>YSLIDE</tt> joint named <tt>SLIP</tt>. The numeric data corresponds approximately to the figure.
-
-===Notes===
-  # The _joint name_ specified must have been defined by a previous <tt>YSLIDE</tt> statement. If not, the <tt>DATA::YSLIDE</tt> statement is ignored and a message is printed.
-  # If a <tt>DATA::YSLIDE</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by a <tt>YSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-  # If more than one <tt>DATA::YSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
-  # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA::YSLIDE</tt> statement are length units.
-  # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
-  # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has previously been given (see last example above).
-
-==The <tt>DATA::ZSLIDE</tt> Statement==
-<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_9.png" height="400px" />
-_Figure 4-9:_
-The <tt>DATA::ZSLIDE</tt> statement specifies the numeric data which simultaneously locates the two local
-coordinate systems attached to the two links on either side of a <tt>ZSLIDE</tt> joint relative to the
-absolute (global) frame of reference for the system. The sliding axis is aligned parallel to the
-global Z axis.
-
-The <tt>DATA::ZSLIDE</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints
-and the <tt>DATA::LINK</tt> statements, describe the relative locations of the various links of the system
-at the initial (design) position.
-
-The initial locations of the two local coordinate systems attached to the two links joined by a
-<tt>ZSLIDE</tt> statement are coincident and are both defined by a single <tt>DATA::ZSLIDE</tt> statement by
-specifying the global coordinates of one point (see figure). The point defines the common origins of
-the two local coordinate systems. The local coordinate axes attached to the two links are set
-parallel to the global axes.
-
-===Format===
- DATA::ZSLIDE (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>
-
-where _joint name_ is the alphanumeric name of the <tt>ZSLIDE</tt> joint connecting the two links to
-which the local coordinate systems are attached. The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ are numeric values for
-the global coordinates of the point defining the initial location of the origin of the two local
-coordinate systems.
-
-===Examples===
- DATA::ZSLIDE (SLIP) = -1.0,1.0,1.0
-
-specifies the initial locations of the coordinate systems attached to the two links on either side
-of a <tt>ZSLIDE</tt> joint named <tt>SLIP</tt>. The numeric data corresponds approximately to the figure.
-
-===Notes===
-  # The _joint name_ specified must have been defined by a previous <tt>ZSLIDE</tt> statement. If not, the <tt>DATA::ZSLIDE</tt> statement is ignored and a message is printed.
-  # If a <tt>DATA::ZSLIDE</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by a <tt>ZSLIDE</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-  # If more than one <tt>DATA::ZSLIDE</tt> statement is given for the same _joint name_ the later statement takes precedence and earlier data are replaced.
-  # The dimensions for the _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ numeric data in a <tt>DATA::ZSLIDE</tt> statement are length units.
-  # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
-  # The _x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>_ group of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA POINT</tt> statement has been previously given (see last example above).
+  # If the _x<sub>3</sub>_,_y<sub>3</sub>_,_z<sub>3</sub>_ numeric data are not given for the third point, the coordinates of the global origin are used. In view of note 11) above, this does not produce an error unless the common local _w_,<i>w</i> axes pass through the global origin. This may be a convenient shortcut (see final example above) if the user is not concerned about the particular placement of the local _u_ and <i>u</i> axes.
+  
