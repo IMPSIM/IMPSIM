@@ -20,4 +20,5 @@
       * [jmanual_jointPrism Prism]
            * [jmanual_jointXSlide XSlide]
            * [jmanual_jointYSlide YSlide]
+           * [jmanual_jointZSlide ZSlide]
       * [jmanual_jointRevolute Revolute]
