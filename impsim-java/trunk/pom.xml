@@ -22,31 +22,6 @@
 		<tag>HEAD</tag>
 		<url>https://opal.msoe.edu/svn/physicsengine/</url>
 	</scm>
-	<profiles>
-		<!-- if we're on the build server designate explicit path since we can't 
-			guarantee a user directory for a service -->
-		<profile>
-			<id>server profile</id>
-			<activation>
-				<file>
-					<exists>/home/impteam/maven-locals/itsAMeTheBuildServer</exists>
-				</file>
-			</activation>
-			<properties>
-				<maven.locals.path>/home/impteam/maven-locals</maven.locals.path>
-			</properties>
-		</profile>
-		<!-- default to user's home directory / maven-locals -->
-		<profile>
-			<id>default profile</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<maven.locals.path>${user.home}/maven-locals</maven.locals.path>
-			</properties>
-		</profile>
-	</profiles>
 	<!-- global defines used by plugins -->
 	<properties>
 		<junit.code.coverage>true</junit.code.coverage>
@@ -61,6 +36,12 @@
 			<id>mbari-maven-repository</id>
 			<name>MBARI Maven Repository</name>
 			<url>http://mbari-maven-repository.googlecode.com/svn/repository/</url>
+		</repository>
+		<repository>
+			<id>jogamp-remote</id>
+			<name>jogamp test mirror</name>
+			<url>http://www.jogamp.org/deployment/maven/</url>
+			<layout>default</layout>
 		</repository>
 	</repositories>
 	<build>
@@ -228,18 +209,14 @@
 			<version>4.3</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jogamp.jogl</groupId>
-			<artifactId>jogl.all</artifactId>
-			<version>2.0-20120308</version>
-			<scope>system</scope>
-			<systemPath>${maven.locals.path}/jogl.all.jar</systemPath>
+			<groupId>org.jogamp.gluegen</groupId>
+			<artifactId>gluegen-rt-main</artifactId>
+			<version>2.0-rc10</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jogamp.gluegen</groupId>
-			<artifactId>gluegen-rt</artifactId>
-			<version>2.0-20120308</version>
-			<scope>system</scope>
-			<systemPath>${maven.locals.path}/gluegen-rt.jar</systemPath>
+			<groupId>org.jogamp.jogl</groupId>
+			<artifactId>jogl-all-main</artifactId>
+			<version>2.0-rc10</version>
 		</dependency>
 		<dependency>
 			<groupId>org.antlr</groupId>
