@@ -30,37 +30,8 @@ defines a pinned joint named _PinA_ connecting two links named _LinkA_ and _Link
  # It is assumed that there is no limit on the magnitude of the joint variable (rotation of the joint).
 
 
-==The <tt>DATA::XPIN</tt> Statement==
-_Figure 4-3:_
-The <tt>DATA::XPIN</tt> statement specifies the numeric data which simultaneously locate the two local
-coordinate systems attached to the two links on either side of an <tt>XPIN</tt> joint relative to the
-absolute (global) frame of reference for the system. The pin axis is initially aligned parallel to
-the global X axis.
 
-The <tt>DATA::XPIN</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints and
-the <tt>DATA::LINK</tt> statements, describe the relative locations of the various links of the system at
-the initial (design) position.
 
-The initial locations of the two local coordinate systems attached to the two links joined by an
-<tt>XPIN</tt> statement are both defined by a single <tt>DATA::XPIN</tt> statement by specifying the global
-coordinates of three points (see figure). The first point must lie at the common origins of the two
-local coordinate systems. The second and third points are optional but, if given, should lie on the
-local positive _v_ and <i>v</i> axes of the coordinate systems attached to the first and second
-links named in the <tt>XPIN</tt> statement, respectively.
-
-===Format===
- DATA::XPIN (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>; x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>; x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>
-
-where _joint name_ is the alphanumeric name of the <tt>XPIN</tt> joint connecting the two links to which
-the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> coordinate systems are attached. The
-_x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups are numeric values for the global coordinates of the three
-points defining the initial locations of the two local coordinate systems.
-
-===Examples===
- DATA::XPIN (PIN) = -2.0,2.5,0.0; -2.0,3.5,0.0; -2.0,2.5,1.0
-
-specifies the initial locations of the local coordinate systems attached to the two links on either
-side of an <tt>XPIN</tt> joint named _PIN_. The numeric data corresponds approximately to the figure.
 
 ===Notes===
   # The _joint name_ specified must have been defined by a previous <tt>XPIN</tt> statement. If not, the <tt>DATA::XPIN</tt> statement is ignored and a message is printed.
