@@ -1,7 +1,8 @@
-#summary One-sentence summary of this page.
+#summary ZPin
 #labels ZPin,Joint
 
 = ZPin =
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_4.png" height="400px" />
 
 ==The <tt>ZPIN</tt> Statement==
 The <tt>ZPIN</tt> statement defines a pinned joint connecting two links of the system (see figure 3-5), with
