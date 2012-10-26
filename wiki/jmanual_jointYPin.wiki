@@ -1,7 +1,8 @@
-#summary One-sentence summary of this page.
+#summary YPin
 #labels YPin,Joint
 
 = YPin =
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_3.png" height="400px" />
 
 ==The <tt>YPIN</tt> Statement==
 The <tt>YPIN</tt> statement defines a pinned joint connecting two links of the system (see figure 3-5), with
