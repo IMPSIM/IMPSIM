@@ -9,12 +9,15 @@ The <tt>YPIN</tt> statement defines a pinned joint connecting two links of the s
 its pin axis initially parallel to the global Y axis.
 
 ===Format===
- <tt>YPIN</tt> (link name, link name) = joint name
+ <tt>YPIN</tt> Joint Name Link Name Link Name Point 1 Point 2 Point 3
+or
+ <tt>YPIN</tt> Joint Name Link Name Link Name x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub> x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub> x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>;
+
 where each _link name_ refers to the alphanumeric name given to one of the two connected links and _joint name_ is an arbitrarily chosen alphanumeric name assigned to the joint.
 
 ===Example===
- <tt>YPIN</tt> (LK1, LK2) = PIN
-defines a pinned joint named _PIN_ connecting two links named _LK1_ and _LK2_.
+ <tt>YPIN</tt> PINY LinkA LinkB 3,2,0 1,0,0 3,4,0;
+defines a pinned joint named _PINY_ connecting two links named _LinkA_ and _LinkB_.
 
 ===Notes===
  # Each Y-oriented pin joint in the system must be defined by a separate <tt>YPIN</tt> statement.
