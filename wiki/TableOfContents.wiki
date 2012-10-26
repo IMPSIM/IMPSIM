@@ -23,3 +23,5 @@
            * [jmanual_jointZSlide ZSlide]
       * [jmanual_jointRevolute Revolute]
            * [jmanual_jointXPin XPin]
+           * [jmanual_jointYPin YPin]
+           * [jmanual_jointZPin ZPin]
