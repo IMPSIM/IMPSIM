@@ -1,5 +1,7 @@
+#summary XPin
 #labels XPIN,Joint
 = XPIN =
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch3_2.png" height="400px" />
 
 ==The <tt>XPIN</tt> Statement==
 The <tt>XPIN</tt> statement defines a pinned joint connecting two links of the system (see figure 3-5), with its pin axis initally parallel to the global X axis.
