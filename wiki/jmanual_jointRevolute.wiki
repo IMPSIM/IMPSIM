@@ -50,68 +50,6 @@ side of the joint named PIN. The numeric data corresponds approximately to the f
 
 
 
-==The <tt>YPIN</tt> Statement==
-The <tt>YPIN</tt> statement defines a pinned joint connecting two links of the system (see figure 3-5), with
-its pin axis initially parallel to the global Y axis.
-
-===Format===
- <tt>YPIN</tt> (link name, link name) = joint name
-where each _link name_ refers to the alphanumeric name given to one of the two connected links and _joint name_ is an arbitrarily chosen alphanumeric name assigned to the joint.
-
-===Example===
- <tt>YPIN</tt> (LK1, LK2) = PIN
-defines a pinned joint named _PIN_ connecting two links named _LK1_ and _LK2_.
-
-===Notes===
- # Each Y-oriented pin joint in the system must be defined by a separate <tt>YPIN</tt> statement.
- # No other joint of any type may be defined having the same _joint name_. An attempt to do so results in the deletion of the previously defined joint of the same _joint name_ (and all information dependent on it); a warning message is printed.
- # The same _link name_ may appear in more than one statement defining a joint.
- # Each statement defining a joint must refer to two distinct _link names_. An attempt to join a link to itself causes the statement to be ignored and a message to be printed.
- # Local coordinate systems must be chosen for each _joint name_ (see figure), and defined by a subsequent <tt>DATA::YPIN</tt> statement or by two subsequent <tt>DATA::LINK</tt> statements. One local coordinate system (u,v,w) is rigidly attached to the first _link name_, while the other (u',v',w') is rigidly attached to the second _link name_. The origins of the two local coordinate systems must be coincident, the local v and v' axes must be collinear and initially parallel to the global Y axis and must be directed along the joint axis, and both local v axes must have the same positive sense (see figure).
- # If an appropriate <tt>DATA::YPIN</tt> statement or <tt>DATA::LINK</tt> statement is not defined before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is encountered, it is assumed that the corresponding local coordinate systems(s) is (are) coincident with the link coordinate system; no message is printed.
- # The joint variable for a <tt>YPIN</tt> joint is the angle from the positive local w axis to the positive local w' axis. It has units of degrees and is considered positive when counterclockwise as seen from the positive local v,v' axes.
- # The order in which the two _link names_ appear is arbitrary. This choice, however, does affect the sign of the joint variable and its derivatives (see Note 7 above) and also the signs of the constraint force and torque components within the joint (see, for example, the <tt>PRINT FORCE</tt> statement).
- # It is assumed that there is no limit on the magnitude of the joint variable (rotation of the joint).
-
-
-==The <tt>DATA::YPIN</tt> Statement==
-
-The <tt>DATA::YPIN</tt> statements, taken together with the <tt>DATA</tt> statements for other types of joints and
-the <tt>DATA::LINK</tt> statements, describe the relative locations of the various links of the system at
-the initial (design) position.
-
-The initial locations of the two local coordinate systems attached to the two links joined by a
-<tt>YPIN</tt> statement are both defined by a single <tt>DATA::YPIN</tt> statement by specifying the global
-coordinates of three points (see figure). The first point must lie at the common origins of the two
-local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> coordinate systems. The second and third points are
-optional but, if given, must lie on the local positive _w_ and <i>w</i> axes of the coordinate
-systems attached to the first and second links named in the <tt>YPIN</tt> statement, respectively.
-
-===Format===
- DATA::YPIN (joint name) = x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>; x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>; x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>
-
-where _joint name_ is the alphanumeric name of the <tt>YPIN</tt> joint connecting the two links to which
-the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> coordinate systems are attached. The
-_x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups are numeric values for the global coordinates of the three
-points defining the initial locations of the two local coordinate systems.
-
-===Examples===
- DATA::YPIN (PIN) = -2.0,2.5,0.0; 0.0,2.5,0.5; -3.0,2.5,1.0
-
-specifies the initial locations of the local coordinate systems attached to the two links on either
-side of a <tt>YPIN</tt> joint named PIN. The numeric data corresponds approximately to the figure.
-
-===Notes===
-  # The _joint name_ specified must have been defined by a previous <tt>YPIN</tt> statement. If not, the <tt>DATA::YPIN</tt> statement is ignored and a message is printed.
-  # If a <tt>DATA::YPIN</tt> statement or the two equivalent <tt>DATA::LINK</tt> statements are not specified for each _joint name_ defined by a <tt>YPIN</tt> statement before an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given, the local coordinate system(s) with missing data is (are) initially placed coincident with the link frame of reference.
-  # If more than one <tt>DATA::YPIN</tt> statement is given for the same _joint name_, the later statement takes precedence and earlier data are replaced.
-  # The dimensions for all _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data in a <tt>DATA::YPIN</tt> statement are length units.
-  # Care should be taken in supplying accurate dimensional data since any errors result in improper shapes for the links and remain throughout the simulation. Slight errors cause inaccurate answers, while gross errors may cause completely unpredictable results.
-  # The _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data must conform to the rules for the placement of the local coordinate systems for a <tt>YPIN</tt> joint (see <tt>YPIN</tt> statement). If errors are detected, the <tt>DATA::YPIN</tt> statement is ignored and a message is printed. Certain types of errors may not be detected until an <tt>EXECUTE</tt> or <tt>EXECUTE HOLD</tt> statement is given; these cause the simulation to be halted and a message to be printed at that time.
-  # The three points for which _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ numeric data are given need not be unit distances apart; the local _u_,_v_,_w_ and <i>u</i>,<i>v</i>,<i>w</i> axes are normalized by IMP to form unit vectors. The points should not be chosen coincident or too close together, however (except, perhaps, for the second and third points); larger distances achieve more accurate placement of axes.
-  # The angles formed by points _2_,_1_,_3_ need not lie in a plane perpendicular to the global Y axis. IMP uses the first point to locate the common local origins and the common local _v_,<i>v</i> axes; the local _w_ and <i>w</i> axes are then taken in the half-planes defined by the common local _v_,<i>v</i> axes and the second and third points, respectively. Right angles are formed for the local _w_ and <i>w</i> axes in these half-planes even though they may not pass precisely through the second and third points, respectively.
-  # Any of the _x<sub>i</sub>_,_y<sub>i</sub>_,_z<sub>i</sub>_ groups of numeric data may be replaced by the alphanumeric name of a previously defined point for which a valid <tt>DATA::POINT</tt> statement has previously been given (see above examples).
-
 
 ==The <tt>ZPIN</tt> Statement==
 The <tt>ZPIN</tt> statement defines a pinned joint connecting two links of the system (see figure 3-5), with
