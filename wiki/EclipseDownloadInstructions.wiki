@@ -1,8 +1,15 @@
 #summary One-sentence summary of this page.
 
+
 = Download =
 
-[http://www.eclipse.org/downloads/packages/eclipse-classic-372/indigosr2 Download]
+*Download the correct x64 or x32 version of eclipse to match your machine*  You can find this out by:
+  * Click the start menu
+  * right click on computer, select properties
+  * Under the system group look at the System Type label
+  * it will read "64-bit Operating System" or "32-bit Operating System"
+
+[http://www.eclipse.org/downloads/packages/eclipse-classic-372/indigosr2 Eclipse Indigo Classic]
 
 = Details =
 
