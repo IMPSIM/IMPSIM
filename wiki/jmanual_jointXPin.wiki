@@ -7,15 +7,15 @@
 The <tt>XPIN</tt> statement defines a pinned joint connecting two links of the system (see figure 3-5), with its pin axis initally parallel to the global X axis.
 
 ===Format===
- <tt>XPIN</tt> Joint Name Link Name Link Name Point 1 Point 2 Point 3;
+ XPIN Joint Name Link Name Link Name Point 1 Point 2 Point 3;
 
 or
- <tt>XPIN</tt> Joint Name Link Name Link Name x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub> x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub> x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>;
+ XPIN Joint Name Link Name Link Name x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub> x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub> x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>;
 
 where each _link name_ refers to the alphanumeric name given to one of the two connected links and _joint name_ is an arbitrarily chosen alphanumeric name assigned to the joint.
 
 ===Example===
- <tt>XPIN</tt> PinA LinkA LinkB 1,0,0 2,1,0 0,0,0;
+ XPIN PinA LinkA LinkB 1,0,0 2,1,0 0,0,0;
 defines a pinned joint named _PinA_ connecting two links named _LinkA_ and _LinkB_.
 
 ===Notes===
