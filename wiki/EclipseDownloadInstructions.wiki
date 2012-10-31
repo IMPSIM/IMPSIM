@@ -1,0 +1,14 @@
+#summary One-sentence summary of this page.
+
+= Download =
+
+[http://www.eclipse.org/downloads/packages/eclipse-classic-372/indigosr2 Download]
+
+= Details =
+
+The plugin was developed for the Indigo (3.7) version of Eclipse.  Eclipse is a language compiler and editor program used by many software engineers.  With the knowledge that most likely the users of this program are not highly trained on using Java code or even the IMP code language an Interactive user interface was developed into a plugin.
+
+The main site for Eclipse is found at www.eclipse.org
+
+
+There are many versions of Eclipse each for a specific purpose.  For this application you should be able to use most versions of Eclipse however the only tested version supported by this plugin is for Eclipse Indigo Classic sr2.
