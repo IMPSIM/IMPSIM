@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="IMPPlugin" url="https://opal.msoe.edu/projects/imp/wiki/IMPPluginTestUpdateSite">
+      The Integrated Mechanisms Program allows a user to display graphically
+the movement of mechanical parts using an interactive user interface.
+   </description>
+   <feature url="features/IMPPlugInProduct_1.0.0.201210310220.jar" id="IMPPlugInProduct" version="1.0.0.201210310220">
+      <category name="IMPPlugin"/>
+   </feature>
+   <category-def name="IMPPlugin" label="IMPPlugin"/>
+</site>
