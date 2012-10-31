@@ -3,7 +3,8 @@
 
 = Download =
 
-*Download the correct x64 or x32 version of eclipse to match your machine*  You can find this out by:
+*Download the correct x64 or x32 version of eclipse to match your machine*  
+You can find this out by:
   * Click the start menu
   * right click on computer, select properties
   * Under the system group look at the System Type label
