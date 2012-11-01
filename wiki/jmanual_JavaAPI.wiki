@@ -47,24 +47,28 @@ ch.addCommand(<E extends Command>);
 }}}
 
 == Joint Commands==
-These are the joints handled by the IMP API
+These are the joints handled by the IMP API.  For more information on the joints please consult the Imp Manual [jmanual_ImpIntro IMP Java Manual]
 
 === Revolute ===
+[jmanual_jointRevolute JManual]
 {{{
 RevoluteCommand r = new RevoluteCommand(jointName, bodyNameBefore, bodyNameAfter, origin, commonAxis, bodyAxisFirst, bodyAxisSecond);
 }}}
 
 ==== XPIN ====
+[jmanual_jointXPin JManual]
 {{{
 RevoluteCommand r = RevoluteCommand.CreateXPin(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
 }}}
 
 ==== YPIN ====
+[jmanual_jointYPin JManual]
 {{{
 RevoluteCommand r = RevoluteCommand.CreateYPin(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
 }}}
 
 ==== ZPIN ====
+[jmanual_jointZPin JManual]
 {{{
 RevoluteCommand r = RevoluteCommand.CreateZPin(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
 }}}
