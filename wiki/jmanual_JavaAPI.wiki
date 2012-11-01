@@ -98,12 +98,14 @@ PrismCommand p = PrismCommand.CreateZSlide(jointName, bodyNameBefore, bodyNameAf
 }}}
 
 === Expression Commands ===
+There are points when making a model that you'll want to specify an expression for a joint.  To do this you must make use of the JointExpressionCommand which will apply the expression to the specified joint.  Expressions are formed using a FakeExpression array which is then passed to a Function object.  An example is below:
 {{{
 FakeExpression[] expression = new FakeExpression[2];
 expression[0] = new Function("", "TICKS");
 expression[1] = new FakeExpressionLiteral(0.02);
 JointExpressionCommand j = new JointExpressionCommand("J1", JVAR.THETA, new Function("", "*", expression));
 }}}
+This particular code fragment will define the joint "J1" to set its Theta value to the value of 0.02*ticks(), where ticks() is a method referring to the number of ticks performed so far. Essentially it allows you to define expressions as a function of time. 
 
 
 === Ground ===
@@ -115,11 +117,85 @@ GroundCommand g = new GroundCommand("FRAME");
 FRAME is the body that would be set to ground.
 
 === Property Assignment ===
+To assign properties to a joint, you must use a PropertyAssignmentCommand.  This command makes use of FakeExpressions as a way of passing values to it, but most cases you will only need to use FakeExpressionLiterals.  Here is an example:
 {{{
 FakeExpression expression = new FakeExpressionLiteral("BEFORE");
 PropertyAssignmentCommand p = new PropertyAssignmentCommand("J1", "SHOW_AXIS", expression);
 }}}
 
+=== Command Holder Methods ===
+These are methods that are called to run a model or change something in the command holder.
+
+==== Verify Command ====
+This checks the model to make sure loop closure is achieved and that all bodies and joints are linked up.
+{{{
+ch.verify();
+}}}
+This method is used if you want an exception thrown to your application when it fails.  Useful for doing your own error checking.
+{{{
+ch.verifyOrFail();
+}}}
+
+==== Run Methods ====
+These commands are called to run or simulate the model with the physics engine.
+
+This first one makes the model run indefinitely or until a pause or stop is called on the command holder.
+{{{
+ch.runindefinitely(int timeStep);
+}}}
+timeStep is how much time you want between each tick of the model.
+
+This one runs the model for so many steps
+{{{
+ch.run(int timeStep, int maxSteps);
+}}}
+timeStep is how much time you want between each tick of the model and maxSteps is how many ticks of the model you want.
+
+This method pauses the model.
+{{{
+ch.pause();
+}}}
+
+This method resumes the model from a paused state.
+{{{
+ch.resume();
+}}}
+
+This method resumes the model and runs it for only a number a of ticks before pausing the model again.
+{{{
+ch.resume(int timeStep, int numberOfTicks);
+}}}
+timeStep is how much time you want between each tick of the model and numberOfTicks is how many ticks you want the model to run.
+
+==== Clear/Removal/Terminate Methods ====
+
+This method removes a command from the command holder.
+{{{
+ch.removeCommand(Command cmd);
+}}}
+
+This method clears the Model to a null state.
+{{{
+ch.clearModel();
+}}}
+
+This method terminates the Thread the model is running on.  Useful if you get in a stuck loop.
+{{{
+ch.terminateThread();
+}}}
+
+
+==== Add Methods ====
+
+This method adds a list of commands to the command holder.
+{{{
+ch.addCommands(List<Command> cmds);
+}}}
+
+This method adds a command to the command holder.
+{{{
+ch.addCommand(Command cmd);
+}}}
 
 === Information Getters ===
 
@@ -156,6 +232,12 @@ Returns the commands that have already been executed by the command holder.
 Returns an object containing the property manager.
 {{{
 ch.getPropertyManager();
+}}}
+
+==== Ticks Getter ====
+Returns the number of ticks the model has run for.
+{{{
+ch.getTicks();
 }}}
 
 == Examples ==
