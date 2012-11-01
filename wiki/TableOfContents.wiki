@@ -1,4 +1,4 @@
-  * [IMPManual IMP manual]
+  * IMPManual
     * [ManualChapter1 1: The IMP System]
     * [ManualChapter2 2: The IMP Language]
     * [ManualChapter3 3: Definition Statements]
