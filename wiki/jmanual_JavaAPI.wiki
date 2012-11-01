@@ -52,49 +52,49 @@ These are the joints handled by the IMP API.  For more information on the joints
 === Revolute ===
 [jmanual_jointRevolute JManual]
 {{{
-RevoluteCommand r = new RevoluteCommand(jointName, bodyNameBefore, bodyNameAfter, origin, commonAxis, bodyAxisFirst, bodyAxisSecond);
+RevoluteCommand r = new RevoluteCommand(String jointName, String bodyNameBefore, String bodyNameAfter, Point origin, Point commonAxis,  Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 ==== XPIN ====
 [jmanual_jointXPin JManual]
 {{{
-RevoluteCommand r = RevoluteCommand.CreateXPin(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+RevoluteCommand r = RevoluteCommand.CreateXPin(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 ==== YPIN ====
 [jmanual_jointYPin JManual]
 {{{
-RevoluteCommand r = RevoluteCommand.CreateYPin(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+RevoluteCommand r = RevoluteCommand.CreateYPin(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 ==== ZPIN ====
 [jmanual_jointZPin JManual]
 {{{
-RevoluteCommand r = RevoluteCommand.CreateZPin(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+RevoluteCommand r = RevoluteCommand.CreateZPin(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 === Prism ===
 [jmanual_jointPrism JManual]
 {{{ 
-PrismCommand p = new PrismCommand(jointName, bodyNameBefore, bodyNameAfter, origin, commonAxis, halfPlane);
+PrismCommand p = new PrismCommand(String jointName, String bodyNameBefore, String bodyNameAfter, Point origin, Point commonAxis, Point halfPlane);
 }}}
 
 ==== XSlide ====
 [jmanual_jointXSlide JManual]
 {{{ 
-PrismCommand p = PrismCommand.CreateXSlide(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+PrismCommand p = PrismCommand.CreateXSlide(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 ==== YSlide ====
 [jmanual_jointYSlide JManual]
 {{{ 
-PrismCommand p = PrismCommand.CreateYSlide(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+PrismCommand p = PrismCommand.CreateYSlide(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 ==== ZSlide ====
 [jmanual_jointZSlide JManual]
 {{{ 
-PrismCommand p = PrismCommand.CreateZSlide(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+PrismCommand p = PrismCommand.CreateZSlide(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 === Expression Commands ===
