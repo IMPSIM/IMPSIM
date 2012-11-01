@@ -1,14 +1,151 @@
 #summary Java API.
 #labels Java,API,jmanual
 
-= Introduction =
+= Java API =
+IMP comes with a full API for programming and simulating mechanical links in Java without the need of a plugin or knowing the IMP language.  This document explains the supported features so you can get started on running your own models.
 
-Add your content here.
+== Imp Engine ==
+Access to the API is primary done through the use of an object called the Command Holder.  The Command Holder stores all the commands you pass it in a queue and then will run these commands for making a model when state and loop closure is found.  It also allows you to query the state of the system through getters.
+
+Use this following code template to instantiate and run a mechanical system:
+{{{
+       Model model = new Model();
+		
+       ch = null;
+       try {
+              ch = new CommandHolder(model);
+       } catch (FunctionAlreadyExists e) {
+	      //handle exception
+       }
+
+       try{
+              //Add your commands here...
+       } catch (SelfLoopException e){
+              //handle exception
+       }
+
+       try{
+              ch.compile();
+              ch.verify();
+              ch.runIndefinitely(10);
+       } catch (LoopException e){
+              //handle exception
+       } catch (BodyNotFoundException e){
+              //handle exception
+       } catch (IMPException e){
+              //handle exception
+       }
+}}}
+
+=== Imp Commands ===
+
+Commands are what make up a model as they tell how to build a model and how to run it.  Each supported joint type implements command and can be added to the command holder.
+
+==== Example ====
+{{{
+ch.addCommand(<E extends Command>);
+}}}
+
+== Joint Commands==
+These are the joints handled by the IMP API
+
+=== Revolute ===
+{{{
+RevoluteCommand r = new RevoluteCommand(jointName, bodyNameBefore, bodyNameAfter, origin, commonAxis, bodyAxisFirst, bodyAxisSecond);
+}}}
+
+==== XPIN ====
+{{{
+RevoluteCommand r = RevoluteCommand.CreateXPin(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+}}}
+
+==== YPIN ====
+{{{
+RevoluteCommand r = RevoluteCommand.CreateYPin(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+}}}
+
+==== ZPIN ====
+{{{
+RevoluteCommand r = RevoluteCommand.CreateZPin(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+}}}
+
+=== Prism ===
+{{{ 
+PrismCommand p = new PrismCommand(jointName, bodyNameBefore, bodyNameAfter, origin, commonAxis, halfPlane);
+}}}
+
+==== XSlide ====
+{{{ 
+PrismCommand p = PrismCommand.CreateXSlide(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+}}}
+
+==== YSlide ====
+{{{ 
+PrismCommand p = PrismCommand.CreateYSlide(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+}}}
+
+==== ZSlide ====
+{{{ 
+PrismCommand p = PrismCommand.CreateZSlide(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
+}}}
+
+=== Expression Commands ===
+{{{
+FakeExpression[] expression = new FakeExpression[2];
+expression[0] = new Function("", "TICKS");
+expression[1] = new FakeExpressionLiteral(0.02);
+JointExpressionCommand j = new JointExpressionCommand("J1", JVAR.THETA, new Function("", "*", expression));
+}}}
 
 
-= Details =
+=== Ground ===
+It is a requirement of the IMP engine that a body in each linkage be defined as the "Ground".  The command would be:
+{{{
+GroundCommand g = new GroundCommand("FRAME");
+}}}
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+FRAME is the body that would be set to ground.
+
+=== Property Assignment ===
+{{{
+FakeExpression expression = new FakeExpressionLiteral("BEFORE");
+PropertyAssignmentCommand p = new PropertyAssignmentCommand("J1", "SHOW_AXIS", expression);
+}}}
+
+
+=== Information Getters ===
+
+==== Model Getter ====
+Returns an object that contains the model.
+{{{
+ch.getModel();
+}}}
+
+==== Loop Getter ====
+Returns a list of loops that the model contains.
+{{{
+ch.getLoops();
+}}}
+
+==== RunningState Getter ====
+Returns the current state of the command holder.
+{{{
+ch.getCurrentRunningState();
+}}}
+
+==== Command Getters ====
+{{{
+ch.getCommands();
+}}}
+Returns the commands in the command holder.
+
+{{{
+ch.getExecutedCommands();
+}}}
+Returns the commands that have already been executed by the command holder.
+
+==== Property Manager Getter ====
+Returns an object containing the property manager.
+{{{
+ch.getPropertyManager();
+}}}
