@@ -74,21 +74,25 @@ RevoluteCommand r = RevoluteCommand.CreateZPin(jointName, bodyNameBefore, bodyNa
 }}}
 
 === Prism ===
+[jmanual_jointPrism JManual]
 {{{ 
 PrismCommand p = new PrismCommand(jointName, bodyNameBefore, bodyNameAfter, origin, commonAxis, halfPlane);
 }}}
 
 ==== XSlide ====
+[jmanual_jointXSlide JManual]
 {{{ 
 PrismCommand p = PrismCommand.CreateXSlide(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
 }}}
 
 ==== YSlide ====
+[jmanual_jointYSlide JManual]
 {{{ 
 PrismCommand p = PrismCommand.CreateYSlide(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
 }}}
 
 ==== ZSlide ====
+[jmanual_jointZSlide JManual]
 {{{ 
 PrismCommand p = PrismCommand.CreateZSlide(jointName, bodyNameBefore, bodyNameAfter, commonAxis, bodyAxisFirst, bodyAxisSecond);
 }}}
@@ -153,3 +157,6 @@ Returns an object containing the property manager.
 {{{
 ch.getPropertyManager();
 }}}
+
+== Examples ==
+For example models done with the API please consult the [jmanual_APIExamples Examples] page.
