@@ -11,6 +11,7 @@
   * Java IMP
     * [jmanual_ImpIntro  Introduction]
     * [jmanual_expressions Expressions]
+    * [jmanual_JavaAPI Java API]
     * Java IMP Joints
       * [jmanual_jointGear Gear]
       * [jmanual_jointRack Rack]
