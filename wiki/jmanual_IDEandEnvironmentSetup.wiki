@@ -36,7 +36,7 @@ The project is setup to use the most recent version of Eclipse (Indigo) found [h
 
 === Setting up the Core Project ===
 
-* See the [https://opal.msoe.edu/projects/imp/wiki/MavenInstallWalkthrough maven install walkthrough].
+ * See the [jmanual_MavenInstallWalkthrough maven install walkthrough].
 
 Maven will automatically pull in up-to-date libraries that IMP depends on.  If you have errors, go to Project->Clean and clean the current project.  It should build with no errors.
 Sometimes Maven uses the wrong Java source.  It should use the JDK, however if you have the JRE installed as well it may cause issues.  If you are still experiencing build issues, uninstall the JRE through the Windows Control Panel and install the most up to date JDK (the JDK is a superset of anything you needed the jre for).
