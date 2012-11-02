@@ -1,4 +1,4 @@
-#Standards for editing code.
+#summary Standards for editing code.
 
 = Editing a class =
  * If you edit a significant amount of similar items within a class, update the topmost comment block (before package and import declarations).
