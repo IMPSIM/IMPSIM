@@ -1,0 +1,5 @@
+#summary IMP Uses Cases
+#labels UseCases,java
+
+= Use Cases =
+ * [jmanual_useCase1 Use Case 1]
