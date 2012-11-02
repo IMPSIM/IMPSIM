@@ -43,7 +43,7 @@ Sometimes Maven uses the wrong Java source.  It should use the JDK, however if y
 
 === Setting up the Plugin Project ===
 
- * See the [PluginSetupGuide plugin setup guide].
+ * See the [jmanual_PluginSetupGuide plugin setup guide].
 
 This guide talks you through on how to import the plugin and then on how to run it from within the Eclipse environment.
 
