@@ -1,0 +1,55 @@
+#summary Checklist used for code reviews.
+
+= Code Review Checklist =
+
+<table border="1" cellpadding="20" cellspacing="0">
+<tbody><tr>
+<td>  Design   </td><td>   
+ * Code follows design   </td><td>   1
+</td>
+<tr>
+<td>   Constructors    </td><td>   
+ * Class variables initialized <br> 
+ * Accepts proper parameter types <br> 
+ * Accepts correct number of parameters <br> 
+ * ArrayList sizes are checked for correct number of elements <br> 
+ * Null checking     
+<td>   2</td>
+<tr>
+<td>   Methods   </td>
+<td>
+ * Correct returns <br>
+ * Not too large (break large methods into several smaller ones for testing and reduce complexity) <br>
+ * Check for Null on the public facing API 
+<td> 3</td>
+
+<tr>
+<td>   Documentation </td><td> 
+ * JavaDoc <br> 
+ * Commented algorithms <br> 
+ * Implementation matches diagram
+<td> 4</td>
+<tr>
+<td>   Variables  </td><td>  
+ * Descriptive names <br> 
+ * Correct visibility (public/private/protected) <br> 
+ * Getters/Setters
+<td>  5</td>
+<tr>
+<td>   Resources (IO, Threads, etc.)</td><td> 
+ * Closed at end of use 
+<td> 6 </td>
+<tr>
+<td>   Loops  </td>
+<td>
+ * Check for off-by-one errors<br>
+ * Check for infinite loops 
+<td> 7</td>
+<tr>
+<td>  Standards </td><td> 
+ * [jmanual_CodeStandards Code Standards] followed
+ * [jmanual_CommentStandards Comment Standards] followed  
+ * [jmanual_FormattingStandards Formatting Standards] followed 
+ * [jmanual_CommentStandards Comment Standards] followed
+<td> 8
+</td>
