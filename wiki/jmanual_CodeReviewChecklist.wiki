@@ -50,6 +50,6 @@
  * [jmanual_CodeStandards Code Standards] followed
  * [jmanual_CommentStandards Comment Standards] followed  
  * [jmanual_FormattingStandards Formatting Standards] followed 
- * [jmanual_CommentStandards Comment Standards] followed
+ * [jmanual_NamingStandards Naming Standards] followed
 <td> 8
 </td>
