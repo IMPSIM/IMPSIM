@@ -1,6 +1,6 @@
-# Editing a class.
+#Standards for editing code.
 
-== Editing a class ==
+= Editing a class =
  * If you edit a significant amount of similar items within a class, update the topmost comment block (before package and import declarations).
  * The @Edit will be the latest code change notes
  * Update version number after each code change
@@ -15,7 +15,7 @@
 */
 }}}
 
-== Editing a method ==
+= Editing a method =
  * If you edit a single method or algorithm, update that method's comment.
 
 {{{
