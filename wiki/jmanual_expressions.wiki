@@ -94,3 +94,61 @@ In order to create dynamic messages, the concatenation operator can be used to "
 {{{
 SYSTEM[TITLE] = "Hello " & NAME & "!"
 }}}
+
+== Mathematical Expressions ==
+The expression `“X + 7*(Y+3)”` will be represented as a tree of expressions, with each level of the tree having sub expressions.  In list format, the mathematical expression would be:
+
+{{{
+(ExpressionNumberAddition
+	(ExpressionNumberVariable X)
+	(ExpressionNumberMultiplication
+		(ExpressionNumberLiteral 7)
+		(ExpressionNumberAddition 
+			(ExpressionNumberVariable Y)
+			(ExpressionNumberLiteral 3)
+		)
+	)
+)
+}}}
+
+The above tree also shows how the execution would occur in the java language. If this expression was named exampleExpression, then executiong exampleExpression.getValue() would take the following steps:
+{{{
+1.	Retrieve the value of X
+2.	Retrieve the value of The Multiplication Expression
+a.	Retrieve the value of the Literal Number (in this case, 7)
+b.	Retrieve the value of the Addition Expression
+i.	Retrieve the value of Y
+ii.	Retrieve the value of the Literal Number (in this case 3)
+iii.	Add together (i & ii)
+iv.	return (iii)
+c.	Multiply together (a & b)
+d.	Return (c)
+3.	Add together (1 & 2)
+4.	Return (3)
+}}}
+
+Using this format for executing expressions allows the length of the expressions to be limited only to the memory available to the program, and simplifies the process of executing expressions because each expression only needs to understand the interface of sub expressions  and not how the individual expression operate.
+
+== Value vs. Expression Assignment ==
+When the IMP engine parses an expression, it shall construct a tree as described in the previous section.  When it assigns an expression to a variable, it shall assign the top level expression (exampleExpression). to be the value of the variable.  For value assignments, the expression shall be constructed as normal, but instead of assigning the top level expression to the variable, the engine shall construct a new expression literal with a value of the top level expression’s getValue() and assign this newly created expression to the variable.  
+
+In pseudo code, these two methods of assignment would be:
+{{{
+expression = parseAndReturnExpression(impcode)
+
+#assigning an expression to a variable
+variables.setValue(varname, expression)
+
+#assigning a value to a variable
+variables.setValue(varname, new ExpressionLiteral( expression.getValue() ) )
+}}}
+
+
+== Miscellaneous Notes ==
+=== Expression Methods ===
+For each expression, the only the only method which may return a constant will be getValue().  Any other method should return either an expression or should be used for informational purposes only.  Thus, the ExpressionPoint getX() (which shall return the X coordinate of the point) should return an ExpressionNumber, even if the value is constant.  Thus to get the X coordinate of a point, one would use:
+
+double x = pointExpression.getX().getValue();
+
+=== Function Expressions ===
+Each function in the IMP language will take expressions as arguments and shall return expressions as results.  More information about functions will be included in a function specification at a later point in time.
