@@ -18,7 +18,9 @@ Where JOINT is the variable name declared for the desired joint and "BEFORE"/"AF
 == Camera Position Declaration ==
 
 `CAMERA[UP] = {POINT};`
+
 `CAMERA[LOCATION] = {POINT};`
+
 `CAMERA[DIRECTION] = {POINT};`
 
   _*Example:*_ `CAMERA[UP]={0,1,0};`
