@@ -98,7 +98,7 @@ PrismCommand p = PrismCommand.CreateZSlide(String jointName, String bodyNameBefo
 }}}
 
 === Expression Commands ===
-There are points when making a model that you'll want to specify an expression for a joint.  To do this you must make use of the JointExpressionCommand which will apply the expression to the specified joint.  Expressions are formed using a FakeExpression array which is then passed to a Function object.  An example is below:
+There are points when making a model that you'll want to specify an expression for a joint.  To do this you must make use of the !JointExpressionCommand which will apply the expression to the specified joint.  Expressions are formed using a !FakeExpression array which is then passed to a Function object.  An example is below:
 {{{
 FakeExpression[] expression = new FakeExpression[2];
 expression[0] = new Function("", "TICKS");
