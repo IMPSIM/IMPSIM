@@ -213,7 +213,7 @@ Returns a list of loops that the model contains.
 ch.getLoops();
 }}}
 
-==== RunningState Getter ====
+==== !RunningState Getter ====
 Returns the current state of the command holder.
 {{{
 ch.getCurrentRunningState();
