@@ -1,3 +1,4 @@
+#labels IMPGraphicsSpecification
 = IMP Graphics Specification =
 
 == Allow user to view any aspect of the model ==
