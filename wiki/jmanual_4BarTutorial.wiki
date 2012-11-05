@@ -19,7 +19,8 @@ CAMERA[DIRECTION] = {0,0,-1};
 }}}
 If you run the following code it should look like this:
 
-[[Image(wireframe.bmp)]]
+[[IMAGE GOES HERE (WIREFRAME)]]
+
 If the following code is run, a four bar will be shown, but with wire frame graphics. We need to assign an obj model to each joint we want to be drawn with in 3D. These obj models can be made in any external modeling program such as blender. Blender is a free program that lets you create models and export them in different model formats including OBJ. Once you have made your obj models you will need to associate them with each joint using the OBJ_FILE property:
 
 {{{
@@ -75,4 +76,4 @@ LIGHT[LIGHT1] = "0,1,-1,1   ,.3,.7,.5,1,   .7,.7,.2,1,    .5,.4,.7,1";
 
 The model should look something like this:
 
-[[Image(4Bar Screenshot.bmp)]]
+[[IMAGE GOES HERE (MODELS)]]
