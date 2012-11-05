@@ -113,18 +113,18 @@ The expression `“X + 7*(Y+3)”` will be represented as a tree of expressions,
 
 The above tree also shows how the execution would occur in the java language. If this expression was named exampleExpression, then executiong exampleExpression.getValue() would take the following steps:
 {{{
-1.	Retrieve the value of X
-2.	Retrieve the value of The Multiplication Expression
-a.	Retrieve the value of the Literal Number (in this case, 7)
-b.	Retrieve the value of the Addition Expression
-i.	Retrieve the value of Y
-ii.	Retrieve the value of the Literal Number (in this case 3)
-iii.	Add together (i & ii)
-iv.	return (iii)
-c.	Multiply together (a & b)
-d.	Return (c)
-3.	Add together (1 & 2)
-4.	Return (3)
+1.Retrieve the value of X
+2.Retrieve the value of The Multiplication Expression
+       a.Retrieve the value of the Literal Number (in this case, 7)
+       b.Retrieve the value of the Addition Expression
+              i.Retrieve the value of Y
+              ii.Retrieve the value of the Literal Number (in this case 3)
+              iii.Add together (i & ii)
+              iv.return (iii)
+       c.Multiply together (a & b)
+       d.Return (c)
+3.Add together (1 & 2)
+4.Return (3)
 }}}
 
 Using this format for executing expressions allows the length of the expressions to be limited only to the memory available to the program, and simplifies the process of executing expressions because each expression only needs to understand the interface of sub expressions  and not how the individual expression operate.
