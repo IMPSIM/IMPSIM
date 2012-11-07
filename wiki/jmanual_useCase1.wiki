@@ -1,0 +1,83 @@
+#summary Use Case 1
+#labels UseCase1
+
+= Use Case 1 =
+
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch9_1.png" height="400px" />
+
+A differential control linkage, which is the kinematic model described in this use case.
+
+
+This use case describes the flow of events between a modeler and the IMP system as the modeler defines the elements of a kinematic model. For this use case the [Manual_Chapter9 differential control linkage] model from [Manual_Chapter9 chapter 9] is used as an example model. Definition statements are covered in more detail in [Manual_Chapter3 chapter 3] of the IMP user manual.
+
+= Actors =
+ _*Modeler*_
+
+   A person using the IMP system to define and analyze a kinematic model.
+
+= Preconditions =
+ _*IMP is Running*_
+
+   The IMP system must be operational and ready to accept input for a new kinematic model.
+ _*Modeler has Kinematic Model*_
+
+   To ease the definition of the kinematic model in the IMP language, the modeler will have knowledge of the components (such as their names and types) of the kinematic model.
+
+= Basic Flow =
+<hr>
+<table border="1">
+<tbody><tr>
+<th> # </th><th> Modeler </th><th> IMP Engine
+</th></tr>
+<tr>
+<th> 1.
+</th><td> The modeler initiates this use case after starting the IMP application, with kinematic model in hand. For example, the modeler may begin by entering the command
+<pre>GROUND = FRAME
+</pre>
+<p>The <tt><a href="/mediawiki/index.php/Physics_Engine:_User_Manual/Chapter_3#The_GROUND_Statement" title="Physics Engine: User Manual/Chapter 3">GROUND</a></tt> command designates the link in the model which remains stationary and also defines the global coordinate system for the model.
+</p>
+</td><td>
+</td></tr>
+<tr>
+<th> 2.
+</th><td> </td><td> IMP responds that the given command has been executed and replies with any relevant information.  In this example, it replies with
+<pre>*** The fixed link is redefined. ***
+</pre>
+<p>notifying the modeler that the default reference link has been set.
+</p>
+</td></tr>
+<tr>
+<th> 3.
+</th><td> The modeler defines the links and joints and may enter commands similar to the following.
+<pre>YSLIDE (FRAME,A)   = JT1
+ZPIN   (A,C)       = JT2
+XSLIDE (C,D)       = JT3
+ZPIN   (S,D)       = JT4
+ZPIN   (FRAME,S)   = JT5
+ZPIN   (E,D)       = JT6
+ZPIN   (B,E)       = JT7
+ZPIN   (FRAME,B)   = JT8
+</pre>
+<p>These statements define the <tt>LINK</tt>s <i>A</i>,<i>B</i>,<i>C</i>,<i>D</i>,<i>E</i>,<i>S</i>, and <i>FRAME</i>. The <tt><a href="/mediawiki/index.php/Physics_Engine:_User_Manual/Chapter_3#The_LINK_Statement" title="Physics Engine: User Manual/Chapter 3">LINK</a></tt>s are connected by <tt>JOINT</tt>s of type: <tt><a href="/mediawiki/index.php/Physics_Engine:_User_Manual/Chapter_3#The_XSLIDE_Statement" title="Physics Engine: User Manual/Chapter 3">XSLIDE</a></tt>, <tt><a href="/mediawiki/index.php/Physics_Engine:_User_Manual/Chapter_3#The_YSLIDE_Statement" title="Physics Engine: User Manual/Chapter 3">YSLIDE</a></tt>, and <tt><a href="/mediawiki/index.php/Physics_Engine:_User_Manual/Chapter_3#The_ZPIN_Statement" title="Physics Engine: User Manual/Chapter 3">ZPIN</a></tt>.
+</p>
+</td><td>
+</td></tr>
+<tr>
+<th> 4.
+</th><td> </td><td> There is no response from the IMP system, however the definition of the kinematic model is now complete.
+</td></tr></tbody></table>
+</hr>
+
+= Alternate Flows =
+ _*Syntax Error*_
+
+ If a syntactual error occurs, the system responds by saying that it did not recognize the command and allows the modeler to try again.
+
+ _*Reverse Order*_
+
+ In the above example, the modeler defines the ground and then the joints and links.  The modeler may do this in the reverse order.
+
+= Postconditions =
+ _*Kinematic Model Defined*_
+
+   At the conclusion of this use case, the links and joints of the differential control linkage will be defined, albeit without any numerical data such as positions or orientation.
