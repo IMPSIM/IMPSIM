@@ -1,0 +1,10 @@
+#summary Plugin Test Plan
+
+= Plugin Test Plans =
+
+  * [jmanual_viewsTestPlan Views]
+  * [jmanual_objectsTestPlan Objects]
+  * [jmanual_editorsTestPlan editors]
+  * [jmanaul_usabilityTestPlans Usability]
+
+  * [jmanual_usabilityTestResults Usability Results]
