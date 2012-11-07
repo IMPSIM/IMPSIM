@@ -48,7 +48,8 @@ To create a new Joint you'll be using a new statement.  In the previous language
  * Each statement must be ended with a semicolon to tell the parser that this is the end of the statement.
 
 === Revolute Joint ===
-[[Image(Manual_figure_ch4_6.png, 400px, 400px)]]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_6.png" height="400px" />
+
 
 The Revolute Joint is one of the basic joints in the program.  This Joint is the basis of the Pin joints.  Basic statement to create a Revolute Joint:
 
@@ -94,7 +95,7 @@ This Joint is a revolute joint that rotates on the Z axis.
  * Statements must be ended by a semicolon.
 
 === Cylinder Joint ===
-[[Image(Manual_figure_ch4_11.png, 400px, 400px)]]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_11.png" height="400px" />
 
 *Example:*
    Cylinder Cy1 Body1 Body2 1,1,1 2,2,2 0,0,0;
@@ -103,7 +104,7 @@ This Joint is a revolute joint that rotates on the Z axis.
  * Statements must be ended by a semicolon.
 
 === Prism Joint ===
-[[Image(Manual_figure_ch4_10.png, 400px, 400px)]]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_10.png" height="400px" />
 
 This Joint is one of the basic joints.  It has Slide joints that are made of it.  The rotate in place on an axis.  Has the ability to slide along the joint.
 
@@ -116,7 +117,7 @@ This Joint is one of the basic joints.  It has Slide joints that are made of it.
  * Statements must be ended by a semicolon.
 
 ==== XSlide ====
-[[Image(Manual_figure_ch4_7.png, 400px, 400px)]]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_7.png" height="400px" />
 
 This is a joint based off of the Prism joint.  This joint slides along the X axis.
 
@@ -129,7 +130,7 @@ This is a joint based off of the Prism joint.  This joint slides along the X axi
  * Statements must be ended by a semicolon.
 
 ==== YSlide ====
-[[Image(Manual_figure_ch4_8.png, 400px, 400px)]]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_8.png" height="400px" />
 
 This is a joint based off of the Prism joint.  This joint slides along the Y axis.
 
@@ -142,7 +143,7 @@ This is a joint based off of the Prism joint.  This joint slides along the Y axi
  * Statements must be ended by a semicolon.
 
 ==== ZSlide ====
-[[Image(Manual_figure_ch4_9.png, 400px, 400px)]]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Manual_figure_ch4_9.png" height="400px" />
 
 This is a joint based off of the Prism joint.  This joint slides along the Z axis.
 
