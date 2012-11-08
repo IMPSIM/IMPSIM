@@ -15,4 +15,4 @@ ArrayList<E> list = new ArrayList<E>();
  * Use constants rather than magic numbers.
  * Comments required for breaks, continues, nexts in loops.
  * Use curly braces around if statements, even single line statements.
- * Define Generics
+ * Define Generics.
