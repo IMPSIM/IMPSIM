@@ -6,7 +6,7 @@ The IMP Graphics Architecture is composed of six classes: !AbstractDataSource.ja
 
 This image shows how the graphics architecture is structured, and below each class's purpose is explained.
 
-[[Image(Graphics Architecture.png)]]
+<img src="http://impsim.googlecode.com/svn/wiki/images/Graphics Architecture.png" />
 == !AbstractGraphics ==
 All OpenGL programs require that a class implement the GLEventListener interface. This interface is what the GLCanvas will communicate with to receive graphical information. The !AbstractGraphics class is responsible for the proper set up of the virtual 3D environment from which the user will view their models. This set up includes lighting, camera, culling, shader, and direction initialization. It also maintains a single !AbstractDataSource object which it uses within its display() method to draw objects from the !AbstractDataSource.
 
