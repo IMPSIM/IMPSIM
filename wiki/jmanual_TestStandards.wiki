@@ -5,7 +5,7 @@
  * Classes no longer need to extend !TestCase.
  * No need to have "test" in method name. Use @Test annotation instead.
  * Using this new format, there should be no more try-catch blocks.
- * For tests not yet implemented, use the annotation "@Ignore("Descriptive message including name of method under test and explanation as to why it is currently ignored.")
+ * For tests not yet implemented, use the annotation "@Ignore("Descriptive message including name of method under test and explanation as to why it is currently ignored.").
 
 {{{
 Correct (JUnit4):
