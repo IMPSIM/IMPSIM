@@ -12,7 +12,7 @@
  * Class variables initialized <br> 
  * Accepts proper parameter types <br> 
  * Accepts correct number of parameters <br> 
- * ArrayList sizes are checked for correct number of elements <br> 
+ * !ArrayList sizes are checked for correct number of elements <br> 
  * Null checking     
 <td>   2</td>
 <tr>
