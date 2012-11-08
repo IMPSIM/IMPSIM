@@ -1,6 +1,7 @@
-== Creating a 3D Imp Model in Code ==
+#summary A tutorial for making a 3D model in the IMP language
+== Creating a 3D Imp Model in IMP language ==
 
-In this tutorial you will learn how to create a 4 bar mechanism that is drawn as a 3D Model. Doing so is fairly simple and requires that you assign an obj model to each joint you want drawn 3D 
+In this tutorial you will learn how to create a 4 bar mechanism that is drawn as a 3D Model. Doing so is fairly simple and requires that you assign an obj model to each joint you want drawn 3D.
 
 First start with valid imp code. We will be starting with the code below which defines a wireframe 4bar object:
 
