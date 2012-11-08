@@ -9,11 +9,10 @@ To better suit needs of the users this project was exported to work with Eclipse
 This is the outlined instructions for obtaining the developer version of the eclipse plugin.  This will allow you to make changes to the source and run the plugin code directly in eclipse.
 
   * [EclipseDownloadInstructions Download Eclipse]
-  * 
 
 = User Installation Guide =
 
 Here are the outlined instructions list of what must be complete in order to successfully run the plugin on your machine.
   * [EclipseDownloadInstructions Download Eclipse]
-  * [PluginInstalation Install the Plugin]
+  * [jmanual_PluginSetup Install the Plugin]
   * [PluginUserManual Using the Plugin]
