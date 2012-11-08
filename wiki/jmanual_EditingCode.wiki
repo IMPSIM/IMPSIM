@@ -2,8 +2,8 @@
 
 = Editing a class =
  * If you edit a significant amount of similar items within a class, update the topmost comment block (before package and import declarations).
- * The @Edit will be the latest code change notes
- * Update version number after each code change
+ * The @Edit will be the latest code change notes.
+ * Update version number after each code change.
 
 {{{
 /*
