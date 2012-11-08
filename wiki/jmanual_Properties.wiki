@@ -25,9 +25,9 @@ Where JOINT is the variable name declared for the desired joint and "BEFORE"/"AF
 
   _*Example:*_ `CAMERA[UP]={0,1,0};`
 
-  _*Example:*_ `CAMEERA[DIRECTION]={0,0,-1};`
+  _*Example:*_ `CAMERA[DIRECTION]={0,0,-1};`
 
-  _*Example:*_ `CAMEERA[LOCATION]={0,0,10};`
+  _*Example:*_ `CAMERA[LOCATION]={0,0,10};`
 
 The above example would define the camera to be 10 units from the origin looking down the negative Z axis. It would be ideal for viewing a mechanism positioned at the origin.
 == Light Declaration ==
