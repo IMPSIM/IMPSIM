@@ -117,7 +117,7 @@ GroundCommand g = new GroundCommand("FRAME");
 FRAME is the body that would be set to ground.
 
 === Property Assignment ===
-To assign properties to a joint, you must use a !PropertyAssignmentCommand.  This command makes use of !FakeExpressions as a way of passing values to it, but most cases you will only need to use !FakeExpressionLiterals.  Here is an example:
+To assign properties to a joint, you must use a !PropertyAssignmentCommand.  This command makes use of !FakeExpressions as a way of passing values to it, but in most cases you will only need to use !FakeExpressionLiterals.  Here is an example:
 {{{
 FakeExpression expression = new FakeExpressionLiteral("BEFORE");
 PropertyAssignmentCommand p = new PropertyAssignmentCommand("J1", "SHOW_AXIS", expression);
