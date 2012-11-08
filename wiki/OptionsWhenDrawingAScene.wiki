@@ -64,4 +64,4 @@ gl.glUniform4fv(materialAmbient,1,ambientColor,0);
 gl.glUniform1f(materialShininess,shininess);
 }}}
 
-The GLModel has a helpful method already implemented that will automaticaly bind a Material to the shader, So If you want to draw an object using defined materials then It may be helpful to extend this class.
+The GLModel has a helpful method already implemented that will automaticaly bind a Material to the shader, so If you want to draw an object using defined materials then It may be helpful to extend this class.
