@@ -2,7 +2,7 @@
 
 = Introduction =
 
-IMP Expressions allow you to dynamically change the positions of joints and bodies as time goes on.  Expressions are core to the idea of transforming IMP from a modeling engine into a simulation engine.
+IMP expressions allow you to dynamically change the positions of joints and bodies as time goes on.  Expressions are core to the idea of transforming IMP from a modeling engine into a simulation engine.
 
 = Expressions =
 In order to reach a large audience, expressions in IMP are familiar to expressions in math and other programming languages, with one exception.  In most languages, a variable assignment results in a value being assigned to a variable.  However, in IMP, the expressions themselves are stored into variables.
@@ -86,7 +86,7 @@ P3 = POINT(0,0,0)
 }}}
 
 === Strings ===
-Strings in imp are used to relay information to the user as messages, or for specifying filenames: 
+Strings in IMP are used to relay information to the user as messages, or for specifying filenames: 
 {{{
 SYSTEM[TITLE] = "Hello, World!"
 }}}
@@ -130,7 +130,7 @@ The above tree also shows how the execution would occur in the java language. If
 Using this format for executing expressions allows the length of the expressions to be limited only to the memory available to the program, and simplifies the process of executing expressions because each expression only needs to understand the interface of sub expressions  and not how the individual expression operate.
 
 == Value vs. Expression Assignment ==
-When the IMP engine parses an expression, it shall construct a tree as described in the previous section.  When it assigns an expression to a variable, it shall assign the top level expression (exampleExpression). to be the value of the variable.  For value assignments, the expression shall be constructed as normal, but instead of assigning the top level expression to the variable, the engine shall construct a new expression literal with a value of the top level expression’s getValue() and assign this newly created expression to the variable.  
+When the IMP engine parses an expression, it shall construct a tree as described in the previous section.  When it assigns an expression to a variable, it shall assign the top level expression (exampleExpression) to be the value of the variable.  For value assignments, the expression shall be constructed as normal, but instead of assigning the top level expression to the variable, the engine shall construct a new expression literal with a value of the top level expression’s getValue() and assign this newly created expression to the variable.  
 
 In pseudo code, these two methods of assignment would be:
 {{{
