@@ -32,12 +32,12 @@ To verify that the objects function correctly.
 
 === Test Strategy ===
 ==== Test Plans ====
-===== Test 1.0: ObjectComposite.java =====
+===== Test 1.0: !ObjectComposite.java =====
 <hr>
 <table border="1">
 <tbody><tr>
 <th> Objective:
-</th><td> Test class for a an ObjectComposite. 
+</th><td> Test class for a an !ObjectComposite. 
 </td>
 <tr>
 <th> Type of Test:
