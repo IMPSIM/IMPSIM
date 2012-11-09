@@ -213,6 +213,8 @@ literal = new FakeExpressionLiteral("0,10,-10,1, .1, .1, .1, 1, .1, .1, .1, 1,  
 ch.addCommand(new PropertyAssignmentCommand("LIGHT","LIGHT1", literal));
 }}}
 
+<img src="http://impsim.googlecode.com/svn/wiki/images/sterling engine textured.png"/>
+
 == Sterling Engine in IMP ==
 {{{
 MODEL M5;
@@ -266,6 +268,8 @@ LIGHT[LIGHT0] = "10,0,10,1   ,.1,.1,.1,1,   .1,.1,.1,1,    .1,.1,.1,1";
 #xyzw, rgba, rgba, rgba respectively
 LIGHT[LIGHT1] = "0,10,-10,1   ,.1,.1,.1,1,   .1,.1,.1,1,    .1,.1,.1,1";
 }}}
+
+<img src="http://impsim.googlecode.com/svn/wiki/images/sterling engine textured.png"/>
 
 == Peaucellier Linkage in API ==
 {{{
