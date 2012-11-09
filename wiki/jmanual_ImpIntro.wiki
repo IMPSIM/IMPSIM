@@ -1,6 +1,6 @@
 #summary Introduction of the imp language
 
-= Imp Manaul =
+= Imp Manual =
 The Imp language was created so that every user that used this Physics Engine would be able to easy create any model that they wanted to no matter what experience they had.  A plugin(Insert Link here when Austin finishes the doc) was developed for eclipse so that users could write in this language.   The core was developed so that it could also be used as a library in a user's custom java application.  An [jmanual_JavaAPI API] was provided to accomplish that.
 
 =IMP Basics=
