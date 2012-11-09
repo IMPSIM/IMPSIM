@@ -6,24 +6,24 @@
 
 == 4-Bar in API==
 {{{
-	Model model = new Model();
-	ch = new CommandHolder(model);
-	ch.addCommand(RevoluteCommand.CreateZPin("J1", "FRAME", "A", new Point(0,0,0), new Point(2,0,0), new Point(2,0,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("J2", "A", "B", new Point(0,1,0), new Point(2,1,0), new Point(2,1,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("J3", "B", "C", new Point(1,1,0), new Point(2,1,0), new Point(2,1,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("J4", "C", "FRAME", new Point(1,0,0), new Point(2,0,0), new Point(2,0,0)));
+Model model = new Model();
+ch = new CommandHolder(model);
+ch.addCommand(RevoluteCommand.CreateZPin("J1", "FRAME", "A", new Point(0,0,0), new Point(2,0,0), new Point(2,0,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("J2", "A", "B", new Point(0,1,0), new Point(2,1,0), new Point(2,1,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("J3", "B", "C", new Point(1,1,0), new Point(2,1,0), new Point(2,1,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("J4", "C", "FRAME", new Point(1,0,0), new Point(2,0,0), new Point(2,0,0)));
 			
-	ch.addCommand(new GroundCommand("FRAME"));
+ch.addCommand(new GroundCommand("FRAME"));
 	
-	FakeExpression[] expression1 = new FakeExpression[2];
-	expression1[0] = new Function("", "TICKS");
-	expression1[1] = new FakeExpressionLiteral(0.0174532925);
-	ch.addCommand(new JointExpressionCommand("J1", JVAR.THETA, new Function("", "*", expression1)));
+FakeExpression[] expression1 = new FakeExpression[2];
+expression1[0] = new Function("", "TICKS");
+expression1[1] = new FakeExpressionLiteral(0.0174532925);
+ch.addCommand(new JointExpressionCommand("J1", JVAR.THETA, new Function("", "*", expression1)));
 			
-	FakeExpression[] expression2 = new FakeExpression[2];
-	expression2[0] = new Function("", "TICKS");
-	expression2[1] = new FakeExpressionLiteral(-0.0174532925);
-	ch.addCommand(new JointExpressionCommand("J2", JVAR.THETA, new Function("", "*", expression2)));
+FakeExpression[] expression2 = new FakeExpression[2];
+expression2[0] = new Function("", "TICKS");
+expression2[1] = new FakeExpressionLiteral(-0.0174532925);
+ch.addCommand(new JointExpressionCommand("J2", JVAR.THETA, new Function("", "*", expression2)));
 			
 }}}
 
@@ -67,19 +67,19 @@ LIGHT[LIGHT1] = "0,1,-1,1   ,.3,.7,.5,1,   .7,.7,.2,1,    .5,.4,.7,1";
 
 == Piston in API ==
 {{{
-	Model model = new Model();
-	ch = new CommandHolder(model);
-	ch.addCommand(RevoluteCommand.CreateZPin("R1", "G", "One", new Point(0,0,0), new Point(10,0,0), new Point(0,3,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("R2", "One", "Two", new Point(0,3,0), new Point(0,0,0), new Point(4,0,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("R3", "Two", "Three", new Point(4,0,0), new Point(0,3,0), new Point(10,0,0)));
-	ch.addCommand(PrismCommand.CreateXSlide("P", "Three", "G", new Point(4,0,0)));
+Model model = new Model();
+ch = new CommandHolder(model);
+ch.addCommand(RevoluteCommand.CreateZPin("R1", "G", "One", new Point(0,0,0), new Point(10,0,0), new Point(0,3,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("R2", "One", "Two", new Point(0,3,0), new Point(0,0,0), new Point(4,0,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("R3", "Two", "Three", new Point(4,0,0), new Point(0,3,0), new Point(10,0,0)));
+ch.addCommand(PrismCommand.CreateXSlide("P", "Three", "G", new Point(4,0,0)));
 			
-	ch.addCommand(new GroundCommand("G"));
+ch.addCommand(new GroundCommand("G"));
 		
-	FakeExpression[] expression1 = new FakeExpression[2];
-	expression1[0] = new Function("", "TICKS");
-	expression1[1] = new FakeExpressionLiteral(0.0174532925);
-	ch.addCommand(new JointExpressionCommand("R1", JVAR.THETA, new Function("", "*", expression1)));
+FakeExpression[] expression1 = new FakeExpression[2];
+expression1[0] = new Function("", "TICKS");
+expression1[1] = new FakeExpressionLiteral(0.0174532925);
+ch.addCommand(new JointExpressionCommand("R1", JVAR.THETA, new Function("", "*", expression1)));
 			
 }}}
 
@@ -121,35 +121,35 @@ LIGHT[LIGHT1] = "0,10,-10,1   ,.3,.7,.5,1,   .7,.7,.2,1,    .5,.4,.7,1";
 
 == Stirling Engine in API ==
 {{{
-	Model model = new Model();
-	ch = new CommandHolder(model);
-	ch.addCommand(RevoluteCommand.CreateZPin("A", "_ground", "AB", new Point(0,0,0), new Point(10,0,0), new Point(10,5,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("B", "AB", "BD", new Point(10,5,0), new Point(0,0,0), new Point(7,12.5,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("D2", "BD", "DD", new Point(0,30,0), new Point(10,5,0), new Point(0,40,0)));
+Model model = new Model();
+ch = new CommandHolder(model);
+ch.addCommand(RevoluteCommand.CreateZPin("A", "_ground", "AB", new Point(0,0,0), new Point(10,0,0), new Point(10,5,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("B", "AB", "BD", new Point(10,5,0), new Point(0,0,0), new Point(7,12.5,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("D2", "BD", "DD", new Point(0,30,0), new Point(10,5,0), new Point(0,40,0)));
 			
-	ch.addCommand(PrismCommand.CreateYSlide("D", "DD", "_ground", new Point(0,30,0)));
+ch.addCommand(PrismCommand.CreateYSlide("D", "DD", "_ground", new Point(0,30,0)));
 			
-	ch.addCommand(RevoluteCommand.CreateZPin("F", "_ground", "FE", new Point(-20,20,0), new Point(-10,20,0), new Point(-8,-24,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("E", "FE", "HE", new Point(-8,24,0), new Point(-20,20,0), new Point(-14,8,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("H", "HE", "FH", new Point(-14,8,0), new Point(-8,24,0), new Point(-20,20,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("F", "_ground", "FE", new Point(-20,20,0), new Point(-10,20,0), new Point(-8,-24,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("E", "FE", "HE", new Point(-8,24,0), new Point(-20,20,0), new Point(-14,8,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("H", "HE", "FH", new Point(-14,8,0), new Point(-8,24,0), new Point(-20,20,0)));
 	
-	ch.addCommand(RevoluteCommand.CreateZPin("F2", "FH", "_ground", new Point(-20,20,0), new Point(-14,8,0), new Point(-10,20,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("H2", "HE", "HI", new Point(-14,8,0), new Point(-8,24,0), new Point(7,12.5,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("I", "HI", "BD", new Point(7, 12.5, 0), new Point(-14,8,0), new Point(0,30,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("G2", "ED", "GG", new Point(0,36,0), new Point(-8,24,0), new Point(0,50,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("E2", "FE", "ED", new Point(-8,24,0), new Point(0,36,0), new Point(-20,20,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("F2", "FH", "_ground", new Point(-20,20,0), new Point(-14,8,0), new Point(-10,20,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("H2", "HE", "HI", new Point(-14,8,0), new Point(-8,24,0), new Point(7,12.5,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("I", "HI", "BD", new Point(7, 12.5, 0), new Point(-14,8,0), new Point(0,30,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("G2", "ED", "GG", new Point(0,36,0), new Point(-8,24,0), new Point(0,50,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("E2", "FE", "ED", new Point(-8,24,0), new Point(0,36,0), new Point(-20,20,0)));
 	
-	ch.addCommand(PrismCommand.CreateYSlide("G", "GG", "_ground", new Point(0,36,0)));
+ch.addCommand(PrismCommand.CreateYSlide("G", "GG", "_ground", new Point(0,36,0)));
 	
-	ch.addCommand(new GroundCommand("_ground"));
+ch.addCommand(new GroundCommand("_ground"));
 	
-	FakeExpression[] expression1 = new FakeExpression[2];
-	expression1[0] = new Function("", "TICKS");
-	expression1[1] = new FakeExpressionLiteral(0.0174532925);
-	ch.addCommand(new JointExpressionCommand("A", JVAR.THETA, new Function("", "*", expression1)));
+FakeExpression[] expression1 = new FakeExpression[2];
+expression1[0] = new Function("", "TICKS");
+expression1[1] = new FakeExpressionLiteral(0.0174532925);
+ch.addCommand(new JointExpressionCommand("A", JVAR.THETA, new Function("", "*", expression1)));
 			
-	FakeExpression expression = new FakeExpressionLiteral(new Point(0,0,100));
-	ch.addCommand(new PropertyAssignmentCommand("CAMERA","LOCATION",expression));
+FakeExpression expression = new FakeExpressionLiteral(new Point(0,0,100));
+ch.addCommand(new PropertyAssignmentCommand("CAMERA","LOCATION",expression));
 }}}
 
 == Sterling Engine in IMP ==
@@ -208,33 +208,33 @@ LIGHT[LIGHT1] = "0,10,-10,1   ,.1,.1,.1,1,   .1,.1,.1,1,    .1,.1,.1,1";
 
 == Peaucellier Linkage in API ==
 {{{
-	Model model = new Model();
-	ch = new CommandHolder(model);
-	ch.addCommand(RevoluteCommand.CreateZPin("O", "FRAME", "L", new Point(-58,0,0), new Point(10,0,0), new Point(0,-188,0)));
+Model model = new Model();
+ch = new CommandHolder(model);
+ch.addCommand(RevoluteCommand.CreateZPin("O", "FRAME", "L", new Point(-58,0,0), new Point(10,0,0), new Point(0,-188,0)));
 			
-	ch.addCommand(RevoluteCommand.CreateZPin("B", "L", "S", new Point(0,18,0), new Point(10,0,0), new Point(-21.5,0,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("Q", "S", "R", new Point(15,0,0), new Point(-25,0,0), new Point(-21,30,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("D", "R", "A", new Point(0,-18,0), new Point(-30,30,0), new Point(11.8, 20, 0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("V", "A", "FRAME", new Point(-58,0,0), new Point(10,0,0), new Point(-27.5, -10,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("P", "M", "C", new Point(-15,0,0), new Point(10,0,0), new Point(-27.5, -10,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("B2", "M", "S", new Point(0,18,0), new Point(10,18,0), new Point(10,18,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("D2", "C", "R", new Point(0,-18,0), new Point(10,-18,0), new Point(10,-18,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("Op", "FRAME", "T", new Point(-38,0,0), new Point(10,0,0), new Point(10,0,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("P2", "M", "T", new Point(-15,0,0), new Point(10,0,0), new Point(-15,100,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("B", "L", "S", new Point(0,18,0), new Point(10,0,0), new Point(-21.5,0,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("Q", "S", "R", new Point(15,0,0), new Point(-25,0,0), new Point(-21,30,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("D", "R", "A", new Point(0,-18,0), new Point(-30,30,0), new Point(11.8, 20, 0)));
+ch.addCommand(RevoluteCommand.CreateZPin("V", "A", "FRAME", new Point(-58,0,0), new Point(10,0,0), new Point(-27.5, -10,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("P", "M", "C", new Point(-15,0,0), new Point(10,0,0), new Point(-27.5, -10,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("B2", "M", "S", new Point(0,18,0), new Point(10,18,0), new Point(10,18,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("D2", "C", "R", new Point(0,-18,0), new Point(10,-18,0), new Point(10,-18,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("Op", "FRAME", "T", new Point(-38,0,0), new Point(10,0,0), new Point(10,0,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("P2", "M", "T", new Point(-15,0,0), new Point(10,0,0), new Point(-15,100,0)));
 			
-	ch.addCommand(RevoluteCommand.CreateZPin("J1", "FRAME", "L1", new Point(-25,-15,0), new Point(0,-15,0), new Point(0,-15,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("J2", "L1", "L2", new Point(-16,-15,0), new Point(0,-15,0), new Point(0,-15,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("J3", "L2", "T", new Point(-25,0,0), new Point(0,0,0), new Point(0,0,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("J1", "FRAME", "L1", new Point(-25,-15,0), new Point(0,-15,0), new Point(0,-15,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("J2", "L1", "L2", new Point(-16,-15,0), new Point(0,-15,0), new Point(0,-15,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("J3", "L2", "T", new Point(-25,0,0), new Point(0,0,0), new Point(0,0,0)));
 		
-	ch.addCommand(new GroundCommand("FRAME"));			
+ch.addCommand(new GroundCommand("FRAME"));			
 			
-	FakeExpression[] expression1 = new FakeExpression[2];
-	expression1[0] = new Function("", "TICKS");
-	expression1[1] = new FakeExpressionLiteral(0.0174532925);
-	ch.addCommand(new JointExpressionCommand("J1", JVAR.THETA, new Function("", "*", expression1)));
+FakeExpression[] expression1 = new FakeExpression[2];
+expression1[0] = new Function("", "TICKS");
+expression1[1] = new FakeExpressionLiteral(0.0174532925);
+ch.addCommand(new JointExpressionCommand("J1", JVAR.THETA, new Function("", "*", expression1)));
 		
-	FakeExpression expression = new FakeExpressionLiteral(new Point(-25,0,100));
-	ch.addCommand(new PropertyAssignmentCommand("CAMERA","LOCATION",expression));
+FakeExpression expression = new FakeExpressionLiteral(new Point(-25,0,100));
+ch.addCommand(new PropertyAssignmentCommand("CAMERA","LOCATION",expression));
 }}}
 
 == Peaucellier Linkage in IMP==
