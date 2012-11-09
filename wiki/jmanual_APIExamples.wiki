@@ -43,8 +43,8 @@ J2.Theta = ticks() * -0.02;
 
 #Sets the object files for the joints
 J1[OBJ_FILE] = "models/4bar/4bar.obj"; 
-J2[OBJ_FILE] = "D:\\MyDocs\\Projects\\SDL\\Examples\\models\\4bar\\4bar.obj";  
-J3[OBJ_FILE] = "D:/MyDocs/Projects/SDL/Examples/models/4bar/4bar.obj"; 
+J2[OBJ_FILE] = "models/4bar/4bar.obj"; 
+J3[OBJ_FILE] = "models/4bar/4bar.obj"; 
 
 #Explicitly sets the camera values
 #Note: The values here are the same as the default values
