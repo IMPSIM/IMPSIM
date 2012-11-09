@@ -271,8 +271,10 @@ LIGHT[LIGHT1] = "0,10,-10,1   ,.1,.1,.1,1,   .1,.1,.1,1,    .1,.1,.1,1";
 {{{
 Model model = new Model();
 ch = new CommandHolder(model);
-ch.addCommand(RevoluteCommand.CreateZPin("O", "FRAME", "L", new Point(-58,0,0), new Point(10,0,0), new Point(0,-188,0)));
 			
+//define the mechanism
+ch.addCommand(RevoluteCommand.CreateZPin("O", "FRAME", "L", new Point(-58,0,0), new Point(10,0,0), new Point(0,-188,0)));
+	                        
 ch.addCommand(RevoluteCommand.CreateZPin("B", "L", "S", new Point(0,18,0), new Point(10,0,0), new Point(-21.5,0,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("Q", "S", "R", new Point(15,0,0), new Point(-25,0,0), new Point(-21,30,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("D", "R", "A", new Point(0,-18,0), new Point(-30,30,0), new Point(11.8, 20, 0)));
@@ -282,20 +284,49 @@ ch.addCommand(RevoluteCommand.CreateZPin("B2", "M", "S", new Point(0,18,0), new 
 ch.addCommand(RevoluteCommand.CreateZPin("D2", "C", "R", new Point(0,-18,0), new Point(10,-18,0), new Point(10,-18,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("Op", "FRAME", "T", new Point(-38,0,0), new Point(10,0,0), new Point(10,0,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("P2", "M", "T", new Point(-15,0,0), new Point(10,0,0), new Point(-15,100,0)));
-			
+			                        
 ch.addCommand(RevoluteCommand.CreateZPin("J1", "FRAME", "L1", new Point(-25,-15,0), new Point(0,-15,0), new Point(0,-15,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("J2", "L1", "L2", new Point(-16,-15,0), new Point(0,-15,0), new Point(0,-15,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("J3", "L2", "T", new Point(-25,0,0), new Point(0,0,0), new Point(0,0,0)));
-		
-ch.addCommand(new GroundCommand("FRAME"));			
-			
+			                
+//define the ground
+ch.addCommand(new GroundCommand("FRAME"));                      
+			                   
+//set J1 to rotate
 FakeExpression[] expression1 = new FakeExpression[2];
 expression1[0] = new Function("", "TICKS");
-expression1[1] = new FakeExpressionLiteral(0.0174532925);
+expression1[1] = new FakeExpressionLiteral(0.01);
 ch.addCommand(new JointExpressionCommand("J1", JVAR.THETA, new Function("", "*", expression1)));
-		
-FakeExpression expression = new FakeExpressionLiteral(new Point(-25,0,100));
-ch.addCommand(new PropertyAssignmentCommand("CAMERA","LOCATION",expression));
+			
+//define the object files to use
+FakeExpression literal = new FakeExpressionLiteral("models/peaucellier/model_O.obj");
+ch.addCommand(new PropertyAssignmentCommand("O", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("models/peaucellier/model_B.obj");
+ch.addCommand(new PropertyAssignmentCommand("B", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("models/peaucellier/model_Q.obj");
+ch.addCommand(new PropertyAssignmentCommand("Q", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("models/peaucellier/model_D.obj");
+ch.addCommand(new PropertyAssignmentCommand("D", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("models/peaucellier/model_P.obj");
+ch.addCommand(new PropertyAssignmentCommand("P", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("models/peaucellier/model_P2.obj");
+ch.addCommand(new PropertyAssignmentCommand("P2", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("models/peaucellier/model_B2.obj");
+ch.addCommand(new PropertyAssignmentCommand("B2", "OBJ_FILE", literal));
+			
+//define the camera position
+literal = new FakeExpressionLiteral(new Point(0,1,0));
+ch.addCommand(new PropertyAssignmentCommand("CAMERA", "UP", literal));
+literal = new FakeExpressionLiteral(new Point(-25,0,110));
+ch.addCommand(new PropertyAssignmentCommand("CAMERA", "LOCATION", literal));
+literal = new FakeExpressionLiteral(new Point(0,0,-1));
+ch.addCommand(new PropertyAssignmentCommand("CAMERA", "DIRECTION", literal));
+			
+//hides the crank that is driving the mechanism
+literal = new FakeExpressionLiteral("NONE");
+ch.addCommand(new PropertyAssignmentCommand("J1", "OBJ_FILE", literal));
+ch.addCommand(new PropertyAssignmentCommand("J2", "OBJ_FILE", literal));
+ch.addCommand(new PropertyAssignmentCommand("J3", "OBJ_FILE", literal));
 }}}
 
 <img src="http://impsim.googlecode.com/svn/wiki/images/Peaucellier Linkage.png" />
