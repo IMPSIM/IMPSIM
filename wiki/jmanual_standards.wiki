@@ -1,0 +1,10 @@
+#summary Standards
+= Standards =
+
+      * [jmanual_CommentStandards Comment Standards]
+      * [jmanual_EditingCode Editing Code]
+      * [jmanual_NamingStandards Naming Standards]
+      * [jmanual_FormattingStandards Formatting Standards]
+      * [jmanual_CodeStandards Code Standards]
+      * [jmanual_CodeReviewChecklist Code Review Check List]
+      * [jmanual_TestStandards Test Standards]
