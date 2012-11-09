@@ -149,33 +149,68 @@ LIGHT[LIGHT1] = "0,10,-10,1   ,.3,.7,.5,1,   .7,.7,.2,1,    .5,.4,.7,1";
 {{{
 Model model = new Model();
 ch = new CommandHolder(model);
-ch.addCommand(RevoluteCommand.CreateZPin("A", "_ground", "AB", new Point(0,0,0), new Point(10,0,0), new Point(10,5,0)));
-ch.addCommand(RevoluteCommand.CreateZPin("B", "AB", "BD", new Point(10,5,0), new Point(0,0,0), new Point(7,12.5,0)));
+			
+//define the mechanism
+ch.addCommand(RevoluteCommand.CreateZPin("A", "frame", "AB", new Point(0,0,0), new Point(10,0,0), new Point(10,5,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("B", "AB", "BD", new Point(10,5,0), new Point(0,0,0), new Point(0,30,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("D2", "BD", "DD", new Point(0,30,0), new Point(10,5,0), new Point(0,40,0)));
-			
-ch.addCommand(PrismCommand.CreateYSlide("D", "DD", "_ground", new Point(0,30,0)));
-			
-ch.addCommand(RevoluteCommand.CreateZPin("F", "_ground", "FE", new Point(-20,20,0), new Point(-10,20,0), new Point(-8,-24,0)));
+			                        
+ch.addCommand(PrismCommand.CreateYSlide("D", "DD", "frame", new Point(0,30,0)));
+			                        
+ch.addCommand(RevoluteCommand.CreateZPin("F", "frame", "FE", new Point(-20,20,0), new Point(-10,20,0), new Point(-8,-24,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("E", "FE", "HE", new Point(-8,24,0), new Point(-20,20,0), new Point(-14,8,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("H", "HE", "FH", new Point(-14,8,0), new Point(-8,24,0), new Point(-20,20,0)));
-	
-ch.addCommand(RevoluteCommand.CreateZPin("F2", "FH", "_ground", new Point(-20,20,0), new Point(-14,8,0), new Point(-10,20,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("F2", "FH", "frame", new Point(-20,20,0), new Point(-14,8,0), new Point(-10,20,0)));
+			
 ch.addCommand(RevoluteCommand.CreateZPin("H2", "HE", "HI", new Point(-14,8,0), new Point(-8,24,0), new Point(7,12.5,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("I", "HI", "BD", new Point(7, 12.5, 0), new Point(-14,8,0), new Point(0,30,0)));
-ch.addCommand(RevoluteCommand.CreateZPin("G2", "ED", "GG", new Point(0,36,0), new Point(-8,24,0), new Point(0,50,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("G2", "ED", "GG", new Point(0,48,0), new Point(-8,24,0), new Point(0,58,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("E2", "FE", "ED", new Point(-8,24,0), new Point(0,36,0), new Point(-20,20,0)));
-	
-ch.addCommand(PrismCommand.CreateYSlide("G", "GG", "_ground", new Point(0,36,0)));
-	
-ch.addCommand(new GroundCommand("_ground"));
-	
+			        
+ch.addCommand(PrismCommand.CreateYSlide("G", "GG", "frame", new Point(0,48,0)));
+			        
+//define the ground
+ch.addCommand(new GroundCommand("frame"));
+			        
+//set A to rotate
 FakeExpression[] expression1 = new FakeExpression[2];
 expression1[0] = new Function("", "TICKS");
-expression1[1] = new FakeExpressionLiteral(0.0174532925);
+expression1[1] = new FakeExpressionLiteral(-0.02);
 ch.addCommand(new JointExpressionCommand("A", JVAR.THETA, new Function("", "*", expression1)));
 			
-FakeExpression expression = new FakeExpressionLiteral(new Point(0,0,100));
-ch.addCommand(new PropertyAssignmentCommand("CAMERA","LOCATION",expression));
+//define the object files to use
+FakeExpression literal = new FakeExpressionLiteral("models/stirling/stirling_B.obj");
+ch.addCommand(new PropertyAssignmentCommand("B", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("models/stirling/stirling_D2.obj");
+ch.addCommand(new PropertyAssignmentCommand("D2", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("models/stirling/cylinder.obj");
+ch.addCommand(new PropertyAssignmentCommand("D", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("models/stirling/triplate.obj");
+ch.addCommand(new PropertyAssignmentCommand("F", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("AFTER");
+ch.addCommand(new PropertyAssignmentCommand("F", "SHOW_AXIS", literal));
+			
+literal = new FakeExpressionLiteral("models/stirling/stirling_I.obj");
+ch.addCommand(new PropertyAssignmentCommand("I", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("models/stirling/cylinder2.obj");
+ch.addCommand(new PropertyAssignmentCommand("G2", "OBJ_FILE", literal));
+literal = new FakeExpressionLiteral("models/stirling/stirling_E2.obj");
+ch.addCommand(new PropertyAssignmentCommand("E2", "OBJ_FILE", literal));
+			
+//define the camera position
+literal = new FakeExpressionLiteral(new Point(0,1,0));
+ch.addCommand(new PropertyAssignmentCommand("CAMERA", "UP", literal));
+literal = new FakeExpressionLiteral(new Point(-10,20,100));
+ch.addCommand(new PropertyAssignmentCommand("CAMERA", "LOCATION", literal));
+literal = new FakeExpressionLiteral(new Point(0,0,-1));
+ch.addCommand(new PropertyAssignmentCommand("CAMERA", "DIRECTION", literal));
+			
+//sets the lighting properties
+literal = new FakeExpressionLiteral("10,0,10,1, .1, .1, .1, 1, .1, .1, .1, 1,  .1, .1, .1, 1");
+ch.addCommand(new PropertyAssignmentCommand("LIGHT","LIGHT0", literal));
+			                        
+literal = new FakeExpressionLiteral("0,10,-10,1, .1, .1, .1, 1, .1, .1, .1, 1,  .1, .1, .1, 1");
+ch.addCommand(new PropertyAssignmentCommand("LIGHT","LIGHT1", literal));
 }}}
 
 == Sterling Engine in IMP ==
