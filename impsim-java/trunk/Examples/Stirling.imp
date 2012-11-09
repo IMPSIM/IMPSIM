@@ -1,0 +1,51 @@
+MODEL M5;
+
+ZPIN A frame AB 0,0,0 10,0,0 10,5,0;
+ZPIN B AB BD 10,5,0 0,0,0 0,30,0;
+ZPIN D2 BD DD 0,30,0 10,5,0 0,40,0;
+YSLIDE D DD frame 0,30,0; #bottom piston
+
+#triangle
+ZPIN F frame FE -20,20,0 -10,20,0 -8,24,0;
+ZPIN E FE HE -8,24,0 -20,20,0 -14,8,0;
+ZPIN H HE FH -14,8,0 -8,24,0 -20,20,0;
+ZPIN F2 FH frame -20,20,0 -14,8,0 -10,20,0;
+#end triangle
+
+ZPIN H2 HE HI -14,8,0 -8,24,0 7,12.5,0;
+ZPIN I HI BD 7,12.5,0 -14,8,0 0,30,0;
+ZPIN G2 ED GG 0,48,0 -8,24,0 0,58,0;
+ZPIN E2 FE ED -8,24,0 0,36,0 -20,20,0;
+YSLIDE G GG frame 0,48,0; #top piston
+
+#Sets the ground to the body named "frame"
+GROUND = frame;
+
+#Sets the joint A to rotate -0.02 degrees each tick
+A.Theta = ticks() * -0.02;
+
+#Modifies the camera position
+CAMERA[UP] = {0,1,0};
+CAMERA[LOCATION] = {-10,20,100};
+CAMERA[DIRECTION] = {0,0,-1};
+
+#Defines the object files for each joint
+B[OBJ_FILE] = "<Path to project>/models/stirling/stirling_B.obj";
+D2[OBJ_FILE] = "<Path to project>/models/stirling/stirling_D2.obj";
+D[OBJ_FILE] = "<Path to project>/models/stirling/cylinder.obj";
+F[OBJ_FILE] = "<Path to project>/models/stirling/triplate.obj";
+
+
+I[OBJ_FILE] = "<Path to project>/models/stirling/stirling_I.obj";
+G2[OBJ_FILE] = "<Path to project>/models/stirling/cylinder2.obj";
+E2[OBJ_FILE] = "<Path to project>/models/stirling/stirling_E2.obj";
+
+#Sets the lighting values for Light 0
+#The parameters are Position, Ambient, Diffuse, Specular
+#xyzw, rgba, rgba, rgba respectively
+LIGHT[LIGHT0] = "10,0,10,1   ,.1,.1,.1,1,   .1,.1,.1,1,    .1,.1,.1,1";
+
+#Sets the lighting values for Light 1
+#The parameters are Position, Ambient, Diffuse, Specular
+#xyzw, rgba, rgba, rgba respectively
+LIGHT[LIGHT1] = "0,10,-10,1   ,.1,.1,.1,1,   .1,.1,.1,1,    .1,.1,.1,1";

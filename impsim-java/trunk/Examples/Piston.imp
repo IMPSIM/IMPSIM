@@ -1,0 +1,32 @@
+MODEL M4;
+
+ZPIN R1 G One 0,0,0 10,0,0 0,3,0;
+ZPIN R2 One Two 0,3,0 0,0,0 4,0,0;
+ZPIN R3 Two Three 4,0,0 0,3,0 10,0,0;
+XSLIDE P Three G 4,0,0;
+
+#Sets the ground to the body "G"
+GROUND = G;
+
+#Sets R1 to rotate -0.2 degrees per tick
+R1.Theta = ticks() * -0.02;
+
+#Override the default camera location
+CAMERA[UP] = {0,1,0};
+CAMERA[LOCATION] = {0,0,40};
+CAMERA[DIRECTION] = {0,0,-1};
+
+#Set the object files for each joint
+R2[OBJ_FILE] = "<Path to project>/models/piston/pistonBar_short.obj";
+R3[OBJ_FILE] = "<Path to project>/models/piston/pistonBar.obj";
+P[OBJ_FILE] = "<Path to project>/models/piston/cylinder.obj";
+
+#Sets the light properties for Light 0
+#The parameters are Position, Ambient, Diffuse, Specular
+#xyzw, rgba, rgba, rgba respectively
+LIGHT[LIGHT0] = "10,0,10,1   ,.7,.1,.3,1,   .2,.4,.3,1,    .4,.2,.7,1";
+
+#Sets the light properties for Light 1
+#The parameters are Position, Ambient, Diffuse, Specular
+#xyzw, rgba, rgba, rgba respectively
+LIGHT[LIGHT1] = "0,10,-10,1   ,.3,.7,.5,1,   .7,.7,.2,1,    .5,.4,.7,1";

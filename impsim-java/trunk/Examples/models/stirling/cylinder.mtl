@@ -1,0 +1,12 @@
+# Blender MTL File: 'cylinder.blend'
+# Material Count: 1
+newmtl Material
+Ns 86.274510
+Ka 0.000000 0.000000 0.000000
+Kd 0.400000 0.154645 0.045825
+Ks 0.100000 0.100000 0.100000
+Ni 1.000000
+d 1.000000
+illum 2
+
+
