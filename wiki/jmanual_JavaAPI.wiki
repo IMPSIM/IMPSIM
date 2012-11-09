@@ -122,9 +122,13 @@ JointExpressionCommand j = new JointExpressionCommand("J1", JVAR.THETA, new Func
 }}}
 This particular code fragment will define the joint "J1" to set its Theta value to the value of 0.02*ticks(), where ticks() is a method referring to the number of ticks performed so far. Essentially it allows you to define expressions as a function of time. 
 
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/expressions/FakeExpression.html Fake Expression Doc]
+
 [http://impsim.googlecode.com/svn/java_doc/imp/core/commands/expressions/FakeExpressionLiteral.html Fake Expression Literal Doc]
 
 [http://impsim.googlecode.com/svn/java_doc/imp/core/commands/expressions/Function.html Function Doc]
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/JointExpressionCommand.html Joint Expression Command Doc]
 
 
 === Ground ===
@@ -135,6 +139,8 @@ GroundCommand g = new GroundCommand("FRAME");
 
 FRAME is the body that would be set to ground.
 
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/GroundCommand.html Ground Command Doc]
+
 === Property Assignment ===
 To assign properties to a joint, you must use a !PropertyAssignmentCommand.  This command makes use of !FakeExpressions as a way of passing values to it, but in most cases you will only need to use !FakeExpressionLiterals.  Here is an example:
 {{{
@@ -144,8 +150,15 @@ PropertyAssignmentCommand p = new PropertyAssignmentCommand("J1", "SHOW_AXIS", e
 
 For more information on properties, see: [jmanual_Properties Supported Properties]
 
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/expressions/FakeExpression.html Fake Expression Doc]
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/PropertyAssignmentCommand.html Property Assignment Command Doc]
+
 === Command Holder Methods ===
 These are methods that are called to run a model or change something in the command holder.
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/encapsulation/CommandHolder.html  Command Holder Java Doc]
 
 ==== Verify Command ====
 This checks the model to make sure loop closure is achieved and that all bodies and joints are linked up.
