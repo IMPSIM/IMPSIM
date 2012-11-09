@@ -5,6 +5,7 @@
     * [jmanual_expressions Expressions]
     * [jmanual_JavaAPI Java API]
     * [jmanual_APIExamples API Examples]
+    * [http://code.google.com/p/impsim/source/browse/java-doc/index.html]
     * Java IMP Joints
       * [jmanual_jointGear Gear]
       * [jmanual_jointRack Rack]
