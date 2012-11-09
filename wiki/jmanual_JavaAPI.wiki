@@ -51,48 +51,63 @@ These are the joints handled by the IMP API.  For more information on the joints
 
 === Revolute ===
 [jmanual_jointRevolute JManual]
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/joints/RevoluteCommand.html Revolute Command Doc]
 {{{
 RevoluteCommand r = new RevoluteCommand(String jointName, String bodyNameBefore, String bodyNameAfter, Point origin, Point commonAxis,  Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 ==== XPIN ====
 [jmanual_jointXPin JManual]
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/joints/RevoluteCommand.html XPIN Command Doc]
 {{{
 RevoluteCommand r = RevoluteCommand.CreateXPin(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 ==== YPIN ====
 [jmanual_jointYPin JManual]
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/joints/RevoluteCommand.html YPIN Command Doc]
 {{{
 RevoluteCommand r = RevoluteCommand.CreateYPin(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 ==== ZPIN ====
 [jmanual_jointZPin JManual]
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/joints/RevoluteCommand.html ZPIN Command Doc]
 {{{
 RevoluteCommand r = RevoluteCommand.CreateZPin(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 === Prism ===
 [jmanual_jointPrism JManual]
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/joints/PrismCommand.html Prism Command Doc]
 {{{ 
 PrismCommand p = new PrismCommand(String jointName, String bodyNameBefore, String bodyNameAfter, Point origin, Point commonAxis, Point halfPlane);
 }}}
 
 ==== XSlide ====
 [jmanual_jointXSlide JManual]
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/joints/PrismCommand.html XSlide Command Doc]
 {{{ 
 PrismCommand p = PrismCommand.CreateXSlide(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 ==== YSlide ====
 [jmanual_jointYSlide JManual]
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/joints/PrismCommand.html YSlide Command Doc]
 {{{ 
 PrismCommand p = PrismCommand.CreateYSlide(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
 
 ==== ZSlide ====
 [jmanual_jointZSlide JManual]
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/joints/PrismCommand.html ZSlide Command Doc]
 {{{ 
 PrismCommand p = PrismCommand.CreateZSlide(String jointName, String bodyNameBefore, String bodyNameAfter, Point commonAxis, Point bodyAxisFirst, Point bodyAxisSecond);
 }}}
