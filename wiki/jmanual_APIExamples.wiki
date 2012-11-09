@@ -4,7 +4,7 @@
 = Examples =
 
 
-== 4-Bar With API==
+== 4-Bar in API==
 {{{
 	Model model = new Model();
 	ch = new CommandHolder(model);
