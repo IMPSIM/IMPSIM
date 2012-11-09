@@ -27,7 +27,7 @@ ch.addCommand(new JointExpressionCommand("J2", JVAR.THETA, new Function("", "*",
 			
 }}}
 
-== 4 Bar in IMP Language ==
+== 4-Bar in IMP Language ==
 {{{
 ZPIN J1 FRAME A 0,0,0 2,0,0 2,0,0;
 ZPIN J2 A B 0,1,0 2,0,0 0,-2,0;
