@@ -1,0 +1,212 @@
+#summary Usability Test Plans
+#labels UsabilityTestPlans
+= Usability Test Plans =
+
+== Summary ==
+The purpose of this document is to layout a test plan for testing the usability of the plugin system. During usability testing several tests will be performed as listed below and the results of each test will be recorded.
+For each test the user will be asked to perform a task using the plugin, and a standard set of information will be recorded for each test as defined below. It is planned to test users who are familiar with imp, users who are familiar with at least one programming language, and users who may have some background modeling in other mechanical/physics programs.
+
+== Information Recorded  ==
+For each test the following information will be recorded:
+* How amiliar the user is with using a computer, programing languages, and using IMP or other physics/mechanics related software
+* Time taken to complete the task
+* Number of errors committed, and details of the error
+* Number of times asked for help and what was asked
+* Overall rating between 1-10 of how easy the task was
+* General Comments 
+
+== Tests ==
+The following section describes the tests that will be performed. For each test the user will be asked to perform a specific task, but they will not be given instructions how to complete it initially. If the user gets stuck they can ask for help on how to complete the task. During each test the results will be recorded. 
+
+=== Test 1 ===
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Description:
+</th><td> In this test the user will be asked to load a pre-made IMP file into the plugin. 
+</td></tr>
+<tr>
+<th> Preconditions:
+</th><td> The test will start with the IMP plugin open and running and with no IMP file currently added loaded.
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td>1) Ask the user to load in imp file 1.imp into the plugin.
+<ul>
+<li>Start collecting data</li>
+</UL>
+2) Show them where the file is stored.
+<ul>
+<li>They can either drag the file in to add it or select file open.</li>
+</UL>
+3) When the code from the file shows up the test is done. 
+<ul>
+<li>Stop collecting data.</li>
+</UL>
+</td></tr>
+<tr>
+<th> Postconditions:
+</th><td> The test will end once the user has successfully loaded the pre-made IMP file.
+</td></tr>
+</tbody></table>
+</hr>
+=== Test 2 === 
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Description:
+</th><td> In this test the user will be asked to run an IMP file, pause it, and then resume it. 
+</td></tr>
+<tr>
+<th> Preconditions:
+</th><td> The test will start with the IMP plugin open and running, and with an IMP file pre-loaded.
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td>
+1) Ask the user to run the model by using the run button in the GUI.
+<ul>
+<li>Start recording data.</li>
+<li>When the model starts running stop recording data.</li>
+</UL>
+2) Ask the user to pause the model by using the pause button in the GUI.
+<ul>
+<li>Start recording data.</li>
+<li>When the model stops running stop recording data.</li>
+</UL>
+3) Ask the user to resume the model by using the resume button in the GUI.
+<ul>
+<li>Start recording data.</li>
+<li>Once the model is running stop recording data.</li>
+</UL>
+</td></tr>
+<tr>
+<th> Postconditions:
+</th><td> The test will end once the user has successfully run the model, paused it, and then resumed the model running.   
+</td></tr>
+</tbody></table>
+</hr>
+  
+=== Test 3 === 
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Description:
+</th><td> In this test the user will be asked to re orientate the view of the model by 180 degrees.
+</td></tr>
+<tr>
+<th> Preconditions:
+</th><td> The test will start with the IMP plugin open and running, and with an IMP file pre-loaded.
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td> 
+1) With the model running ask the user to turn the model by using the orbit keys.
+<ul>
+<li>Start recording data.</li>
+</UL>
+2) When the model is rotated around by 180 degrees the test is done.
+<ul>
+<li>Stop collecting data.</li>
+</UL>
+</td></tr>
+<tr>
+<th> Postconditions:
+</th><td> The test will end once the user has successfully adjusted the view of the model so that it shows the back side of the model.   
+</td></tr>
+</tbody></table>
+</hr>
+ 
+=== Test 4 === 
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Description:
+</th><td> In this test the user will be asked to make a new IMP project.
+</td></tr>
+<tr>
+<th> Preconditions:
+</th><td> The test will start with the imp plugin open, but with no projects.
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td> 
+1) Eclipse will be up in the IMP perspective with no projects.
+<br />2) User will be asked to use the new Imp Project Wizard.
+<ul>
+<li>Start recording data.</li>
+</ul>
+3) Once a project is created the test is done.
+<ul>
+<li>Stop collecting data.</li>
+</ul>
+</td></tr>
+<tr>
+<th> Postconditions:
+</th><td> The test will end once the user has successfully created a new IMP project. They will not be required to create a model of any mechanisms in this test.  
+</td></tr>
+</tbody></table>
+</hr>
+  
+=== Test 5 === 
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Description:
+</th><td> In this test the user will be asked to create a 3-bar mechanism using the GUI editor and then run it. Prior to the test it will be explained to the user what will be needed to create the 3-bar with a diagram of the mechanism and the concept of joints and bodies, though how the user will do this though the plugin will not be explained.
+</td></tr>
+<tr>
+<th> Preconditions:
+</th><td> This test will start with the IMP plugin open, and with a blank IMP project already created.
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td> 
+1) Prior to the test it will be explained to the user what will be needed to create the 4-bar with a diagram of the mechanism and the concept of joints and bodies, though how the user will do this through the plugin will not be explained.
+<ul>
+<li>Start recording data.</li>
+</UL>
+2) Once the user has created a new imp file and has successfully implemented a three bar stop the test.
+<ul>
+<li>This will be known when the 3-bar model runs in the imp plugin.</li>
+<li>Stop recording data.</li>
+</UL>
+</td></tr>
+<tr>
+<th> Postconditions:
+</th><td> The test will end once the 3-bar mechanism has been created and can be successfully run.
+</td></tr>
+</tbody></table>
+</hr>
+  
+
+=== Test 6 === 
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Description:
+</th><td> In this test the user will be asked to create a 3-bar mechanism by writing the IMP code within the plugin. Prior to the test it will be explained to the user what will be needed to create the 3-bar with a diagram of the mechanism and the concept of joints and bodies.
+</td></tr>
+<tr>
+<th> Preconditions:
+</th><td> This test will start with the IMP plugin open, and with a blank IMP project already created. Because the usability of the plugin is being tested and not the usability of the IMP language, the user will be given a print out of the IMP code needed to create the mechanism, but they will still need to type it into the plugin and run it.
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td> 
+1) Prior to the test it will be explained to the user what will be needed to create the 4-bar with a diagram of the mechanism and the concept of joints and bodies.
+<ul>
+<li>Start recording data.</li>
+</UL>
+2)When the user has created a new imp file and has successfully implemented a three bar stop the test.
+<ul>
+<li>This will be known when the code the user has written will successfully run in the imp plugin.</li>
+<li>Stop recording data.</li>
+</UL>
+</td></tr>
+<tr>
+<th> Postconditions:
+</th><td> The test will end once the 3-bar mechanism has been created and can be successfully run. 
+</td></tr>
+</tbody></table>
+</hr>
