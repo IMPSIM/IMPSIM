@@ -1,3 +1,4 @@
+  * [jmanual_IMPPluginInstall IMP Plugin Install]
   * IMP Manual
     * [ManualChapter1 1: The IMP System]
     * [ManualChapter2 2: The IMP Language]
