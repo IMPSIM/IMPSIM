@@ -28,6 +28,42 @@
 }}}
 
 == 4 Bar in IMP Language ==
+{{{
+ZPIN J1 FRAME A 0,0,0 2,0,0 2,0,0;
+ZPIN J2 A B 0,1,0 2,0,0 0,-2,0;
+ZPIN J3 B C 1,1,0 -2,0,0 0,1,0;
+ZPIN J4 C FRAME 1,0,0 0,1,0 2,0,0;
+
+#Sets the ground to the body "FRAME"
+GROUND = FRAME;
+
+#Sets J1 and J2 to rotate 0.02 and -0.02 degrees per tick respectively
+J1.Theta = ticks() * 0.02;
+J2.Theta = ticks() * -0.02;
+
+#Sets the object files for the joints
+J1[OBJ_FILE] = "models/4bar/4bar.obj"; 
+J2[OBJ_FILE] = "D:\\MyDocs\\Projects\\SDL\\Examples\\models\\4bar\\4bar.obj";  
+J3[OBJ_FILE] = "D:/MyDocs/Projects/SDL/Examples/models/4bar/4bar.obj"; 
+
+#Explicitly sets the camera values
+#Note: The values here are the same as the default values
+CAMERA[UP] = {0,1,0};
+CAMERA[LOCATION] = {0,0,10};
+CAMERA[DIRECTION] = {0,0,-1};
+
+#Sets the light properties for Light 0
+#The parameters are Position, Ambient, Diffuse, Specular
+#xyzw, rgba, rgba, rgba respectively
+LIGHT[LIGHT0] = "1,0,1,1   ,.7,.1,.3,1,   .2,.4,.3,1,    .4,.2,.7,1";
+
+#Sets the light properties for Light 1
+#The parameters are Position, Ambient, Diffuse, Specular
+#xyzw, rgba, rgba, rgba respectively
+LIGHT[LIGHT1] = "0,1,-1,1   ,.3,.7,.5,1,   .7,.7,.2,1,    .5,.4,.7,1";
+
+
+}}}
 
 == Piston in API ==
 {{{
