@@ -1,0 +1,134 @@
+#summary Editor Test Plan
+#labels EditorsTestPlan
+
+= Structures Test Plan =
+
+=== Package: imp.Editors ===
+=== Revision History ===
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Date:
+</th><td>  09/26/2012
+</td></tr>
+<tr>
+<th> Version:
+</th><td> 1
+</td></tr>
+<tr>
+<th> Who:
+</th><td> Jake Kuszewski
+</td></tr>
+<tr>
+<th> Comments:
+</th><td> Test plan for the editors package.
+</td></tr></tbody></table>
+</hr>
+
+=== Introduction ===
+This document contains an outlined test plan for the editors package.
+==== Purpose ====
+To verify that the editors function correctly.
+
+=== Test Strategy ===
+==== Test Plans ====
+===== Test 1.0: WhitespaceDetector.java =====
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Objective:
+</th><td> Test class for a white space detector. 
+</td></tr>
+<tr>
+<th> Type of Test:
+</th><td> Unit Test
+</td></tr>
+<tr>
+<th> Testing Methodology:
+</th><td> White box
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td><ul>
+<li> Test isWhitespace </li>
+</ul>
+<ul>
+<li> test ' ' and '\t' </li>
+<li> test non-whitespace </li>
+</ul>
+</td></tr>
+<tr>
+<th> Preconditions:
+</th><td> No compilation errors.
+</td></tr>
+<tr>
+<th> Expected Results:
+</th><td> Running the test should result in no failures or errors.
+</td></tr>
+</tbody></table>
+</hr>
+
+===== Test 2.0: ColorManager.java =====
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Objective:
+</th><td> Test class for the ColorManager class. 
+</td></tr>
+<tr>
+<th> Type of Test:
+</th><td> Unit Test
+</td></tr>
+<tr>
+<th> Testing Methodology:
+</th><td> White box
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td><ul>
+<li> Test getColor</li>
+</ul>
+</td></tr>
+<tr>
+<th> Preconditions:
+</th><td> No compilation errors.
+</td></tr>
+<tr>
+<th> Expected Results:
+</th><td> Running the test should result in no failures or errors.
+</td></tr>
+</tbody></table>
+</hr>
+
+===== Test 3.0: CodeGenerator.java =====
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Objective:
+</th><td> Test class for the CodeGenerator class. 
+</td></tr>
+<tr>
+<th> Type of Test:
+</th><td> Unit Test
+</td></tr>
+<tr>
+<th> Testing Methodology:
+</th><td> White box
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td><ul>
+<li> Test outputJoint </li>
+<li> Test updateJoint </li>
+</ul>
+</td></tr>
+<tr>
+<th> Preconditions:
+</th><td> No compilation errors.
+</td></tr>
+<tr>
+<th> Expected Results:
+</th><td> Running the test should result in no failures or errors.
+</td></tr>
+</tbody></table>
+</hr>
