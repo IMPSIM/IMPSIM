@@ -1,0 +1,152 @@
+#summary Objects Test Plan
+#labels ObjectstestPlan
+
+= Structures Test Plan =
+
+=== Package: imp.structures ===
+=== Revision History ===
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Date:
+</th><td>  09/26/2012
+</td></tr>
+<tr>
+<th> Version:
+</th><td> 1
+</td></tr>
+<tr>
+<th> Who:
+</th><td> Jake Kuszewski
+</td></tr>
+<tr>
+<th> Comments:
+</th><td> Test plan for the objects package.
+</td></tr></tbody></table>
+</hr>
+
+=== Introduction ===
+This document contains an outlined test plan for the objects package.
+==== Purpose ====
+To verify that the objects function correctly.
+
+=== Test Strategy ===
+==== Test Plans ====
+===== Test 1.0: Bodies.java =====
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Objective:
+</th><td> Test class for a a body object. 
+</td></tr>
+<tr>
+<th> Type of Test:
+</th><td> Unit Test
+</td></tr>
+<tr>
+<th> Testing Methodology:
+</th><td> 
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td><ul>
+<li> Test Constructor </li>
+</ul>
+<ul>
+<li> Good string </li>
+<li> Null Data </li>
+</ul>
+<li> Test setter and getter</li>
+<ul>
+<li> Good String</li>
+<li> Null Data</li>
+</ul></td></tr>
+<tr>
+<th> Preconditions:
+</th><td> No compilation errors.
+</td></tr>
+<tr>
+<th> Expected Results:
+</th><td> Running the test should result in no failures or errors.
+</td></tr>
+
+
+
+===== Test 2.0: Joint.java =====
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Objective:
+</th><td> Test class for a Joint. 
+</td></tr>
+<tr>
+<th> Type of Test:
+</th><td> Unit Test
+</td></tr>
+<tr>
+<th> Testing Methodology:
+</th><td> 
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td><ul>
+<li> Test Constructor </li>
+</ul>
+<ul>
+<li> Good Data </li>
+<li> Null Data </li>
+</ul>
+<li> Test setters and getters</li>
+<ul>
+<li> Good Data</li>
+<li> Null Data</li>
+</ul>
+<li> Test toString</li>
+<ul>
+<li> Valid IMP Code</li>
+<li></li>
+</ul>
+</td></tr>
+<tr>
+<th> Preconditions:
+</th><td> No compilation errors.
+</td></tr>
+<tr>
+<th> Expected Results:
+</th><td> Running the test should result in no failures or errors.
+</td></tr>
+
+
+===== Test 4.0: Storage.java =====
+<hr>
+<table border="1">
+<tbody><tr>
+<th> Objective:
+</th><td> Test class for the storage class holding joints and bodies. 
+</td></tr>
+<tr>
+<th> Type of Test:
+</th><td> Unit Test
+</td></tr>
+<tr>
+<th> Testing Methodology:
+</th><td> 
+</td></tr>
+<tr>
+<th> Procedure:
+</th><td><ul>
+<li> Test Constructor </li>
+</ul>
+<ul>
+<li> Sunny-Day </li>
+<li> Null Data </li>
+</ul>
+</td></tr>
+<tr>
+<th> Preconditions:
+</th><td> No compilation errors.
+</td></tr>
+<tr>
+<th> Expected Results:
+</th><td> Running the test should result in no failures or errors.
+</td></tr>
