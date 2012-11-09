@@ -30,7 +30,7 @@ expression2[1] = new FakeExpressionLiteral(-0.02);
 ch.addCommand(new JointExpressionCommand("J2", JVAR.THETA, new Function("", "*", expression2)));
 			
 //Defines which object files to use
-FakeExpression literal = new FakeExpressionLiteral("<Path to Project>/models/4bar/4bar.obj");
+FakeExpression literal = new FakeExpressionLiteral("models/4bar/4bar.obj");
 ch.addCommand(new PropertyAssignmentCommand("J1","OBJ_FILE", literal));
 ch.addCommand(new PropertyAssignmentCommand("J2","OBJ_FILE", literal));
 ch.addCommand(new PropertyAssignmentCommand("J3","OBJ_FILE", literal));
