@@ -122,6 +122,10 @@ JointExpressionCommand j = new JointExpressionCommand("J1", JVAR.THETA, new Func
 }}}
 This particular code fragment will define the joint "J1" to set its Theta value to the value of 0.02*ticks(), where ticks() is a method referring to the number of ticks performed so far. Essentially it allows you to define expressions as a function of time. 
 
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/expressions/FakeExpressionLiteral.html Fake Expression Literal Doc]
+
+[http://impsim.googlecode.com/svn/java_doc/imp/core/commands/expressions/Function.html Function Doc]
+
 
 === Ground ===
 It is a requirement of the IMP engine that a body in each linkage be defined as the "Ground".  The command would be:
