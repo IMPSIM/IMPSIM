@@ -45,7 +45,7 @@ ch.addCommand(new PropertyAssignmentCommand("LIGHT","LIGHT1", literal));
 			
 }}}
 
-<img src="http://impsim.googlecode.com/svn/wiki/images/4Bar Screenshot.png"/>
+<img src="http://impsim.googlecode.com/svn/wiki/images/4Bar Textured.png"/>
 
 == 4-Bar in IMP Language ==
 {{{
@@ -85,7 +85,7 @@ LIGHT[LIGHT1] = "0,1,-1,1   ,.3,.7,.5,1,   .7,.7,.2,1,    .5,.4,.7,1";
 
 }}}
 
-<img src="http://impsim.googlecode.com/svn/wiki/images/4Bar Screenshot.png"/>
+<img src="http://impsim.googlecode.com/svn/wiki/images/4Bar Textured.png"/>
 
 == Piston in API ==
 {{{
