@@ -30,7 +30,7 @@ expression2[1] = new FakeExpressionLiteral(-0.02);
 ch.addCommand(new JointExpressionCommand("J2", JVAR.THETA, new Function("", "*", expression2)));
 			
 //Defines which object files to use
-FakeExpression literal = new FakeExpressionLiteral("models/4bar/4bar.obj");
+FakeExpression literal = new FakeExpressionLiteral("<Path to Project>/models/4bar/4bar.obj");
 ch.addCommand(new PropertyAssignmentCommand("J1","OBJ_FILE", literal));
 ch.addCommand(new PropertyAssignmentCommand("J2","OBJ_FILE", literal));
 ch.addCommand(new PropertyAssignmentCommand("J3","OBJ_FILE", literal));
@@ -44,6 +44,8 @@ literal = new FakeExpressionLiteral("0,1,-1,1, .3, .7, .5, 1, .7, .7, .2, 1, .5,
 ch.addCommand(new PropertyAssignmentCommand("LIGHT","LIGHT1", literal));
 			
 }}}
+
+<img src="http://impsim.googlecode.com/svn/wiki/images/4Bar Screenshot.png"/>
 
 == 4-Bar in IMP Language ==
 {{{
@@ -83,48 +85,27 @@ LIGHT[LIGHT1] = "0,1,-1,1   ,.3,.7,.5,1,   .7,.7,.2,1,    .5,.4,.7,1";
 
 }}}
 
+<img src="http://impsim.googlecode.com/svn/wiki/images/4Bar Screenshot.png"/>
+
 == Piston in API ==
 {{{
 Model model = new Model();
 ch = new CommandHolder(model);
-//define the mechanism
 ch.addCommand(RevoluteCommand.CreateZPin("R1", "G", "One", new Point(0,0,0), new Point(10,0,0), new Point(0,3,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("R2", "One", "Two", new Point(0,3,0), new Point(0,0,0), new Point(4,0,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("R3", "Two", "Three", new Point(4,0,0), new Point(0,3,0), new Point(10,0,0)));
 ch.addCommand(PrismCommand.CreateXSlide("P", "Three", "G", new Point(4,0,0)));
-						
-//define the ground
+			
 ch.addCommand(new GroundCommand("G"));
-					
-//set R1 to rotate
+		
 FakeExpression[] expression1 = new FakeExpression[2];
 expression1[0] = new Function("", "TICKS");
 expression1[1] = new FakeExpressionLiteral(0.0174532925);
 ch.addCommand(new JointExpressionCommand("R1", JVAR.THETA, new Function("", "*", expression1)));
 			
-//define the object files to use
-FakeExpression literal = new FakeExpressionLiteral("models/piston/pistonBar_short.obj");
-ch.addCommand(new PropertyAssignmentCommand("R2", "OBJ_FILE", literal));
-literal = new FakeExpressionLiteral("models/piston/pistonBar.obj");
-ch.addCommand(new PropertyAssignmentCommand("R3", "OBJ_FILE", literal));
-literal = new FakeExpressionLiteral("models/piston/cylinder.obj");
-ch.addCommand(new PropertyAssignmentCommand("P", "OBJ_FILE", literal));
-			
-//define the camera position
-literal = new FakeExpressionLiteral(new Point(0,1,0));
-ch.addCommand(new PropertyAssignmentCommand("CAMERA", "UP", literal));
-literal = new FakeExpressionLiteral(new Point(0,0,40));
-ch.addCommand(new PropertyAssignmentCommand("CAMERA", "LOCATION", literal));
-literal = new FakeExpressionLiteral(new Point(0,0,-1));
-ch.addCommand(new PropertyAssignmentCommand("CAMERA", "DIRECTION", literal));
-			
-//sets the lighting properties
-literal = new FakeExpressionLiteral("10,0,10,1, .7, .1, .3, 1, .2, .4, .3, 1,  .4, .2, .7, 1");
-ch.addCommand(new PropertyAssignmentCommand("LIGHT","LIGHT0", literal));
-			                        
-literal = new FakeExpressionLiteral("0,10,-10,1, .3, .7, .5, 1, .7, .7, .2, 1, .5, .4, .7, 1");
-ch.addCommand(new PropertyAssignmentCommand("LIGHT","LIGHT1", literal));			
 }}}
+
+<img src="http://impsim.googlecode.com/svn/wiki/images/piston.png />
 
 == Piston in IMP Language ==
 {{{
@@ -161,6 +142,8 @@ LIGHT[LIGHT0] = "10,0,10,1   ,.7,.1,.3,1,   .2,.4,.3,1,    .4,.2,.7,1";
 #xyzw, rgba, rgba, rgba respectively
 LIGHT[LIGHT1] = "0,10,-10,1   ,.3,.7,.5,1,   .7,.7,.2,1,    .5,.4,.7,1";
 }}}
+
+<img src="http://impsim.googlecode.com/svn/wiki/images/piston.png />
 
 == Stirling Engine in API ==
 {{{
@@ -280,6 +263,8 @@ FakeExpression expression = new FakeExpressionLiteral(new Point(-25,0,100));
 ch.addCommand(new PropertyAssignmentCommand("CAMERA","LOCATION",expression));
 }}}
 
+<img src="http://impsim.googlecode.com/svn/wiki/images/Peaucellier Linkage.png" />
+
 == Peaucellier Linkage in IMP==
 {{{
 
@@ -324,3 +309,5 @@ J1[OBJ_FILE] = "NONE";
 J2[OBJ_FILE] = "NONE";
 J3[OBJ_FILE] = "NONE";
 }}}
+
+<img src="http://impsim.googlecode.com/svn/wiki/images/Peaucellier Linkage.png" />
