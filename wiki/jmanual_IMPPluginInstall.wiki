@@ -1,0 +1,20 @@
+#summary Installing the Imp Plugin
+
+= IMP Plugin Installation =
+
+The IMP plugin is in a fully working state where you can install it to your eclipse environment and run it.  It requires Eclipse version 3.7 or higher to run.  To install it:
+
+ #) Run Eclipse
+ #) Go to install new Software under the help menu
+ #) Click on the Add button
+ #) Specify a name for the site
+ #) In the url section put in http://impsim.googlecode.com/svn/update_site
+ #) Select the imp plugin that appears and click next
+ #) Click next past the install details.
+ #) Accept the license agreement and click finish
+ #) It may pop up a box saying are you sure you want continue to install.  Click ok.
+ #) It will ask you to restart you eclipse.  Restart it.
+ #) When Eclipse comes back up go Open Perspective under Window
+ #) Select other.  When the window pops up click on IMP and Click ok
+
+You are now ready to use IMP!
