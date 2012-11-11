@@ -1,18 +1,13 @@
-# Blender MTL File: 'short_bar.blend'
+# Blender MTL File: ''
 # Material Count: 1
-newmtl Material.001
-
-Ns 154.901961
-
+newmtl Material.001_CorrodedMetalBackground_preview.jpg
+Ns 152.941176
 Ka 0.000000 0.000000 0.000000
-
-Kd 0.027356 0.119550 0.410930
-
-Ks 0.1 0.1 0.1
+Kd 0.106618 0.121343 0.135818
+Ks 0.030862 0.064175 0.289603
 Ni 1.000000
-
 d 1.000000
-
 illum 2
+map_Kd D:\MyDocs\Documents\PhysicsEngine\trunk\resources\textures\CorrodedMetalBackground_preview.jpg
 
 
