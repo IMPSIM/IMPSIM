@@ -41,6 +41,8 @@
     * [jmanual_CoreSetup Core Setup]
       * [jmanual_IDEandEnvironmentSetup IDE and Environment Setup]
     * [jmanual_PluginSetup Plugin Setup]
+      * [jmanual_pluginDeveloperSetup  Developer Setup]
+      * [jmanual_pluginInstallation Installation]
   * [jmanual_GraphicsSpecification GraphicsSpecification]
   * [LanguageSpecificationGuide Language Specification Guide]
   * [OptionsWhenDrawingAScene Options When Drawing A Scene]
