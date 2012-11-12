@@ -2,15 +2,10 @@
 
 = Installation steps =
  1) Load eclipse
-
- 2) Goto Help
-
- 3) click on Install new software...
-
- 4) Click on [add]
-
- 5) Give it a name (i.e. IMP)
-
- 6) In the location field type:
+ 1) Goto Help
+ 1) click on Install new software...
+ 1) Click on [add]
+ 1) Give it a name (i.e. IMP)
+ 1) In the location field type:
       http://impsim.googlecode.com/svn/update_site/
- 7) continue through the wizard
+ 1) continue through the wizard
