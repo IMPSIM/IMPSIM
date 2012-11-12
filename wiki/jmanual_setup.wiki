@@ -2,7 +2,5 @@
 
 = Setup =
 
-      * [EclipseDownloadInstructions Eclipse Download Instructions]
-      * [jmanual_IDEandEnvironmentSetup IDE and Environment Setup]
-      * [jmanual_MavenInstallWalkthrough Maven Install Walkthrough]
+      * [jmanual_CoreSetup Core Setup]
       * [jmanual_PluginSetup Plugin Setup]
