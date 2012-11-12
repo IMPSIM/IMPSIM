@@ -4,7 +4,7 @@
       The Integrated Mechanisms Program allows a user to display graphically
 the movement of mechanical parts using an interactive user interface.
    </description>
-   <feature url="features/IMPPlugInProduct_1.0.0.201211091408.jar" id="IMPPlugInProduct" version="1.0.0.201211091408">
+   <feature url="features/IMPPlugInProduct_1.0.0.201211120737.jar" id="IMPPlugInProduct" version="1.0.0.201211120737">
       <category name="IMPPlugin"/>
    </feature>
    <category-def name="IMPPlugin" label="IMPPlugin"/>
