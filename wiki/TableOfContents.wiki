@@ -39,6 +39,7 @@
     * [jmanual_TestStandards Test Standards]
   * [jmanual_setup Setup]
     * [jmanual_CoreSetup Core Setup]
+      * [jmanual_IDEandEnvironmentSetup
     * [jmanual_PluginSetup Plugin Setup]
   * [jmanual_GraphicsSpecification GraphicsSpecification]
   * [LanguageSpecificationGuide Language Specification Guide]
