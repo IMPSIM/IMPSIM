@@ -8,4 +8,6 @@
  1) Give it a name (i.e. IMP)
  1) In the location field type:
       http://impsim.googlecode.com/svn/update_site/
+ 1) click on [ok]
+ 1) select the IMP Plugin within the window
  1) continue through the wizard
