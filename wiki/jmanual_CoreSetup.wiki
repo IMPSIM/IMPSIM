@@ -1,5 +1,4 @@
 #summary Instructions for setting up the IMP Core
 
-      * [EclipseDownloadInstructions Eclipse Download Instructions]
       * [jmanual_IDEandEnvironmentSetup IDE and Environment Setup]
       * [jmanual_MavenInstallWalkthrough Maven Install Walkthrough]
