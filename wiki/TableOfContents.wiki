@@ -14,6 +14,7 @@
     * [jmanual_expressions Expressions]
     * [jmanual_JavaAPI Java API]
     * [jmanual_4BarTutorial How to model Tutorial]
+    * [jmanual_4BarTutorialAPI Using the API Tutorial]
     * [jmanual_APIExamples Examples]
     * Java IMP Joints
       * [jmanual_jointGear Gear]
