@@ -96,4 +96,4 @@ Once the DataSource is set, simply call startGraphics() and your model will begi
 == More Information ==
 For more information about the IMP API, please see [http://code.google.com/p/impsim/wiki/jmanual_JavaAPI Java API]
 
-Source for the tutorial: <Link to source>
+Source for the tutorial: [http://code.google.com/p/impsim/source/browse/impsim-java/trunk/Examples/APITest.java Source]
