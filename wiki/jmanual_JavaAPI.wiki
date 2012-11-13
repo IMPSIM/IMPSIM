@@ -275,7 +275,7 @@ ch.getTicks();
 }}}
 
 == Parsing from IMP Files ==
-If you wish to parse the API commands from a properly formatted IMP file, use the SimpleParser object like so:
+If you wish to parse the API commands from a properly formatted IMP file, use the !SimpleParser object like so:
 {{{
 ParserData data = SimpleParser.parseFile(File f);
 ch.addCommands(data.commands);
