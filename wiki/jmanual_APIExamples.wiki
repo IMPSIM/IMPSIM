@@ -157,7 +157,7 @@ ch.addCommand(RevoluteCommand.CreateZPin("D2", "BD", "DD", new Point(0,30,0), ne
 			                        
 ch.addCommand(PrismCommand.CreateYSlide("D", "DD", "frame", new Point(0,30,0)));
 			                        
-ch.addCommand(RevoluteCommand.CreateZPin("F", "frame", "FE", new Point(-20,20,0), new Point(-10,20,0), new Point(-8,-24,0)));
+ch.addCommand(RevoluteCommand.CreateZPin("F", "frame", "FE", new Point(-20,20,0), new Point(-10,20,0), new Point(-8,24,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("E", "FE", "HE", new Point(-8,24,0), new Point(-20,20,0), new Point(-14,8,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("H", "HE", "FH", new Point(-14,8,0), new Point(-8,24,0), new Point(-20,20,0)));
 ch.addCommand(RevoluteCommand.CreateZPin("F2", "FH", "frame", new Point(-20,20,0), new Point(-14,8,0), new Point(-10,20,0)));
