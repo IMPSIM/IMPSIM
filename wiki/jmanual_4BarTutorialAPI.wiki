@@ -2,7 +2,7 @@
 
 = 4-Bar with API Tutorial =
 
-In this tutorial, you will learn how to model a 4-bar mechanism using the API and have that mechanism display on an OpenGL canvas. To achieve this, you will need to initialize the canvas and then assign a CommandHolder object for the graphics to render from.
+In this tutorial, you will learn how to model a 4-bar mechanism using the API and have that mechanism display on an OpenGL canvas. To achieve this, you will need to initialize the canvas, define a CommandHolder, and then assign the DataSource for the graphics to render from.
 
 == Initializing the Canvas ==
 
@@ -28,6 +28,54 @@ public class APITest extends AbstractModelView{
 }}}
 
 When init is called, a new frame with the OpenGL canvas will appear.
+
+== Defining the Command Holder ==
+
+{{{
+//add commands
+try {
+	Model model = new Model();
+	ch = new CommandHolder(model);
+
+	//define the mechanism
+	ch.addCommand(RevoluteCommand.CreateZPin("J1", "FRAME", "A", new Point(0,0,0), new Point(2,0,0), new Point(2,0,0)));
+	ch.addCommand(RevoluteCommand.CreateZPin("J2", "A", "B", new Point(0,1,0), new Point(2,0,0), new Point(0,-2,0)));
+	ch.addCommand(RevoluteCommand.CreateZPin("J3", "B", "C", new Point(1,1,0), new Point(-2,0,0), new Point(0,1,0)));
+	ch.addCommand(RevoluteCommand.CreateZPin("J4", "C", "FRAME", new Point(1,0,0), new Point(0,1,0), new Point(2,0,0)));
+
+	//sets the ground
+	ch.addCommand(new GroundCommand("FRAME"));
+
+	//sets J1 and J2 to rotate 0.02 and -0.02 per tick respectively
+	FakeExpression[] expression1 = new FakeExpression[2];
+	expression1[0] = new Function("", "TICKS");
+	expression1[1] = new FakeExpressionLiteral(0.02);
+	ch.addCommand(new JointExpressionCommand("J1", JVAR.THETA, new Function("", "*", expression1)));
+
+	FakeExpression[] expression2 = new FakeExpression[2];
+	expression2[0] = new Function("", "TICKS");
+	expression2[1] = new FakeExpressionLiteral(-0.02);
+	ch.addCommand(new JointExpressionCommand("J2", JVAR.THETA, new Function("", "*", expression2)));
+	//end add commands
+
+
+	ch.compile(); //compile the model
+	ch.verifyOrFail(); //check for errors
+	ch.runIndefinitely(10); //begin model execution
+
+} catch (SelfLoopException e){
+	e.printStackTrace();
+} catch (FunctionAlreadyExists e) {
+	e.printStackTrace();
+} catch (LoopException e) {
+	e.printStackTrace();
+} catch (BodyNotFoundException e) {
+	e.printStackTrace();
+} catch (IMPException e) {
+	e.printStackTrace();
+}
+}}}
+
 
 == Assigning a Rendering Source ==
 The IMP graphics framework uses a DataSource object to control what is drawn to the screen. The ModelDataSource is built specifically for rendering IMP models.
