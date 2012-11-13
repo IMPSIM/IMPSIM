@@ -1,3 +1,45 @@
 #summary Tutorial on how to create a 4-bar mechanism with the API
 
 = 4-Bar with API Tutorial =
+
+In this tutorial, you will learn how to model a 4-bar mechanism using the API and have that mechanism display on an OpenGL canvas. To achieve this, you will need to initialize the canvas and then assign a CommandHolder object for the graphics to render from.
+
+== Initializing the Canvas ==
+
+The AbstractModelView class provided is the simplest method of initializing an OpenGL canvas to be used with IMP. Simply extend that class. You can then retrieve an OpenGL canvas with the getGLCanvas() method. GLCanvas is compatible with AWT, Swing, and SWT frames and can be embedded in any of these.
+
+{{{
+public class APITest extends AbstractModelView{
+
+	/**
+	 * Basic initialization of the canvas
+	 */
+	public void init(){
+		//initializes the GL canvas
+		JFrame frame = new JFrame();
+		frame.getContentPane().add(this.getGLCanvas());
+
+		
+		frame.setSize(600, 600);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+	}
+}
+}}}
+
+When init is called, a new frame with the OpenGL canvas will appear.
+
+== Assigning a Rendering Source ==
+The IMP graphics framework uses a DataSource object to control what is drawn to the screen. The ModelDataSource is built specifically for rendering IMP models.
+
+To assign a CommandHolder as the rendering source, we use these two method calls:
+{{{
+//Sets command holder to use when drawing to the canvas
+ModelDataSource ds = new ModelDataSource(ch, this.getCamera());
+setGraphicsDataSource(ds);
+}}}
+
+Once the DataSource is set, simply call startGraphics() and your model will begin rendering to the canvas.
+
+== More Information ==
+For more information about the IMP API, please see [http://code.google.com/p/impsim/wiki/jmanual_JavaAPI Java API]
