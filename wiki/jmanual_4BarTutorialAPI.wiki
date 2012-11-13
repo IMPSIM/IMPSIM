@@ -30,8 +30,12 @@ public class APITest extends AbstractModelView{
 When init is called, a new frame with the OpenGL canvas will appear.
 
 == Defining the Command Holder ==
+Now that a window is displaying, we need to define our model. This is done using a CommandHolder object. Each command defines an attribute of the model, and when compiled the full model can be executed. The following code will generate a 4-bar mechanism.
 
 {{{
+//Initialize the command holder
+CommandHolder ch = null;
+
 //add commands
 try {
 	Model model = new Model();
@@ -91,3 +95,5 @@ Once the DataSource is set, simply call startGraphics() and your model will begi
 
 == More Information ==
 For more information about the IMP API, please see [http://code.google.com/p/impsim/wiki/jmanual_JavaAPI Java API]
+
+Source for the tutorial: <Link to source>
