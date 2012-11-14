@@ -1,0 +1,22 @@
+#summary Instructions on how to contribute to the imp core
+
+
+
+= Instructions on how to contribute to the imp core =
+So you want to help contribute to the imp core.  That is very easy to do.  All you need to do is follow these simple steps:
+
+ #) Create a local repository on your computer.
+ #) Do a SVN Checkout on the repository.  The url of the core is:
+       impsim.googlecode.com/svn/impsim-java
+ #) Download [http://www.eclipse.org/downloads/ Eclipse IDE for Java Developers] for your version of windows or what ever operating system you use.
+ #) Install Eclipse
+ #) Run Eclipse and when it asks you for your work space point it to the trunk folder in your repository
+ #) Import the project as an Existing Maven Project
+ #) Install the m2e connector for antlr
+  #) Go to Install new Software in Eclipse
+  #) Add this site:  https://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/
+  #) Install only the m2e connector for antlr
+ #) Right click on the project and go down to the maven sub menu and click on update project configuration.
+ #) When that window comes up just click ok
+ #) Then right click on the project again and go down to Run As submenu and then select Maven install.
+ #) Add in the corresponding jogl jars to your build path and you are done.
