@@ -2,7 +2,14 @@
 
 = 4-Bar with API Tutorial =
 
-In this tutorial, you will learn how to model a 4-bar mechanism using the API and have that mechanism display on an OpenGL canvas. To achieve this, you will need to initialize the canvas, define a CommandHolder, and then assign the DataSource for the graphics to render from.
+In this tutorial, you will learn how to model a 4-bar mechanism using the API and have that mechanism display on an OpenGL canvas. After configuring your build path, you will need to initialize the canvas, define a CommandHolder, and then assign the DataSource for the graphics to render from.
+
+== Configuring the Build Path ==
+First obtain the required libraries found below:
+[http://code.google.com/p/impsim/downloads/list IMP]
+[http://jogamp.org/deployment/jogamp-current/archive/ JOGL]
+
+
 
 == Initializing the Canvas ==
 
