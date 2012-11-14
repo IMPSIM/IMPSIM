@@ -112,7 +112,7 @@ public void runModel(){
 == Assigning a Rendering Source ==
 The IMP graphics framework uses a DataSource object to control what is drawn to the screen. The ModelDataSource is built specifically for rendering IMP models.
 
-To assign a CommandHolder as the rendering source and begin rendering execution, simply add these lines to the end:
+To assign a CommandHolder as the rendering source and begin rendering execution, simply add these lines to the end of runModel():
 {{{
 //Sets command holder to use when drawing to the canvas
 ModelDataSource ds = new ModelDataSource(ch, this.getCamera());
