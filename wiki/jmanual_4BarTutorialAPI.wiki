@@ -6,8 +6,8 @@ In this tutorial, you will learn how to model a 4-bar mechanism using the API an
 
 == Configuring the Build Path ==
 First obtain the required libraries found below:
-[http://code.google.com/p/impsim/downloads/list IMP]
-[http://jogamp.org/deployment/jogamp-current/archive/ JOGL]
+ * [http://code.google.com/p/impsim/downloads/list IMP]
+ * [http://jogamp.org/deployment/jogamp-current/archive/ JOGL]
 
 
 
