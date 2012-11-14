@@ -61,7 +61,7 @@ public void runModel(){
 	stopGraphics();
 
 	//clear the reference to the current command holder
-	ch = null;
+	CommandHolder ch = null;
 
 	//add commands
 	try {
