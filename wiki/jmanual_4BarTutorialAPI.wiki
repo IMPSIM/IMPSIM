@@ -6,10 +6,16 @@ In this tutorial, you will learn how to model a 4-bar mechanism using the API an
 
 == Configuring the Build Path ==
 First obtain the required libraries found below:
- * [http://code.google.com/p/impsim/downloads/list IMP]
+ * [http://code.google.com/p/impsim/downloads/detail?name=Imp_1.0.jar IMP]
  * [http://jogamp.org/deployment/jogamp-current/archive/ JOGL]
 
+In your eclipse project, add IMP, Jogl, and Gluegen to your project build path.
+ # Right click your project
+ # Go to Build Path -> Configure Build Path
+ # Click "Add External  JARs" in the Libraries tab
+ # Select IMP and the JOGL libraries
 
+Note that for the Jogl and Gluegen libraries, you will also need to include the appropriate platform rt natives. There should be a total of five external jars on your build path including the IMP library.
 
 == Initializing the Canvas ==
 
