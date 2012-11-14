@@ -13,9 +13,9 @@ In your eclipse project, add IMP, Jogl, and Gluegen to your project build path.
  # Right click your project
  # Go to Build Path -> Configure Build Path
  # Click "Add External  JARs" in the Libraries tab
- # Select IMP and the JOGL libraries
+ # Select IMP_1.0.jar, jogl-all.jar, and gluegen-rt.jar libraries
 
-Note that for the Jogl and Gluegen libraries, you will also need to include the appropriate platform rt natives. There should be a total of five external jars on your build path including the IMP library.
+Note that for the Jogl and Gluegen libraries, you will also need to include the appropriate platform natives. There should be a total of five external jars on your build path including the IMP library after this step.
 
 == Initializing the Canvas ==
 
