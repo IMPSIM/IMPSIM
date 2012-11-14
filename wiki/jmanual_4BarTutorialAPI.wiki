@@ -4,7 +4,7 @@
 
 In this tutorial, you will learn how to model a 4-bar mechanism using the API and have that mechanism display on an OpenGL canvas. After configuring your build path, you will need to initialize the canvas, define a CommandHolder, and then assign the DataSource for the graphics to render from.
 
-The full source code for the tutorial can be found here: Source for the tutorial: [http://code.google.com/p/impsim/source/browse/impsim-java/trunk/Examples/APITest.java Source]
+The full source code for the tutorial can be found here: [http://code.google.com/p/impsim/source/browse/impsim-java/trunk/Examples/APITest.java Source]
 
 == Configuring the Build Path ==
 Create a new Java project in eclipse, then obtain the required libraries found below:
