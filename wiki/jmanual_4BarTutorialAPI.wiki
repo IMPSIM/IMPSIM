@@ -54,51 +54,58 @@ When init is called, a new frame with the OpenGL canvas will appear.
 Now that a window is displaying, we need to define our model. This is done using a CommandHolder object. Each command defines an attribute of the model, and when compiled the full model can be executed. The following code will generate a 4-bar mechanism.
 
 {{{
-//Initialize the command holder
-CommandHolder ch = null;
+/**
+* Creates and executes a model using the IMP API
+*/
+public void runModel(){
+	stopGraphics();
 
-//add commands
-try {
-	Model model = new Model();
-	ch = new CommandHolder(model);
+	//clear the reference to the current command holder
+	ch = null;
 
-	//define the mechanism
-	ch.addCommand(RevoluteCommand.CreateZPin("J1", "FRAME", "A", new Point(0,0,0), new Point(2,0,0), new Point(2,0,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("J2", "A", "B", new Point(0,1,0), new Point(2,0,0), new Point(0,-2,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("J3", "B", "C", new Point(1,1,0), new Point(-2,0,0), new Point(0,1,0)));
-	ch.addCommand(RevoluteCommand.CreateZPin("J4", "C", "FRAME", new Point(1,0,0), new Point(0,1,0), new Point(2,0,0)));
+	//add commands
+	try {
 
-	//sets the ground
-	ch.addCommand(new GroundCommand("FRAME"));
+		Model model = new Model();
+		ch = new CommandHolder(model);
+		//define the mechanism
+		ch.addCommand(RevoluteCommand.CreateZPin("J1", "FRAME", "A", new Point(0,0,0), new Point(2,0,0), new Point(2,0,0)));
+		ch.addCommand(RevoluteCommand.CreateZPin("J2", "A", "B", new Point(0,1,0), new Point(2,0,0), new Point(0,-2,0)));
+		ch.addCommand(RevoluteCommand.CreateZPin("J3", "B", "C", new Point(1,1,0), new Point(-2,0,0), new Point(0,1,0)));
+		ch.addCommand(RevoluteCommand.CreateZPin("J4", "C", "FRAME", new Point(1,0,0), new Point(0,1,0), new Point(2,0,0)));
 
-	//sets J1 and J2 to rotate 0.02 and -0.02 per tick respectively
-	FakeExpression[] expression1 = new FakeExpression[2];
-	expression1[0] = new Function("", "TICKS");
-	expression1[1] = new FakeExpressionLiteral(0.02);
-	ch.addCommand(new JointExpressionCommand("J1", JVAR.THETA, new Function("", "*", expression1)));
+		//sets the ground
+		ch.addCommand(new GroundCommand("FRAME"));
 
-	FakeExpression[] expression2 = new FakeExpression[2];
-	expression2[0] = new Function("", "TICKS");
-	expression2[1] = new FakeExpressionLiteral(-0.02);
-	ch.addCommand(new JointExpressionCommand("J2", JVAR.THETA, new Function("", "*", expression2)));
-	//end add commands
+		//sets J1 and J2 to rotate 0.02 and -0.02 per tick respectively
+		FakeExpression[] expression1 = new FakeExpression[2];
+		expression1[0] = new Function("", "TICKS");
+		expression1[1] = new FakeExpressionLiteral(0.02);
+		ch.addCommand(new JointExpressionCommand("J1", JVAR.THETA, new Function("", "*", expression1)));
+
+		FakeExpression[] expression2 = new FakeExpression[2];
+		expression2[0] = new Function("", "TICKS");
+		expression2[1] = new FakeExpressionLiteral(-0.02);
+		ch.addCommand(new JointExpressionCommand("J2", JVAR.THETA, new Function("", "*", expression2)));
+		//end add commands
 
 
-	ch.compile(); //compile the model
-	ch.verifyOrFail(); //check for errors
-	ch.runIndefinitely(10); //begin model execution
+		ch.compile(); //compile the model
+		ch.verifyOrFail(); //check for errors
+		ch.runIndefinitely(10); //begin model execution
 
-} catch (SelfLoopException e){
-	e.printStackTrace();
-} catch (FunctionAlreadyExists e) {
-	e.printStackTrace();
-} catch (LoopException e) {
-	e.printStackTrace();
-} catch (BodyNotFoundException e) {
-	e.printStackTrace();
-} catch (IMPException e) {
-	e.printStackTrace();
-}
+	} catch (SelfLoopException e){
+		e.printStackTrace();
+	} catch (FunctionAlreadyExists e) {
+		e.printStackTrace();
+	} catch (LoopException e) {
+		e.printStackTrace();
+	} catch (BodyNotFoundException e) {
+		e.printStackTrace();
+	} catch (IMPException e) {
+		e.printStackTrace();
+	}
+
 }}}
 
 
