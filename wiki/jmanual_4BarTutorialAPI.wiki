@@ -25,6 +25,14 @@ The AbstractModelView class provided is the simplest method of initializing an O
 public class APITest extends AbstractModelView{
 
 	/**
+	 * Main method
+	 */
+	public static void main(String[] args) {
+		APITest model = new APITest();
+		model.init();
+	}
+
+	/**
 	 * Basic initialization of the canvas
 	 */
 	public void init(){
