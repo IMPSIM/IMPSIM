@@ -20,3 +20,11 @@ So you want to help contribute to the imp core.  That is very easy to do.  All y
  #) When that window comes up just click ok
  #) Then right click on the project again and go down to Run As submenu and then select Maven install.
  #) Add in the corresponding jogl jars to your build path and you are done.
+  #) [http://jogamp.org/deployment/jogamp-current/archive/ JOGL jars found here]
+  #) In your eclipse project, add IMP, Jogl, and Gluegen to your project build path.
+    # Right click your project
+    # Go to Build Path -> Configure Build Path
+    # Click "Add External  JARs" in the Libraries tab
+    # Select IMP_1.0.jar, jogl-all.jar, and gluegen-rt.jar libraries
+
+Note that for the Jogl and Gluegen libraries, you will also need to include the appropriate platform natives. There should be a total of five external jars on your build path including the IMP library after this step.
