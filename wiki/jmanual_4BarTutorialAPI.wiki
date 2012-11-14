@@ -122,7 +122,7 @@ setGraphicsDataSource(ds);
 startGraphics();
 }}}
 
-Note that if the graphics starts too quickly, an exception will be thrown, but it won't affect the state of the system. This can be resolved by waiting for the graphics to initialize fully before calling runModel()
+Note that if model starts too quickly, an exception will be thrown until the graphics completes initialization, but it won't affect the state of the IMP system. This can be resolved by waiting for the graphics to initialize fully before calling runModel()
 
 == More Information ==
 For more information about the IMP API, please see [http://code.google.com/p/impsim/wiki/jmanual_JavaAPI Java API]
