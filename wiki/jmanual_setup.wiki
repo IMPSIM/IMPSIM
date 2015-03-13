@@ -1,6 +1,0 @@
-#summary Setup
-
-= Setup =
-
-      * [jmanual_CoreSetup Core Setup]
-      * [jmanual_PluginSetup Plugin Setup]

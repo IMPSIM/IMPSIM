@@ -1,4 +1,0 @@
-#summary How to setup the plugin.
-
-     * [jmanual_pluginDeveloperSetup Developer Setup]
-     * [jmanual_plguinInstallation Installation]
