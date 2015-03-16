@@ -12,3 +12,5 @@ Along with the core "engine" and parser modules, we have been working on a plugi
 Thus far, we have implemented support for only revolute and prismatic joints; the original C version of IMP supports many additional joint types, but we are working in increments and have deferred additional joints for now. Similarly, we have only implemented kinematic analysis capabilities so far; the additional static equilibrium and dynamic modes of operation supported in the C version are also planned future developments.
 
 Both versions of IMP are in the repository with the plugin being under the main java project.
+
+More information and download instructions can be found in the WIKI: https://github.com/IMPSIM/IMPSIM/wiki
